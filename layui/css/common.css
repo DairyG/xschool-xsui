@@ -1,0 +1,27 @@
+@charset "utf-8";
+.childrenBody {background-color: #fff;position: absolute;right: 15px;left:15px;top:15px;bottom: 15px;}
+.padding-b-60 {padding-bottom: 60px;}
+.margin-b-20 {margin-bottom: 20px !important;}
+.text-red {color:red}
+label input[type='file'] {display: none;}
+.layui-form2 .layui-form-item {clear: unset;}
+.layui-form2 .layui-form-label {width: 120px;}
+.layui-form2 .layui-input-block {margin-left: 150px;}
+.file-upload {border:1px solid #ddd;height:80px;width:80px;text-align: center;display: inline-block;cursor:pointer;}
+.file-upload span {line-height: 80px;font-size: 40px !important;color:#666}
+
+.linePop {display: none;position: relative;}
+.fixd_bottom {height: 60px;position: absolute;bottom: 0;width:100%;}
+
+/* .ztree  */
+.ztree * {font-size:14px;}
+.ztree li {line-height: 200%;}
+.ztree li a {height:28px;}
+.menuContent {border:1px solid #ddd;}
+.ztree li span.button {height:24px;}
+.ztree li span.button.switch {height:24px;}
+.ztree li span.button.ico_open {vertical-align: middle;}
+.ztree li span.button.ico_close {vertical-align: middle;}
+.ztree li span.button.ico_docu {vertical-align: middle;}
+
+.ztree li a.curSelectedNode  {height:28px;}

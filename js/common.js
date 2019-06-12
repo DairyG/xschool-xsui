@@ -18,14 +18,17 @@ function layui_prompt(obj){
  * 弹出用户选择框
  */
 function user_popup(obj){
-	if(!$('#popup_content').length){
-		$('body').append('<div id="popup_content"></div>');
-		$('#popup_content').load("../public/user_select.html");
-	}
 	var table;
 	layui.use(['table'],function(){
 		table = layui.table;
 	});
+	// if(!$('#popup_content').length){
+		$('body').append('<div id="popup_content"></div>');
+		$('#popup_content').load("../public/user_select.html");
+	// } else {
+	// 	//table.render();
+	// }
+	
 	layer.open({
 		type: 1,
 		title:false,

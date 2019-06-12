@@ -25,7 +25,6 @@
 					<div class="layui-tab layui-tab-brief">
 						<ul class="layui-tab-title">
 							<li class="layui-this">销售部</li>
-							<li>子公司管理</li>
 						</ul>
 						<div class="layui-tab-content">
 							<div class="layui-tab-item layui-show">
@@ -97,12 +96,6 @@
 									</form>
 								</div>
 							</div>
-							<div class="layui-tab-item">
-								<table id="lst" lay-filter="lst"></table>
-								<script type="text/html" id="toolbar">
-									<button class="layui-btn  layui-btn-xs ">查看</button>
-								</script>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -165,26 +158,10 @@
 				zTreeObj = $.fn.zTree.init($("#ztree"), setting, zNodes);
 			})
 			
-			var datas = [
-				{'name':'建筑公司','lx':'张三','mobile':'15323222222'},
-				{'name':'科技公司','lx':'李时','mobile':'15323222222'},
-				{'name':'医疗公司','lx':'王五','mobile':'15323222222'}
-			];
 			layui.use([ 'table', 'element'], function() {
 				var table = layui.table,
 					element = layui.element;
 					
-					table.render({
-						elem: '#lst',
-						data: datas,
-						cols: [[
-							{type: 'numbers', title: '序号'},
-							{field: 'name', title: '公司名称'},
-							{field: 'lx', title: '联系人'},
-							{field: 'mobile', title: '联系人电话'},
-							{title:'操作',toolbar:'#toolbar'}
-						]]
-					});
 					
 			});
 

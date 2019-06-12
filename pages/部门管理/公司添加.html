@@ -29,12 +29,6 @@
 								<form class="layui-form layui-form2" >
 									<div class="layui-row">
 										<div class="layui-form-item layui-col-md6 margin-b-20">
-											<label class="layui-form-label">上级部门</label>
-											<div class="layui-input-block">
-												<input type="text" id="citySel" class="layui-input" onclick="showMenu();">
-											</div>
-										</div>
-										<div class="layui-form-item layui-col-md6 margin-b-20">
 											<label class="layui-form-label">公司名称<span class="text-red"> *</span></label>
 											<div class="layui-input-block">
 												<input type="text" name="title" required  lay-verify="required" placeholder="请输入公司名称" autocomplete="off" class="layui-input">
@@ -306,38 +300,6 @@
 					layedit.build('editor2',{height: 180});
 					layedit.build('editor3',{height: 180});
 			});
-			var setting = {
-				check: {
-					enable: true,
-					chkboxType: {"Y":"", "N":""}
-				},
-				view: {
-					dblClickExpand: false
-				},
-				data: {
-					simpleData: {
-						enable: true
-					}
-				},
-				callback: {
-					beforeClick: beforeClick,
-					onCheck: onCheck
-				}
-			};
-			var setting2 = {
-				view: {
-					dblClickExpand: false
-				},
-				data: {
-					simpleData: {
-						enable: true
-					}
-				},
-				callback: {
-					beforeClick: beforeClick,
-					onCheck: onCheck
-				}
-			};
 			var zNodes =[
 					{
 						name: "四川某某公司",
@@ -366,44 +328,9 @@
 					}
 				  ];
 		
-			function beforeClick(treeId, treeNode) {
-				var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-				zTree.checkNode(treeNode, !treeNode.checked, null, true);
-				return false;
-			}
 			
-			function onCheck(e, treeId, treeNode) {
-				var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
-				nodes = zTree.getCheckedNodes(true),
-				v = "";
-				for (var i=0, l=nodes.length; i<l; i++) {
-					v += nodes[i].name + ",";
-				}
-				if (v.length > 0 ) v = v.substring(0, v.length-1);
-				var cityObj = $("#citySel");
-				cityObj.attr("value", v);
-			}
-
-			function showMenu() {
-				var cityObj = $("#citySel");
-				var cityOffset = $("#citySel").offset();
-				$("#menuContent").css({left:cityOffset.left + "px", top:cityOffset.top + cityObj.outerHeight() + "px",width:cityObj.outerWidth() + "px"}).slideDown("fast");
-
-				$("body").bind("mousedown", onBodyDown);
-			}
-			function hideMenu() {
-				$("#menuContent").fadeOut("fast");
-				$("body").unbind("mousedown", onBodyDown);
-			}
-			function onBodyDown(event) {
-				if (!(event.target.id == "menuBtn" || event.target.id == "citySel" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length>0)) {
-					hideMenu();
-				}
-			}
-
 			$(document).ready(function(){
-				$.fn.zTree.init($("#treeDemo"), setting, zNodes);
-				$.fn.zTree.init($("#tree"), setting2, zNodes);
+				$.fn.zTree.init($("#tree"), {}, zNodes);
 			});
 		</script>
 	</body>

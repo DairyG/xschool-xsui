@@ -9,7 +9,7 @@
 			<div class="search_item" style="position: relative;">
 				<span>部门</span>
 				<input type="text" name="title" placeholder="请输入部门" autocomplete="off" class="layui-input" id="user_select_department" onclick="show_user_select_tree()" readonly />
-				<input type="text" id="department_id" />
+				<input type="hidden" id="department_id" />
 				<ul id="user_select_tree" class="ztree"></ul>
 			</div>
 			<div class="search_item">
@@ -59,31 +59,52 @@
 		});
 		var zTreeObj;
 		var setting = {
+			check: {
+				enable: true,
+				chkStyle: "radio",
+				radioType: "all"
+			},
+			view: {
+			    dblClickExpand: false
+			},
 			callback: {
-				onCheck: on_user_select_check
+				onCheck: on_user_select_check,
+			    onClick: function (e, treeId, treeNode) {
+			        var tree = $.fn.zTree.getZTreeObj(treeId);
+			        tree.expandNode(treeNode);
+			
+					tnode=treeNode;
+			        currentid=treeNode.id;
+			    }
 			}
 		};
 		var zNodes = [ // zTree 的数据属性，此处使用标准json格式
 			{
+				id:1,
 				name: "四川某某公司",
 				open: true,
 				children: [{
 						name: "销售部",
+						id:2,
 						children: [{
 							name: "销售1部",
+							id:3,
 							children: [{
-								name: "销售1组"
+								name: "销售1组",
+								id:4,
 							}]
 						}]
 					},
 					{
-						name: "市场部"
+						name: "市场部",
+						id:5,
 					},
 					{
 						name: "销售部",
+						id:6,
 						children: [{
-							name: "销售1部"
-		
+							name: "销售1部",
+							id:7,
 						}]
 					}
 				]
@@ -109,11 +130,12 @@
 		var zTree = $.fn.zTree.getZTreeObj(treeId),
 		nodes = zTree.getCheckedNodes(true),
 		v = "",id = "";
-		console.log(nodes);
 		for (var i=0, l=nodes.length; i<l; i++) {
-			v += nodes[i].name + ",";
+			v = nodes[i].name;
+			id = nodes[i].id;
 		}
-		if (v.length > 0 ) v = v.substring(0, v.length-1);
+		console.log(id);
 		$("#user_select_department").val(v);
+		$("#department_id").val(id);
 	}
 </script>

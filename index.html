@@ -86,27 +86,73 @@
 							<img src="img/zx-logo.png" />
 						</div>
 						<ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
-							<li data-name="home" class="layui-nav-item layui-nav-itemed">
+							<li data-name="department" class="layui-nav-item layui-nav-itemed">
 								<a href="javascript:;" lay-tips="组织结构" lay-direction="2">
 									<i class="layui-icon layui-icon-component"></i>
 									<cite>组织结构</cite>
 									<span class="layui-nav-more"></span>
 								</a>
 								<dl class="layui-nav-child">
-									<dd data-name="console" >
+									<dd data-name="department" >
 										<a lay-href="pages/部门管理/部门添加.html">部门管理</a>
 									</dd>
-									<dd data-name="console">
+									<dd data-name="department">
 										<a lay-href="pages/部门管理/人员管理.html">人员管理</a>
 									</dd>
-									<dd data-name="console">
+									<dd data-name="department">
+										<a lay-href="pages/部门管理/人员添加.html">人员添加</a>
+									</dd>
+									<dd data-name="department">
 										<a lay-href="pages/部门管理/公司列表.html">公司列表</a>
 									</dd>
-									<dd data-name="console">
+									<dd data-name="department">
 										<a lay-href="pages/部门管理/公司添加.html">公司添加</a>
 									</dd>
 								</dl>
 							</li>
+							<li data-name="Personnel" class="layui-nav-item">
+								<a href="javascript:;" lay-tips="人事管理" lay-direction="2">
+									<i class="layui-icon layui-icon-component"></i>
+									<cite>人事管理</cite>
+									<span class="layui-nav-more"></span>
+								</a>
+								<dl class="layui-nav-child">
+									<dd data-name="Personnel">
+										<a lay-href="pages/人事管理/岗位列表.html">岗位列表</a>
+									</dd>
+									<dd data-name="Personnel">
+										<a lay-href="pages/人事管理/岗位添加.html">岗位添加</a>
+									</dd>
+									<dd data-name="Personnel">
+										<a lay-href="pages/人事管理/员工信息.html">员工信息</a>
+									</dd>
+								</dl>
+							</li>
+							<li data-name="recruit" class="layui-nav-item">
+								<a href="javascript:;" lay-tips="招聘管理" lay-direction="2">
+									<i class="layui-icon layui-icon-component"></i>
+									<cite>招聘管理</cite>
+									<span class="layui-nav-more"></span>
+								</a>
+								<dl class="layui-nav-child">
+									<dd data-name="Personnel">
+										<a lay-href="pages/招聘管理/招聘需求.html">招聘需求</a>
+									</dd>
+									<dd data-name="Personnel">
+										<a >招聘申请</a>
+									</dd>
+									<!-- <dd data-name="Personnel">
+										<a lay-href="pages/招聘管理/招聘计划.html">招聘计划</a>
+									</dd> -->
+									<dd data-name="Personnel">
+										<a lay-href="pages/招聘管理/简历库.html">简历库</a>
+									</dd>
+									<dd data-name="Personnel">
+										<a lay-href="pages/招聘管理/OFFER记录.html">OFFER记录</a>
+									</dd>
+								</dl>
+							</li>
+							
 							<li data-name="component" class="layui-nav-item">
 								<a href="javascript:;" lay-tips="权限管理" lay-direction="2">
 									<i class="layui-icon layui-icon-component"></i>

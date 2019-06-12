@@ -22,6 +22,7 @@
 							<li>开户信息</li>
 							<li>公司介绍</li>
 							<li>账户信息</li>
+							<li>组织结构</li>
 						</ul>
 						<div class="layui-tab-content">
 							<div class="layui-tab-item layui-show">
@@ -264,6 +265,11 @@
 									</div>
 								</form>
 							</div>
+							<div class="layui-tab-item">
+								<div>
+									<ul id="tree" class="ztree"></ul>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -287,11 +293,6 @@
 			var datas = [
 				{'name':'科技公司','ename':'','dm':'1283172812432525','lx':'股份制','db':'张三','zb':'100万','cl':'2018-10-1'}
 			];
-			layui.config({
-				base: "../../layui/lay/modules/"
-			}).extend({
-				treeSelect: "treeSelect"
-			});
 			layui.use([ 'table', 'element','laydate','layedit'], function() {
 				var table = layui.table,
 					element = layui.element
@@ -323,7 +324,20 @@
 					onCheck: onCheck
 				}
 			};
-
+			var setting2 = {
+				view: {
+					dblClickExpand: false
+				},
+				data: {
+					simpleData: {
+						enable: true
+					}
+				},
+				callback: {
+					beforeClick: beforeClick,
+					onCheck: onCheck
+				}
+			};
 			var zNodes =[
 					{
 						name: "四川某某公司",
@@ -331,10 +345,8 @@
 						nocheck:true,
 						children: [{
 								name: "销售部",
-								nocheck:true,
 								children: [{
 									name: "销售1部",
-									nocheck:true,
 									children: [{
 										name: "销售1组"
 									}]
@@ -342,11 +354,9 @@
 							},
 							{
 								name: "市场部",
-								nocheck:true,
 							},
 							{
 								name: "策划部",
-								nocheck:true,
 								children: [{
 									name: "策划1部"
 							
@@ -393,6 +403,7 @@
 
 			$(document).ready(function(){
 				$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+				$.fn.zTree.init($("#tree"), setting2, zNodes);
 			});
 		</script>
 	</body>

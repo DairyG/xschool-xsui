@@ -17,23 +17,14 @@
 			<div class="layui-card">
 				<div class="layui-card-body">
 					<div class="layui-tab layui-tab-brief" lay-filter="component-tabs-brief">
-						<ul class="layui-tab-title">
-							<li class="layui-this">OFFER简历列表</li>
-						</ul>
 						<div class="layui-tab-content">
 							<div class="layui-tab-item layui-show">
 								<form class="layui-form layui-form2 layui-search-form">
 									<div class="layui-row">
 										<div class="layui-form-item layui-col-md3 margin-b-20">
-											<label class="layui-form-label">姓名<span class="text-red"> *</span></label>
+											<label class="layui-form-label">标题<span class="text-red"> *</span></label>
 											<div class="layui-input-block">
-												<input type="text" name="title" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
-											</div>
-										</div>
-										<div class="layui-form-item layui-col-md3 margin-b-20">
-											<label class="layui-form-label">手机<span class="text-red"> *</span></label>
-											<div class="layui-input-block">
-												<input type="text" name="title" required  lay-verify="required" placeholder="请输入手机" autocomplete="off" class="layui-input">
+												<input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
 											</div>
 										</div>
 										<div class="layui-form-item layui-col-md4 margin-b-20">
@@ -41,10 +32,8 @@
 											<div class="layui-input-block">
 												<select>
 													<option></option>
-													<option>未面试</option>
-													<option>已面试</option>
-													<option>已通过</option>
-													<option>未通过</option>
+													<option>未读</option>
+													<option>已读</option>
 												</select>
 											</div>
 										</div>
@@ -56,9 +45,9 @@
 								<table id="lst" lay-filter="lst"></table>
 								<script type="text/html" id="toolbar">
 									<button class="layui-btn  layui-btn-xs" lay-event="info">查看</button>
-									<button class="layui-btn  layui-btn-xs layui-btn-normal">入职</button>
 								</script>
 								<script type="text/html" id="bar">
+									
 								</script>
 							</div>
 						</div>
@@ -66,26 +55,19 @@
 				</div>
 			</div>
 		</div>
-		<div id="menuContent" class="menuContent" style="display:none; position: absolute;background: #fff;">
-			<ul id="treeDemo" class="ztree" style="width: 100%;"></ul>
-		</div>
 		<script type="text/javascript">
 			var data_col = [[
 				{type: 'numbers', title: '序号'},
-				{field: 'name', title: '姓名'},
-				{field: 'sex', title: '性别',width:60},
-				{field: 'age', title: '年龄',width:60},
-				{field: 'mobile', title: '联系电话'},
-				{field: 'zw', title: '应聘职位'},
-				{field: 'gz_y', title: '工作年限',width:100},
-				{field: 'gz', title: '期望月薪',width:100},
-				{field: 'dg', title: '到岗时间'},
+				{field: 'title', title: '标题'},
+				{field: 'date', title: '发布日期'},
+				{field: 'is_read', title: '是否已读'},
 				{title:'操作',toolbar:'#toolbar',width:180,fixed:'right'}
 			]];
 			var datas = [
-				{name:'张三',sex:'男',age:'22',mobile:'15333333333',mail:'12414@qq.com',zw:'开发工程师',gz_y:'2',qw_city:'成都',jz_city:'成都',gz:'6000',dg:'随时',zt:'面试中'},
-				{name:'李四',sex:'男',age:'22',mobile:'15333333333',mail:'12414@qq.com',zw:'开发工程师',gz_y:'2',qw_city:'成都',jz_city:'成都',gz:'6000',dg:'3天内',zt:'已面试'},
-				{name:'王五',sex:'男',age:'22',mobile:'15333333333',mail:'12414@qq.com',zw:'开发工程师',gz_y:'2',qw_city:'成都',jz_city:'成都',gz:'6000',dg:'一周内',zt:'已面试'},
+				{'title':'端午放假通知',date:'2019-5-25',is_read:'否'},
+				{'title':'端午放假通知',date:'2019-5-25',is_read:'是'},
+				{'title':'端午放假通知',date:'2019-5-25',is_read:'是'},
+				{'title':'端午放假通知',date:'2019-5-25',is_read:'是'},
 			];
 			layui.use([ 'table','element','laydate'], function() {
 				var table = layui.table,
@@ -98,18 +80,16 @@
 						cols: data_col,
 						toolbar:'#bar',
 						page:true,
-						height:'full-110',
+						height:'full-130',
 						even: true,
 					});
 					table.on('tool(lst)', function(obj){
 						var layEvent = obj.event;
 						if(layEvent == "info"){
-							window.location.href = "简历查看2.html";
+							window.location.href = "公告详情.html";
 						}
 					});
-					
 			});
-			
 		</script>
 	</body>
 </html>

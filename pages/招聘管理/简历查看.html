@@ -371,9 +371,17 @@
 											</div>
 										</div>
 										<div class="layui-form-item layui-col-md6">
+											<label class="layui-form-label">选择面试人<span class="text-red"> *</span></label>
+											<div class="layui-input-block">
+												<span class="layui-btn layui-btn-normal" onclick="user_popup($('#user_sel_box'))"><i class="layui-icon layui-icon-add-1"></i>选择面试人</span>
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md12" >
 											<label class="layui-form-label">面试人<span class="text-red"> *</span></label>
 											<div class="layui-input-block">
-												<input type="text" name="title" required  lay-verify="required" placeholder="请输入面试人" autocomplete="off" class="layui-input" readonly onclick="user_popup(this)">
+												<div id="user_sel_box"  style="padding-top:7px">
+													
+												</div>
 											</div>
 										</div>
 										<div class="layui-form-item layui-col-md12 ">

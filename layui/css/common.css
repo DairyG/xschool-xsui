@@ -4,6 +4,7 @@
 .fc-FB80 {color: #FFB800;}
 .text-red {color:red}
 /* 背景色 */
+.bgwhite {background: #ffffff !important;}
 .bgf2f2f2 {background: #f2f2f2 !important;}
 .bgfdfdfd {background: #fdfdfd !important;}
 /* 间距 */
@@ -12,6 +13,9 @@
 .margin-t-10 {margin-top:10px;}
 .margin-t-3 {margin-top:3px;}
 .margin-t-20 {margin-top:20px;}
+
+.fl {float: left;}
+.fr {float: right;}
 
 label input[type='file'] {display: none;}
 .layui-form2 .layui-form-item {clear: unset;}
@@ -23,6 +27,7 @@ label input[type='file'] {display: none;}
 .layui-search-form .search_item {float: left;margin-left:20px;margin-bottom:10px;}
 .layui-search-form .search_item > span {display: inline-block;float: left;line-height: 38px;padding-right:20px;}
 .layui-search-form .search_item .layui-input{display: inline-block;float: left;width: 150px;}
+.layui-search-form .search_item .layui-form-select {float: left;}
 .file-upload {border:1px solid #ddd;height:80px;width:80px;text-align: center;display: inline-block;cursor:pointer;}
 .file-upload span {line-height: 80px;font-size: 40px !important;color:#666}
 .layui-form2 .rate {margin-bottom: 0;padding-top: 5px;}
@@ -35,7 +40,7 @@ label input[type='file'] {display: none;}
 .ztree * {font-size:14px;}
 .ztree li {line-height: 200%;}
 .ztree li a {height:28px;}
-.menuContent {border:1px solid #ddd;}
+.menuContent {border:1px solid #ddd;z-index: 999;}
 .ztree li span.button {height:24px;}
 .ztree li span.button.switch {height:24px;}
 .ztree li span.button.ico_open {vertical-align: middle;}
@@ -52,3 +57,9 @@ label input[type='file'] {display: none;}
 /* 用户选择弹出框 */
 #popup_content {display: none;}
 #user_select_tree {position: absolute;left: 48px;top: 40px;background: #fff;z-index: 999;border: 1px solid #ddd;min-width:300px;display: none;}
+
+/* 查看人选择 */
+#sel_item_box { width:auto;}
+#sel_item_box .sel_item {display: none;}
+.layui-badge2 {padding:2px 4px;margin-right:10px; margin-bottom: 5px;float: left;}
+.layui-badge2 .layui-icon {cursor: pointer;    float: right;}

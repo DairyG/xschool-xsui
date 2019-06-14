@@ -14,89 +14,81 @@
 
 	<body class="bgf2f2f2">
 
-		<div class="childrenBody" style="background:none;">
-			<div class="layui-col-md12 layui-col-sm12">
-				<div class="layui-col-md3 layui-col-sm3" style="background: #fff;">
-					<div>
-						<ul id="ztree" class="ztree"></ul>
-					</div>
+		<div class="childrenBody layui-row layui-col-space20" style="background:none;">
+			<div class="layui-col-md3 layui-col-sm3">
+				<div class="bgwhite"> 
+					<ul id="ztree" class="ztree"></ul>
 				</div>
-				<div class="layui-col-md9 layui-col-sm9" style="background: #fff;padding:10px;overflow: hidden;border-left:15px solid #f2f2f2">
-					<div class="layui-tab layui-tab-brief">
-						<ul class="layui-tab-title">
-							<li class="layui-this">销售部</li>
-						</ul>
-						<div class="layui-tab-content">
-							<div class="layui-tab-item layui-show">
-								<div class="layui-card-header">
-									<a href="javascript:;" class="margin-r-10 text-warning"><i class="layui-icon">&#xe642;</i> 修改</a>
-									<a href="javascript:;" class="margin-r-10 text-add"><i class="layui-icon">&#xe654;</i> 添加</a>
-									<a href="javascript:;" class="text-danger"><i class="layui-icon">&#xe640;</i> 删除</a>
-								</div>
-								<div class="layui-card-body">
-									<form class="layui-form">
-										<div class="layui-form-item layui-col-md12 layui-col-sm12">
-											<label class="layui-form-text layui-col-md2 layui-col-sm2 text-right padding-r-20">部门名称 <span class="text-red">*</span></label>
-											<div class="layui-col-md10 layui-col-sm10">
-												<input type="tel" class="layui-input">
-											</div>
-										</div>
-										<div class="layui-form-item layui-col-md12 layui-col-sm12">
-											<label class="layui-form-text layui-col-md2 layui-col-sm2 text-right padding-r-20">部门编号 <span class="text-red">*</span></label>
-											<div class="layui-col-md10 layui-col-sm10">
-												<input type="tel" class="layui-input">
-											</div>
-										</div>
-										<div class="layui-form-item layui-col-md12 layui-col-sm12">
-											<label class="layui-form-text layui-col-md2 layui-col-sm2 text-right padding-r-20">部门正职 <span class="text-red">*</span></label>
-											<div class="layui-col-md10 layui-col-sm10">
-												<input type="tel" class="layui-input">
-											</div>
-										</div>
-										<div class="layui-form-item layui-col-md12 layui-col-sm12">
-											<label class="layui-form-text layui-col-md2 layui-col-sm2 text-right padding-r-20">部门正职电话</label>
-											<div class="layui-col-md10 layui-col-sm10">
-												<input type="tel" class="layui-input">
-											</div>
-										</div>
-										<div class="layui-form-item layui-col-md12 layui-col-sm12">
-											<label class="layui-form-text layui-col-md2 layui-col-sm2 text-right padding-r-20">部门副职</label>
-											<div class="layui-col-md10 layui-col-sm10">
-												<input type="tel" class="layui-input">
-											</div>
-										</div>
-										<div class="layui-form-item layui-col-md12 layui-col-sm12">
-											<label class="layui-form-text layui-col-md2 layui-col-sm2 text-right padding-r-20">部门副职电话</label>
-											<div class="layui-col-md10 layui-col-sm10">
-												<input type="tel" class="layui-input">
-											</div>
-										</div>
-										<div class="layui-form-item layui-col-md12 layui-col-sm12">
-											<label class="layui-form-text layui-col-md2 layui-col-sm2 text-right padding-r-20">部门秘书</label>
-											<div class="layui-col-md10 layui-col-sm10">
-												<input type="tel" class="layui-input">
-											</div>
-										</div>
-										<div class="layui-form-item layui-col-md12 layui-col-sm12">
-											<label class="layui-form-text layui-col-md2 layui-col-sm2 text-right padding-r-20">部门秘书电话</label>
-											<div class="layui-col-md10 layui-col-sm10">
-												<input type="tel" class="layui-input">
-											</div>
-										</div>
-										<div class="layui-form-item layui-col-md12 layui-col-sm12">
-											<label class="layui-form-text layui-col-md2 layui-col-sm2 text-right padding-r-20">职责描述</label>
-											<div class="layui-col-md10 layui-col-sm10">
-												<textarea class="layui-textarea"></textarea>
-											</div>
-										</div>
-										<div class="floatRight">
-											<button class="layui-btn layui-btn-danger" lay-submit="">确定</button>
-											<button class="layui-btn layui-btn-E05">返回</button>
-										</div>
-									</form>
+			</div>
+			<div class="layui-col-md9 layui-col-sm9">
+				<div class="bgwhite">
+					<div class="layui-card-header">
+						<span class="margin-r-10">销售部</span>
+						<a href="javascript:;" class="margin-r-10 text-warning"><i class="layui-icon">&#xe642;</i> 修改</a>
+						<a href="javascript:;" class="margin-r-10 text-add"><i class="layui-icon">&#xe654;</i> 添加</a>
+						<a href="javascript:;" class="text-danger"><i class="layui-icon">&#xe640;</i> 删除</a>
+					</div>
+					<div class="layui-card-body">
+						<form class="layui-form">
+							<div class="layui-form-item layui-col-md12 layui-col-sm12">
+								<label class="layui-form-label"><span class="text-red">*</span>部门名称</label>
+								<div class="layui-input-block">
+									<input type="tel" class="layui-input">
 								</div>
 							</div>
-						</div>
+							<div class="layui-form-item layui-col-md12 layui-col-sm12">
+								<label class="layui-form-label"><span class="text-red">*</span>部门编号 </label>
+								<div class="layui-input-block">
+									<input type="tel" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-form-item layui-col-md12 layui-col-sm12">
+								<label class="layui-form-label"><span class="text-red">*</span>部门正职 </label>
+								<div class="layui-input-block">
+									<input type="tel" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-form-item layui-col-md12 layui-col-sm12">
+								<label class="layui-form-label">正职电话</label>
+								<div class="layui-input-block">
+									<input type="tel" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-form-item layui-col-md12 layui-col-sm12">
+								<label class="layui-form-label">部门副职</label>
+								<div class="layui-input-block">
+									<input type="tel" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-form-item layui-col-md12 layui-col-sm12">
+								<label class="layui-form-label">副职电话</label>
+								<div class="layui-input-block">
+									<input type="tel" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-form-item layui-col-md12 layui-col-sm12">
+								<label class="layui-form-label">部门秘书</label>
+								<div class="layui-input-block">
+									<input type="tel" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-form-item layui-col-md12 layui-col-sm12">
+								<label class="layui-form-label">秘书电话</label>
+								<div class="layui-input-block">
+									<input type="tel" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-form-item layui-col-md12 layui-col-sm12">
+								<label class="layui-form-label">职责描述</label>
+								<div class="layui-input-block">
+									<textarea class="layui-textarea"></textarea>
+								</div>
+							</div>
+							<div class="floatRight">
+								<button class="layui-btn layui-btn-danger" lay-submit="">确定</button>
+								<button class="layui-btn layui-btn-E05">返回</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

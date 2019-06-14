@@ -33,24 +33,16 @@
 		<script type="text/javascript">
 			var data_col = [[
 				{type: 'numbers', title: '序号'},
-				{field: 'name', title: '公司名称'},
-				{field: 'dm', title: '信用代码'},
-				{field: 'lx', title: '公司类型'},
-				{field: 'db', title: '负责人'},
-				{field: 'phone', title: '负责人电话'},
-				{field: 'zb', title: '注册资本'},
-				{field: 'cl', title: '成立日期'},
-				{title:'操作',toolbar:'#toolbar',width:180}
+				{field: 'name', title: '职位名称'},
+				{title:'操作',toolbar:'#toolbar'}
 			]];
 			var datas = [
-				{'name':'科技公司','ename':'','dm':'1283172812432525','lx':'股份制','db':'张三','zb':'100万','cl':'2018-10-1',phone:'1532222224'},
-				{'name':'科技公司','ename':'','dm':'1283172812432525','lx':'股份制','db':'张三','zb':'100万','cl':'2018-10-1',phone:'1532222224'}
+				{'name':'经理','lx':'管理','sj':'','jb':'M1'},
+				{'name':'副经理','lx':'管理','sj':'经理','jb':'M2'},
+				{'name':'市场总监','lx':'管理','sj':'副经理','jb':'M3'}
 			];
-			layui.use([ 'table', 'element','laydate','layedit'], function() {
-				var table = layui.table,
-					element = layui.element
-					laydate = layui.laydate,
-					layedit = layui.layedit;
+			layui.use([ 'table'], function() {
+				var table = layui.table;
 					
 					table.render({
 						elem: '#lst',

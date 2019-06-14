@@ -8,8 +8,8 @@
 		<link rel="stylesheet" href="../../lib/ztree/css/metroStyle/metroStyle.css" type="text/css">
 		<link rel="stylesheet" href="../../layui/css/common.css" />
 		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
-		<script type="text/javascript" src="../../layui/layui.js"></script>
 		<script type="text/javascript" src="../../js/common.js"></script>
+		<script type="text/javascript" src="../../layui/layui.js"></script>
 		<script type="text/javascript" src="../../lib/ztree/js/jquery.ztree.core.js"></script>
 		<script type="text/javascript" src="../../lib/ztree/js/jquery.ztree.excheck.js"></script>
 	</head>
@@ -19,51 +19,12 @@
 				<div class="layui-card-body">
 					<div class="layui-tab layui-tab-brief" lay-filter="component-tabs-brief">
 						<ul class="layui-tab-title">
-							<li class="layui-this">简历列表</li>
-							<li>添加简历</li>
+							<li class="layui-this">个人信息 </li>
+							<li>职位信息</li>
+							<li>合同信息</li>
 						</ul>
 						<div class="layui-tab-content">
 							<div class="layui-tab-item layui-show">
-								<form class="layui-form layui-form2 layui-search-form">
-									<div class="layui-row">
-										<div class="layui-form-item layui-col-md3 margin-b-20">
-											<label class="layui-form-label"><span class="text-red"> *</span>姓名</label>
-											<div class="layui-input-block">
-												<input type="text" name="title" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
-											</div>
-										</div>
-										<div class="layui-form-item layui-col-md3 margin-b-20">
-											<label class="layui-form-label"><span class="text-red"> *</span>手机</label>
-											<div class="layui-input-block">
-												<input type="text" name="title" required  lay-verify="required" placeholder="请输入手机" autocomplete="off" class="layui-input">
-											</div>
-										</div>
-										<div class="layui-form-item layui-col-md4 margin-b-20">
-											<label class="layui-form-label"><span class="text-red"> *</span>面试状态</label>
-											<div class="layui-input-block">
-												<select>
-													<option></option>
-													<option>未面试</option>
-													<option>已面试</option>
-													<option>未通过</option>
-												</select>
-											</div>
-										</div>
-										<div class="layui-form-item layui-col-md2 margin-b-20">
-											<button class="layui-btn layui-btn-normal">搜索</button>
-										</div>	
-									</div>
-								</form>
-								<table id="lst" lay-filter="lst"></table>
-								<script type="text/html" id="toolbar">
-									<button class="layui-btn  layui-btn-xs" lay-event="info">查看</button>
-									<button class="layui-btn  layui-btn-xs layui-btn-normal">编辑</button>
-									<button class="layui-btn  layui-btn-xs layui-btn-danger">删除</button>
-								</script>
-								<script type="text/html" id="bar">
-								</script>
-							</div>
-							<div class="layui-tab-item">
 								<form class="layui-form layui-form2">
 									<div class="form-title">个人信息：</div>
 									<div class="layui-row">
@@ -139,7 +100,7 @@
 										<div class="layui-form-item layui-col-md4 margin-b-20">
 											<label class="layui-form-label"><span class="text-red"> *</span>出生日期</label>
 											<div class="layui-input-block">
-												<input type="text" name="title" required  lay-verify="required" placeholder="请输入出生日期" autocomplete="off" class="layui-input" id="date1">
+												<input type="text" name="title" required  lay-verify="required" placeholder="请输入出生日期" autocomplete="off" class="layui-input date">
 											</div>
 										</div>				
 										<div class="layui-form-item layui-col-md4 margin-b-20">
@@ -173,7 +134,7 @@
 										<div class="layui-form-item layui-col-md4 margin-b-20">
 											<label class="layui-form-label"><span class="text-red"> *</span>毕业时间</label>
 											<div class="layui-input-block">
-												<input type="text" name="title" required  lay-verify="required" placeholder="请输入毕业时间" autocomplete="off" class="layui-input" id="date2">
+												<input type="text" name="title" required  lay-verify="required" placeholder="请输入毕业时间" autocomplete="off" class="layui-input date" readonly />
 											</div>
 										</div>
 										<div class="layui-form-item layui-col-md4 margin-b-20">
@@ -386,7 +347,171 @@
 										<div class="layui-form-item">
 											<div class="layui-input-block text-right">
 												<button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
-												<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+												<button type="reset" class="layui-btn layui-btn-primary">返回</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="layui-tab-item">
+								<form class="layui-form layui-form2">
+									<div class="layui-row">
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label"><span class="text-red"> *</span>所属部门</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="请选择部门" autocomplete="off" class="layui-input" readonly onclick="showMenu()" id="treeIpt">
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label"><span class="text-red"> *</span>所属职位</label>
+											<div class="layui-input-block">
+												<select>
+													<option></option>
+													<option>职位一</option>
+													<option>职位二</option>
+													<option>职位三</option>
+												</select>
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label"><span class="text-red"> *</span>员工工号</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="请输入员工工号" autocomplete="off" class="layui-input">
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label"><span class="text-red"> *</span>在职状态</label>
+											<div class="layui-input-block">
+												<select>
+													<option></option>
+													<option>试用中</option>
+													<option>正式员工</option>
+												</select>
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label">办公电话</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="请输入办公电话" autocomplete="off" class="layui-input">
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label">办公邮箱</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="请输入办公邮箱" autocomplete="off" class="layui-input">
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label">传真地址</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="请输入传真地址" autocomplete="off" class="layui-input">
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label">推荐人</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="请输入推荐人" autocomplete="off" class="layui-input">
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md12 margin-b-20">
+											<label class="layui-form-label">办公地址</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="请输入办公地址" autocomplete="off" class="layui-input">
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md12 margin-b-20">
+											<label class="layui-form-label">职位描述</label>
+											<div class="layui-input-block">
+												<textarea class="layui-textarea" placeholder="请输入职位描述"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="layui-row">
+										<div class="layui-form-item">
+											<div class="layui-input-block text-right">
+												<button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
+												<button type="reset" class="layui-btn layui-btn-primary">返回</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="layui-tab-item">
+								<form class="layui-form layui-form2">
+									<div class="layui-row">
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label"><span class="text-red"> *</span>用工性质</label>
+											<div class="layui-input-block">
+												<select>
+													<option>请选择用工性质</option>
+													<option>劳动合同</option>
+													<option>退休聘用协议</option>
+													<option>兼职协议</option>
+													<option>劳务派遣协议其他</option>
+													<option>其他</option>
+												</select>
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label"><span class="text-red"> *</span>合同签定日期</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="合同签定日期" autocomplete="off" class="layui-input date" readonly />
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label"><span class="text-red"> *</span>试用开始日期</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="试用开始日期" autocomplete="off" class="layui-input date" readonly />
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label"><span class="text-red"> *</span>试用结束日期</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="试用结束日期" autocomplete="off" class="layui-input date" readonly />
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label">正式开始日期</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="正式开始日期" autocomplete="off" class="layui-input date" readonly />
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label">正式结束日期</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="正式结束日期" autocomplete="off" class="layui-input date" readonly />
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label">解除日期</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="解除日期" autocomplete="off" class="layui-input date" readonly >
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label">解除原因</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="解除原因" autocomplete="off" class="layui-input">
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md12 margin-b-20">
+											<label class="layui-form-label">备注</label>
+											<div class="layui-input-block">
+												<textarea class="layui-textarea"></textarea>
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md12 margin-b-20">
+											<label class="layui-form-label">合同附件</label>
+											<div class="layui-input-block">
+												<span class="layui-btn layui-btn-sm layui-btn-normal margin-t-3" ><i class="layui-icon">&#xe67c;</i>上传附件</span>
+											</div>
+										</div>
+									</div>
+									<div class="layui-row">
+										<div class="layui-form-item">
+											<div class="layui-input-block text-right">
+												<button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
+												<button type="reset" class="layui-btn layui-btn-primary">返回</button>
 											</div>
 										</div>
 									</div>
@@ -419,10 +544,11 @@
 				{name:'李四',sex:'男',age:'22',mobile:'15333333333',mail:'12414@qq.com',zw:'开发工程师',gz_y:'2',qw_city:'成都',jz_city:'成都',gz:'6000',dg:'3天内',zt:'已面试'},
 				{name:'王五',sex:'男',age:'22',mobile:'15333333333',mail:'12414@qq.com',zw:'开发工程师',gz_y:'2',qw_city:'成都',jz_city:'成都',gz:'6000',dg:'一周内',zt:'已面试'},
 			];
-			layui.use([ 'table','element','laydate'], function() {
+			layui.use([ 'table','element','laydate','rate'], function() {
 				var table = layui.table,
 					element = layui.element,
-					laydate = layui.laydate;
+					laydate = layui.laydate,
+					rate = layui.rate;
 					
 					table.render({
 						elem: '#lst',
@@ -433,24 +559,21 @@
 						height:'full-110',
 						even: true,
 					});
-					laydate.render({
-						elem: '#date1' //指定元素
-					});
-					laydate.render({
-						elem: '#date2' //指定元素
+					lay('.date').each(function(){
+						laydate.render({
+							elem: this,trigger: 'click'
+						});
 					});
 					lay('.date3').each(function(){
 						laydate.render({
 						  elem: this,type: 'month',range: true
 						});
 					});
-					table.on('tool(lst)', function(obj){
-						var layEvent = obj.event;
-						if(layEvent == "info"){
-							window.location.href = "简历查看.html";
-						}
+					lay('.rate').each(function(){
+						rate.render({
+							elem: this
+						});
 					});
-					
 			});
 			
 			var setting = {

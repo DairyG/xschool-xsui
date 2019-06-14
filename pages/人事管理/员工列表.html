@@ -33,24 +33,24 @@
 		<script type="text/javascript">
 			var data_col = [[
 				{type: 'numbers', title: '序号'},
-				{field: 'name', title: '公司名称'},
-				{field: 'dm', title: '信用代码'},
-				{field: 'lx', title: '公司类型'},
-				{field: 'db', title: '负责人'},
-				{field: 'phone', title: '负责人电话'},
-				{field: 'zb', title: '注册资本'},
-				{field: 'cl', title: '成立日期'},
-				{title:'操作',toolbar:'#toolbar',width:180}
+				{field: 'bm', title: '部门'},
+				{field: 'zw', title: '职位',width:80},
+				{field: 'name', title: '姓名',width:80},
+				{field: 'state', title: '状态'},
+				{field: 'no', title: '工号'},
+				{field: 'sex', title: '性别',width:60},
+				{field: 'mobile', title: '电话',width:120},
+				{field: 'bg_mobile', title: '办公电话',width:120},
+				{title:'操作',toolbar:'#toolbar',width:170}
 			]];
 			var datas = [
-				{'name':'科技公司','ename':'','dm':'1283172812432525','lx':'股份制','db':'张三','zb':'100万','cl':'2018-10-1',phone:'1532222224'},
-				{'name':'科技公司','ename':'','dm':'1283172812432525','lx':'股份制','db':'张三','zb':'100万','cl':'2018-10-1',phone:'1532222224'}
+				{bm:'组织部',zw:'主管',name:'张三',state:'正式员工',no:'56546323',sex:'男',mobile:'1634544444',bg_mobile:'028-11111111'},
+				{bm:'组织部',zw:'主管',name:'张三',state:'正式员工',no:'56546323',sex:'男',mobile:'1634544444',bg_mobile:'028-11111111'},
+				{bm:'组织部',zw:'主管',name:'张三',state:'正式员工',no:'56546323',sex:'男',mobile:'1634544444',bg_mobile:'028-11111111'},
+				{bm:'组织部',zw:'主管',name:'张三',state:'正式员工',no:'56546323',sex:'男',mobile:'1634544444',bg_mobile:'028-11111111'},
 			];
-			layui.use([ 'table', 'element','laydate','layedit'], function() {
-				var table = layui.table,
-					element = layui.element
-					laydate = layui.laydate,
-					layedit = layui.layedit;
+			layui.use([ 'table'], function() {
+				var table = layui.table;
 					
 					table.render({
 						elem: '#lst',

@@ -26,7 +26,7 @@
 										<div class="layui-form-item layui-col-md12 margin-b-20">
 											<label class="layui-form-label">制度类别<span class="text-red"> *</span></label>
 											<div class="layui-input-block">
-												<input type="text" id="citySel" class="layui-input" onclick="showMenu();" readonly>
+												<input type="text" id="treeIpt" class="layui-input" onclick="showMenu();" readonly>
 											</div>
 										</div>
 										<div class="layui-form-item layui-col-md12 margin-b-20">
@@ -247,13 +247,13 @@
 					v += nodes[i].name + ",";
 				}
 				if (v.length > 0 ) v = v.substring(0, v.length-1);
-				var cityObj = $("#citySel");
+				var cityObj = $("#treeIpt");
 				cityObj.attr("value", v);
 			}
 			
 			function showMenu() {
-				var cityObj = $("#citySel");
-				var cityOffset = $("#citySel").offset();
+				var cityObj = $("#treeIpt");
+				var cityOffset = $("#treeIpt").offset();
 				$("#menuContent").css({left:cityOffset.left + "px", top:cityOffset.top + cityObj.outerHeight() + "px",width:cityObj.outerWidth() + "px"}).slideDown("fast");
 			
 				$("body").bind("mousedown", onBodyDown);
@@ -263,7 +263,7 @@
 				$("body").unbind("mousedown", onBodyDown);
 			}
 			function onBodyDown(event) {
-				if (!(event.target.id == "menuBtn" || event.target.id == "citySel" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length>0)) {
+				if (!(event.target.id == "menuBtn" || event.target.id == "treeIpt" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length>0)) {
 					hideMenu();
 				}
 			}

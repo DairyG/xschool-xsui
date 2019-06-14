@@ -7,10 +7,12 @@ function layui_prompt(obj){
 		formType: 2,
 		value: default_val,
 		title: '请输入',
-		area: ['350px', '120px'] //自定义文本域宽高
-	}, function(value, index, elem){
-		$(obj).val(value);
-		layer.close(index);
+		area: ['350px', '120px'],
+		yes:function(index, elem){
+			var value = elem.find(".layui-layer-input").val();
+			$(obj).val(value);
+			layer.close(index);
+		}
 	});
 }
 

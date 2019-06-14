@@ -26,9 +26,9 @@
 				<form class="layui-form layui-form2" >
 					<div class="layui-row">
 						<div class="layui-form-item layui-col-md12 margin-b-20">
-							<label class="layui-form-label">到岗时间<span class="text-red"> *</span></label>
+							<label class="layui-form-label"><span class="text-red"> *</span>保险类别</label>
 							<div class="layui-input-block">
-								<input type="text" name="title" required  lay-verify="required" placeholder="请输入到岗时间" autocomplete="off" class="layui-input">
+								<input type="text" name="title" required  lay-verify="required" placeholder="请输入保险类别" autocomplete="off" class="layui-input">
 							</div>
 						</div>
 						<div class="layui-form-item layui-col-md12 margin-b-20">
@@ -55,16 +55,16 @@
 			var layer_linePop;
 			var cols = [[
 				{type:'numbers',title:'序号'},
-				{field:'title',title:'到岗时间'},
+				{field:'title',title:'保险类别'},
 				{field:'sort',title:'显示顺序'},
 				{field:'tips',title:'备注'},
 				{toolbar:'#bar',title:'操作'}
 			]];
 			var datas = [
-				{'title':'随时','sort':10},
-				{'title':'一天内','sort':10},
-				{'title':'三天内','sort':10},
-				{'title':'一周内','sort':10},
+				{'title':'养老保险','sort':10,total:'1000',gr:'300',gs:'700'},
+				{'title':'医疗保险','sort':10,total:'1000',gr:'300',gs:'700'},
+				{'title':'失业保险','sort':10,total:'1000',gr:'300',gs:'700'},
+				{'title':'生育保险','sort':10,total:'1000',gr:'300',gs:'700'},
 			];
 			layui.use(['table'], function() {
 				var table = layui.table;
@@ -87,7 +87,7 @@
 					if(data.event == 'add'){
 						layer_linePop = layer.open({
 							type: 1,
-							title:'添加到岗时间',
+							title:'添加保险类别',
 							String: false,
 							closeBtn: 1,
 							skin: 'layui-layer-rim',

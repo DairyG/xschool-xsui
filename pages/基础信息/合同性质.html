@@ -26,9 +26,9 @@
 				<form class="layui-form layui-form2" >
 					<div class="layui-row">
 						<div class="layui-form-item layui-col-md12 margin-b-20">
-							<label class="layui-form-label">到岗时间<span class="text-red"> *</span></label>
+							<label class="layui-form-label">合同性质<span class="text-red"> *</span></label>
 							<div class="layui-input-block">
-								<input type="text" name="title" required  lay-verify="required" placeholder="请输入到岗时间" autocomplete="off" class="layui-input">
+								<input type="text" name="title" required  lay-verify="required" placeholder="请输入合同性质" autocomplete="off" class="layui-input">
 							</div>
 						</div>
 						<div class="layui-form-item layui-col-md12 margin-b-20">
@@ -55,16 +55,17 @@
 			var layer_linePop;
 			var cols = [[
 				{type:'numbers',title:'序号'},
-				{field:'title',title:'到岗时间'},
+				{field:'title',title:'合同性质'},
 				{field:'sort',title:'显示顺序'},
 				{field:'tips',title:'备注'},
 				{toolbar:'#bar',title:'操作'}
 			]];
 			var datas = [
-				{'title':'随时','sort':10},
-				{'title':'一天内','sort':10},
-				{'title':'三天内','sort':10},
-				{'title':'一周内','sort':10},
+				{'title':'劳动合同','sort':10},
+				{'title':'退休聘用协议','sort':10},
+				{'title':'兼职协议','sort':10},
+				{'title':'劳务派遣协议','sort':10},
+				{'title':'其他','sort':10}
 			];
 			layui.use(['table'], function() {
 				var table = layui.table;
@@ -87,7 +88,7 @@
 					if(data.event == 'add'){
 						layer_linePop = layer.open({
 							type: 1,
-							title:'添加到岗时间',
+							title:'添加合同性质',
 							String: false,
 							closeBtn: 1,
 							skin: 'layui-layer-rim',

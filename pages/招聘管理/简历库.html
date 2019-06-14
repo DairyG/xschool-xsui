@@ -7,11 +7,13 @@
 		<link rel="stylesheet" href="../../layui/css/layui.css" />
 		<link rel="stylesheet" href="../../lib/ztree/css/metroStyle/metroStyle.css" type="text/css">
 		<link rel="stylesheet" href="../../layui/css/common.css" />
+		<link rel="stylesheet" href="../../lib/pick-pcc/pick-pcc.css" />
 		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="../../layui/layui.js"></script>
 		<script type="text/javascript" src="../../js/common.js"></script>
 		<script type="text/javascript" src="../../lib/ztree/js/jquery.ztree.core.js"></script>
 		<script type="text/javascript" src="../../lib/ztree/js/jquery.ztree.excheck.js"></script>
+		<script type="text/javascript" src="../../lib/pick-pcc/pick-pcc.js"></script>
 	</head>
 	<body class="bgf2f2f2">
 		<div class="childrenBody">
@@ -244,12 +246,14 @@
 										<div class="layui-form-item layui-col-md12 margin-b-20">
 											<label class="layui-form-label">身份证地址</label>
 											<div class="layui-input-block">
+												<div class="pick-area pick-area1 margin-b-5"></div>
 												<input type="text" name="title" required  lay-verify="required" placeholder="请输入身份证地址" autocomplete="off" class="layui-input">
 											</div>
 										</div>	
 										<div class="layui-form-item layui-col-md12 margin-b-20">
 											<label class="layui-form-label">居住地址</label>
 											<div class="layui-input-block">
+												<div class="pick-area pick-area1 margin-b-5"></div>
 												<input type="text" name="title" required  lay-verify="required" placeholder="请输入居住地址" autocomplete="off" class="layui-input">
 											</div>
 										</div>
@@ -272,6 +276,7 @@
 											</div>
 										</div>
 									</div>
+									<hr class="layui-bg-blue hrheight3">
 									<div class="form-title">家庭成员及主要社会关系：</div>
 									<div class="layui-row">
 										<div class="layui-form-item layui-col-md12 margin-b-20">
@@ -305,6 +310,7 @@
 											</table>
 										</div>
 									</div>
+									<hr class="layui-bg-blue hrheight3">
 									<div class="form-title">教育经历：</div>
 									<div class="layui-row">
 										<div class="layui-form-item layui-col-md12 margin-b-20">
@@ -353,6 +359,7 @@
 											</table>
 										</div>
 									</div>
+									<hr class="layui-bg-blue hrheight3">
 									<div class="form-title">工作经历：</div>
 									<div class="layui-row">
 										<div class="layui-form-item layui-col-md12 margin-b-20">
@@ -385,8 +392,9 @@
 									<div class="layui-row">
 										<div class="layui-form-item">
 											<div class="layui-input-block text-right">
-												<button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
-												<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+												<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
+												<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认并继续添加</button>
+												<span class="layui-btn" onclick="history.back(-1)">返回</span>
 											</div>
 										</div>
 									</div>
@@ -537,6 +545,36 @@
 			
 			$(document).ready(function(){
 				$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+			});
+			$(".pick-area").pickArea({
+			    "width": "auto",
+			    "borderColor": "#e6e6e6", //文本边框的色值
+			    "arrowColor": "#c2c2c2", //箭头颜色
+			    "listBdColor": "#c2c2c2", //下拉框父元素ul的border色值
+			    "hoverColor": "#5FB878",
+			    "fontSize": "14px", //字体大小
+			    "getVal": function () { //这个方法是每次选中一个省、市或者县之后，执行的方法
+			        //console.log($(".pick-area-hidden").val())
+			        //console.log($(".pick-area-dom").val())
+			        var thisdom =$("." +$(".pick-area-dom").val()); //返回的是调用这个插件的元素pick-area，$(".pick-area-dom").val()的值是该元素的另一个class名，这个class名在dom结构中是唯一的，不会有重复，可以通过这个class名来识别这个pick-area
+			        thisdom.next().val($(".pick-area-hidden").val()); //$(".pick-area-hidden").val()是页面中隐藏域的值，存放着每次选中一个省、市或者县的时候，当前文本存放的省市县的最新值，每点击一次下拉框里的li，这个值就会立即更新
+			     
+			        $("#area").val($(".pick-area-hidden").val().replace(/ /g,"/"));
+			        var code=$(thisdom).find(".pick-area").attr("data-areacode");					 
+			        $("#province").val("");
+			        $("#city").val("");
+			        $("#district").val("");
+			        if(code!=""){
+			            arr=code.split(",");						 
+			            $("#province").val(arr[0]);
+			            if(arr.length>=2){
+			                $("#city").val(arr[1]);
+			            }
+			            if(arr.length>=3){
+			                $("#district").val(arr[2]);
+			            }
+			        }
+			    }
 			});
 		</script>
 	</body>

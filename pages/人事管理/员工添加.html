@@ -5,13 +5,16 @@
 		<meta charset="utf-8" />
 		<title></title>
 		<link rel="stylesheet" href="../../layui/css/layui.css" />
+		<link rel="stylesheet" href="../../layui/css/select.css" />
 		<link rel="stylesheet" href="../../lib/ztree/css/metroStyle/metroStyle.css" type="text/css">
 		<link rel="stylesheet" href="../../layui/css/common.css" />
+		<link rel="stylesheet" href="../../lib/pick-pcc/pick-pcc.css" />
 		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="../../js/common.js"></script>
 		<script type="text/javascript" src="../../layui/layui.js"></script>
 		<script type="text/javascript" src="../../lib/ztree/js/jquery.ztree.core.js"></script>
 		<script type="text/javascript" src="../../lib/ztree/js/jquery.ztree.excheck.js"></script>
+		<script type="text/javascript" src="../../lib/pick-pcc/pick-pcc.js"></script>
 	</head>
 	<body class="bgf2f2f2">
 		<div class="childrenBody">
@@ -22,6 +25,14 @@
 							<li class="layui-this">个人信息 </li>
 							<li>职位信息</li>
 							<li>合同信息</li>
+							<li>账户信息</li>
+							<li>工资福利</li>
+							<li>资产信息</li>
+							<li>日程安排</li>
+							<li>代办事宜</li>
+							<li>考勤记录</li>
+							<li>奖惩情况</li>
+							<li>考核情况</li>
 						</ul>
 						<div class="layui-tab-content">
 							<div class="layui-tab-item layui-show">
@@ -205,12 +216,14 @@
 										<div class="layui-form-item layui-col-md12 margin-b-20">
 											<label class="layui-form-label">身份证地址</label>
 											<div class="layui-input-block">
+												<div class="pick-area pick-area1 margin-b-5"></div>
 												<input type="text" name="title" required  lay-verify="required" placeholder="请输入身份证地址" autocomplete="off" class="layui-input">
 											</div>
 										</div>	
 										<div class="layui-form-item layui-col-md12 margin-b-20">
 											<label class="layui-form-label">居住地址</label>
 											<div class="layui-input-block">
+												<div class="pick-area pick-area1 margin-b-5"></div>
 												<input type="text" name="title" required  lay-verify="required" placeholder="请输入居住地址" autocomplete="off" class="layui-input">
 											</div>
 										</div>
@@ -233,6 +246,7 @@
 											</div>
 										</div>
 									</div>
+									<hr class="layui-bg-blue hrheight3">
 									<div class="form-title">家庭成员及主要社会关系：</div>
 									<div class="layui-row">
 										<div class="layui-form-item layui-col-md12 margin-b-20">
@@ -266,6 +280,7 @@
 											</table>
 										</div>
 									</div>
+									<hr class="layui-bg-blue hrheight3">
 									<div class="form-title">教育经历：</div>
 									<div class="layui-row">
 										<div class="layui-form-item layui-col-md12 margin-b-20">
@@ -314,6 +329,7 @@
 											</table>
 										</div>
 									</div>
+									<hr class="layui-bg-blue hrheight3">
 									<div class="form-title">工作经历：</div>
 									<div class="layui-row">
 										<div class="layui-form-item layui-col-md12 margin-b-20">
@@ -346,8 +362,8 @@
 									<div class="layui-row">
 										<div class="layui-form-item">
 											<div class="layui-input-block text-right">
-												<button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
-												<button type="reset" class="layui-btn layui-btn-primary">返回</button>
+												<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
+												<span class="layui-btn" onclick="history.back(-1)">返回</span>
 											</div>
 										</div>
 									</div>
@@ -384,8 +400,9 @@
 											<div class="layui-input-block">
 												<select>
 													<option></option>
-													<option>试用中</option>
-													<option>正式员工</option>
+													<option>试用</option>
+													<option>转正</option>
+													<option>离职</option>
 												</select>
 											</div>
 										</div>
@@ -402,9 +419,9 @@
 											</div>
 										</div>
 										<div class="layui-form-item layui-col-md6 margin-b-20">
-											<label class="layui-form-label">传真地址</label>
+											<label class="layui-form-label">传真号码</label>
 											<div class="layui-input-block">
-												<input type="text" name="title" required  lay-verify="required" placeholder="请输入传真地址" autocomplete="off" class="layui-input">
+												<input type="text" name="title" required  lay-verify="required" placeholder="请输入传真号码" autocomplete="off" class="layui-input">
 											</div>
 										</div>
 										<div class="layui-form-item layui-col-md6 margin-b-20">
@@ -429,8 +446,8 @@
 									<div class="layui-row">
 										<div class="layui-form-item">
 											<div class="layui-input-block text-right">
-												<button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
-												<button type="reset" class="layui-btn layui-btn-primary">返回</button>
+												<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
+												<span class="layui-btn" onclick="history.back(-1)">返回</span>
 											</div>
 										</div>
 									</div>
@@ -510,12 +527,232 @@
 									<div class="layui-row">
 										<div class="layui-form-item">
 											<div class="layui-input-block text-right">
-												<button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
-												<button type="reset" class="layui-btn layui-btn-primary">返回</button>
+												<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
+												<span class="layui-btn" onclick="history.back(-1)">返回</span>
 											</div>
 										</div>
 									</div>
 								</form>
+							</div>
+							<div class="layui-tab-item">
+								<form class="layui-form layui-form2">
+									<div class="layui-row">
+										<div class="layui-form-item">
+											<label class="layui-form-label"><span class="text-red"> *</span>登录账号</label>
+											<div class="layui-input-block">
+												<input type="text" autocomplete="off" class="layui-input" placeholder="请输入登录账号"/>
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label"><span class="text-red"> *</span>登录密码</label>
+											<div class="layui-input-block">
+												<input type="password" class="layui-input" placeholder="请输入登录密码"/>
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label"><span class="text-red"> *</span>系统角色</label>
+											<div class="layui-input-block">
+												<select multiple>
+													<option>选择角色</option>
+													<option>角色一</option>
+													<option>角色二</option>
+													<option>角色三</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="layui-row">
+										<div class="layui-form-item">
+											<div class="layui-input-block text-right">
+												<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
+												<span class="layui-btn" onclick="history.back(-1)">返回</span>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="layui-tab-item">
+								<div class="form-title">工资账户：</div>
+								<div class="layui-form layui-form2 layui-row">
+									<div class="layui-form-item layui-col-md6">
+										<label class="layui-form-label"><span class="text-red"> *</span>开户银行</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="请输入银行名称"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6">
+										<label class="layui-form-label"><span class="text-red"> *</span>开户名称</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="请输入开户名称"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6">
+										<label class="layui-form-label"><span class="text-red"> *</span>银行账户</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="请输入银行账户"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6">
+										<label class="layui-form-label"><span class="text-red"> *</span>预留手机</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="请输入预留手机"/>
+										</div>
+									</div>
+								</div>
+								<hr class="layui-bg-blue hrheight3" />
+								<div class="form-title">工资科目：</div>
+								<div class="layui-form layui-form2 layui-row">
+									<div class="layui-form-item layui-col-md6">
+										<label class="layui-form-label"><span class="text-red"> *</span>基本工资</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="请输入基本工资"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6">
+										<label class="layui-form-label">餐费补助</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="请输入餐费补助"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6">
+										<label class="layui-form-label">话费补助</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="请输入话费补助"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6">
+										<label class="layui-form-label">交通补助</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="请输入交通补助"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6">
+										<label class="layui-form-label">高温补助</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="请输入高温补助"/>
+										</div>
+									</div>
+								</div>
+								<hr class="layui-bg-blue hrheight3" />
+								<div class="form-title">保险科目：</div>
+								<div class="layui-form layui-form2 layui-row">
+									<div class="layui-form-item layui-col-md4">
+										<label class="layui-form-label">养老保险</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="养老保险总金额"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4">
+										<label class="layui-form-label">个人缴纳</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="养老保险个人缴纳"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4">
+										<label class="layui-form-label">公司缴纳</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="养老保险公司缴纳"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4">
+										<label class="layui-form-label">失业保险</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="请输入失业保险"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4">
+										<label class="layui-form-label">个人缴纳</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="失业保险个人缴纳"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4">
+										<label class="layui-form-label">公司缴纳</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="失业保险公司缴纳"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4">
+										<label class="layui-form-label">生育保险</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="请输入生育保险"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4">
+										<label class="layui-form-label">个人缴纳</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="生育保险个人缴纳"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4">
+										<label class="layui-form-label">公司缴纳</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="生育保险公司缴纳"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6">
+										<label class="layui-form-label">工伤保险</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="请输入工伤保险"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4">
+										<label class="layui-form-label">个人缴纳</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="工伤保险个人缴纳"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4">
+										<label class="layui-form-label">公司缴纳</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="工伤保险公司缴纳"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4">
+										<label class="layui-form-label">医疗保险</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="请输入医疗保险"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4">
+										<label class="layui-form-label">个人缴纳</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="医疗保险个人缴纳"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4">
+										<label class="layui-form-label">公司缴纳</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="医疗保险公司缴纳"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4">
+										<label class="layui-form-label">公积金</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="请输入公积金"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4">
+										<label class="layui-form-label">个人缴纳</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="公积金个人缴纳"/>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4">
+										<label class="layui-form-label">公司缴纳</label>
+										<div class="layui-input-block">
+											<input type="text" autocomplete="off" class="layui-input" placeholder="公积金公司缴纳"/>
+										</div>
+									</div>
+								</div>
+								<div class="layui-row">
+									<div class="layui-form-item">
+										<div class="layui-input-block text-right">
+											<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
+											<span class="layui-btn" onclick="history.back(-1)">返回</span>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -660,6 +897,36 @@
 			
 			$(document).ready(function(){
 				$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+			});
+			$(".pick-area").pickArea({
+			    "width": "auto",
+			    "borderColor": "#e6e6e6", //文本边框的色值
+			    "arrowColor": "#c2c2c2", //箭头颜色
+			    "listBdColor": "#c2c2c2", //下拉框父元素ul的border色值
+			    "hoverColor": "#5FB878",
+			    "fontSize": "14px", //字体大小
+			    "getVal": function () { //这个方法是每次选中一个省、市或者县之后，执行的方法
+			        //console.log($(".pick-area-hidden").val())
+			        //console.log($(".pick-area-dom").val())
+			        var thisdom =$("." +$(".pick-area-dom").val()); //返回的是调用这个插件的元素pick-area，$(".pick-area-dom").val()的值是该元素的另一个class名，这个class名在dom结构中是唯一的，不会有重复，可以通过这个class名来识别这个pick-area
+			        thisdom.next().val($(".pick-area-hidden").val()); //$(".pick-area-hidden").val()是页面中隐藏域的值，存放着每次选中一个省、市或者县的时候，当前文本存放的省市县的最新值，每点击一次下拉框里的li，这个值就会立即更新
+			     
+			        $("#area").val($(".pick-area-hidden").val().replace(/ /g,"/"));
+			        var code=$(thisdom).find(".pick-area").attr("data-areacode");					 
+			        $("#province").val("");
+			        $("#city").val("");
+			        $("#district").val("");
+			        if(code!=""){
+			            arr=code.split(",");						 
+			            $("#province").val(arr[0]);
+			            if(arr.length>=2){
+			                $("#city").val(arr[1]);
+			            }
+			            if(arr.length>=3){
+			                $("#district").val(arr[2]);
+			            }
+			        }
+			    }
 			});
 		</script>
 	</body>

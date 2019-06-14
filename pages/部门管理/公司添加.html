@@ -22,7 +22,6 @@
 							<li>开户信息</li>
 							<li>公司介绍</li>
 							<li>账户信息</li>
-							<li>组织结构</li>
 						</ul>
 						<div class="layui-tab-content">
 							<div class="layui-tab-item layui-show">
@@ -107,8 +106,8 @@
 									<div class="layui-row">
 										<div class="layui-form-item">
 											<div class="layui-input-block text-right">
-												<button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
-												<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+												<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
+												<span class="layui-btn" onclick="history.back(-1)">返回</span>
 											</div>
 										</div>
 									</div>
@@ -155,8 +154,8 @@
 									<div class="layui-row">
 										<div class="layui-form-item">
 											<div class="layui-input-block text-right">
-												<button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
-												<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+												<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
+												<span class="layui-btn" onclick="history.back(-1)">返回</span>
 											</div>
 										</div>
 									</div>
@@ -230,8 +229,8 @@
 									<div class="layui-row">
 										<div class="layui-form-item">
 											<div class="layui-input-block text-right">
-												<button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
-												<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+												<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
+												<span class="layui-btn" onclick="history.back(-1)">返回</span>
 											</div>
 										</div>
 									</div>
@@ -256,40 +255,34 @@
 									<div class="layui-row">
 										<div class="layui-form-item">
 											<div class="layui-input-block text-right">
-												<button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
-												<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+												<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
+												<span class="layui-btn" onclick="history.back(-1)">返回</span>
 											</div>
 										</div>
 									</div>
 								</form>
-							</div>
-							<div class="layui-tab-item">
-								<div>
-									<ul id="tree" class="ztree"></ul>
-								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div id="menuContent" class="menuContent" style="display:none; position: absolute;background: #fff;">
-			<ul id="treeDemo" class="ztree" style="width: 100%;"></ul>
-		</div>
 		<script type="text/javascript">
 			var data_col = [[
 				{type: 'numbers', title: '序号'},
-				{field: 'name', title: '公司名称'},
-				{field: 'ename', title: '上级部门'},
-				{field: 'dm', title: '信用代码'},
-				{field: 'lx', title: '公司类型'},
-				{field: 'db', title: '法人代表'},
-				{field: 'zb', title: '注册资本'},
-				{field: 'cl', title: '成立日期'},
-				{title:'操作',toolbar:'#toolbar'}
+				{field: 'bm', title: '部门',minWidth:100},
+				{field: 'zw', title: '职位',minWidth:100},
+				{field: 'name', title: '姓名',minWidth:80},
+				{field: 'no', title: '工号',minWidth:100},
+				{field: 'sex', title: '性别',minWidth:60},
+				{field: 'mobile', title: '电话',minWidth:120},
+				{field: 'bg_mobile', title: '办公电话',minWidth:120}
 			]];
 			var datas = [
-				{'name':'科技公司','ename':'','dm':'1283172812432525','lx':'股份制','db':'张三','zb':'100万','cl':'2018-10-1'}
+				{bm:'组织部',zw:'主管',name:'张三',state:'正式员工',no:'56546323',sex:'男',mobile:'1634544444',bg_mobile:'028-11111111',js:'人事管理员<span class="text-red">|</span>简历管理员'},
+				{bm:'组织部',zw:'主管',name:'张三',state:'正式员工',no:'56546323',sex:'男',mobile:'1634544444',bg_mobile:'028-11111111',js:'公司职员'},
+				{bm:'组织部',zw:'主管',name:'张三',state:'正式员工',no:'56546323',sex:'男',mobile:'1634544444',bg_mobile:'028-11111111',js:'公司职员'},
+				{bm:'组织部',zw:'主管',name:'张三',state:'正式员工',no:'56546323',sex:'男',mobile:'1634544444',bg_mobile:'028-11111111',js:'公司职员'},
 			];
 			layui.use([ 'table', 'element','laydate','layedit'], function() {
 				var table = layui.table,
@@ -303,39 +296,17 @@
 					layedit.build('editor1',{height: 180});
 					layedit.build('editor2',{height: 180});
 					layedit.build('editor3',{height: 180});
+					table.render({
+						elem: '#lst',
+						data: datas,
+						cols: data_col,
+						toolbar:'#bar',
+						page:true,
+						even: true,
+						height:'full-110'
+					});
 			});
-			var zNodes =[
-					{
-						name: "四川某某公司",
-						open: true,
-						nocheck:true,
-						children: [{
-								name: "销售部",
-								children: [{
-									name: "销售1部",
-									children: [{
-										name: "销售1组"
-									}]
-								}]
-							},
-							{
-								name: "市场部",
-							},
-							{
-								name: "策划部",
-								children: [{
-									name: "策划1部"
-							
-								}]
-							}
-						]
-					}
-				  ];
-		
 			
-			$(document).ready(function(){
-				$.fn.zTree.init($("#tree"), {}, zNodes);
-			});
 		</script>
 	</body>
 </html>

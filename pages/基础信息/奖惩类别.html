@@ -26,9 +26,19 @@
 				<form class="layui-form layui-form2" >
 					<div class="layui-row">
 						<div class="layui-form-item layui-col-md12 margin-b-20">
-							<label class="layui-form-label"><span class="text-red"> *</span>工资类别</label>
+							<label class="layui-form-label"><span class="text-red"> *</span>奖惩类别</label>
 							<div class="layui-input-block">
-								<input type="text" name="title" required  lay-verify="required" placeholder="请输入工资类别" autocomplete="off" class="layui-input">
+								<input type="text" name="title" required  lay-verify="required" placeholder="请输入奖惩类别" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md12 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>加减类型</label>
+							<div class="layui-input-block">
+								<select>
+									<option>请选择加减类型</option>
+									<option>增加</option>
+									<option>扣除</option>
+								</select>
 							</div>
 						</div>
 						<div class="layui-form-item layui-col-md12 margin-b-20">
@@ -55,16 +65,16 @@
 			var layer_linePop;
 			var cols = [[
 				{type:'numbers',title:'序号'},
-				{field:'title',title:'工资类别'},
+				{field:'title',title:'奖惩类别'},
+				{field:'type',title:'加减类型'},
 				{field:'sort',title:'显示顺序'},
 				{field:'tips',title:'备注'},
 				{toolbar:'#bar',title:'操作'}
 			]];
 			var datas = [
-				{'title':'基本工资','sort':10,type:'增加'},
-				{'title':'餐补','sort':10,type:'增加'},
-				{'title':'交通补助','sort':10,type:'增加'},
-				{'title':'社保','sort':10,type:'扣除'},
+				{'title':'迟到','sort':10,type:'扣除'},
+				{'title':'请假','sort':10,type:'扣除'},
+				{'title':'绩效','sort':10,type:'增加'}
 			];
 			layui.use(['table'], function() {
 				var table = layui.table;
@@ -87,7 +97,7 @@
 					if(data.event == 'add'){
 						layer_linePop = layer.open({
 							type: 1,
-							title:'添加工资类别',
+							title:'添加奖惩类别',
 							String: false,
 							closeBtn: 1,
 							skin: 'layui-layer-rim',

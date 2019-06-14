@@ -82,3 +82,4 @@ label input[type='file'] {display: none;}
 #sel_item_box .sel_item {display: none;}
 .layui-badge2 {padding:2px 4px;margin-right:10px; margin-bottom: 5px;float: left;}
 .layui-badge2 .layui-icon {cursor: pointer;    float: right;}
+.hrheight3{ height:3px;}

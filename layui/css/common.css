@@ -7,12 +7,16 @@
 .text-edit {color:#FFB800}
 .text-del {color:#FF5722}
 
+/* 边框 */
+.border-l-20 {border-left:20px solid #f2f2f2;}
 
 /* 背景色 */
 .bgwhite {background: #ffffff !important;}
 .bgf2f2f2 {background: #f2f2f2 !important;}
 .bgfdfdfd {background: #fdfdfd !important;}
 /* 间距 */
+.padding-t-9 {padding-top: 9px;}
+.padding-l-15 {padding-left: 15px;}
 .padding-r-30 {padding-right: 30px;}
 .padding-r-50 {padding-right: 50px;}
 .padding-b-60 {padding-bottom: 60px;}
@@ -77,8 +81,8 @@ label input[type='file'] {display: none;}
 .ztree li a.curSelectedNode  {height:28px;}
 
 .table-btn-jia,.table-btn-jian {cursor: pointer;display: inline-block;font-weight: bold;padding: 0 5px;color:#888}
-.table-btn-jia {font-size: 28px;}
-.table-btn-jian {font-size: 32px;}
+.table-btn-jia {font-size: 28px;color:#009688}
+.table-btn-jian {font-size: 32px;color:#FF5722}
 
 .table_label {background: #f2f2f2; }
 

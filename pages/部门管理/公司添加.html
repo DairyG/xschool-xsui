@@ -114,52 +114,58 @@
 								</form>
 							</div>
 							<div class="layui-tab-item">
-								<form class="layui-form layui-form2" >
-									<div class="layui-row ">
-										<div class="layui-form-item layui-col-md6 margin-b-20">
-											<label class="layui-form-label">开户银行<span class="text-red"> *</span></label>
-											<div class="layui-input-block">
-												<input type="text" name="title" required  lay-verify="required" placeholder="请输入开户银行" autocomplete="off" class="layui-input">
+								<div class="layui-form">
+									<div class="form-title">基本账户：</div>
+									<div class="layui-card layui-card2">
+										<div class="layui-card-body">
+											<p>
+												【建设银行】建设银行高新第九支行
+												<i class="layui-icon layui-icon-delete fr fontsize-20"></i>
+											</p>
+											<p>银行账号:435434362355463634</p>
+											<p>联系电话:15343333333</p>
+											<p>营业地址:建设银行高新区天府大道99999号</p>
+										</div>
+									</div>
+									<!-- <hr class="layui-bg-blue hrheight3"> -->
+									<div class="form-title">一般账户：</div>
+									<div class="layui-row layui-col-space20">
+										<div class="layui-col-md6">
+											<div class="layui-card layui-card2">
+												<div class="layui-card-body">
+													<p>
+														【建设银行】建设银行高新第九支行
+														<i class="layui-icon layui-icon-delete fr fontsize-20"></i>
+													</p>
+													<p>银行账号:435434362355463634</p>
+													<p>联系电话:15343333333</p>
+													<p>营业地址:建设银行高新区天府大道99999号</p>
+												</div>
 											</div>
 										</div>
-										<div class="layui-form-item layui-col-md6 margin-b-20">
-											<label class="layui-form-label">开户名称<span class="text-red"> *</span></label>
-											<div class="layui-input-block">
-												<input type="text" name="title" required  lay-verify="required" placeholder="请输入开户名称" autocomplete="off" class="layui-input">
+										<div class="layui-col-md6">
+											<div class="layui-card layui-card2">
+												<div class="layui-card-body">
+													<p>
+														【建设银行】建设银行高新第九支行
+														<i class="layui-icon layui-icon-delete fr fontsize-20"></i>
+													</p>
+													<p>银行账号:435434362355463634</p>
+													<p>联系电话:15343333333</p>
+													<p>营业地址:建设银行高新区天府大道99999号</p>
+												</div>
 											</div>
 										</div>
 									</div>
-									<div class="layui-row">
-										<div class="layui-form-item layui-col-md6 margin-b-20">
-											<label class="layui-form-label">银行账号<span class="text-red"> *</span></label>
-											<div class="layui-input-block">
-												<input type="text" name="title" required  lay-verify="required" placeholder="请输入银行账号" autocomplete="off" class="layui-input">
-											</div>
-										</div>
-										<div class="layui-form-item layui-col-md6 margin-b-20">
-											<label class="layui-form-label">联系电话<span class="text-red"> *</span></label>
-											<div class="layui-input-block">
-												<input type="text" name="title" required  lay-verify="required" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
-											</div>
+								</div>
+								<div class="layui-row">
+									<div class="layui-form-item">
+										<div class="layui-input-block text-right">
+											<button class="layui-btn layui-btn-danger" id="add_blank">添加</button>
+											<span class="layui-btn" onclick="history.back(-1)">返回</span>
 										</div>
 									</div>
-									<div class="layui-row">
-										<div class="layui-form-item layui-col-md12 margin-b-20">
-											<label class="layui-form-label">营业地址<span class="text-red"> *</span></label>
-											<div class="layui-input-block">
-												<input type="text" name="title" required  lay-verify="required" placeholder="请输入营业地址" autocomplete="off" class="layui-input">
-											</div>
-										</div>
-									</div>
-									<div class="layui-row">
-										<div class="layui-form-item">
-											<div class="layui-input-block text-right">
-												<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
-												<span class="layui-btn" onclick="history.back(-1)">返回</span>
-											</div>
-										</div>
-									</div>
-								</form>
+								</div>
 							</div>
 							<div class="layui-tab-item">
 								<form class="layui-form layui-form2" >
@@ -267,7 +273,48 @@
 				</div>
 			</div>
 		</div>
+		<div class="linePop">
+			<form class="layui-form layui-form2 padding-r-50  padding-t-20" >
+				<div class="layui-row">
+					<div class="layui-form-item layui-col-md12 margin-b-20">
+						<label class="layui-form-label">开户银行<span class="text-red"> *</span></label>
+						<div class="layui-input-block">
+							<input type="text" name="title" required  lay-verify="required" placeholder="请输入开户银行" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item layui-col-md12 margin-b-20">
+						<label class="layui-form-label">开户名称<span class="text-red"> *</span></label>
+						<div class="layui-input-block">
+							<input type="text" name="title" required  lay-verify="required" placeholder="请输入开户名称" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+				<div class="layui-row">
+					<div class="layui-form-item layui-col-md12 margin-b-20">
+						<label class="layui-form-label">银行账号<span class="text-red"> *</span></label>
+						<div class="layui-input-block">
+							<input type="text" name="title" required  lay-verify="required" placeholder="请输入银行账号" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item layui-col-md12 margin-b-20">
+						<label class="layui-form-label">联系电话<span class="text-red"> *</span></label>
+						<div class="layui-input-block">
+							<input type="text" name="title" required  lay-verify="required" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+				<div class="layui-row">
+					<div class="layui-form-item">
+						<div class="layui-input-block text-right">
+							<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
+							<span class="layui-btn" onclick="layer.closeAll()">返回</span>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
 		<script type="text/javascript">
+			var layer_linePop;
 			var data_col = [[
 				{type: 'numbers', title: '序号'},
 				{field: 'bm', title: '部门',minWidth:100},
@@ -306,7 +353,17 @@
 						height:'full-110'
 					});
 			});
-			
+			$("#add_blank").click(function(){
+				layer.open({
+					type: 1,
+					title:'添加银行账户',
+					String: false,
+					closeBtn: 1,
+					skin: 'layui-layer-rim',
+					area: '750px',
+					content: $('.linePop')
+				});
+			});
 		</script>
 	</body>
 </html>

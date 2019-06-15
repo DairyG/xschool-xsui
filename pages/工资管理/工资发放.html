@@ -64,7 +64,7 @@
 									<tr>
 										<th lay-data="{field:'jb',minWidth:'100',totalRow:true,templet:function(d){if(d.is_edit){return '<div><input type=\'text\' class=\'layui-input\' value='+d.jb+' /></div>'}else{return d.jb}}}">基本工资</th>
 										<th lay-data="{field:'cb',minWidth:'100',totalRow:true,edit:true}">餐补</th>
-										<th lay-data="{field:'jt',minWidth:'100',totalRow:true}">交通补助</th>
+										<th lay-data="{field:'jt',minWidth:'100',totalRow:true,edit:true}">交通补助</th>
 										<th lay-data="{field:'hf',minWidth:'100',totalRow:true,minWidth:'100'}">话费补助</th>
 										<th lay-data="{field:'gw',minWidth:'100',totalRow:true}">高温补助</th>
 										<th lay-data="{field:'cd',minWidth:'100',totalRow:true}">迟到</th>
@@ -112,6 +112,7 @@
 				table.on('row(lst)',function(obj){
 					var data = obj.data;
 					data.cb = 0;
+					data.jt = 0;
 					obj.update(data);
 				});
 				table.on('tool(lst)',function(obj){

@@ -18,6 +18,7 @@
 /* 间距 */
 .padding-t-9 {padding-top: 9px;}
 .padding-t-10 {padding-top: 10px;}
+.padding-t-20 {padding-top: 20px;}
 .padding-l-15 {padding-left: 15px;}
 .padding-r-30 {padding-right: 30px;}
 .padding-r-50 {padding-right: 50px;}
@@ -35,6 +36,9 @@
 .fontsize-18 {font-size: 18px;}
 .fontsize-20 {font-size: 20px;}
 .fontsize-24 {font-size: 24px;}
+
+/* 边框线 */
+.border-b-0 {border-bottom:0;}
 
 .fl {float: left;}
 .fr {float: right;}
@@ -98,3 +102,7 @@ label input[type='file'] {display: none;}
 .layui-badge2 {padding:2px 4px;margin-right:10px; margin-bottom: 5px;float: left;}
 .layui-badge2 .layui-icon {cursor: pointer;    float: right;}
 .hrheight3{ height:3px;}
+
+/* 卡片 */
+.layui-card2 { /* box-shadow: #aaa 0px 1px 2px 0px; */    border: 1px solid #eee;}
+.layui-card2 .layui-icon-delete{cursor: pointer;}

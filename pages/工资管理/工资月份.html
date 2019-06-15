@@ -10,61 +10,73 @@
 	</head>
 	<body class="bgf2f2f2">
 		<div class="childrenBody">
-			<div class="layui-card-body">
-				<table class="layui-table" id="lst" lay-filter="lst"></table>
-				<script type="text/html" id="bar">
-					<a class="layui-btn layui-btn-xs" href="javascript:;">查看</a>
-					<a class="layui-btn layui-btn-xs layui-btn-normal" href="javascript:;">编辑</a>
-				</script>
-				<script type="text/html" id="toolbar">
-				</script>
-			</div>
-		</div>
-		<div class="linePop">
-			<div class="layui-card-body padding-r-50">
-				<form class="layui-form layui-form2" >
-					<div class="layui-row">
-						<div class="layui-form-item layui-col-md12 margin-b-20">
-							<label class="layui-form-label"><span class="text-red"> *</span>保险类别</label>
-							<div class="layui-input-block">
-								<input type="text" name="title" required  lay-verify="required" placeholder="请输入保险类别" autocomplete="off" class="layui-input">
-							</div>
+			<div class="layui-card">
+				<div class="layui-card-body">
+					<div class="layui-tab layui-tab-brief" lay-filter="component-tabs-brief">
+						<div class="layui-tab-content">
+							<form class="layui-form layui-form2 layui-search-form">
+								<div class="layui-row">
+									<div class="layui-form-item layui-col-md4 margin-b-20">
+										<label class="layui-form-label">月份</label>
+										<div class="layui-input-block">
+											<input type="text" name="title" id="date1" autocomplete="off" class="layui-input" readonly>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4 margin-b-20">
+										<label class="layui-form-label">状态</label>
+										<div class="layui-input-block">
+											<select>
+												<option></option>
+												<option>已确认</option>
+												<option>未确认</option>
+											</select>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md2 margin-b-20">
+										<button class="layui-btn layui-btn-normal">搜索</button>
+									</div>
+								</div>
+							</form>
+							<table class="layui-table" id="lst" lay-filter="lst"></table>
+							<script type="text/html" id="bar">
+								<a class="layui-btn layui-btn-xs" href="javascript:;" lay-event="info">查看</a>
+								{{# if(!d.is_real){ }}
+								<a class="layui-btn layui-btn-xs layui-btn-normal" href="javascript:;">编辑</a>
+								{{# } }}
+							</script>
+							<script type="text/html" id="toolbar">
+							</script>
 						</div>
-						<div class="layui-form-item layui-col-md12 margin-b-20">
-							<label class="layui-form-label">显示顺序</label>
-							<div class="layui-input-block">
-								<input type="text" name="title" required  lay-verify="required" placeholder="请输入显示顺序" autocomplete="off" class="layui-input">
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md12 margin-b-20">
-							<label class="layui-form-label">备注</label>
-							<div class="layui-input-block">
-								<textarea class="layui-textarea" placeholder="请输入备注"></textarea>
-							</div>
-						</div>
-					</div>	
-					<div class="layui-row text-right">
-						<button class="layui-btn" lay-submit="" lay-filter="formDemo">确认</button>
-						<span class="layui-btn layui-btn-primary" onclick="closePop()">返回</span>
 					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 		<script>
 			var layer_linePop;
 			var cols = [[
 				{type:'numbers',title:'序号'},
-				{field:'ny',title:'年月'},
+				{field:'ny',title:'年月',totalRowText:'合计'},
+				{field:'gz',title:'工资',totalRow:true},
+				{field:'bx',title:'保险',totalRow:true},
+				{field:'yf',title:'应发',totalRow:true},
+				{field:'sf',title:'实发',totalRow:true},
+				{field:'state',title:'状态'},
 				{toolbar:'#bar',title:'操作'}
 			]];
 			var datas = [
-				{'ny':'2019-06',},
-				{'ny':'2019-05',},
-				{'ny':'2019-04',},
-				{'ny':'2019-03',},
+				{'ny':'2019-06',gz:'100000',bx:'2000',yf:'120000',sf:'120000',is_real:false,state:'未确认'},
+				{'ny':'2019-05',gz:'100000',bx:'2000',yf:'120000',sf:'100000',is_real:false,state:'未确认'},
+				{'ny':'2019-04',gz:'100000',bx:'2000',yf:'120000',sf:'100000',is_real:true,state:'已确认'},
+				{'ny':'2019-03',gz:'100000',bx:'2000',yf:'120000',sf:'100000',is_real:true,state:'已确认'},
 			];
-			layui.use(['table'], function() {
-				var table = layui.table;
+			layui.use(['table','laydate'], function() {
+				var table = layui.table,
+					laydate = layui.laydate;
+					laydate.render({
+						elem: '#date1',
+						type: 'month',
+						range:true
+					});
 				//关闭弹窗
 				$(".closePop").click(function(){
 					layer.closeAll()
@@ -76,21 +88,14 @@
 					page: true,
 					toolbar: '#toolbar',
 					even: true,
-					height: 'full-80',
+					height: 'full-140',
 					cols: cols,
 					data: datas,
+					totalRow:true
 				});
-				table.on('toolbar(lst)',function(data){
-					if(data.event == 'add'){
-						layer_linePop = layer.open({
-							type: 1,
-							title:'添加保险类别',
-							String: false,
-							closeBtn: 1,
-							skin: 'layui-layer-rim',
-							area: '750px',
-							content: $('.linePop')
-						});
+				table.on('tool(lst)',function(data){
+					if(data.event == 'info'){
+						window.location.href = '工资发放.html';
 					}
 				});
 			});

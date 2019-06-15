@@ -6,6 +6,7 @@
 .text-add {color:#1E9FFF}
 .text-edit {color:#FFB800}
 .text-del {color:#FF5722}
+.text-span {color:#009688}
 
 /* 边框 */
 .border-l-20 {border-left:20px solid #f2f2f2;}
@@ -16,6 +17,7 @@
 .bgfdfdfd {background: #fdfdfd !important;}
 /* 间距 */
 .padding-t-9 {padding-top: 9px;}
+.padding-t-10 {padding-top: 10px;}
 .padding-l-15 {padding-left: 15px;}
 .padding-r-30 {padding-right: 30px;}
 .padding-r-50 {padding-right: 50px;}

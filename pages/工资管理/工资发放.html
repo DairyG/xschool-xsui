@@ -5,112 +5,212 @@
 		<title></title>
 		<link rel="stylesheet" href="../../layui/css/layui.css" />
 		<link rel="stylesheet" href="../../layui/css/common.css" />
+		<link rel="stylesheet" href="../../lib/ztree/css/metroStyle/metroStyle.css" type="text/css">
 		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="../../layui/layui.js"></script>
+		<script type="text/javascript" src="../../lib/ztree/js/jquery.ztree.core.js"></script>
+		<script type="text/javascript" src="../../lib/ztree/js/jquery.ztree.excheck.js"></script>
 	</head>
 	<body class="bgf2f2f2">
 		<div class="childrenBody">
-			<div class="layui-card-body">
-				<div class="layui-tab">
-					<ul class="layui-tab-title">
-						<li class="layui-this">2019-06</li>
-						<li>2019-05</li>
-					</ul>
-					<div class="layui-tab-content">
-						<div class="layui-tab-item">
-							
+			<div class="">
+				<div class="layui-card-body">
+					<div class="layui-tab layui-tab-brief" lay-filter="component-tabs-brief">
+						<div class="layui-tab-content">
+							<form class="layui-form layui-form2 layui-search-form">
+								<div class="layui-row">
+									<div class="layui-form-item layui-col-md3 margin-b-20">
+										<label class="layui-form-label">姓名</label>
+										<div class="layui-input-block">
+											<input type="text" name="title" id="date1" autocomplete="off" class="layui-input" readonly>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md3 margin-b-20">
+										<label class="layui-form-label">部门</label>
+										<div class="layui-input-block">
+											<input type="text" name="title" placeholder="请选择部门" autocomplete="off" class="layui-input" readonly onclick="showMenu()" id="treeIpt">
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md4 margin-b-20">
+										<label class="layui-form-label">职位</label>
+										<div class="layui-input-block">
+											<select>
+												<option></option>
+												<option>职位一</option>
+												<option>职位二</option>
+											</select>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md2 margin-b-20">
+										<button class="layui-btn layui-btn-normal">搜索</button>
+									</div>
+								</div>
+							</form>
+							<table class="layui-table" lay-data="{data:gz_datas, page: true,totalRow:true,height:'full-190',toolbar:'#toolbar'}" id="lst" lay-filter="lst">
+								<thead>
+									<tr>
+										<th lay-data="{type:'numbers',fixed:'left'}" rowspan="2">序号</th>
+										<th lay-data="{field:'title',minWidth:'80',fixed:'left'}" rowspan="2">姓名</th>
+										<th lay-data="{field:'no',minWidth:'120'}" rowspan="2">工号</th>
+										<th lay-data="{field:'bw',minWidth:'120'}" rowspan="2">部门</th>
+										<th lay-data="{field:'zw',minWidth:'80'}" rowspan="2">职位</th>
+										<th lay-data="{align:'center',totalRow:true}" colspan="5">工资</th>
+										<th lay-data="{align:'center',totalRow:true}" colspan="3">奖惩</th>
+										<th lay-data="{align:'center',totalRow:true}" colspan="2">保险</th>
+										<th lay-data="{field:'amount1',totalRow:true,minWidth:'120'}" rowspan="2">应发</th>
+										<th lay-data="{field:'amount2',totalRow:true,minWidth:'120'}" rowspan="2">实发</th>
+										<th lay-data="{toolbar:'#bar',minWidth:'120',fixed:'right'}" rowspan="2">操作</th>
+									</tr>
+									<tr>
+										<th lay-data="{field:'jb',minWidth:'100',totalRow:true,templet:function(d){if(d.is_edit){return '<div><input type=\'text\' class=\'layui-input\' value='+d.jb+' /></div>'}else{return d.jb}}}">基本工资</th>
+										<th lay-data="{field:'cb',minWidth:'100',totalRow:true,edit:true>餐补</th>
+										<th lay-data="{field:'jt',minWidth:'100',totalRow:true}">交通补助</th>
+										<th lay-data="{field:'hf',minWidth:'100',totalRow:true,minWidth:'100'}">话费补助</th>
+										<th lay-data="{field:'gw',minWidth:'100',totalRow:true}">高温补助</th>
+										<th lay-data="{field:'cd',minWidth:'100',totalRow:true}">迟到</th>
+										<th lay-data="{field:'qj',minWidth:'100',totalRow:true}">请假</th>
+										<th lay-data="{field:'jj',minWidth:'100',totalRow:true}">奖金</th>
+										<th lay-data="{field:'yn',minWidth:'100',totalRow:true}">养老保险</th>
+										<th lay-data="{field:'sy',minWidth:'100',totalRow:true}">失业保险</th>
+									</tr>
+								</thead>
+							</table>
+							<div class="layui-form-item layui-col-md12 text-right">
+								<button class="layui-btn layui-btn-warm">审核</button>
+								<a class="layui-btn" onclick="history.back(-1)">返回</a>
+							</div>
+							<script type="text/html" id="bar">
+								{{# if(d.is_edit){ }}
+								<a class="layui-btn layui-btn-xs" href="javascript:;" lay-event="save">保存</a>
+								{{# } }}
+								<a class="layui-btn layui-btn-xs layui-btn-normal" href="javascript:;" lay-event="edit">编辑</a>
+							</script>
+							<script type="text/html" id="toolbar">
+								<span class="fontsize-16 text-span" style="font-weight:bold;">2019年5月</span>
+							</script>
 						</div>
 					</div>
 				</div>
-				<table class="layui-table" id="lst" lay-filter="lst"></table>
-				<script type="text/html" id="bar">
-					<a class="layui-btn layui-btn-xs layui-btn-warm" href="javascript:;">编辑</a>
-					<a class="layui-btn layui-btn-danger layui-btn-xs">删除</a>
-				</script>
-				<script type="text/html" id="toolbar">
-					<button class="layui-btn  layui-btn-sm" lay-event="add"><i class="layui-icon layui-icon-add-1"></i> 添加</button>
-				</script>
 			</div>
 		</div>
-		<div class="linePop">
-			<div class="layui-card-body padding-r-50">
-				<form class="layui-form layui-form2" >
-					<div class="layui-row">
-						<div class="layui-form-item layui-col-md12 margin-b-20">
-							<label class="layui-form-label"><span class="text-red"> *</span>保险类别</label>
-							<div class="layui-input-block">
-								<input type="text" name="title" required  lay-verify="required" placeholder="请输入保险类别" autocomplete="off" class="layui-input">
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md12 margin-b-20">
-							<label class="layui-form-label">显示顺序</label>
-							<div class="layui-input-block">
-								<input type="text" name="title" required  lay-verify="required" placeholder="请输入显示顺序" autocomplete="off" class="layui-input">
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md12 margin-b-20">
-							<label class="layui-form-label">备注</label>
-							<div class="layui-input-block">
-								<textarea class="layui-textarea" placeholder="请输入备注"></textarea>
-							</div>
-						</div>
-					</div>	
-					<div class="layui-row text-right">
-						<button class="layui-btn" lay-submit="" lay-filter="formDemo">确认</button>
-						<span class="layui-btn layui-btn-primary" onclick="closePop()">返回</span>
-					</div>
-				</form>
-			</div>
+		<div id="menuContent" class="menuContent" style="display:none; position: absolute;background: #fff;">
+			<ul id="treeDemo" class="ztree" style="width: 100%;"></ul>
 		</div>
 		<script>
-			var layer_linePop;
-			var cols = [[
-				{type:'numbers',title:'序号'},
-				{field:'title',title:'年月'},
-				{field:'sort',title:''},
-				{field:'tips',title:'备注'},
-				{toolbar:'#bar',title:'操作'}
-			]];
-			var datas = [
-				{'title':'养老保险','sort':10,total:'1000',gr:'300',gs:'700'},
-				{'title':'医疗保险','sort':10,total:'1000',gr:'300',gs:'700'},
-				{'title':'失业保险','sort':10,total:'1000',gr:'300',gs:'700'},
-				{'title':'生育保险','sort':10,total:'1000',gr:'300',gs:'700'},
+			var gz_datas = [
+				{title:'张三',no:'12325345345',bw:'组织部',zw:'经理','ny':'2019-4',amount:'8000',jb:'10000',cb:'100',jt:100,hf:100,gw:100,yn:'<span class="text-red">-100</span>',sy:'<span class="text-red">-100</span>',amount1:8000,amount2:10000,cd:'<span class="text-red">-100</span>',qj:'<span class="text-red">-10</span>',jj:200,is_edit:false},
+				{title:'张三',no:'12325345345',bw:'组织部',zw:'经理','ny':'2019-3',amount:'8000',jb:'10000',cb:'100',jt:100,hf:100,gw:100,yn:'<span class="text-red">-100</span>',sy:'<span class="text-red">-100</span>',amount1:8000,amount2:10000,cd:'<span class="text-red">-100</span>',qj:'<span class="text-red">-10</span>',jj:200,is_edit:false},
+				{title:'张三',no:'12325345345',bw:'组织部',zw:'经理','ny':'2019-2',amount:'8000',jb:'10000',cb:'100',jt:100,hf:100,gw:100,yn:'<span class="text-red">-100</span>',sy:'<span class="text-red">-100</span>',amount1:8000,amount2:10000,cd:'<span class="text-red">-100</span>',qj:'<span class="text-red">-10</span>',jj:200,is_edit:false},
+				{title:'张三',no:'12325345345',bw:'组织部',zw:'经理','ny':'2019-1',amount:'8000',jb:'10000',cb:'100',jt:100,hf:100,gw:100,yn:'<span class="text-red">-100</span>',sy:'<span class="text-red">-100</span>',amount1:8000,amount2:10000,cd:'<span class="text-red">-100</span>',qj:'<span class="text-red">-10</span>',jj:200,is_edit:false},
 			];
 			layui.use(['table'], function() {
 				var table = layui.table;
-				//关闭弹窗
-				$(".closePop").click(function(){
-					layer.closeAll()
-				})
-				//执行一个 table 实例
-				table.render({
-					elem: '#lst',
-					title: '用户表',
-					page: true,
-					toolbar: '#toolbar',
-					even: true,
-					height: 'full-80',
-					cols: cols,
-					data: datas,
+				
+				table.on('edit(lst)',function(obj){
+					console.log($(this));
 				});
-				table.on('toolbar(lst)',function(data){
-					if(data.event == 'add'){
-						layer_linePop = layer.open({
-							type: 1,
-							title:'添加保险类别',
-							String: false,
-							closeBtn: 1,
-							skin: 'layui-layer-rim',
-							area: '750px',
-							content: $('.linePop')
-						});
+				table.on('row(lst)',function(obj){
+					var data = obj.data;
+					data.cb = 0;
+					obj.update(data);
+				});
+				table.on('tool(lst)',function(obj){
+					var fields = obj.data;
+					fields.is_edit = true;
+					if(obj.event == 'edit'){
+						console.log(fields);
+						obj.update(fields);
 					}
 				});
 			});
 			function closePop(){
 				layer.close(layer_linePop);
 			}
+			var setting = {
+				check: {
+					enable: true,
+					chkStyle: "radio",
+					radioType: "all"
+				},
+				view: {
+					dblClickExpand: false
+				},
+				data: {
+					simpleData: {
+						enable: true
+					}
+				},
+				callback: {
+					beforeClick: beforeClick,
+					onCheck: onCheck
+				}
+			};
+			var zNodes =[
+					{
+						name: "四川某某公司",
+						open: true,
+						nocheck:true,
+						children: [{
+								name: "销售部",
+								children: [{
+									name: "销售1部",
+									children: [{
+										name: "销售1组"
+									}]
+								}]
+							},
+							{
+								name: "市场部",
+							},
+							{
+								name: "策划部",
+								children: [{
+									name: "策划1部"
+							
+								}]
+							}
+						]
+					}
+				  ];
+					
+			function beforeClick(treeId, treeNode) {
+				var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+				zTree.checkNode(treeNode, !treeNode.checked, null, true);
+				return false;
+			}
+			
+			function onCheck(e, treeId, treeNode) {
+				var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
+				nodes = zTree.getCheckedNodes(true),
+				v = "";
+				for (var i=0, l=nodes.length; i<l; i++) {
+					v += nodes[i].name + ",";
+				}
+				if (v.length > 0 ) v = v.substring(0, v.length-1);
+				var cityObj = $("#treeIpt");
+				cityObj.attr("value", v);
+			}
+			
+			function showMenu() {
+				var cityObj = $("#treeIpt");
+				var cityOffset = $("#treeIpt").offset();
+				$("#menuContent").css({left:cityOffset.left + "px", top:cityOffset.top + cityObj.outerHeight() + "px",width:cityObj.outerWidth() + "px"}).slideDown("fast");
+			
+				$("body").bind("mousedown", onBodyDown);
+			}
+			function hideMenu() {
+				$("#menuContent").fadeOut("fast");
+				$("body").unbind("mousedown", onBodyDown);
+			}
+			function onBodyDown(event) {
+				if (!(event.target.id == "menuBtn" || event.target.id == "treeIpt" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length>0)) {
+					hideMenu();
+				}
+			}
+			
+			$(document).ready(function(){
+				$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+			});
 		</script>
 	</body>
 </html>

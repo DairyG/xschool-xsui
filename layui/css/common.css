@@ -106,3 +106,5 @@ label input[type='file'] {display: none;}
 /* 卡片 */
 .layui-card2 { /* box-shadow: #aaa 0px 1px 2px 0px; */    border: 1px solid #eee;}
 .layui-card2 .layui-icon-delete{cursor: pointer;}
+
+table .layui-input {height:28px;line-height: 28px;}

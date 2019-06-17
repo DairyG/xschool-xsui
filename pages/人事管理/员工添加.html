@@ -371,7 +371,7 @@
 								</form>
 							</div>
 							<div class="layui-tab-item" tab-name="职位信息">
-								<form class="layui-form layui-form2">
+								<form class="layui-form layui-form2" >
 									<div class="layui-row">
 										<div class="layui-form-item layui-col-md6 margin-b-20">
 											<label class="layui-form-label"><span class="text-red"> *</span>所属部门</label>
@@ -441,6 +441,20 @@
 											<label class="layui-form-label">职位描述</label>
 											<div class="layui-input-block">
 												<textarea class="layui-textarea" placeholder="请输入职位描述"></textarea>
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md12 margin-b-20">
+											<label class="layui-form-label">部门负责人</label>
+											<div class="layui-input-block">
+												<input type="checkbox" name="switch" value="1" lay-skin="switch" lay-text="是|否" lay-filter="manage_dpt"/>
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md12 margin-b-20" id="manage_dpt" style="display:none">
+											<label class="layui-form-label"><span class="text-red"> *</span>负责部门</label>
+											<div class="layui-input-block">
+												<div class="layui-input">
+													<span class="layui-btn layui-btn-sm layui-btn-normal margin-t-3" onclick="user_popup()">请选择</span>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -561,34 +575,11 @@
 												</select>
 											</div>
 										</div>
-										<div class="layui-form-item">
-											<label class="layui-form-label"><span class="text-red"> *</span>选择部门</label>
-											<div class="layui-input-block">
-												<div class="layui-input-inline sel_item" style="width: 200px;" id="sel_company_item">
-													<select lay-filter="sel_company" id="sel_company">
-														<option value="-1">选择公司</option>
-														<option value="0">全部</option>
-														<option value="1">四季香江</option>
-														<option value="2">置业公司</option>
-														<option value="3">咨询公司</option>
-													</select>
-												</div>
-												<div class="layui-input-inline sel_item" style="width: 200px;" id="sel_department_item">
-													<select lay-filter="sel_department" id="sel_department">
-														<option value="-1">选择部门</option>
-														<option value="0">全部部门</option>
-														<option value="1">部门一</option>
-														<option value="2">部门二</option>
-														<option value="3">部门三</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="layui-form-item">
+										<div class="layui-form-item layui-col-md12 margin-b-20" >
 											<label class="layui-form-label"><span class="text-red"> *</span>管理部门</label>
 											<div class="layui-input-block">
-												<div class="padding-t-10" id="rec_box">
-													
+												<div class="layui-input">
+													<span class="layui-btn layui-btn-sm layui-btn-normal margin-t-3" onclick="user_popup()">请选择</span>
 												</div>
 											</div>
 										</div>
@@ -898,10 +889,12 @@
 					});
 				});
 				
-				form.on('select(sel_department)', function(data){
-					var value = data.value;
-					var text = data.elem[data.elem.selectedIndex].text;
-					on_select('department',value,text);
+				form.on('switch(manage_dpt)', function(data){
+					if(data.elem.checked){
+						$("#manage_dpt").show();
+					} else {
+						$("#manage_dpt").hide();
+					};
 				});
 				function on_select(this_type,value,text){
 					if(value > -1){

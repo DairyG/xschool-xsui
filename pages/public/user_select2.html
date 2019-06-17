@@ -6,31 +6,31 @@
 				<i class="layui-icon layui-icon-search"></i>
 			</div>
 			<div class="loaction_box">
-				四季香江
+				<a href="javascript:;">四季香江</a> &gt; <a href="javascript:;">子公司</a> &gt; <a href="javascript:;">子部门</a>
 			</div>
 			<div class="select_box">
-				<p class="padding-l-10"><input type="checkbox" onclick="checkAll(this)" />全选</p>
+				<p class="padding-l-10" style="padding-bottom: 5px;"><input type="checkbox" onclick="checkAll(this)" />全选</p>
 				<ul>
-					<li><input type="checkbox" onclick="selected(this)" data-id="1" data-text="建筑公司"/><i class="icon-file-group"></i>建筑公司</li>
-					<li><input type="checkbox" onclick="selected(this)" data-id="2" data-text="咨询公司" /><i class="icon-file-group"></i>咨询公司</li>
-					<li><input type="checkbox" onclick="selected(this)" data-id="3" data-text="财务公司" /><i class="icon-file-group"></i>财务公司</li>
-					<li><input type="checkbox" onclick="selected(this)" data-id="4" data-text="张三" />张三</li>
-					<li><input type="checkbox" onclick="selected(this)" data-id="5" data-text="李四" />李四</li>
-					<li><input type="checkbox" onclick="selected(this)" data-id="6" data-text="王五" />王五</li>
-					<li><input type="checkbox" onclick="selected(this)" data-id="7" data-text="赵六" />赵六</li>
-					<li><input type="checkbox" onclick="selected(this)" data-id="8" data-text="张三" />张三</li>
-					<li><input type="checkbox" onclick="selected(this)" data-id="9" data-text="李四" />李四</li>
-					<li><input type="checkbox" onclick="selected(this)" data-id="10" data-text="王五" />王五</li>
-					<li><input type="checkbox" onclick="selected(this)" data-id="11" data-text="赵六" />赵六</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="1" data-text="建筑公司" data-type="company"/><i class="icon-file-group"></i>建筑公司</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="2" data-text="咨询公司" data-type="company" /><i class="icon-file-group"></i>咨询公司</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="3" data-text="财务公司" data-type="company" /><i class="icon-file-group"></i>财务公司</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="4" data-text="张三"  data-type="user" />张三</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="5" data-text="李四" data-type="user"/>李四</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="6" data-text="王五" data-type="user"data-type="user"/>王五</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="7" data-text="赵六" data-type="user"/>赵六</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="8" data-text="张三" data-type="user"/>张三</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="9" data-text="李四" data-type="user" />李四</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="10" data-text="王五" data-type="user" />王五</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="11" data-text="赵六" data-type="user" />赵六</li>
 				</ul>
 			</div>
 		</div>
 	</div>
 	<div class="layui-col-md6 border-l-1 margin-t-20">
 		<div class="bgwhite padding-10">
-			<div class="selected_box" id="selected_box">
+			<ul class="selected_box" id="selected_box">
 				
-			</div>
+			</ul>
 		</div>
 	</div>
 </div>
@@ -40,18 +40,44 @@
 		$(".select_box ul li").each(function(i,obj){
 			var input = $(obj).find('input[type="checkbox"]');
 			var value = $(input).data('id');
-			var type = "user";
+			var type = $(input).data('type');
 			if(checked){
 				var text = $(input).data('text');
-				var html = '<span class="layui-badge layui-badge2 layui-bg-cyan">'+text+'<input type="hidden" class="'+type+'_ipt" value="'+value+'"><i class="layui-icon layui-icon-close" onclick="user_sel_remove(this)"></i></span>';
+				var html = build_selectd_html(type,value,text);
 				$("#selected_box").append(html);
 			} else {
-				
+				user_sel_remove(type,value);
 			}
-			$(input).attr('checked',checked);
+			$(input).prop('checked',checked);
 		});
 	}
+	
 	function selected(obj){
-		
+		var checked = $(obj).prop('checked');
+		var value = $(obj).data('id');
+		var type = $(obj).data('type');
+		if(checked){
+			var text = $(obj).data('text');
+			var html = build_selectd_html(type,value,text);
+			$("#selected_box").append(html);
+		} else {
+			user_sel_remove(type,value);
+		}
 	}
+	
+	function user_sel_remove(type,id){
+		var class_name = type+'_'+id;
+		$("#selected_box").find("."+class_name).remove();
+		$(".select_box ul li input[data-type='"+type+"'][data-id='"+id+"']").prop('checked',false);
+	}
+	
+	function build_selectd_html(type,value,text){
+		var class_name = type+'_'+value;
+		if($("#selected_box").find("."+class_name).length == 0){
+			var html = '<li class="'+type+'_'+value+' " >'+text+'<i class="layui-icon layui-icon-close-fill fr" onclick="user_sel_remove(\''+type+'\','+value+')"></i></li>'
+			return html;
+		} 
+		return "";
+	}
+	
 </script>

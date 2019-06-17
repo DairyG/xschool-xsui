@@ -40,6 +40,7 @@
 .margin-t-10 {margin-top:10px;}
 .margin-t-3 {margin-top:3px;}
 .margin-t-20 {margin-top:20px;}
+.margin-r-10 {margin-right: 10px;}
 /* 字体大小 */
 .fontsize-12 {font-size: 12px;}
 .fontsize-14 {font-size: 14px;}
@@ -56,7 +57,7 @@
 .clearnone {clear: none;}
 
 .text-right {text-align: right;}
-
+.text-center {text-align: center;}
 /* layui-form 样式 重写 */
 label input[type='file'] {display: none;}
 .layui-form2 .layui-form-item {clear: unset;}
@@ -116,6 +117,10 @@ label input[type='file'] {display: none;}
 #popup_content .select_box ul li {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;padding:5px 10px;}
 #popup_content .select_content {height:100%;}
 #popup_content .select_content>div {height:360px}
+#popup_content .selected_box {height: 340px;overflow-y: auto;}
+#popup_content .selected_box li {padding: 5px;}
+#popup_content .selected_box li:hover {background: #f2f2f2;}
+#popup_content .selected_box li i {cursor:pointer;padding-top: 2px;}
 /* 查看人选择 */
 #sel_item_box { width:auto;}
 #sel_item_box .sel_item {display: none;}
@@ -150,3 +155,14 @@ table .layui-input {height:28px;line-height: 28px;}
 .process_content .process_img .process_img_info p{line-height: 150%;}
 .process_content  a {color: #1E9FFF;padding: 0 3px;}
 .process_content  .opt_box {line-height: 60px;}
+
+.process_add_form {}
+.process_add_form .process_box{width:400px;margin: 0 auto;}
+.process_add_form .layui-card {border:1px solid #ddd;margin-bottom: 0;}
+.process_add_form .layui-card .layui-card-header{color:#fff;}
+.process_add_form .process_box .faqi_card .layui-card-header{background: #393D49;}
+.process_add_form .process_box .shenpi_card .layui-card-header{background: #FF5722;}
+.process_add_form .process_box .cahosong_card .layui-card-header{background: #01AAED;}
+.process_add_form .process_box .fupan_card .layui-card-header{background: #5FB878;}
+.process_add_form .process_box .process_add_btn_item {text-align: center;height: 40px;padding:15px 0 25px 0;background: url(../../img/process_jt.png) no-repeat center bottom;}
+.process_add_form .process_box .process_add_btn_item i{color: #01AAED;font-size: 40px;vertical-align: middle;height: 40px;line-height: 40px;cursor:pointer;background: #fff;}

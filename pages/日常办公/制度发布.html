@@ -38,47 +38,7 @@
 										<div class="layui-form-item layui-col-md12 margin-b-20">
 											<label class="layui-form-label">查看人类型<span class="text-red"> *</span></label>
 											<div class="layui-input-block">
-												<div class="layui-input-inline" style="width: 200px;">
-													<select lay-filter="rec_type">
-														<option value="0">查看人类型</option>
-														<option value="user">按人员</option>
-														<option value="department">按部门</option>
-														<option value="company">按公司</option>
-														<option value="position">按职位</option>
-													</select>
-												</div>
-												<div class="layui-input-inline" id="sel_item_box">
-													<div class="layui-input-inline sel_item" style="width: 200px;" id="sel_company_item">
-														<select lay-filter="sel_company" id="sel_company">
-															<option value="-1">选择公司</option>
-															<option value="0">全部</option>
-															<option value="1">本公司</option>
-															<option value="2">子公司一</option>
-															<option value="3">子公司二</option>
-														</select>
-													</div>
-													<div class="layui-input-inline sel_item" style="width: 200px;" id="sel_department_item">
-														<select lay-filter="sel_department" id="sel_department">
-															<option value="-1">选择部门</option>
-															<option value="0">全部部门</option>
-															<option value="1">部门一</option>
-															<option value="2">部门二</option>
-															<option value="3">部门三</option>
-														</select>
-													</div>
-													<div class="layui-input-inline sel_item" style="width: 200px;" id="sel_position_item">
-														<select lay-filter="sel_position" id="sel_position">
-															<option value="-1">选择职位</option>
-															<option value="0">全部职位</option>
-															<option value="1">职位一</option>
-															<option value="2">职位二</option>
-															<option value="3">职位3</option>
-														</select>
-													</div>
-													<div class="layui-input-inline sel_item" id="sel_user_item">
-														<span class="layui-btn layui-btn-normal" onclick="user_popup($('#rec_box'))"><i class="layui-icon layui-icon-add-1"></i>选择人员</span>
-													</div>
-												</div>
+												<span class="layui-btn layui-btn-normal" onclick="user_popup($('#rec_box'))"><i class="layui-icon layui-icon-add-1"></i>选择人员</span>
 											</div>
 										</div>
 										<div class="layui-form-item layui-col-md12 margin-b-20">

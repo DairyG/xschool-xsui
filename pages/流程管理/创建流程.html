@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../../layui/css/layui.css" />
+		<link rel="stylesheet" href="../../layui/css/common.css" />
+		<link rel="stylesheet" href="../../layui/css/liucheng.css" />
+		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../layui/layui.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+	</head>
+	<body class="bgf2f2f2">
+		<div class="childrenBody">
+			<div class="layui-card-body bgwhite">
+				<div class="layui-tab" lay-filter="component-tabs-brief">
+					<div class="layui-tab-content">
+						<div class="margin-b-20">
+							<span class="fontsize-18">创建流程</span>
+						</div>
+						<form class="layui-form process_add_form">
+							<div class="layui-form-item">
+								<label class="layui-form-label">流程名称：</label>
+								<div class="layui-input-block">
+									<input type="text" class="layui-input"/>
+								</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">审批流程：</label>
+								<div class="layui-input-block">
+									<div class="fl">
+										<div class="process_box">
+											<div class="layui-card faqi_card">
+												<div class="layui-card-header">发起人</div>
+												<div class="layui-card-body">
+													所有人 
+												</div>
+											</div>
+											<div class="process_add_btn_item">
+												<i class="layui-icon layui-icon-add-circle "></i>
+											</div>
+											<div class="layui-card shenpi_card">
+												<div class="layui-card-header">审批人</div>
+												<div class="layui-card-body">
+													所有人 
+												</div>
+											</div>
+											<div class="process_add_btn_item">
+												<i class="layui-icon layui-icon-add-circle "></i>
+											</div>
+											<div class="layui-card cahosong_card">
+												<div class="layui-card-header">抄送人</div>
+												<div class="layui-card-body">
+													所有人 
+												</div>
+											</div>
+											<div class="process_add_btn_item process_add_btn_item_end">
+												<i class="layui-icon layui-icon-add-circle "></i>
+											</div>
+											<div class="layui-card fupan_card">
+												<div class="layui-card-header">复盘人</div>
+												<div class="layui-card-body text-center">
+													<input type="checkbox" title="发起人必填" lay-skin="primary" />
+													<input type="checkbox" title="部门负责人必填" lay-skin="primary"/>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="linePop linePop1">
+			<div class="layui-card-body padding-r-50">
+				<form class="layui-form layui-form2" >
+					<div class="layui-row">
+						<div class="layui-form-item layui-col-md12 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>分组名称</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" required  lay-verify="required" placeholder="请输入分组名称" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+					</div>	
+					<div class="layui-row text-right">
+						<button class="layui-btn" lay-submit="" lay-filter="formDemo">确认</button>
+						<span class="layui-btn layui-btn-primary" onclick="closePop()">返回</span>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="linePop linePop2">
+			<div class="layui-card-body padding-r-50">
+				<form class="layui-form layui-form2" >
+					<div class="layui-row">
+						<div class="layui-form-item layui-col-md12 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>分组</label>
+							<div class="layui-input-block">
+								<select>
+									<option></option>
+									<option>用车申请</option>
+									<option>请假申请</option>
+									<option>资源申请</option>
+									<option>用车申请</option>
+									<option>请假申请</option>
+									<option>资源申请</option>
+									<option>用车申请</option>
+									<option>请假申请</option>
+									<option>资源申请</option>
+								</select>
+							</div>
+						</div>
+					</div>	
+					<div class="layui-row text-right">
+						<button class="layui-btn" lay-submit="" lay-filter="formDemo">确认</button>
+						<span class="layui-btn layui-btn-primary" onclick="closePop()">返回</span>
+					</div>
+				</form>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var layer_linePop;
+			layui.use(['table'], function() {
+				var table = layui.table;
+			});
+			function add_group(){
+				layer_linePop = layer.open({
+					type: 1,
+					title:'添加分组',
+					String: false,
+					closeBtn: 1,
+					skin: 'layui-layer-rim',
+					area: '750px',
+					content: $('.linePop1')
+				});
+			}
+			function process_move(){
+				layer_linePop = layer.open({
+					type: 1,
+					title:'移动分组',
+					String: false,
+					closeBtn: 1,
+					skin: 'layui-layer-rim',
+					area: ['750px','450px'],
+					content: $('.linePop2')
+				});
+			}
+			function closePop(){
+				layer.close(layer_linePop);
+			}
+		</script>
+	</body>
+</html>

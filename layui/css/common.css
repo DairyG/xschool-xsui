@@ -1,5 +1,8 @@
 @charset "utf-8";
 .childrenBody {background-color: #fff;position: absolute;right: 15px;left:15px;top:15px;bottom: 15px;}
+.icon-file-group {background: url('../../lib/ztree/css/metroStyle/img/metro.png');background-position: -149px -3px;width: 18px;height: 18px;display: inline-block;vertical-align: middle;}
+/* 宽高 */
+.height-100 {height: 100%;}
 /* 字体颜色 */
 .fc-FB80 {color: #FFB800;}
 .text-red  {color:red}
@@ -7,21 +10,28 @@
 .text-edit {color:#FFB800}
 .text-del {color:#FF5722}
 .text-span {color:#009688}
+.text-85 {color:#858585}
 
 /* 边框 */
+.border-1 {border:1px solid #ddd;}
 .border-l-20 {border-left:20px solid #f2f2f2;}
+.border-l-1 {border-left:1px solid #ddd;}
 
 /* 背景色 */
 .bgwhite {background: #ffffff !important;}
 .bgf2f2f2 {background: #f2f2f2 !important;}
 .bgfdfdfd {background: #fdfdfd !important;}
 /* 间距 */
+.padding-10 {padding: 10px;}
+.padding-t-0 {padding-top: 0;}
 .padding-t-9 {padding-top: 9px;}
 .padding-t-10 {padding-top: 10px;}
 .padding-t-20 {padding-top: 20px;}
+.padding-l-10 {padding-left: 10px;}
 .padding-l-15 {padding-left: 15px;}
 .padding-r-30 {padding-right: 30px;}
 .padding-r-50 {padding-right: 50px;}
+.padding-b-10 {padding-bottom: 10px;}
 .padding-b-60 {padding-bottom: 60px;}
 .margin0 {margin:0 !important;}
 .margin-b-5 {margin-bottom: 5px;}
@@ -31,6 +41,7 @@
 .margin-t-3 {margin-top:3px;}
 .margin-t-20 {margin-top:20px;}
 /* 字体大小 */
+.fontsize-12 {font-size: 12px;}
 .fontsize-14 {font-size: 14px;}
 .fontsize-16 {font-size: 16px;}
 .fontsize-18 {font-size: 18px;}
@@ -93,9 +104,18 @@ label input[type='file'] {display: none;}
 .table_label {background: #f2f2f2; }
 
 /* 用户选择弹出框 */
-#popup_content {display: none;}
+#popup_content {display: none;height: 100%;}
 #user_select_tree {position: absolute;left: 48px;top: 40px;background: #fff;z-index: 999;border: 1px solid #ddd;min-width:300px;display: none;}
-
+#popup_content .search_box {position: relative;}
+#popup_content .search_box i.layui-icon-search{position: absolute;right: 0;top:0;font-size: 18px;padding: 9px;cursor:pointer}
+#popup_content .loaction_box {padding: 10px 0;}
+#popup_content input[type='checkbox'] {margin-right: 5px;vertical-align: middle;border: 1px solid #ddd;appearance: none !important;-webkit-appearance: none !important;-moz-appearance: none !important;-ms-appearance: none !important;height:18px;width: 18px;cursor:pointer;border-radius: 2px;}
+#popup_content input[type='checkbox']:checked {background: url(../images/checkbox.png);border:1px solid #5FB878;} 
+#popup_content .select_box {}
+#popup_content .select_box ul {height: 250px;overflow-y: auto;}
+#popup_content .select_box ul li {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;padding:5px 10px;}
+#popup_content .select_content {height:100%;}
+#popup_content .select_content>div {height:360px}
 /* 查看人选择 */
 #sel_item_box { width:auto;}
 #sel_item_box .sel_item {display: none;}
@@ -108,3 +128,25 @@ label input[type='file'] {display: none;}
 .layui-card2 .layui-icon-delete{cursor: pointer;}
 
 table .layui-input {height:28px;line-height: 28px;}
+
+/* 日程 */
+.schedule_box {}
+.schedule_box table {width: 100%;}
+.schedule_box .layui-laydate {width: 100%;}
+.schedule_box .layui-laydate-main {width: 100%;}
+.schedule_box .layui-laydate-content td,.schedule_box  .layui-laydate-content th {height: 80px;}
+.schedule_box .layui-laydate .layui-this {background: #fff !important;color: #333 !important;}
+.schedule_box .layui-laydate .laydate-day-mark{background: #fff;line-height: 180%;padding-top: 5px;}
+.schedule_box .layui-laydate .laydate-day-mark p {white-space: nowrap;text-overflow: ellipsis;overflow: hidden;margin: 0 5px;}
+.schedule_box .layui-laydate .laydate-day-mark .laydate-day-mark-day{position: absolute;left: 0;top: 0;background: #009688;color: #fff;width: 20px;height: 20px;line-height: 20px;}
+
+/* 流程列表 */
+.process_box {clear: both;}
+.process_box .process_item {padding: 10px 0;}
+.process_content  {padding: 10px;border-bottom: 1px solid #ddd;}
+.process_content .process_img {position: relative;}
+.process_content .process_img img {width: 50px;height: 50px;margin-right: 12px;border-radius: 8px;}
+.process_content .process_img .process_img_info{position: absolute;left:65px;top:0;}
+.process_content .process_img .process_img_info p{line-height: 150%;}
+.process_content  a {color: #1E9FFF;padding: 0 3px;}
+.process_content  .opt_box {line-height: 60px;}

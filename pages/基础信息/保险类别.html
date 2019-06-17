@@ -14,7 +14,11 @@
 				<table class="layui-table" id="lst" lay-filter="lst"></table>
 				<script type="text/html" id="bar">
 					<a class="layui-btn layui-btn-xs layui-btn-warm" href="javascript:;">编辑</a>
-					<a class="layui-btn layui-btn-danger layui-btn-xs">删除</a>
+					{{# if(d.state == 1){ }}
+						<a class="layui-btn layui-btn-danger layui-btn-xs">停用</a>
+					{{# } else { }}
+						<a class="layui-btn layui-btn-xs">启用</a>
+					{{# } }}
 				</script>
 				<script type="text/html" id="toolbar">
 					<button class="layui-btn  layui-btn-sm" lay-event="add"><i class="layui-icon layui-icon-add-1"></i> 添加</button>
@@ -57,14 +61,15 @@
 				{type:'numbers',title:'序号'},
 				{field:'title',title:'保险类别'},
 				{field:'sort',title:'显示顺序'},
+				{field:'state',title:'状态',templet:function(d){ if(d.state == 1){ return "<span class='text-span'>启用</span>";}else { return "<span class='text-del'>停用</span>";} }},
 				{field:'tips',title:'备注'},
 				{toolbar:'#bar',title:'操作'}
 			]];
 			var datas = [
-				{'title':'养老保险','sort':10,total:'1000',gr:'300',gs:'700'},
-				{'title':'医疗保险','sort':10,total:'1000',gr:'300',gs:'700'},
-				{'title':'失业保险','sort':10,total:'1000',gr:'300',gs:'700'},
-				{'title':'生育保险','sort':10,total:'1000',gr:'300',gs:'700'},
+				{'title':'养老保险','sort':10,total:'1000',gr:'300',gs:'700',state:'1'},
+				{'title':'医疗保险','sort':10,total:'1000',gr:'300',gs:'700',state:'0'},
+				{'title':'失业保险','sort':10,total:'1000',gr:'300',gs:'700',state:'0'},
+				{'title':'生育保险','sort':10,total:'1000',gr:'300',gs:'700',state:'1'},
 			];
 			layui.use(['table'], function() {
 				var table = layui.table;

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../../layui/css/layui.css" />
+		<link rel="stylesheet" href="../../layui/css/common.css" />
+		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../layui/layui.js"></script>
+	</head>
+	<body class="bgf2f2f2">
+		<div class="childrenBody">
+			<div class="layui-card-body">
+				<div class="schedule_box" id="date">
+					
+				</div>
+			</div>
+		</div>
+		<script>
+			layui.use(['laydate'],function(){
+				var laydate = layui.laydate;
+				laydate.render({
+					elem: '#date',
+					position: 'static',
+					showBottom:false,
+					theme: 'grid',
+					mark: {
+						'2019-6-15': '<p>去四川成都见客户</p><p>去四川成都见客户</p><p>去四川成都见客户</p>'
+					  }
+				});
+			});
+			
+		</script>
+	</body>
+</html>

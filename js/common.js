@@ -25,7 +25,7 @@ function user_popup(obj){
 		table = layui.table;
 	});
 	$('body').append('<div id="popup_content"></div>');
-	$('#popup_content').load("../public/user_select.html");
+	$('#popup_content').load("../../pages/public/user_select2.html");
 	
 	layer.open({
 		type: 1,
@@ -34,7 +34,7 @@ function user_popup(obj){
 		String: false,
 		closeBtn: 1,
 		skin: 'layui-layer-rim',
-		area: ['980px','480px'],
+		area: ['760px','480px'],
 		content: $('#popup_content'),
 		yes:function(index, layero){
 			var checkStatus = table.checkStatus('user_select_lst');

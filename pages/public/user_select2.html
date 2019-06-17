@@ -1,0 +1,57 @@
+<div class="layui-row select_content">
+	<div class="layui-col-md6 margin-t-20">
+		<div class="bgwhite padding-10 padding-t-0" >
+			<div class="layui-form search_box">
+				<input type="text" class="layui-input" placeholder="用户名称"/>
+				<i class="layui-icon layui-icon-search"></i>
+			</div>
+			<div class="loaction_box">
+				四季香江
+			</div>
+			<div class="select_box">
+				<p class="padding-l-10"><input type="checkbox" onclick="checkAll(this)" />全选</p>
+				<ul>
+					<li><input type="checkbox" onclick="selected(this)" data-id="1" data-text="建筑公司"/><i class="icon-file-group"></i>建筑公司</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="2" data-text="咨询公司" /><i class="icon-file-group"></i>咨询公司</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="3" data-text="财务公司" /><i class="icon-file-group"></i>财务公司</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="4" data-text="张三" />张三</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="5" data-text="李四" />李四</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="6" data-text="王五" />王五</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="7" data-text="赵六" />赵六</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="8" data-text="张三" />张三</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="9" data-text="李四" />李四</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="10" data-text="王五" />王五</li>
+					<li><input type="checkbox" onclick="selected(this)" data-id="11" data-text="赵六" />赵六</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="layui-col-md6 border-l-1 margin-t-20">
+		<div class="bgwhite padding-10">
+			<div class="selected_box" id="selected_box">
+				
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	function checkAll(all_obj){
+		var checked = $(all_obj).prop('checked');
+		$(".select_box ul li").each(function(i,obj){
+			var input = $(obj).find('input[type="checkbox"]');
+			var value = $(input).data('id');
+			var type = "user";
+			if(checked){
+				var text = $(input).data('text');
+				var html = '<span class="layui-badge layui-badge2 layui-bg-cyan">'+text+'<input type="hidden" class="'+type+'_ipt" value="'+value+'"><i class="layui-icon layui-icon-close" onclick="user_sel_remove(this)"></i></span>';
+				$("#selected_box").append(html);
+			} else {
+				
+			}
+			$(input).attr('checked',checked);
+		});
+	}
+	function selected(obj){
+		
+	}
+</script>

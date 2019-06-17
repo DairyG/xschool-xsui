@@ -33,6 +33,7 @@
 							<li>考勤记录</li>
 							<li>奖惩情况</li>
 							<li>考核情况</li>
+							<li>成长管理</li>
 						</ul>
 						<div class="layui-tab-content">
 							<div class="layui-tab-item layui-show" tab-name="个人信息">
@@ -719,6 +720,68 @@
 							<div class="layui-tab-item" tab-name="考勤记录"></div>
 							<div class="layui-tab-item" tab-name="奖惩情况"></div>
 							<div class="layui-tab-item" tab-name="考核情况"></div>
+							<div class="layui-tab-item" tab-name="成长管理">
+								<form class="layui-form layui-form2">
+									<div class="layui-row">
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label"><span class="text-red"> *</span>培训课程</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="请输入培训课程" autocomplete="off" class="layui-input" />
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label"><span class="text-red"> *</span>培训机构</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="请输入培训机构" autocomplete="off" class="layui-input" />
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label"><span class="text-red"> *</span>开始时间</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="请输入开始时间" autocomplete="off" class="layui-input date" readonly />
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md6 margin-b-20">
+											<label class="layui-form-label"><span class="text-red"> *</span>结束时间</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="请输入结束时间" autocomplete="off" class="layui-input date" readonly />
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md12 margin-b-20">
+											<label class="layui-form-label"><span class="text-red"> *</span>培训地点</label>
+											<div class="layui-input-block">
+												<input type="text" name="title" required  lay-verify="required" placeholder="请输入培训地点" autocomplete="off" class="layui-input" />
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md12 margin-b-20">
+											<label class="layui-form-label"><span class="text-red"> *</span>培训内容</label>
+											<div class="layui-input-block">
+												<textarea class="layui-textarea" placeholder="请输入培训内容"></textarea>
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md12 margin-b-20">
+											<label class="layui-form-label">所获荣誉</label>
+											<div class="layui-input-block">
+												<textarea class="layui-textarea" placeholder="请输入所获荣誉"></textarea>
+											</div>
+										</div>
+										<div class="layui-form-item layui-col-md12 margin-b-20">
+											<label class="layui-form-label">附件</label>
+											<div class="layui-input-block">
+												<span class="layui-btn layui-btn-sm layui-btn-normal margin-t-3" ><i class="layui-icon">&#xe67c;</i>上传照片</span>
+											</div>
+										</div>
+									</div>
+									<div class="layui-row">
+										<div class="layui-form-item">
+											<div class="layui-input-block text-right">
+												<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
+												<span class="layui-btn" onclick="history.back(-1)">返回</span>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -787,12 +850,13 @@
 				{name:'李四',sex:'男',age:'22',mobile:'15333333333',mail:'12414@qq.com',zw:'开发工程师',gz_y:'2',qw_city:'成都',jz_city:'成都',gz:'6000',dg:'3天内',zt:'已面试'},
 				{name:'王五',sex:'男',age:'22',mobile:'15333333333',mail:'12414@qq.com',zw:'开发工程师',gz_y:'2',qw_city:'成都',jz_city:'成都',gz:'6000',dg:'一周内',zt:'已面试'},
 			];
-			layui.use([ 'table','element','laydate','rate','form'], function() {
+			layui.use([ 'table','element','laydate','rate','form','layedit'], function() {
 				var table = layui.table,
 					element = layui.element,
 					laydate = layui.laydate,
 					rate = layui.rate,
-					form = layui.form;
+					form = layui.form,
+					layedit = layui.layedit;
 					
 				table.render({
 					elem: '#lst',
@@ -833,6 +897,7 @@
 						elem: this
 					});
 				});
+				
 				form.on('select(sel_department)', function(data){
 					var value = data.value;
 					var text = data.elem[data.elem.selectedIndex].text;

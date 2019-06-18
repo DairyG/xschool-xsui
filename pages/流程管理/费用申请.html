@@ -36,7 +36,7 @@
 										<div class="layui-input-block">
 											<input type="radio" name="type" title="事物流程" lay-skin="primary" />
 											<input type="radio" name="type" title="费用流程" lay-skin="primary" />
-
+									
 										</div>
 									</div>
 									<div class="layui-form-item layui-col-md6 margin-b-20">
@@ -83,7 +83,102 @@
 							</form>
 						</div>
 						<div class="layui-tab-item" tab-name="内容设计">
-							
+							<form class="layui-form layui-form2">
+								<div class="layui-row">
+									<div class="layui-form-item layui-col-md12 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>费用项目</label>
+										<div class="layui-input-block">
+											<input type="text" name="title" required  lay-verify="required" placeholder="请输入费用项目" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>合同编号</label>
+										<div class="layui-input-block">
+											<input type="text" name="title" required  lay-verify="required" placeholder="请输入合同编号" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>供应商名称</label>
+										<div class="layui-input-block">
+											<input type="text" name="title" required  lay-verify="required" placeholder="请输入供应商名称" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>总金额</label>
+										<div class="layui-input-block">
+											<input type="text" name="title" required  lay-verify="required" placeholder="请输入总金额" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>预算金额</label>
+										<div class="layui-input-block">
+											<input type="text" name="title" required  lay-verify="required" placeholder="请输入预算金额" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>申请金额</label>
+										<div class="layui-input-block">
+											<input type="text" name="title" required  lay-verify="required" placeholder="请输入申请金额" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>付款次数</label>
+										<div class="layui-input-block">
+											<input type="radio" name="pay_num" title="单次付款" value="1" lay-filter="pay_num">
+											<input type="radio" name="pay_num" title="多次付款" value="2" lay-filter="pay_num">
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md12 margin-b-20" id="pay_table_item" style="display:none">
+										<label class="layui-form-label"><span class="text-red"> *</span>付款</label>
+										<div class="layui-input-block">
+											<table class="layui-table">
+												<thead>
+													<tr>
+														<th width="60">序号</th>
+														<th>款项名称</th>
+														<th>比例</th>
+														<th>金额</th>
+														<th>执行情况</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td><span class="table-btn-jia">+</span><span class="table-btn-jian">-</span></td>
+														<td><input type="text" class="layui-input"></td>
+														<td><input type="text" class="layui-input"></td>
+														<td><input type="text" class="layui-input"></td>
+														<td><input type="text" class="layui-input"></td>
+													</tr>
+													<tr>
+														<td></td>
+														<td>合计</td>
+														<td>0</td>
+														<td>0</td>
+														<td></td>
+													</tr>
+													<!-- 提交时验证比例和是否为100%，金额总计和是否和总金额相等 不相等时弹出提示-->
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6 margin-b-20">
+										<label class="layui-form-label">附件</label>
+										<div class="layui-input-block">
+											<div class="margin-t-3">
+												<span class="layui-btn layui-btn-sm layui-btn-normal">上传附件</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="layui-row">
+									<div class="layui-form-item">
+										<div class="layui-input-block text-right">
+											<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">下一步</button>
+											<span class="layui-btn" onclick="history.back(-1)">返回</span>
+										</div>
+									</div>
+								</div>
+							</form>
 						</div>
 						<div class="layui-tab-item" tab-name="流程设计">
 							<form class="layui-form process_add_form">
@@ -285,9 +380,17 @@
 		</div>
 		<script type="text/javascript">
 			var layer_linePop;
-			layui.use(['table','element'], function() {
+			layui.use(['table','element','form'], function() {
 				var table = layui.table,
-					element = layui.element;
+					element = layui.element,
+					form = layui.form;
+				form.on('radio(pay_num)',function(obj){
+					if(obj.value == 1){
+						$("#pay_table_item").hide();
+					} else {
+						$("#pay_table_item").show();
+					}
+				});
 			});
 			function add_group(){
 				layer_linePop = layer.open({

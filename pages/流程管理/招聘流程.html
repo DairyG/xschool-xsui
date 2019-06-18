@@ -36,7 +36,7 @@
 										<div class="layui-input-block">
 											<input type="radio" name="type" title="事物流程" lay-skin="primary" />
 											<input type="radio" name="type" title="费用流程" lay-skin="primary" />
-
+									
 										</div>
 									</div>
 									<div class="layui-form-item layui-col-md6 margin-b-20">
@@ -83,7 +83,90 @@
 							</form>
 						</div>
 						<div class="layui-tab-item" tab-name="内容设计">
-							
+							<form class="layui-form layui-form2">
+								<div class="layui-row">
+									<div class="layui-form-item layui-col-md12 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>计划名称</label>
+										<div class="layui-input-block">
+											<input type="text" name="title" required  lay-verify="required" placeholder="请输入计划名称" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>用人部门</label>
+										<div class="layui-input-block">
+											<input type="text" id="treeIpt" class="layui-input" onclick="showMenu();" readonly>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>预算人数</label>
+										<div class="layui-input-block">
+											<input type="text" class="layui-input" />
+										</div>
+									</div>
+									<!-- 预算科目从基础信息->预算管理中获取  -->
+									<div class="layui-form-item layui-col-md6 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>预算科目</label>
+										<div class="layui-input-block">
+											<select>
+												<option></option>
+												<option></option>
+												<option></option>
+											</select>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>预算金额</label>
+										<div class="layui-input-block">
+											<input type="text" class="layui-input" />
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md12 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>招聘岗位</label>
+										<div class="layui-input-block">
+											<div class="demand_item" >
+												<i class="layui-icon layui-icon-close-fill" onclick="close_demand(this)"></i>
+												<table class="layui-table margin-b-20">
+													<tbody>
+														<tr>
+															<td class="table_label">岗位名称</td>
+															<td>JAVA开发工程师</td>
+															<td class="table_label">预算金额</td>
+															<td>10000</td>
+														</tr>
+														<tr>
+															<td class="table_label">到岗日期</td>
+															<td>2019-6-10</td>
+															<td class="table_label">需求人数</td>
+															<td>3</td>
+														</tr>
+														<tr>
+															<td class="table_label">岗位职责</td>
+															<td colspan="3">岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责</td>
+														</tr>
+														<tr>
+															<td class="table_label">任职要求</td>
+															<td colspan="3">任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求</td>
+														</tr>
+														<tr>
+															<td class="table_label">附件</td>
+															<td colspan="3"></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<div class="margin-t-3"><span class="layui-btn layui-btn-sm layui-btn-normal" onclick="show_demand()">添加岗位</span></div>
+										</div>
+									</div>
+								</div>
+								<div class="layui-row">
+									<div class="layui-form-item">
+										<div class="layui-input-block text-right">
+											<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">下一步</button>
+											<span class="layui-btn" onclick="history.back(-1)">返回</span>
+										</div>
+									</div>
+								</div>
+							</form>
 						</div>
 						<div class="layui-tab-item" tab-name="流程设计">
 							<form class="layui-form process_add_form">

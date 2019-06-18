@@ -20,7 +20,7 @@
 							<div class="margin-b-20">
 								<span class="fontsize-18">审批管理</span>
 								<button class="layui-btn layui-btn-sm" onclick="add_group()">新建分组</button>
-								<button class="layui-btn layui-btn-sm">创建审批</button>
+								<button class="layui-btn layui-btn-sm" onclick="javascript:window.location.href='创建流程.html';">创建审批</button>
 							</div>
 							<div class="process_box">
 								<div class="process_item ">
@@ -32,28 +32,7 @@
 									</div>
 									<div class="process_content layui-row">
 										<div class="layui-col-md4 process_img">
-											<img src="https://gw.alicdn.com/tfs/TB1bHOWCSzqK1RjSZFjXXblCFXa-112-112.png">
-											<div class="process_img_info">
-												<p>用车申请</p>
-												<p class="fontsize-12 text-85">适用于因公使用车辆的申请</p>
-												<p class="fontsize-12 text-85">2019.05.30 14:06:26 更新</p>
-											</div>
-										</div>
-										<div class="layui-col-md5 border-l-1 padding-l-15">
-											<p>可见范围</p>
-											<p class="fontsize-12 text-85" id="rec_box">全部可见 <a href="javascript:;" onclick="user_popup($('#rec_box'))">修改</a></p>
-										</div>
-										<div class="layui-col-md3">
-											<div class="opt_box text-right">
-												<a>编辑</a>
-												<a>停用</a>
-												<a href="javascript:;" onclick="process_move()">移动到</a>
-											</div>
-										</div>
-									</div>
-									<div class="process_content layui-row">
-										<div class="layui-col-md4 process_img">
-											<img src="https://gw.alicdn.com/tfs/TB1bHOWCSzqK1RjSZFjXXblCFXa-112-112.png">
+											<img src="../../img/car.png">
 											<div class="process_img_info">
 												<p>用车申请</p>
 												<p class="fontsize-12 text-85">适用于因公使用车辆的申请</p>
@@ -75,12 +54,70 @@
 								</div>
 								<div class="process_item ">
 									<div class="process_title bgf2f2f2 padding-10">
+										<span class="fontsize-16">招聘流程</span>
+										<span>(1)</span>
+										<a href="javascript:;" class="fr text-del padding-l-10"><i class="layui-icon layui-icon-delete"></i>删除</a>
+										<a href="javascript:;" class="fr text-edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+									</div>
+									<div class="process_content layui-row">
+										<div class="layui-col-md4 process_img">
+											<a href="招聘流程.html"><img src="../../img/car.png"></a>
+											<div class="process_img_info">
+												<p>招聘计划</p>
+												<p class="fontsize-12 text-85">适用于各部门人员招聘申请</p>
+												<p class="fontsize-12 text-85">2019.05.30 14:06:26 更新</p>
+											</div>
+										</div>
+										<div class="layui-col-md5 border-l-1 padding-l-15">
+											<p>可见范围</p>
+											<p class="fontsize-12 text-85" id="rec_box">全部可见 <a href="javascript:;" onclick="user_popup($('#rec_box'))">修改</a></p>
+										</div>
+										<div class="layui-col-md3">
+											<div class="opt_box text-right">
+												<a href="招聘流程.html">编辑</a>
+												<a>停用</a>
+												<a href="javascript:;" onclick="process_move()">移动到</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="process_item ">
+									<div class="process_title bgf2f2f2 padding-10">
+										<span class="fontsize-16">费用申请</span>
+										<span>(1)</span>
+										<a href="javascript:;" class="fr text-del padding-l-10"><i class="layui-icon layui-icon-delete"></i>删除</a>
+										<a href="javascript:;" class="fr text-edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+									</div>
+									<div class="process_content layui-row">
+										<div class="layui-col-md4 process_img">
+											<a href="费用申请.html"><img src="../../img/car.png"></a>
+											<div class="process_img_info">
+												<p>费用申请</p>
+												<p class="fontsize-12 text-85">适用于各部门人员费用申请</p>
+												<p class="fontsize-12 text-85">2019.05.30 14:06:26 更新</p>
+											</div>
+										</div>
+										<div class="layui-col-md5 border-l-1 padding-l-15">
+											<p>可见范围</p>
+											<p class="fontsize-12 text-85" id="rec_box">全部可见 <a href="javascript:;" onclick="user_popup($('#rec_box'))">修改</a></p>
+										</div>
+										<div class="layui-col-md3">
+											<div class="opt_box text-right">
+												<a href="费用申请.html">编辑</a>
+												<a>停用</a>
+												<a href="javascript:;" onclick="process_move()">移动到</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="process_item ">
+									<div class="process_title bgf2f2f2 padding-10">
 										<span class="fontsize-16">停用</span>
 										<span>(1)</span>
 									</div>
 									<div class="process_content layui-row">
 										<div class="layui-col-md4 process_img">
-											<img src="https://gw.alicdn.com/tfs/TB1bHOWCSzqK1RjSZFjXXblCFXa-112-112.png">
+											<img src="../../img/car.png">
 											<div class="process_img_info">
 												<p>用车申请</p>
 												<p class="fontsize-12 text-85">适用于因公使用车辆的申请</p>

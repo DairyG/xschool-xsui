@@ -379,6 +379,7 @@
 												<input type="text" name="title" required  lay-verify="required" placeholder="请选择部门" autocomplete="off" class="layui-input" readonly onclick="showMenu()" id="treeIpt">
 											</div>
 										</div>
+										<!-- 职位从基础信息->职位管理->职位管理中获取 -->
 										<div class="layui-form-item layui-col-md6 margin-b-20">
 											<label class="layui-form-label"><span class="text-red"> *</span>所属职位</label>
 											<div class="layui-input-block">
@@ -443,14 +444,8 @@
 												<textarea class="layui-textarea" placeholder="请输入职位描述"></textarea>
 											</div>
 										</div>
-										<div class="layui-form-item layui-col-md12 margin-b-20">
-											<label class="layui-form-label">部门负责人</label>
-											<div class="layui-input-block">
-												<input type="checkbox" name="switch" value="1" lay-skin="switch" lay-text="是|否" lay-filter="manage_dpt"/>
-											</div>
-										</div>
-										<div class="layui-form-item layui-col-md12 margin-b-20" id="manage_dpt" style="display:none">
-											<label class="layui-form-label"><span class="text-red"> *</span>负责部门</label>
+										<div class="layui-form-item layui-col-md12 margin-b-20" >
+											<label class="layui-form-label">分管部门</label>
 											<div class="layui-input-block">
 												<div class="layui-input">
 													<span class="layui-btn layui-btn-sm layui-btn-normal margin-t-3" onclick="user_popup()">请选择</span>

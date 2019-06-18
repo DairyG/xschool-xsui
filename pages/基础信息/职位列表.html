@@ -21,9 +21,10 @@
 									<button class="layui-btn  layui-btn-sm " lay-event="add"><i class="layui-icon layui-icon-add-1"></i> 添加</button>
 								</script>
 								<script type="text/html" id="bar">
-									<button class="layui-btn  layui-btn-xs ">查看</button>
+									{{# if(d.is_sys != 1){ }}
 									<button class="layui-btn  layui-btn-xs layui-btn-normal">编辑</button>
 									<button class="layui-btn  layui-btn-xs layui-btn-danger">删除</button>
+									{{# } }}
 								</script>
 							</div>
 						</div>
@@ -87,9 +88,12 @@
 				{title:'操作',toolbar:'#bar'}
 			]];
 			var datas = [
-				{'name':'经理','sort':'10'},
-				{'name':'副经理','sort':'10'},
-				{'name':'市场总监','sort':'10'}
+				{'name':'专员','sort':'10',is_sys:1},
+				{'name':'主管','sort':'10',is_sys:1},
+				{'name':'部门经理','sort':'10',is_sys:1},
+				{'name':'副总','sort':'10',is_sys:1},
+				{'name':'总经理','sort':'10',is_sys:1},
+				{'name':'财务','sort':'10',is_sys:0},
 			];
 			layui.use([ 'table'], function() {
 				var table = layui.table;

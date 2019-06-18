@@ -18,8 +18,18 @@ function layui_prompt(obj){
 
 /**
  * 弹出用户选择框
+ * @param Object obj 显示选中内容的对象
+ * @param boolean has_user 是否可选用户
+ * @param boolean has_department 是否可选部门
+ * @param boolean hsa_company 是否可选公司
+ * @param int num 最大选择数(大于零时限制选址数量，否者不限制)
+ * @param boolean is_close_other 是否关闭其他弹窗
+ * @param function callback 回调函数
  */
-function user_popup(obj){
+function user_popup(obj,has_user,has_department,hsa_company,num,is_close_other,callback){
+	if(is_close_other){
+		layer.closeAll();
+	}
 	var table;
 	layui.use(['table'],function(){
 		table = layui.table;

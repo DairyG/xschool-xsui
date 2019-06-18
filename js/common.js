@@ -26,7 +26,7 @@ function layui_prompt(obj){
  * @param boolean is_close_other 是否关闭其他弹窗
  * @param function callback 回调函数
  */
-function user_popup(obj,has_user,has_department,hsa_company,num,is_close_other,callback){
+function user_popup(obj = null,has_user = false,has_department = false,hsa_company = false,num = 0,is_close_other = false,callback = null){
 	if(is_close_other){
 		layer.closeAll();
 	}
@@ -35,7 +35,7 @@ function user_popup(obj,has_user,has_department,hsa_company,num,is_close_other,c
 		table = layui.table;
 	});
 	$('body').append('<div id="popup_content"></div>');
-	$('#popup_content').load("../../pages/public/user_select2.html");
+	$('#popup_content').load("../../pages/public/user_select2.html?has_user="+has_user+"&has_department="+has_department+"&hsa_company="+hsa_company+"&num="+num);
 	
 	layer.open({
 		type: 1,
@@ -86,3 +86,12 @@ function build_sel_html(type,value,text){
 function sel_remove(obj){
 	$(obj).parents('span').remove();
 }
+
+//获取get参数 
+function GetPara(name) { 
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+    var r = window.location.search.substr(1).match(reg); 
+    if (r != null) 
+        return unescape(r[2]); 
+    return null; 
+} 

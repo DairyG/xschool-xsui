@@ -6,7 +6,9 @@
 				<i class="layui-icon layui-icon-search"></i>
 			</div>
 			<div class="loaction_box">
-				<a href="javascript:;">四季香江</a> &gt; <a href="javascript:;">子公司</a> &gt; <a href="javascript:;">子部门</a>
+				<a href="javascript:;" onclick="show_items(0,'company')">四季香江</a> 
+				<!-- &gt; <a href="javascript:;">子公司</a> 
+				&gt; <a href="javascript:;">子部门</a> -->
 			</div>
 			<div class="select_box">
 				<p class="padding-l-10" style="padding-bottom: 5px;"><input type="checkbox" onclick="checkAll(this)" />全选</p>
@@ -35,6 +37,11 @@
 	</div>
 </div>
 <script type="text/javascript">
+	var has_user = GetPara('has_user');
+	var has_department = GetPara('has_department');
+	var hsa_company = GetPara('hsa_company');
+	var allow_num = GetPara('num');
+	
 	function checkAll(all_obj){
 		var checked = $(all_obj).prop('checked');
 		$(".select_box ul li").each(function(i,obj){
@@ -80,4 +87,14 @@
 		return "";
 	}
 	
+	/**
+	 * 
+	 * @param int pid 上级id
+	 * @param string p_type （公司 company, 部门 department）
+	 */
+	function show_items(pid,p_type){
+		if(p_type == 'company'){
+			
+		}
+	}
 </script>

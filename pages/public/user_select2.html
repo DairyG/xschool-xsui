@@ -77,7 +77,7 @@
 	$(function(){
 		if(has_company){
 			show_items('company',user_company.id);
-			$(".loaction_box").html('<span><a href="javascript:;" onclick="location_sel(this,\'company\','+user_company.id+',\''+company_arr[0].name+'\')">'+company_arr[0].name+'</a>&gt;</span>') ;
+			//$(".loaction_box").html('<span><a href="javascript:;" onclick="location_sel(this,\'company\','+user_company.id+',\''+company_arr[0].name+'\')">'+company_arr[0].name+'</a>&gt;</span>') ;
 		} else {
 			show_items('department',user_company.id);
 			$(".loaction_box").html('<span><a href="javascript:;" onclick="location_sel(this,\'department\','+user_company.id+')">'+company_arr[0].name+'</a>&gt;</span>') ;
@@ -98,18 +98,22 @@
 		var checked = $(all_obj).prop('checked');
 		$("#select_ul li").each(function(i,obj){
 			var input = $(obj).find('input[type="checkbox"]');
-			var value = $(input).data('id');
-			var type = $(input).data('type');
-			var text = $(input).data('text');
-			
-			if(checked){
-				var html = build_selectd_html(type,value,text);
-				$("#selected_box").append(html);
-				add_remove_value(type,value,text);
-			} else {
-				user_sel_remove(type,value,text);
+			if(input.length > 0){
+				var value = $(input).data('id');
+				var type = $(input).data('type');
+				var text = $(input).data('text');
+				var input_checked = $(input).prop('checked');
+				if(input_checked != checked){
+					if(checked){
+						var html = build_selectd_html(type,value,text);
+						$("#selected_box").append(html);
+						add_remove_value(type,value,text);
+					} else {
+						user_sel_remove(type,value,text);
+					}
+					$(input).prop('checked',checked);
+				}
 			}
-			$(input).prop('checked',checked);
 		});
 	}
 	
@@ -162,7 +166,7 @@
 	function build_selectd_html(type,value,text){
 		var class_name = type+'_'+value;
 		if($("#selected_box").find("."+class_name).length == 0){
-			var html = '<li class="'+type+'_'+value+' " >'+text+'<i class="layui-icon layui-icon-close-fill fr" onclick="user_sel_remove(\''+type+'\','+value+','+text+')"></i></li>'
+			var html = '<li class="'+type+'_'+value+' " >'+text+'<i class="layui-icon layui-icon-close-fill fr" onclick="user_sel_remove(\''+type+'\','+value+',\''+text+'\')"></i></li>'
 			return html;
 		} 
 		return "";
@@ -180,12 +184,12 @@
 			case 'company':
 				//此处加载公司列表
 				for(var i = 0;i < company_arr.length;i++){
-					if(company_arr[i].pid == company_id){
+					// if(company_arr[i].pid == company_id){
 						html += build_check_html(company_arr[i].id,company_arr[i].name,type,company_id);
-					}
+					// }
 					if(company_arr[i].id == company_id){
 						if(has_company){
-							$(".loaction_box").append('<span><a href="javascript:;" onclick="location_sel(this,\'company\','+company_id+',0,\''+company_arr[i].name+'\')">'+company_arr[i].name+'</a>&gt;</span>');
+							$(".loaction_box").append('<span><a href="javascript:;" onclick="location_sel(this,\'company\','+company_id+',0,\''+company_arr[i].name+'\')">全部</a>&gt;</span>');
 						} else {
 							$(".loaction_box").append('<span><a href="javascript:;" onclick="location_sel(this,\'department\','+company_id+')">'+company_arr[i].name+'</a>&gt;</span>');
 						}

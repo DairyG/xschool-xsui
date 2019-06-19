@@ -13,10 +13,21 @@
 		<div id="rec_box"></div>
 		<script>
 			var layer_linePop;
+			var tesxt1 = function(){
+				console.log('这里来了');
+			}
 			layui.use(['table'], function() {
 				var table = layui.table;
-				user_popup($("#rec_box"));
+				user_popup($("#rec_box"),true,true,false,tesxt1);
 			});
+			
+			function test1(){
+				
+			}
+			
+			function test2(a){
+				
+			}
 		</script>
 	</body>
 </html>

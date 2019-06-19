@@ -1,6 +1,7 @@
 @charset "utf-8";
 .childrenBody {background-color: #fff;position: absolute;right: 15px;left:15px;top:15px;bottom: 15px;}
-.icon-file-group {background: url('../../lib/ztree/css/metroStyle/img/metro.png');background-position: -149px -3px;width: 18px;height: 18px;display: inline-block;vertical-align: middle;}
+.icon_group1{background: url('../../lib/ztree/css/metroStyle/img/metro.png');background-position: -149px -3px;width: 18px;height: 18px;display: inline-block;vertical-align: middle;}
+.icon_group2{background: url('../../lib/ztree/css/metroStyle/img/metro.png');background-position: -149px -25px;width: 18px;height: 18px;display: inline-block;vertical-align: middle;}
 /* 宽高 */
 .height-100 {height: 100%;}
 /* 字体颜色 */
@@ -115,6 +116,7 @@ label input[type='file'] {display: none;}
 #popup_content .select_box {}
 #popup_content .select_box ul {height: 250px;overflow-y: auto;}
 #popup_content .select_box ul li {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;padding:5px 10px;}
+#popup_content .select_box ul li span:hover{cursor: pointer;}
 #popup_content .select_content {height:100%;}
 #popup_content .select_content>div {height:360px}
 #popup_content .selected_box {height: 340px;overflow-y: auto;}

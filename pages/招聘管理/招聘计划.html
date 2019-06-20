@@ -16,107 +16,14 @@
 		<div class="childrenBody">
 			<div class="layui-card-body bgwhite">
 				<div class="layui-tab layui-tab-brief" lay-filter="component-tabs-brief">
-					<ul class="layui-tab-title">
-						<li class="layui-this">计划列表</li>
-						<li>添加计划</li>
-					</ul>
 					<div class="layui-tab-content">
 						<div class="layui-tab-item layui-show">
 							<table id="lst" lay-filter="lst"></table>
 							<script type="text/html" id="toolbar">
 								<button class="layui-btn  layui-btn-xs ">查看</button>
-								<button class="layui-btn  layui-btn-xs layui-btn-normal">编辑</button>
-								<button class="layui-btn  layui-btn-xs layui-btn-danger">删除</button>
 							</script>
 							<script type="text/html" id="bar">
 							</script>
-						</div>
-						<div class="layui-tab-item">
-							<form class="layui-form layui-form2">
-								<div class="layui-row">
-									<div class="layui-form-item layui-col-md12 margin-b-20">
-										<label class="layui-form-label"><span class="text-red"> *</span>计划名称</label>
-										<div class="layui-input-block">
-											<input type="text" name="title" required  lay-verify="required" placeholder="请输入计划名称" autocomplete="off" class="layui-input">
-										</div>
-									</div>
-									<div class="layui-form-item layui-col-md6 margin-b-20">
-										<label class="layui-form-label"><span class="text-red"> *</span>用人部门</label>
-										<div class="layui-input-block">
-											<input type="text" id="treeIpt" class="layui-input" onclick="showMenu();" readonly>
-										</div>
-									</div>
-									<div class="layui-form-item layui-col-md6 margin-b-20">
-										<label class="layui-form-label"><span class="text-red"> *</span>预算人数</label>
-										<div class="layui-input-block">
-											<input type="text" class="layui-input" />
-										</div>
-									</div>
-									<!-- 预算科目从基础信息->预算管理中获取  -->
-									<div class="layui-form-item layui-col-md6 margin-b-20">
-										<label class="layui-form-label"><span class="text-red"> *</span>预算科目</label>
-										<div class="layui-input-block">
-											<select>
-												<option></option>
-												<option></option>
-												<option></option>
-											</select>
-										</div>
-									</div>
-									<div class="layui-form-item layui-col-md6 margin-b-20">
-										<label class="layui-form-label"><span class="text-red"> *</span>预算金额</label>
-										<div class="layui-input-block">
-											<input type="text" class="layui-input" />
-										</div>
-									</div>
-									<div class="layui-form-item layui-col-md12 margin-b-20">
-										<label class="layui-form-label"><span class="text-red"> *</span>招聘岗位</label>
-										<div class="layui-input-block">
-											<div class="demand_item" >
-												<i class="layui-icon layui-icon-close-fill" onclick="close_demand(this)"></i>
-												<table class="layui-table margin-b-20">
-													<tbody>
-														<tr>
-															<td class="table_label">岗位名称</td>
-															<td>JAVA开发工程师</td>
-															<td class="table_label">预算金额</td>
-															<td>10000</td>
-														</tr>
-														<tr>
-															<td class="table_label">到岗日期</td>
-															<td>2019-6-10</td>
-															<td class="table_label">需求人数</td>
-															<td>3</td>
-														</tr>
-														<tr>
-															<td class="table_label">岗位职责</td>
-															<td colspan="3">岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责岗位职责</td>
-														</tr>
-														<tr>
-															<td class="table_label">任职要求</td>
-															<td colspan="3">任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求任职要求</td>
-														</tr>
-														<tr>
-															<td class="table_label">附件</td>
-															<td colspan="3"></td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-											<div class="margin-t-3"><span class="layui-btn layui-btn-sm layui-btn-normal" onclick="show_demand()">添加岗位</span></div>
-										</div>
-									</div>
-								</div>
-								<div class="layui-row">
-									<div class="layui-form-item">
-										<div class="layui-input-block text-right">
-											<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
-											<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认并继续添加</button>
-											<span class="layui-btn" onclick="history.back(-1)">返回</span>
-										</div>
-									</div>
-								</div>
-							</form>
 						</div>
 					</div>
 				</div>
@@ -124,64 +31,6 @@
 		</div>
 		<div id="menuContent" class="menuContent" style="display:none; position: absolute;background: #fff;">
 			<ul id="treeDemo" class="ztree" style="width: 100%;"></ul>
-		</div>
-		<div class="linePop linePop1">
-			<div class="layui-card-body padding-r-50">
-				<form class="layui-form layui-form2">
-					<div class="layui-row">
-						<div class="layui-form-item layui-col-md6 margin-b-20">
-							<label class="layui-form-label"><span class="text-red"> *</span>岗位名称</label>
-							<div class="layui-input-block">
-								<input type="text" name="title" required  lay-verify="required" placeholder="请输入岗位名称" autocomplete="off" class="layui-input">
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md6 margin-b-20">
-							<label class="layui-form-label"> <span class="text-red"> *</span>预计到岗日期</label>
-							<div class="layui-input-block">
-								<input type="text" name="title" required  lay-verify="required" readonly placeholder="请输入预计到岗日期" autocomplete="off" class="layui-input" id="date1">
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md6 margin-b-20">
-							<label class="layui-form-label"><span class="text-red"> *</span>需求人数</label>
-							<div class="layui-input-block">
-								<input type="text" name="title" required  lay-verify="required" placeholder="请输入需求人数" autocomplete="off" class="layui-input">
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md6 margin-b-20">
-							<label class="layui-form-label"><span class="text-red"> *</span>预算金额</label>
-							<div class="layui-input-block">
-								<input type="text" name="title" required  lay-verify="required" placeholder="请输入预算金额" autocomplete="off" class="layui-input">
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md12 margin-b-20">
-							<label class="layui-form-label"><span class="text-red"> *</span>岗位职责</label>
-							<div class="layui-input-block">
-								<textarea placeholder="请输入岗位职责" class="layui-textarea"></textarea>
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md12 margin-b-20">
-							<label class="layui-form-label"><span class="text-red"> *</span>任职要求</label>
-							<div class="layui-input-block">
-								<textarea placeholder="请输入任职要求" class="layui-textarea"></textarea>
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md12 margin-b-20">
-							<label class="layui-form-label">附件</label>
-							<div class="layui-input-block">
-								<div class="margin-t-3"><span class="layui-btn layui-btn-sm layui-btn-normal">添加附件</span></div>
-							</div>
-						</div>
-					</div>
-					<div class="layui-row">
-						<div class="layui-form-item">
-							<div class="layui-input-block text-right">
-								<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
-								<span class="layui-btn" onclick="closePop()">返回</span>
-							</div>
-						</div>
-					</div>
-				</form>
-			</div>
 		</div>
 		<script type="text/javascript">
 			var layer_linePop;
@@ -195,10 +44,11 @@
 				{field: 'zt', title: '状态'},
 				{title:'操作',toolbar:'#toolbar'}
 			]];
+			//计划名称点击可进入计划详情
 			var datas = [
-				{'mc':'2019春季招聘计划','bm':'销售部','num':'2','km':'招聘人员费','zt':'已发布',je:'100000000'},
-				{'mc':'2019夏季招聘计划','bm':'市场部','num':'2','km':'招聘人员费','zt':'已发布',je:'100000000'},
-				{'mc':'2019冬季招聘计划','bm':'项目部','num':'2','km':'招聘人员费','zt':'已发布',je:'100000000'},
+				{'mc':'<a class="text-a">2019春季招聘计划</a>','bm':'销售部','num':'2','km':'招聘人员费','zt':'已发布',je:'100000000'},
+				{'mc':'<a class="text-a">2019夏季招聘计划</a>','bm':'市场部','num':'2','km':'招聘人员费','zt':'已发布',je:'100000000'},
+				{'mc':'<a class="text-a">2019冬季招聘计划</a>','bm':'项目部','num':'2','km':'招聘人员费','zt':'已发布',je:'100000000'},
 			];
 			layui.use([ 'table','element','laydate'], function() {
 				var table = layui.table,
@@ -212,29 +62,13 @@
 						toolbar:'#bar',
 						page:true,
 						even: true,
-						height:'full-110'
+						height:'full-140'
 					});
 					laydate.render({
 						elem: '#date1' //指定元素
 					});
 			});
-			function show_demand(){
-				layer_linePop = layer.open({
-					type: 1,
-					title:'添加招聘岗位',
-					String: false,
-					closeBtn: 1,
-					skin: 'layui-layer-rim',
-					area: ['750px','450px'],
-					content: $('.linePop')
-				});
-			}
-			function closePop(){
-				layer.close(layer_linePop);
-			}
-			function close_demand(obj){
-				$(obj).parents('.demand_item').remove();
-			}
+			
 			var setting = {
 				check: {
 					enable: true,

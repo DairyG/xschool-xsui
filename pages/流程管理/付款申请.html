@@ -85,36 +85,19 @@
 						<div class="layui-tab-item" tab-name="内容设计">
 							<form class="layui-form layui-form2">
 								<div class="layui-row">
-									<div class="layui-form-item layui-col-md12 margin-b-20">
+									<div class="layui-form-item layui-col-md6 margin-b-20">
 										<label class="layui-form-label"><span class="text-red"> *</span>费用项目</label>
 										<div class="layui-input-block">
 											<input type="text" name="title" required  lay-verify="required" placeholder="请输入费用项目" autocomplete="off" class="layui-input">
 										</div>
 									</div>
 									<div class="layui-form-item layui-col-md6 margin-b-20">
-										<label class="layui-form-label"><span class="text-red"> *</span>申请单号</label>
+										<label class="layui-form-label">请款编号</label>
 										<div class="layui-input-block">
 											<input type="text" class="layui-input" readonly onclick="show_search()" />
 										</div>
 									</div>
-									<div class="layui-form-item layui-col-md6 margin-b-20">
-										<label class="layui-form-label"><span class="text-red"> *</span>公司名称</label>
-										<div class="layui-input-block">
-											<input type="text" name="title" required  lay-verify="required" placeholder="请输入公司名称" autocomplete="off" class="layui-input">
-										</div>
-									</div>
-									<div class="layui-form-item layui-col-md6 margin-b-20">
-										<label class="layui-form-label"><span class="text-red"> *</span>开户银行</label>
-										<div class="layui-input-block">
-											<input type="text" name="title" required  lay-verify="required" placeholder="请输入开户银行" autocomplete="off" class="layui-input">
-										</div>
-									</div>
-									<div class="layui-form-item layui-col-md6 margin-b-20">
-										<label class="layui-form-label"><span class="text-red"> *</span>银行账号</label>
-										<div class="layui-input-block">
-											<input type="text" name="title" required  lay-verify="required" placeholder="请输入银行账号" autocomplete="off" class="layui-input">
-										</div>
-									</div>
+									<!-- 付款方式为现金时银行账号和银行名称不必填 -->
 									<div class="layui-form-item layui-col-md6 margin-b-20">
 										<label class="layui-form-label"><span class="text-red"> *</span>付款方式</label>
 										<div class="layui-input-block">
@@ -123,6 +106,24 @@
 												<option>转账</option>
 												<option>现金</option>
 											</select>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>收款公司名称</label>
+										<div class="layui-input-block">
+											<input type="text" name="title" required  lay-verify="required" placeholder="请输入公司名称" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>收款公司开户银行</label>
+										<div class="layui-input-block">
+											<input type="text" name="title" required  lay-verify="required" placeholder="请输入开户银行" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>收款公司银行账号</label>
+										<div class="layui-input-block">
+											<input type="text" name="title" required  lay-verify="required" placeholder="请输入银行账号" autocomplete="off" class="layui-input">
 										</div>
 									</div>
 									<div class="layui-form-item layui-col-md6 margin-b-20">
@@ -143,6 +144,12 @@
 											<input type="text" name="title" required  lay-verify="required" placeholder="请输入本次付款金额" autocomplete="off" class="layui-input">
 										</div>
 									</div>
+									<div class="layui-form-item layui-col-md6 margin-b-20">
+										<label class="layui-form-label">处理时限</label>
+										<div class="layui-input-block">
+											<input type="text" readonly class="layui-input date" />
+										</div>
+									</div>
 									<div class="layui-form-item layui-col-md12 margin-b-20">
 										<label class="layui-form-label">付款备注</label>
 										<div class="layui-input-block">
@@ -153,7 +160,7 @@
 								<div class="layui-row">
 									<div class="layui-form-item">
 										<div class="layui-input-block text-right">
-											<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">下一步</button>
+											<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确定</button>
 											<span class="layui-btn" onclick="history.back(-1)">返回</span>
 										</div>
 									</div>
@@ -223,7 +230,7 @@
 													<div class="layui-card-header">复盘人</div>
 													<div class="layui-card-body text-center">
 														<input type="checkbox" title="发起人必填" lay-skin="primary" />
-														<input type="checkbox" title="部门负责人必填" lay-skin="primary"/>
+														<input type="checkbox" title="部门经理必填" lay-skin="primary"/>
 													</div>
 												</div>
 												<div class="process_add_btn_item process_add_btn_item_end">
@@ -384,6 +391,11 @@
 				var element = layui.element,
 					form = layui.form,
 					laydate = layui.laydate;
+				lay('.date').each(function(){
+					laydate.render({
+						elem:this
+					});
+				});
 				form.on('radio(pay_num)',function(obj){
 					if(obj.value == 1){
 						$("#pay_table_item").hide();

@@ -12,7 +12,7 @@
 .text-del {color:#FF5722}
 .text-span {color:#009688}
 .text-85 {color:#858585}
-
+.text-a {color:#1E9FFF}
 /* 边框 */
 .border-1 {border:1px solid #ddd;}
 .border-l-20 {border-left:20px solid #f2f2f2;}
@@ -28,8 +28,10 @@
 .padding-t-9 {padding-top: 9px;}
 .padding-t-10 {padding-top: 10px;}
 .padding-t-20 {padding-top: 20px;}
+.padding-l-0 {padding-left: 0 !important;}
 .padding-l-10 {padding-left: 10px;}
 .padding-l-15 {padding-left: 15px;}
+.padding-r-0 {padding-right: 0 !important;}
 .padding-r-30 {padding-right: 30px;}
 .padding-r-50 {padding-right: 50px;}
 .padding-b-10 {padding-bottom: 10px;}
@@ -38,20 +40,22 @@
 .margin-b-5 {margin-bottom: 5px;}
 .margin-b-10 {margin-bottom: 10px;}
 .margin-b-20 {margin-bottom: 20px !important;}
+.margin-t-0 {margin-top:0 !important;}
 .margin-t-10 {margin-top:10px;}
 .margin-t-3 {margin-top:3px;}
+.margin-t-7 {margin-top:7px;}
 .margin-t-20 {margin-top:20px;}
 .margin-r-10 {margin-right: 10px;}
 /* 字体大小 */
-.fontsize-12 {font-size: 12px;}
-.fontsize-14 {font-size: 14px;}
-.fontsize-16 {font-size: 16px;}
-.fontsize-18 {font-size: 18px;}
-.fontsize-20 {font-size: 20px;}
-.fontsize-24 {font-size: 24px;}
+.fontsize-12 {font-size: 12px !important;}
+.fontsize-14 {font-size: 14px !important;}
+.fontsize-16 {font-size: 16px !important;}
+.fontsize-18 {font-size: 18px !important;}
+.fontsize-20 {font-size: 20px !important;}
+.fontsize-24 {font-size: 24px !important;}
 
 /* 边框线 */
-.border-b-0 {border-bottom:0;}
+.border-b-0 {border-bottom:0 !important;}
 
 .fl {float: left;}
 .fr {float: right;}
@@ -64,6 +68,7 @@ label input[type='file'] {display: none;}
 .layui-form2 .layui-form-item {clear: unset;}
 .layui-form2 .layui-form-label {width: 120px;}
 .layui-form2 .layui-input-block {margin-left: 150px;}
+.layui-form-140 .layui-form-label {width: 140px;}
 .layui-search-form .layui-form-label {width: auto;}
 .layui-search-form .layui-input-block {margin-left: 0;float: left;}
 .layui-search-form .layui-form-select .layui-input {width: auto;}
@@ -186,3 +191,29 @@ table .layui-input {height:28px;line-height: 28px;}
 
 .demand_item {position:relative;}
 .demand_item .layui-icon-close-fill{ position: absolute;z-index: 999;color: #999;right: -10px;top: -10px;font-size: 24px;}
+
+.layadmin-carousel{height:185px!important;background-color:#fff}
+.layadmin-carousel .layui-carousel-ind li{background-color:#e2e2e2}
+.layadmin-carousel .layui-carousel-ind li:hover{background-color:#c2c2c2}
+.layadmin-carousel .layui-carousel-ind li.layui-this{background-color:#999}
+.layadmin-carousel .layui-carousel,.layadmin-carousel>[carousel-item]>*{background-color:#fff}
+.layadmin-carousel .layui-col-space10{margin:0}
+.layadmin-carousel .layui-carousel-ind{position:absolute;top:-41px;text-align:right}
+.layadmin-carousel .layui-carousel-ind ul{background:0 0}
+
+.layadmin-shortcut li{text-align:center}
+.layadmin-shortcut li .img { display: inline-block;width: 100%;height: 60px;text-align: center;border-radius: 2px;color: #333;transition: all .3s;-webkit-transition: all .3s;}
+.layadmin-shortcut li .img img {width: 60px;height: 60px;}
+.layadmin-shortcut li cite{position:relative;top:2px;display:block;color:#666;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;font-size:14px}
+.layadmin-shortcut li:hover .layui-icon{background-color:#f2f2f2}
+
+.box-shadow-0 {box-shadow: 0;}
+
+/** 步骤条 **/
+.process_step {padding: 20px 0 10px 0;overflow: hidden;}
+.process_step li {float: left;padding: 0 30px;background: url(../../img/step.png) center;height: 30px;line-height: 30px;margin-bottom: 10px;}
+.process_step li i {background: #ddd;text-decoration: none;border-radius: 50%;width: 25px;height: 25px;text-align: center;line-height: 25px;display: inline-block;color:#fff;font-style: normal;}
+.process_step li span {padding:0 5px;background: #fff;}
+.process_step li.active {background: url(../../img/step1.png) center;}
+.process_step li.active span {color: #1E9FFF;}
+.process_step li.active i {background: #1E9FFF;width: 30px;height: 30px;line-height: 30px;}

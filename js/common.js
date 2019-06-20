@@ -107,7 +107,7 @@ function user_popup(obj = null,has_user = false,has_department = false,has_compa
 					$(obj).html(html);
 				}
 			};
-			alert(typeof callback);
+			
 			if(typeof callback === 'function'){
 				callback(arr);
 			}

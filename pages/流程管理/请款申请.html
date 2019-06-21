@@ -445,7 +445,7 @@
 				closePop();
 			}
 			function on_select(obj){
-				layer_linePop = layer.open({
+				/* layer_linePop = layer.open({
 					type: 1,
 					title:'选择人员类型',
 					String: false,
@@ -453,7 +453,8 @@
 					skin: 'layui-layer-rim',
 					area: ['350px','160px'],
 					content: $('.linePop4')
-				});
+				}); */
+				user_popup2(null,true,true,true);
 			}
 			function done_select(type){
 				if(type == 'duty'){//部门负责人

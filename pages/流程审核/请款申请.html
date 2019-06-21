@@ -29,6 +29,28 @@
 							<form class="layui-form layui-form2">
 								<div class="layui-row">
 									<div class="layui-form-item layui-col-md12 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>预算科目</label>
+										<div class="layui-input-block">
+											<div class="layui-input">
+												<div class="layui-input-inline input-select " style="width: 150px;">
+													<select>
+														<option>一级费用科目</option>
+														<option>建设成本</option>
+														<option>费用预算</option>
+														<option>固定资产</option>
+													</select>
+												</div>
+												<div class="layui-input-inline input-select" style="width:150px;">
+													<select >
+														<option>二级费用科目</option>
+														<option>二级费用项1</option>
+														<option>二级费用项2</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md12 margin-b-20">
 										<label class="layui-form-label"><span class="text-red"> *</span>费用项目</label>
 										<div class="layui-input-block">
 											<input type="text" name="title" required  lay-verify="required" placeholder="请输入费用项目" autocomplete="off" class="layui-input">

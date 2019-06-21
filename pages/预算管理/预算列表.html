@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../../layui/css/layui.css" />
+		<link rel="stylesheet" href="../../layui/css/common.css" />
+		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../layui/layui.js"></script>
+	</head>
+	<body class="bgf2f2f2">
+		<div class="childrenBody">
+			<div class="layui-card-body">
+				<table class="layui-table" id="lst" lay-filter="lst"></table>
+				<script type="text/html" id="bar">
+					<a class="layui-btn layui-btn-xs " href="javascript:;">查看</a>
+				</script>
+				<script type="text/html" id="toolbar">
+				</script>
+			</div>
+		</div>
+		<script>
+			var layer_linePop;
+			var cols = [[
+				{type:'numbers',title:'序号'},
+				{field:'company',title:'公司名称'},
+				{field:'year',title:'年度'},
+				{field:'month',title:'月份'},
+				{field:'dpt',title:'部门'},
+				{field:'total',title:'总额'},
+				{toolbar:'#bar',title:'操作'}
+			]];
+			var datas = [
+				{company:'四季香江',year:'2019年',month:'5月',dpt:'销售部',total:'800000'},
+				{company:'四季香江',year:'2019年',month:'5月',dpt:'市场部',total:'800000'},
+				{company:'四季香江',year:'2019年',month:'5月',dpt:'人事部',total:'200000'},
+			];
+			layui.use(['table'], function() {
+				var table = layui.table;
+				//关闭弹窗
+				$(".closePop").click(function(){
+					layer.closeAll()
+				})
+				//执行一个 table 实例
+				table.render({
+					elem: '#lst',
+					title: '用户表',
+					page: true,
+					toolbar: '#toolbar',
+					even: true,
+					height: 'full-80',
+					cols: cols,
+					data: datas,
+				});
+				table.on('toolbar(lst)',function(data){
+					if(data.event == 'add'){
+						layer_linePop = layer.open({
+							type: 1,
+							title:'添加保险类别',
+							String: false,
+							closeBtn: 1,
+							skin: 'layui-layer-rim',
+							area: '750px',
+							content: $('.linePop')
+						});
+					}
+				});
+			});
+			function closePop(){
+				layer.close(layer_linePop);
+			}
+		</script>
+	</body>
+</html>

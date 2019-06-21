@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../../layui/css/layui.css" />
+		<link rel="stylesheet" href="../../layui/css/common.css" />
+		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../layui/layui.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+	</head>
+	<body class="bgf2f2f2 ">
+		<div class="childrenBody ">
+			<div class="layui-card-header">任务详情</div>
+			<div class="layui-card-body bgwhite">
+				<form class="layui-form layui-form2 layui-form-info" >
+					<div class="layui-row">
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label">任务标题：</label>
+							<div class="layui-input-block">
+								<div class="layui-form-mid">去打酱油啊</div>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label">执行人：</label>
+							<div class="layui-input-block">
+								<div class="layui-form-mid">张三等4人<i class="layui-icon layui-icon-triangle-d" onclick="show_ulst()"></i></div>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label">抄送人：</label>
+							<div class="layui-input-block">
+								<div class="layui-form-mid">张三等4人<i class="layui-icon layui-icon-triangle-d" onclick="show_ulst()"></i></div>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label">截止日期：</label>
+							<div class="layui-input-block">
+								<div class="layui-form-mid">2019-2-3 18:00:00 截止</div>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md12 margin-b-20">
+							<label class="layui-form-label">任务内容：</label>
+							<div class="layui-input-block">
+								<div class="padding-l-15 margin-t-10">
+									<p>1:打酱油</p>
+									<p>2:打酱油</p>
+									<p>3:打酱油</p>
+									<p>4:打酱油</p>
+									<p>5:打酱油</p>
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md12 margin-b-20">
+							<label class="layui-form-label">附件</label>
+							<div class="layui-input-block">
+								
+							</div>
+						</div>
+					</div>	
+					<div class="layui-row text-right">
+						<button class="layui-btn layui-btn-danger" lay-submit="" lay-filter="formDemo">确认</button>
+						<span class="layui-btn " onclick="closePop()">返回</span>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="linePop">
+			<div class="layui-card-body">
+				<table id="lst" lay-filter="lst"></table>
+			</div>
+		</div>
+		<script>
+			var layer_linePop,table;
+			var cols = [[
+				{type:'numbers',title:'序号'},
+				{field:'umane',title:'用户名称'},
+				{field:'state',title:'完成情况'},
+			]];
+			var datas = [
+				{'umane':'张三',state:'已完成'},
+				{'umane':'李四',state:'未完成'},
+				{'umane':'王五',state:'已完成'},
+				{'umane':'赵六',state:'未完成'},
+			];
+			layui.use(['table','laydate','layedit'], function() {
+				table = layui.table;
+				var laydate = layui.laydate,
+					layedit = layui.layedit;
+				
+				laydate.render({
+					elem:'.date',
+					type:'datetime'
+				});
+				layedit.build('content');
+				//关闭弹窗
+				$(".closePop").click(function(){
+					layer.closeAll()
+				})
+			});
+			function closePop(){
+				layer.close(layer_linePop);
+			}
+			
+			function show_ulst(){
+				layer_linePop = layer.open({
+					type: 1,
+					title:'查看人员',
+					String: false,
+					closeBtn: 1,
+					skin: 'layui-layer-rim',
+					area: ['750px','450px'],
+					content: $('.linePop'),
+					success:function(){
+						table.render({
+							elem: '#lst',
+							title: '用户表',
+							page: true,
+							even: true,
+							height: 'full-140',
+							cols: cols,
+							data: datas,
+						});
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

@@ -69,7 +69,86 @@ function user_popup(obj = null,has_user = false,has_department = false,has_compa
 		content: $('#popup_content'),
 		yes:function(index, layero){
 			//以下方式可获取到选中的 公司 部门 人员
-			//注意去除
+			
+			var company_ids = $("#selected_box #company_ids").val();//公司ID
+			var company_names = $("#selected_box #company_names").val();//公司名称
+			var department_ids = $("#selected_box #department_ids").val();//部门ID
+			var department_names = $("#selected_box #department_names").val();//部门名称
+			var user_ids = $("#selected_box #user_ids").val();//人员ID
+			var user_names = $("#selected_box #user_names").val();//人员名称
+			var arr = {
+				company:{
+					'ids':company_ids,
+					'names':company_names
+				},
+				department:{
+					'ids':department_ids,
+					'names':department_names
+				},
+				user:{
+					'ids':user_ids,
+					'names':user_names
+				}
+			};
+			if(typeof obj == 'object'){
+				if(has_department){
+					var html = "";
+					department_ids = department_ids.RTrim(',');
+					department_ids = department_ids.LTrim(',');
+					department_names = department_names.RTrim(',');
+					department_names = department_names.LTrim(',');
+					department_ids = department_ids ? department_ids.split(',') : [];
+					department_names = department_names ? department_names.split(',') : [];
+					if(department_names.length > 0){
+						for(var i = 0;i < department_names.length; i++){
+							html += build_sel_html('department',department_ids[i],department_names[i]);
+						}
+					}
+					$(obj).html(html);
+				}
+			};
+			
+			if(typeof callback === 'function'){
+				callback(arr);
+			}
+			layer.close(index);
+		},
+		btn2:function(index, layero){
+			
+			layer.close(index);
+		}
+	});
+}
+
+function user_popup2(obj = null,has_user = false,has_department = false,has_company = false,num = 0,is_close_other = false,callback){
+	if(is_close_other){
+		layer.closeAll();
+	}
+	var table;
+	layui.use(['table'],function(){
+		table = layui.table;
+	});
+	var user_company = {id:1,pid:0}//默认当前用户的公司信息 实际另行获取 
+	//是否可选公司单独再次判断  集团账户才能选择公司
+	if(user_company.pid > 0){
+		has_company = false;
+	}
+	
+	$('body').append('<div id="popup_content" data-has_user="'+has_user+'" data-has_department="'+has_department+'" data-has_company="'+has_company+'" data-num="'+num+'"></div>');
+	$('#popup_content').load("../../pages/public/user_select3.html");
+	
+	layer.open({
+		type: 1,
+		title:'用户选择',
+		btn:['确认','取消'],
+		String: false,
+		closeBtn: 1,
+		skin: 'layui-layer-rim',
+		area: ['760px','480px'],
+		content: $('#popup_content'),
+		yes:function(index, layero){
+			//以下方式可获取到选中的 公司 部门 人员
+			
 			var company_ids = $("#selected_box #company_ids").val();//公司ID
 			var company_names = $("#selected_box #company_names").val();//公司名称
 			var department_ids = $("#selected_box #department_ids").val();//部门ID

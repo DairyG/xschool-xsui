@@ -118,8 +118,10 @@ label input[type='file'] {display: none;}
 #popup_content .loaction_box {padding: 10px 0;}
 #popup_content input[type='checkbox'] {margin-right: 5px;vertical-align: middle;border: 1px solid #ddd;appearance: none !important;-webkit-appearance: none !important;-moz-appearance: none !important;-ms-appearance: none !important;height:18px;width: 18px;cursor:pointer;border-radius: 2px;}
 #popup_content input[type='checkbox']:checked {background: url(../images/checkbox.png);border:1px solid #5FB878;} 
+#popup_content input[type='radio'] {margin-right: 5px;vertical-align: middle;border: 1px solid #ddd;appearance: none !important;-webkit-appearance: none !important;-moz-appearance: none !important;-ms-appearance: none !important;height:18px;width: 18px;cursor:pointer;border-radius: 2px;}
+#popup_content input[type='radio']:checked {background: url(../images/checkbox.png);border:1px solid #5FB878;} 
 #popup_content .select_box {}
-#popup_content .select_box ul {height: 250px;overflow-y: auto;}
+#popup_content .select_box ul {height: 248px;overflow-y: auto;}
 #popup_content .select_box ul li {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;padding:5px 10px;}
 #popup_content .select_box ul li span:hover{cursor: pointer;}
 #popup_content .select_content {height:100%;}
@@ -128,6 +130,9 @@ label input[type='file'] {display: none;}
 #popup_content .selected_box li {padding: 5px;}
 #popup_content .selected_box li:hover {background: #f2f2f2;}
 #popup_content .selected_box li i {cursor:pointer;padding-top: 2px;}
+
+.radio_box label {line-height: 20px;padding: 5px 0;height: 20px;display: inline-block;padding-right: 20px;cursor:pointer}
+.radio_box label i {vertical-align: middle;margin-right: 3px;}
 /* 查看人选择 */
 #sel_item_box { width:auto;}
 #sel_item_box .sel_item {display: none;}
@@ -140,7 +145,7 @@ label input[type='file'] {display: none;}
 .layui-card2 .layui-icon-delete{cursor: pointer;}
 
 table .layui-input {height:28px;line-height: 28px;}
-
+table .layui-table-edit {height:38px;line-height: 38px;}
 /* 日程 */
 .schedule_box {}
 .schedule_box table {width: 100%;}
@@ -217,3 +222,7 @@ table .layui-input {height:28px;line-height: 28px;}
 .process_step li.active {background: url(../../img/step1.png) center;}
 .process_step li.active span {color: #1E9FFF;}
 .process_step li.active i {background: #1E9FFF;width: 30px;height: 30px;line-height: 30px;}
+
+.input-select {}
+.input-select .layui-input{border:0;    border: 0;height: 36px;line-height: 36px;}
+.layui-input .layui-form-mid {height: 19px;}

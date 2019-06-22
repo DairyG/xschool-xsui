@@ -9,6 +9,8 @@
 		<script type="text/javascript" src="../../layui/layui.js"></script>
 		<script type="text/javascript" src="../../js/common.js"></script>
 		<script type="text/javascript" src="../../lib/pick-pcc/city.min.js"></script>
+		<link rel="stylesheet" href="../../lib/pick-pcc/pick-pcc.css" />
+		<script type="text/javascript" src="../../lib/pick-pcc/pick-pcc.js"></script>
 	</head>
 	<body class="bgf2f2f2">
 		<div class="layui-row layui-col-space30">
@@ -19,6 +21,8 @@
 				<div class="pick-area pick-area2"></div>
 			</div>
 		</div>
+		
+		
 		<div style="display: block;clear: both;height: 300px;"></div>
 		<div style="position: relative;">
 			<ul id="selTree1" class="dtree" data-id="0"></ul>
@@ -41,23 +45,23 @@
 					dtree = layui.dtree;
 				//user_popup2($("#rec_box"),true,true,true,0,false,tesxt1);
 				//payitem_pop($("#rec_box"),1);
-				//$('.pick-area').pickArea();
-				pick_pcc.render({
+				$('.pick-area').pickArea();
+				/* pick_pcc.render({
 					elem:'.pick-area1',
 					format:'上海,上海市,普陀区',
 					getVal:function(names,codes){
 						console.log(names);
 						console.log(codes);
 					}
-				});
-				pick_pcc.render({
+				}); */
+				/* pick_pcc.render({
 					elem:'.pick-area2',
 					format:'上海,上海市,普陀区',
 					getVal:function(names,codes){
 						console.log(names);
 						console.log(codes);
 					}
-				});
+				}); */
 				// 初始化树
 				/* var DemoTree = dtree.render({
 					elem: "#demoTree",

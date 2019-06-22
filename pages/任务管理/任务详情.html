@@ -11,58 +11,104 @@
 	</head>
 	<body class="bgf2f2f2 ">
 		<div class="childrenBody ">
-			<div class="layui-card-header">任务详情</div>
+			<div class="layui-card-header fontsize-16">任务详情</div>
 			<div class="layui-card-body bgwhite">
 				<form class="layui-form layui-form2 layui-form-info" >
 					<div class="layui-row">
-						<div class="layui-form-item layui-col-md6 margin-b-20">
+						<div class="layui-form-item layui-col-md6 ">
 							<label class="layui-form-label">任务标题：</label>
 							<div class="layui-input-block">
 								<div class="layui-form-mid">去打酱油啊</div>
 							</div>
 						</div>
-						<div class="layui-form-item layui-col-md6 margin-b-20">
-							<label class="layui-form-label">执行人：</label>
-							<div class="layui-input-block">
-								<div class="layui-form-mid">张三等4人<i class="layui-icon layui-icon-triangle-d" onclick="show_ulst()"></i></div>
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md6 margin-b-20">
-							<label class="layui-form-label">抄送人：</label>
-							<div class="layui-input-block">
-								<div class="layui-form-mid">张三等4人<i class="layui-icon layui-icon-triangle-d" onclick="show_ulst()"></i></div>
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md6 margin-b-20">
+						<div class="layui-form-item layui-col-md6 ">
 							<label class="layui-form-label">截止日期：</label>
 							<div class="layui-input-block">
 								<div class="layui-form-mid">2019-2-3 18:00:00 截止</div>
 							</div>
 						</div>
-						<div class="layui-form-item layui-col-md12 margin-b-20">
-							<label class="layui-form-label">任务内容：</label>
+						<div class="layui-form-item layui-col-md12 ">
+							<label class="layui-form-label">执行人：</label>
 							<div class="layui-input-block">
-								<div class="padding-l-15 margin-t-10">
-									<p>1:打酱油</p>
-									<p>2:打酱油</p>
-									<p>3:打酱油</p>
-									<p>4:打酱油</p>
-									<p>5:打酱油</p>
+								<div class="layui-form-mid">
+									<!-- 已完成的人背景用蓝色 -->
+									<span class="layui-badge-plus layui-bg-blue " >张三</span>
+									<span class="layui-badge-plus layui-bg-gray"  >李四</span>
+									<span class="layui-badge-plus layui-bg-blue" >王五</span>
 								</div>
 							</div>
 						</div>
-						<div class="layui-form-item layui-col-md12 margin-b-20">
-							<label class="layui-form-label">附件</label>
+						<div class="layui-form-item layui-col-md12 ">
+							<label class="layui-form-label">抄送人：</label>
+							<div class="layui-input-block">
+								<div class="layui-form-mid">
+									<span class="layui-badge-plus layui-bg-gray" >张三</span>
+									<span class="layui-badge-plus layui-bg-gray" >李四</span>
+									<span class="layui-badge-plus layui-bg-gray" >王五</span>
+									<span class="layui-badge-plus layui-bg-gray" >张三</span>
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md12 ">
+							<label class="layui-form-label">任务内容：</label>
+							<div class="layui-input-block">
+								<div class="padding-l-15 margin-t-10">
+									 任务通知在 FreeRTOS 中是一个可选的功能，要使用任务通知的话就需要将宏configUSE_TASK_NOTIFICATIONS 定义为 1。
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md12 ">
+							<label class="layui-form-label">附件：</label>
 							<div class="layui-input-block">
 								
 							</div>
 						</div>
+						<div class="layui-form-item layui-col-md12 ">
+							<label class="layui-form-label">子任务1：</label>
+							<div class="layui-input-block">
+								<div class="padding-l-15 margin-t-10">标题：等酱油打完了，再去打个醋等酱油打完了，再去打个醋哈</div>
+								<div class="padding-l-15 margin-t-10">
+									执行人：
+									<span class="layui-badge-plus layui-bg-blue" >张三</span>
+									<span class="layui-badge-plus layui-bg-gray" >李四</span>
+									<span class="layui-badge-plus layui-bg-blue" >王五</span>
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md12 ">
+							<label class="layui-form-label">子任务2：</label>
+							<div class="layui-input-block">
+								<div class="padding-l-15 margin-t-10">标题：等酱油打完了，再去打个醋等酱油打完了，再去打个醋哈</div>
+								<div class="padding-l-15 margin-t-10">
+									执行人：
+									<span class="layui-badge-plus layui-bg-gray" >张三</span>
+									<span class="layui-badge-plus layui-bg-gray" >李四</span>
+									<span class="layui-badge-plus layui-bg-gray" >王五</span>
+								</div>
+							</div>
+						</div>
 					</div>	
 					<div class="layui-row text-right">
-						<button class="layui-btn layui-btn-danger" lay-submit="" lay-filter="formDemo">确认</button>
-						<span class="layui-btn " onclick="closePop()">返回</span>
+						<a class="layui-btn layui-btn-normal" lay-href='pages/任务管理/添加子任务.html?id=1&data=2'>添加子任务</a>
+						<span class="layui-btn " onclick="history.back(-1)">返回</span>
 					</div>
 				</form>
+				<hr class="layui-bg-blue hrheight3" >
+				<div class="form-title">任务记录</div>
+				<div class="layui-tab">
+					<ul class="layui-tab-title">
+						<li class="layui-this">全部</li>
+						<li>回复</li>
+					</ul>
+					<div class="layui-tab-content">
+						<div class="layui-tab-item layui-show">
+							<table id="lst" lay-filter="lst" ></table>
+						</div>
+						<div class="layui-tab-item">
+							<table id="lst2" lay-filter="lst2" ></table>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="linePop">
@@ -71,17 +117,21 @@
 			</div>
 		</div>
 		<script>
+			layui.config({
+				base: '../../layuiAdmin/' //静态资源所在路径
+			}).extend({
+				index: 'lib/index' //主入口模块
+			}).use('index');
 			var layer_linePop,table;
 			var cols = [[
 				{type:'numbers',title:'序号'},
 				{field:'umane',title:'用户名称'},
-				{field:'state',title:'完成情况'},
+				{field:'tips',title:'信息'},
+				{field:'date',title:'时间'},
 			]];
 			var datas = [
-				{'umane':'张三',state:'已完成'},
-				{'umane':'李四',state:'未完成'},
-				{'umane':'王五',state:'已完成'},
-				{'umane':'赵六',state:'未完成'},
+				{'umane':'张三',tips:'完成了任务',date:'2019-1-1 19:28:12'},
+				{'umane':'王五',tips:'完成了任务',date:'2019-1-1 19:28:12'},
 			];
 			layui.use(['table','laydate','layedit'], function() {
 				table = layui.table;
@@ -96,13 +146,31 @@
 				//关闭弹窗
 				$(".closePop").click(function(){
 					layer.closeAll()
-				})
+				});
+				table.render({
+					elem: '#lst',
+					title: '用户表',
+					page: true,
+					even: true,
+					height: '360',
+					cols: cols,
+					data: datas,
+				});
+				table.render({
+					elem: '#lst2',
+					title: '用户表',
+					page: true,
+					even: true,
+					height: '360',
+					cols: cols,
+					data: datas,
+				});
 			});
 			function closePop(){
 				layer.close(layer_linePop);
 			}
 			
-			function show_ulst(){
+			/* function show_ulst(){
 				layer_linePop = layer.open({
 					type: 1,
 					title:'查看人员',
@@ -117,13 +185,13 @@
 							title: '用户表',
 							page: true,
 							even: true,
-							height: 'full-140',
+							height: '360',
 							cols: cols,
 							data: datas,
 						});
 					}
 				});
-			}
+			} */
 		</script>
 	</body>
 </html>

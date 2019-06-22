@@ -57,6 +57,7 @@
 /* 边框线 */
 .border-b-0 {border-bottom:0 !important;}
 
+.layui-badge-plus {padding: 2px 10px;border-radius: 10px;height: 18px;line-height: 18px;font-size: 12px;display: inline-block;}
 .fl {float: left;}
 .fr {float: right;}
 .clearnone {clear: none;}

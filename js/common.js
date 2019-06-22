@@ -111,10 +111,11 @@ function user_popup(obj = null,has_user = false,has_department = false,has_compa
 			if(typeof callback === 'function'){
 				callback(arr);
 			}
+			$("#popup_content").remove();
 			layer.close(index);
 		},
 		btn2:function(index, layero){
-			
+			$("#popup_content").remove();
 			layer.close(index);
 		}
 	});
@@ -190,15 +191,52 @@ function user_popup2(obj = null,has_user = false,has_department = false,has_comp
 			if(typeof callback === 'function'){
 				callback(arr);
 			}
+			$("#popup_content").remove();
 			layer.close(index);
 		},
 		btn2:function(index, layero){
-			
+			$("#popup_content").remove();
 			layer.close(index);
 		}
 	});
 }
 
+/**
+ * 费用项选择弹出框
+ */
+function payitem_pop(obj = null,company_id,callback){
+	if(parseInt(company_id) <= 0){
+		layer.alert('请选择公司');
+	}
+	$('body').append('<div id="popup_content" data-company_id="'+company_id+'"></div>');
+	$('#popup_content').load("../../pages/public/payitem_select.html");
+	
+	layer.open({
+		type: 1,
+		title:'费用科目选择',
+		btn:['确认','取消'],
+		String: false,
+		closeBtn: 1,
+		skin: 'layui-layer-rim',
+		area: ['760px','480px'],
+		content: $('#popup_content'),
+		yes:function(index, layero){
+			//以下方式可获取到选中的 公司 部门 人员
+			
+			if(typeof obj == 'object'){
+				
+			};
+			
+			if(typeof callback === 'function'){
+				callback(arr);
+			}
+			layer.close(index);
+		},
+		btn2:function(index, layero){
+			layer.close(index);
+		}
+	});
+}
 /**
  * 创建选中项html
  * @param string type (user,company,department,position)

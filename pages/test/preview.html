@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../../layui/css/layui.css" />
+		<link rel="stylesheet" href="../../layui/css/common.css" />
+		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../layui/layui.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script type="text/javascript" src="../../js/form_build.js"></script>
+		<script type="text/javascript" src="../../lib/pick-pcc/city.min.js"></script>
+	</head>
+	<body>
+		<div class="layui-card-body">
+			<div id="form_box"></div>
+		</div>
+		<script type="text/javascript">
+			var form_data = localStorage.getItem('form_data');
+				form_data = JSON.parse(form_data);
+			var form = form_data.formData;
+			var parem = form_data.parameterData;
+			layui.config({
+				base: '../../lib/'
+			}).extend({
+				pick_pcc: 'pick-pcc/layui-pick-pcc'
+			});
+			layui.use(['pick_pcc','form','laydate','upload'], function() {
+				var pick_pcc = layui.pick_pcc,
+					form = layui.form,
+					laydate = layui.laydate,
+					upload = layui.upload;
+				var html = form_build(form,parem);
+				$('#form_box').html(html);
+				form.render();
+				lay('.date').each(function(){
+					var type = $(this).data('type');
+					var range = $(this).data('range');
+					console.log(range);
+					laydate.render({
+						elem:this,
+						type:type,
+						range:range
+					});
+				});
+				lay('.pickArea').each(function(){
+					pick_pcc.render({
+						elem:this,
+					});
+				});
+				lay('.upload').each(function(){
+					upload.render({
+						elem:this
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

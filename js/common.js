@@ -33,7 +33,7 @@ function layui_prompt(obj){
 
 /**
  * 弹出用户选择框
- * @param Object obj 显示选中内容的对象
+ * @param Object obj 显示选中内容的dom对象 （初始值和选中值的存放dom对象）
  * @param boolean has_user 是否可选用户
  * @param boolean has_department 是否可选部门
  * @param boolean has_company 是否可选公司
@@ -53,6 +53,10 @@ function user_popup(obj = null,has_user = false,has_department = false,has_compa
 	//是否可选公司单独再次判断  集团账户才能选择公司
 	if(user_company.pid > 0){
 		has_company = false;
+	}
+	
+	if(obj == null){
+		layer.msg('第一个参数不能为空！');
 	}
 	
 	$('body').append('<div id="popup_content" data-has_user="'+has_user+'" data-has_department="'+has_department+'" data-has_company="'+has_company+'" data-num="'+num+'"></div>');
@@ -111,11 +115,9 @@ function user_popup(obj = null,has_user = false,has_department = false,has_compa
 			if(typeof callback === 'function'){
 				callback(arr);
 			}
-			$("#popup_content").remove();
 			layer.close(index);
 		},
 		btn2:function(index, layero){
-			$("#popup_content").remove();
 			layer.close(index);
 		}
 	});
@@ -191,11 +193,9 @@ function user_popup2(obj = null,has_user = false,has_department = false,has_comp
 			if(typeof callback === 'function'){
 				callback(arr);
 			}
-			$("#popup_content").remove();
 			layer.close(index);
 		},
 		btn2:function(index, layero){
-			$("#popup_content").remove();
 			layer.close(index);
 		}
 	});
@@ -265,3 +265,45 @@ function GetPara(name) {
         return unescape(r[2]); 
     return null; 
 } 
+
+/**
+ * 审批单号弹出框
+ * @param Object obj 输入框对象
+ */
+function approvalno_popup(obj){
+	$('body').append('<div id="popup_content"></div>');
+	$('#popup_content').load("../../pages/public/approvalno.html");
+	layui.use(['table'],function(){
+		layer.open({
+			type: 1,
+			title:'选择审批单',
+			String: false,
+			closeBtn: 1,
+			btn:['确认','取消'],
+			skin: 'layui-layer-rim',
+			area: ['850px','450px'],
+			content: $('#popup_content'),
+			success:function(){
+				layui.table.render({
+					elem:'#approvalno_lst',
+					cols:[[
+						{type:'radio','title':'序号'},
+						{field:'no','title':'单号'},
+						{field:'bm','title':'申请部门'},
+						{field:'sqr','title':'申请人'},
+						{field:'title','title':'费用名称'},
+						{field:'date1','title':'申请日期'},
+						{field:'date2','title':'审核日期'},
+					]],
+					data:[
+						{'no':'1342353525',title:'物料费',date1:'2019-01-02',date2:'2019-01-02',bm:'销售部',sqr:'张三'},
+						{'no':'1342353525',title:'物料费',date1:'2019-01-02',date2:'2019-01-02',bm:'销售部',sqr:'张三'},
+						{'no':'1342353525',title:'物料费',date1:'2019-01-02',date2:'2019-01-02',bm:'销售部',sqr:'张三'},
+					],
+					height:'270',
+					page:true
+				});
+			}
+		});
+	});
+}

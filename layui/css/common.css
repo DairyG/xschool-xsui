@@ -85,7 +85,7 @@ label input[type='file'] {display: none;}
 .layui-form2 .rate {margin-bottom: 0;padding-top: 5px;}
 .layui-form2 .layui-rate {margin:0;padding: 0;}
 .layui-form2 .layui-rate li {margin-bottom: 0;}
-.form-title {    position: relative;padding: 10px 15px;line-height: 24px;font-size: 16px;}
+.form-title {    position: relative;padding: 10px 15px;line-height: 24px;font-size: 16px;clear: both;}
 .layui-form table .table_label {background: #fdfdfd;white-space: nowrap;}
 .layui-form table td:not(.table_label) {color:#000}
 
@@ -112,7 +112,7 @@ label input[type='file'] {display: none;}
 .table_label {background: #f2f2f2; }
 
 /* 用户选择弹出框 */
-#popup_content {display: none;height: 100%;}
+#popup_content {display: none; }
 #user_select_tree {position: absolute;left: 48px;top: 40px;background: #fff;z-index: 999;border: 1px solid #ddd;min-width:300px;display: none;}
 #popup_content .search_box {position: relative;}
 #popup_content .search_box i.layui-icon-search{position: absolute;right: 0;top:0;font-size: 18px;padding: 9px;cursor:pointer}

@@ -73,7 +73,6 @@ function user_popup(obj = null,has_user = false,has_department = false,has_compa
 		content: $('#popup_content'),
 		yes:function(index, layero){
 			//以下方式可获取到选中的 公司 部门 人员
-			
 			var company_ids = $("#selected_box #company_ids").val();//公司ID
 			var company_names = $("#selected_box #company_names").val();//公司名称
 			var department_ids = $("#selected_box #department_ids").val();//部门ID
@@ -81,35 +80,23 @@ function user_popup(obj = null,has_user = false,has_department = false,has_compa
 			var user_ids = $("#selected_box #user_ids").val();//人员ID
 			var user_names = $("#selected_box #user_names").val();//人员名称
 			var arr = {
-				company:{
-					'ids':company_ids,
-					'names':company_names
-				},
-				department:{
-					'ids':department_ids,
-					'names':department_names
-				},
-				user:{
-					'ids':user_ids,
-					'names':user_names
-				}
+				company:{ 'ids':company_ids, 'names':company_names },
+				department:{ 'ids':department_ids, 'names':department_names },
+				user:{ 'ids':user_ids, 'names':user_names }
 			};
 			if(typeof obj == 'object'){
-				if(has_department){
-					var html = "";
-					department_ids = department_ids.RTrim(',');
-					department_ids = department_ids.LTrim(',');
-					department_names = department_names.RTrim(',');
-					department_names = department_names.LTrim(',');
-					department_ids = department_ids ? department_ids.split(',') : [];
-					department_names = department_names ? department_names.split(',') : [];
-					if(department_names.length > 0){
-						for(var i = 0;i < department_names.length; i++){
-							html += build_sel_html('department',department_ids[i],department_names[i]);
-						}
+				var html = "";
+				department_ids = department_ids.RTrim(',').LTrim(',');
+				department_names = department_names.RTrim(',').LTrim(',');
+				department_ids = department_ids ? department_ids.split(',') : [];
+				department_names = department_names ? department_names.split(',') : [];
+				
+				if(department_names.length > 0){
+					for(var i = 0;i < department_names.length; i++){
+						html += build_sel_html('department',department_ids[i],department_names[i]);
 					}
-					$(obj).html(html);
 				}
+				$(obj).html(html);
 			};
 			
 			if(typeof callback === 'function'){

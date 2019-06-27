@@ -55,13 +55,14 @@
 			var cols = [[
 				{type:'numbers',title:'序号'},
 				{field:'title',title:'标题'},
+				{field:'info',title:'完成情况'},
 				{field:'date',title:'发布时间'},
 				{toolbar:'#bar',title:'操作'}
 			]];
 			var datas = [
-				{'title':'去打酱油',date:'2019-1-1 19:23:32'},
-				{'title':'打完了吗',date:'2019-1-1 19:23:32'},
-				{'title':'没有',date:'2019-1-1 19:23:32'},
+				{'title':'去打酱油',date:'2019-1-1 19:23:32',info:'我未完成'},
+				{'title':'打完了吗',date:'2019-1-1 19:23:32',info:'1/2完成'},
+				{'title':'没有',date:'2019-1-1 19:23:32',info:'2/2完成'},
 			];
 			layui.use(['table'], function() {
 				var table = layui.table;

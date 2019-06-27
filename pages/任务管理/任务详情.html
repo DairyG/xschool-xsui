@@ -112,7 +112,7 @@
 				<div class="form-title">任务记录</div>
 				<div class="layui-tab">
 					<ul class="layui-tab-title">
-						<li class="layui-this">全部</li>
+						<li class="layui-this">完成情况</li>
 						<li>回复</li>
 					</ul>
 					<div class="layui-tab-content">
@@ -141,14 +141,24 @@
 			var cols = [[
 				{type:'numbers',title:'序号'},
 				{field:'umane',title:'用户名称'},
+				{field:'tips',title:'状态'},
+				{field:'date',title:'时间'},
+			]];
+			var cols2 = [[
+				{type:'numbers',title:'序号'},
+				{field:'umane',title:'用户名称'},
 				{field:'tips',title:'信息'},
 				{field:'date',title:'时间'},
 			]];
 			var datas = [
-				{'umane':'张三',tips:'完成了任务',date:'2019-1-1 19:28:12'},
-				{'umane':'王五',tips:'完成了任务',date:'2019-1-1 19:28:12'},
+				{'umane':'张三',tips:'已完成',date:'2019-1-1 19:28:12'},
+				{'umane':'王五',tips:'已完成',date:'2019-1-1 19:28:12'},
 			];
-			layui.use(['table','laydate','layedit'], function() {
+			var datas2 = [
+				{'umane':'张三',tips:'怎么样了',date:'2019-1-1 19:28:12'},
+				{'umane':'王五',tips:'还差一点',date:'2019-1-1 19:28:12'},
+			];
+			layui.use(['table','laydate','layedit','element'], function() {
 				table = layui.table;
 				var laydate = layui.laydate,
 					layedit = layui.layedit;
@@ -177,8 +187,8 @@
 					page: true,
 					even: true,
 					height: '360',
-					cols: cols,
-					data: datas,
+					cols: cols2,
+					data: datas2,
 				});
 			});
 			function closePop(){

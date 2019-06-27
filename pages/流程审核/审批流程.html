@@ -148,6 +148,7 @@
 										<label class="layui-form-label"><span class="text-red">*</span>是否同意</label>
 										<div class="layui-input-block">
 											<input type="radio" name="opinion" title="同意申请" />
+											<input type="radio" name="opinion" title="拒绝申请" />
 											<input type="radio" name="opinion" title="驳回申请" />
 										</div>
 									</div>
@@ -218,7 +219,15 @@
 					]
 				});
 			});
-			
+			$(".process_step li").hover(function(){
+				var obj = $(this).find('i');
+				layer.tips('张三：同意<br/>李四：不同意<br/>', obj, {
+					tips: [3, '#3595CC'],
+					time: 10000
+				});
+			},function(){
+				layer.closeAll();
+			});
 		</script>
 	</body>
 </html>

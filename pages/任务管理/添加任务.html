@@ -16,12 +16,6 @@
 				<form class="layui-form layui-form2" >
 					<div class="layui-row">
 						<div class="layui-form-item layui-col-md6 margin-b-20">
-							<label class="layui-form-label"><span class="text-red"> *</span>任务标题</label>
-							<div class="layui-input-block">
-								<input type="text" class="layui-input" autocomplete="off" placeholder="请输入任务标题" >
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md6 margin-b-20">
 							<label class="layui-form-label"><span class="text-red"> *</span>执行人</label>
 							<div class="layui-input-block">
 								<div class="layui-input" onclick="user_popup(this,true,false,false)">
@@ -37,10 +31,44 @@
 								</div>
 							</div>
 						</div>
+						<!-- 先选择执行人 再选择考核方案  才会出现具体的考核项目 -->
+						<!-- 选择了考核方案 则考核项目必选 -->
 						<div class="layui-form-item layui-col-md6 margin-b-20">
-							<label class="layui-form-label">截止日期</label>
+							<label class="layui-form-label">考核方案</label>
 							<div class="layui-input-block">
-								<input type="text" class="layui-input date" readonly autocomplete="off" placeholder="请选择截止日期"/>
+								<select>
+									<option></option>
+									<option>月度方案</option>
+									<option>季度方案</option>
+									<option>半年方案</option>
+									<option>年度方案</option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label">考核项目</label>
+							<div class="layui-input-block">
+								<div class="layui-input" onclick="assess_popup(this,'radio')">
+									<span class="layui-form-mid layui-word-aux">请选择考核项目</span>
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>任务标题</label>
+							<div class="layui-input-block">
+								<input type="text" class="layui-input" autocomplete="off" placeholder="请输入任务标题" >
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>开始时间</label>
+							<div class="layui-input-block">
+								<input type="text" class="layui-input date" readonly autocomplete="off" placeholder="请选择开始时间"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>截止时间</label>
+							<div class="layui-input-block">
+								<input type="text" class="layui-input date" readonly autocomplete="off" placeholder="请选择截止时间"/>
 							</div>
 						</div>
 						<div class="layui-form-item layui-col-md6 margin-b-20">

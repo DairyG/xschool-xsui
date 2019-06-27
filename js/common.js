@@ -273,37 +273,33 @@ function GetPara(name) {
 function approvalno_popup(obj){
 	$('body').append('<div id="popup_content"></div>');
 	$('#popup_content').load("../../pages/public/approvalno.html");
-	layui.use(['table'],function(){
-		layer.open({
-			type: 1,
-			title:'选择审批单',
-			String: false,
-			closeBtn: 1,
-			btn:['确认','取消'],
-			skin: 'layui-layer-rim',
-			area: ['850px','450px'],
-			content: $('#popup_content'),
-			success:function(){
-				layui.table.render({
-					elem:'#approvalno_lst',
-					cols:[[
-						{type:'radio','title':'序号'},
-						{field:'no','title':'单号'},
-						{field:'bm','title':'申请部门'},
-						{field:'sqr','title':'申请人'},
-						{field:'title','title':'费用名称'},
-						{field:'date1','title':'申请日期'},
-						{field:'date2','title':'审核日期'},
-					]],
-					data:[
-						{'no':'1342353525',title:'物料费',date1:'2019-01-02',date2:'2019-01-02',bm:'销售部',sqr:'张三'},
-						{'no':'1342353525',title:'物料费',date1:'2019-01-02',date2:'2019-01-02',bm:'销售部',sqr:'张三'},
-						{'no':'1342353525',title:'物料费',date1:'2019-01-02',date2:'2019-01-02',bm:'销售部',sqr:'张三'},
-					],
-					height:'270',
-					page:true
-				});
-			}
-		});
+	
+	layer.open({
+		type: 1,
+		title:'选择审批单',
+		String: false,
+		closeBtn: 1,
+		btn:['确认','取消'],
+		skin: 'layui-layer-rim',
+		area: ['850px','450px'],
+		content: $('#popup_content')
+	});
+}
+
+/**
+ * 考核项选择框
+ */
+function assess_popup(obj,type = 'checkbox'){
+	$('body').append('<div id="popup_content" data-type='+type+'></div>');
+	$('#popup_content').load("../../pages/public/assess.html");
+	layer.open({
+		type: 1,
+		title:'选择考核项',
+		String: false,
+		closeBtn: 1,
+		btn:['确认','取消'],
+		skin: 'layui-layer-rim',
+		area: ['850px','450px'],
+		content: $('#popup_content')
 	});
 }

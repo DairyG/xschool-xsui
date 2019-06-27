@@ -15,46 +15,16 @@
 			<div class="layui-card-body bgwhite">
 				<form class="layui-form layui-form2 layui-form-info" >
 					<div class="layui-row">
-						<div class="layui-form-item layui-col-md12 ">
+						<div class="layui-form-item layui-col-md6 ">
 							<label class="layui-form-label">任务标题：</label>
 							<div class="layui-input-block">
 								<div class="layui-form-mid">去打酱油啊</div>
 							</div>
 						</div>
 						<div class="layui-form-item layui-col-md6 ">
-							<label class="layui-form-label">考核方案：</label>
-							<div class="layui-input-block">
-								<div class="layui-form-mid">月度考核方案</div>
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md6 ">
-							<label class="layui-form-label">考核项目：</label>
-							<div class="layui-input-block">
-								<div class="layui-form-mid">销售任务</div>
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md6 ">
-							<label class="layui-form-label">开始时间：</label>
-							<div class="layui-input-block">
-								<div class="layui-form-mid">2019-2-3 18:00:00 开始</div>
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md6 ">
-							<label class="layui-form-label">截止时间：</label>
+							<label class="layui-form-label">截止日期：</label>
 							<div class="layui-input-block">
 								<div class="layui-form-mid">2019-2-3 18:00:00 截止</div>
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md6 ">
-							<label class="layui-form-label">提醒时间：</label>
-							<div class="layui-input-block">
-								<div class="layui-form-mid">提前15分钟</div>
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md6 ">
-							<label class="layui-form-label">提醒方式：</label>
-							<div class="layui-input-block">
-								<div class="layui-form-mid">短信</div>
 							</div>
 						</div>
 						<div class="layui-form-item layui-col-md12 ">
@@ -94,17 +64,32 @@
 							</div>
 						</div>
 						<div class="layui-form-item layui-col-md12 ">
-							<label class="layui-form-label">回复：</label>
+							<label class="layui-form-label">子任务1：</label>
 							<div class="layui-input-block">
-								<div class="padding-l-15">
-									<textarea class="layui-textarea"></textarea>
+								<div class="padding-l-15 margin-t-10">标题：等酱油打完了，再去打个醋等酱油打完了，再去打个醋哈</div>
+								<div class="padding-l-15 margin-t-10">
+									执行人：
+									<span class="layui-badge-plus layui-bg-blue" >张三</span>
+									<span class="layui-badge-plus layui-bg-gray" >李四</span>
+									<span class="layui-badge-plus layui-bg-blue" >王五</span>
 								</div>
 							</div>
 						</div>
-					</div>
+						<div class="layui-form-item layui-col-md12 ">
+							<label class="layui-form-label">子任务2：</label>
+							<div class="layui-input-block">
+								<div class="padding-l-15 margin-t-10">标题：等酱油打完了，再去打个醋等酱油打完了，再去打个醋哈</div>
+								<div class="padding-l-15 margin-t-10">
+									执行人：
+									<span class="layui-badge-plus layui-bg-gray" >张三</span>
+									<span class="layui-badge-plus layui-bg-gray" >李四</span>
+									<span class="layui-badge-plus layui-bg-gray" >王五</span>
+								</div>
+							</div>
+						</div>
+					</div>	
 					<div class="layui-row text-right">
-						<button class="layui-btn layui-btn-normal">回复</button>
-						<button class="layui-btn layui-btn-dangers">完成</button>
+						<a class="layui-btn layui-btn-normal" lay-href='pages/任务管理/添加子任务.html?id=1&data=2'>添加子任务</a>
 						<span class="layui-btn " onclick="history.back(-1)">返回</span>
 					</div>
 				</form>

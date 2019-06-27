@@ -99,6 +99,26 @@ function build_form_item_html(param,i){
 		case 'approvalno':
 			html += '<input name="'+name+'" type="text" lay-verify="'+verify+'" readonly placeholder="请选择'+param.LBL+'"  autocomplete="off" class="layui-input" onclick="approvalno_popup(this)">';
 			break;
+		case 'person':
+			let e = 'user_popup';
+			let u = false,d = false,c = false;
+			let a = (param.ALLOWS.length > 0) ? param.ALLOWS.join(',') : "";
+			if(a != ""){
+				if(a.indexOf('user') > -1){
+					u = true;
+				}
+				if(a.indexOf('department') > -1){
+					d = true;
+				}
+				if(a.indexOf('company') > -1){
+					c = true;
+				}
+				if(a.indexOf('position') > -1){
+					e = 'user_popup2';
+				}
+			}
+			html += '<div class="layui-input"><button class="layui-btn layui-btn-sm margin-t-3 layui-btn-normal" onclick="'+e+'($(this).parent(),'+u+','+d+','+c+')">'+param.LBL+'</button></div>';
+			break;
 	}
 	
 	html += '</div></div>';

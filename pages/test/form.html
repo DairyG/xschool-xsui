@@ -44,6 +44,7 @@
 							<h3 class="fields-group">其他字段</h3>
 							<ul>
 								<li ftype="approvalno"><a id="alno" class="btn-field" title="适用于管理审批单号" href="#"><i class="iconfont">&#xe68C;</i>审批单号</a></li>
+								<li ftype="person"><a id="pson" class="btn-field" title="适用于选择公司、部门、人员、职位的选择" href="#"><i class="iconfont">&#xe678;</i>人员、部门</a></li>
 							</ul>
 						</div><!-- addFields -->
 					</div>
@@ -226,7 +227,17 @@
 													<label for="chkDismark">禁止手动标注</label>
 													<a href="#" class="help hide" title="禁止手动标注" rel="默认情况下，地理位置支持自动定位和手动标注。您可以勾选此选项来禁用手动标注，满足某些需要真实确认填表人位置的场景。">(?)</a>
 												</li>
-
+												<li id="popt_allows">
+													<legend>可选对象</legend>
+													<input id="a_user" name="ALLOWS" type="checkbox" value="user" />
+													<label for="a_user">用户</label>
+													<input id="a_department" name="ALLOWS" type="checkbox" value="department" />
+													<label for="a_department">部门</label>
+													<input id="a_company" name="ALLOWS" type="checkbox" value="company" />
+													<label for="a_company">公司</label>
+													<input id="a_position" name="ALLOWS" type="checkbox" value="position" />
+													<label for="a_position">职位</label>
+												</li>
 											</ul>
 										</fieldset>
 									</li>

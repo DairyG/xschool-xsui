@@ -15,3 +15,28 @@
 	</div>
 </form>
 <table id="approvalno_lst" lay-filter="approvalno_lst"></table>
+<script type="text/javascript">
+	$(function(){
+		layui.use(['table'],function(){
+			layui.table.render({
+				elem:'#approvalno_lst',
+				cols:[[
+					{type:'radio','title':'序号'},
+					{field:'no','title':'单号'},
+					{field:'bm','title':'申请部门'},
+					{field:'sqr','title':'申请人'},
+					{field:'title','title':'费用名称'},
+					{field:'date1','title':'申请日期'},
+					{field:'date2','title':'审核日期'},
+				]],
+				data:[
+					{'no':'1342353525',title:'物料费',date1:'2019-01-02',date2:'2019-01-02',bm:'销售部',sqr:'张三'},
+					{'no':'1342353525',title:'物料费',date1:'2019-01-02',date2:'2019-01-02',bm:'销售部',sqr:'张三'},
+					{'no':'1342353525',title:'物料费',date1:'2019-01-02',date2:'2019-01-02',bm:'销售部',sqr:'张三'},
+				],
+				height:'270',
+				page:true
+			});
+		});	
+	});
+</script>

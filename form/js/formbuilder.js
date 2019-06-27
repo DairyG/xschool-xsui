@@ -106,12 +106,17 @@ DEFFLD = {
     address: {
         html: '<label class="desc"><span class="req hide"> *</span></label><div class="content textcontent"><input type="text" disabled="disabled" maxlength="255" class="input" placeholder="请选择省/请选择市/请选择区、县"/><i class="iconfont qrinput hide">&#xe67d;</i></div>',
         json: '({LBL:"地址",TYP:"address",REQD:"0",SCU:"pub",INSTR:"",CSS:"",SUBFLDS:{ZIP:{},PRV:{},CITY:{},DTL:{}}})',
-        holder: '<li class="field prefocus" style="height:141px;width:97%"></li>'
+        holder: '<li class="field prefocus" style="height:71px;width:97%"></li>'
     },
 	approvalno:{
 		html: '<label class="desc"><span class="req hide"> *</span></label><div class="content textcontent"><input type="text" disabled="disabled" maxlength="255" class="input" /><i class="iconfont qrinput hide">&#xe67d;</i></div>',
 		json: '({LBL:"审批单号",TYP:"approvalno",REQD:"0",INSTR:"",CSS:"",})',
-		holder: '<li class="field prefocus" style="height:141px;width:97%"></li>'
+		holder: '<li class="field prefocus" style="height:71px;width:97%"></li>'
+	},
+	person:{
+		html: '<label class="desc"><span class="req hide"> *</span></label><div class="content textcontent"><input type="text" disabled="disabled" maxlength="255" class="input" /><i class="iconfont qrinput hide">&#xe67d;</i></div>',
+		json: '({LBL:"人员、部门",TYP:"person",REQD:"0",INSTR:"",ALLOWS:["user","company"]})',
+		holder: '<li class="field prefocus" style="height:71px;width:97%"></li>'
 	}
 };
 (function () {
@@ -210,7 +215,8 @@ function showProperties(c) {
         'pdefval_addr',
         'pinstruct',
         'psection',
-        'phtml'
+        'phtml',
+		'popt_allows'
     ],
     a = {
         text: [
@@ -339,6 +345,13 @@ function showProperties(c) {
 			'poptions',
 			'popt_required',
 			'psecurity',
+		],
+		person:[
+			'lbn',
+			'poptions',
+			'popt_required',
+			'psecurity',
+			'popt_allows'
 		]
     };
     $.each(b, function (d, e) {
@@ -1619,6 +1632,22 @@ function propertyInit() {
         F[IDX].DISMK = $(this).prop('checked') ? '1' : '0';
         CHANGED = true
     });
+	$('#popt_allows input').click(function(){
+		let a = F[IDX].ALLOWS;
+		let c = $(this).prop('checked');
+		let v = $(this).val();
+		if(c){
+			a.push(v);
+		} else {
+			for(let i = 0;i < a.length; i++){
+				if(a[i] == v){
+					a.splice(i,1);
+				}
+			}
+		}
+		F[IDX].ALLOWS = a;
+		CHANGED = true;
+	});
     var d = function (Y) {
         if ($(Y).parent().hasClass('dropReq')) {
             $(Y).parent().find(':radio,:checkbox').prop('checked', false).end().hide();

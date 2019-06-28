@@ -60,7 +60,51 @@ function user_popup(obj = null,has_user = false,has_department = false,has_compa
 	}
 	
 	$('body').append('<div id="popup_content" data-has_user="'+has_user+'" data-has_department="'+has_department+'" data-has_company="'+has_company+'" data-num="'+num+'"></div>');
-	$('#popup_content').load("../../pages/public/user_select2.html");
+	$('#popup_content').load("../../pages/public/user_select2.html",null,function(){
+		if(typeof obj == 'object'){
+			var html = '';
+			var arr = $(obj).find('input[type="hidden"]').val();
+			arr = JSON.parse(arr);
+			arr.company.ids = arr.company.ids.RTrim(',').LTrim(',');
+			arr.company.ids = arr.company.ids ? arr.company.ids.split(',') : [];
+			arr.company.names = arr.company.names.RTrim(',').LTrim(',');
+			arr.company.names = arr.company.names ? arr.company.names.split(',') : [];
+			if(arr.company.ids.length > 0){
+				$('#popup_content #company_ids').val(arr.company.ids);
+				$('#popup_content #company_names').val(arr.company.names);
+				for(var i = 0;i < arr.company.ids.length; i++){
+					html += build_selectd_html('company',arr.company.ids[i],arr.company.names[i]);
+				}
+			}
+			arr.department.ids = arr.department.ids.RTrim(',').LTrim(',');
+			arr.department.ids = arr.department.ids ? arr.department.ids.split(',') : [];
+			arr.department.names = arr.department.names.RTrim(',').LTrim(',');
+			arr.department.names = arr.department.names ? arr.department.names.split(',') : [];
+			if(arr.department.ids.length > 0){
+				$('#popup_content #department_ids').val(arr.department.ids);
+				$('#popup_content #department_names').val(arr.department.names);
+				for(var i = 0;i < arr.department.ids.length; i++){
+					html += build_selectd_html('department',arr.department.ids[i],arr.department.names[i]);
+				}
+			}
+			arr.user.ids = arr.user.ids.RTrim(',').LTrim(',');
+			arr.user.ids = arr.user.ids ? arr.user.ids.split(',') : [];
+			arr.user.names = arr.user.names.RTrim(',').LTrim(',');
+			arr.user.names = arr.user.names ? arr.user.names.split(',') : [];
+			if(arr.user.ids.length > 0){
+				$('#popup_content #user_ids').val(arr.user.ids);
+				$('#popup_content #user_names').val(arr.user.names);
+				for(var i = 0;i < arr.user.ids.length; i++){
+					html += build_selectd_html('user',arr.user.ids[i],arr.user.names[i]);
+				}
+			}
+			$("#selected_box").append(html);
+		}
+	});
+	//获取初始值
+	if(typeof obj == 'object'){
+		$('#popup_content').attr('data-has_def','true');
+	}
 	
 	layer.open({
 		type: 1,
@@ -86,17 +130,28 @@ function user_popup(obj = null,has_user = false,has_department = false,has_compa
 			};
 			if(typeof obj == 'object'){
 				var html = "";
-				department_ids = department_ids.RTrim(',').LTrim(',');
+				user_names = user_names.RTrim(',').LTrim(',');
 				department_names = department_names.RTrim(',').LTrim(',');
-				department_ids = department_ids ? department_ids.split(',') : [];
-				department_names = department_names ? department_names.split(',') : [];
+				company_names = company_names.RTrim(',').LTrim(',');
 				
-				if(department_names.length > 0){
-					for(var i = 0;i < department_names.length; i++){
-						html += build_sel_html('department',department_ids[i],department_names[i]);
-					}
+				user_arr = user_names ? user_names.split(',') : [];
+				department_arr = department_names ? department_names.split(',') : [];
+				company_arr = company_names ? company_names.split(',') : [];
+				
+				var L1 = user_arr.length,L2 = department_arr.length,L3 = company_arr.length;
+				if((L1 + L2 + L3) > 1){
+					html = "等"+(L1 + L2 + L3)+'项&gt;&gt;';
 				}
+				if(L1 > 0){
+					html = user_arr[0] + html;
+				} else if(L2 > 0){
+					html = department_arr[0] + html;
+				} else if(L3 > 0){
+					html = company_arr[0] + html;
+				}
+				
 				$(obj).html(html);
+				$(obj).append('<input type="hidden" name="sels" value=\''+JSON.stringify(arr)+'\'>');
 			};
 			
 			if(typeof callback === 'function'){
@@ -246,7 +301,6 @@ function sel_remove(obj){
 //获取get参数 
 function GetPara(name) { 
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
-	console.log(window.location);
     var r = window.location.search.substr(1).match(reg); 
     if (r != null) 
         return unescape(r[2]); 

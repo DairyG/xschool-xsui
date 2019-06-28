@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../../layui/css/layui.css" />
+		<link rel="stylesheet" href="../../layui/css/common.css" />
+		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../layui/layui.js"></script>
+	</head>
+	<body class="bgf2f2f2">
+		<div class="childrenBody bgf2f2f2">
+			<div class="daily_box">
+				<div class="daily_content">
+					<div class="daily_title">
+						<button class="layui-btn  layui-btn-normal">写日志</button>
+						<div class="layui-btn-group fr">
+							<button type="button" class="layui-btn">增加</button>
+							<button type="button" class="layui-btn">编辑</button>
+							<button type="button" class="layui-btn">删除</button>
+						</div>
+					</div>
+					<ul>
+						<li class="daily_item ">
+							<div class="img">
+								<img src="../../img/head.jpg"/>
+							</div>
+							<div class="text layui-card">
+								<p class="title text-85">
+									<span class="fl">张三</span>
+									<span class="fr">2019-1-1 10:45</span>
+								</p>
+								<div class="info">
+									国际在线报道（记者 程亚惠）全球30多家创始成员机构共同发起的“一带一路”经济信息共享网络27日在北京宣告成立。这是落实第二届“一带一路”国际合作高峰论坛成果清单的重要举措，对深化中外媒体和研究机构在经济信息领域的交流合作有着积极意义。
+								</div>
+								<div class="text-right">
+									<button class="layui-btn layui-btn-xs layui-btn-primary">编辑</button>
+									<button class="layui-btn layui-btn-xs layui-btn-primary">删除</button>
+								</div>
+								<i class="left_arrow"></i>
+							</div>
+						</li>
+						<li class="daily_item ">
+							<div class="img">
+								<img src="../../img/head.jpg"/>
+							</div>
+							<div class="text layui-card">
+								<p class="title text-85">
+									<span class="fl">张三</span>
+									<span class="fr">2019-1-1 10:45</span>
+								</p>
+								<div class="info">
+									国际在线报道（记者 程亚惠）全球30多家创始成员机构共同发起的“一带一路”经济信息共享网络27日在北京宣告成立。这是落实第二届“一带一路”国际合作高峰论坛成果清单的重要举措，对深化中外媒体和研究机构在经济信息领域的交流合作有着积极意义。
+								</div>
+								<div class="text-right">
+									<button class="layui-btn layui-btn-xs layui-btn-primary">编辑</button>
+									<button class="layui-btn layui-btn-xs layui-btn-primary">删除</button>
+								</div>
+								<i class="left_arrow"></i>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="daily_date" id="date">
+				</div>
+			</div>
+		</div>
+		<div class="linePop">
+			<div class="layui-card-body padding-r-50">
+			</div>
+		</div>
+		<script>
+			var layer_linePop;
+			layui.use(['table','laydate'], function() {
+				var table = layui.table,
+					laydate = layui.laydate;
+				laydate.render({
+					elem:'#date',
+					show:true,
+					position:'static'
+				});
+				//关闭弹窗
+				$(".closePop").click(function(){
+					layer.closeAll()
+				})
+			});
+			function closePop(){
+				layer.close(layer_linePop);
+			}
+		</script>
+	</body>
+</html>

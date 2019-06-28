@@ -62,7 +62,7 @@
 										<th lay-data="{toolbar:'#bar',minWidth:'140',fixed:'right'}" rowspan="2">操作</th>
 									</tr>
 									<tr>
-										<th lay-data="{field:'jb',minWidth:'100',totalRow:true,templet:function(d,obj){console.log(obj);return tab_input(d,'jb');}}">基本工资</th>
+										<th lay-data="{field:'jb',minWidth:'100',totalRow:true,edit:true,templet:function(d,obj){return tab_input(d,'jb');}}">基本工资</th>
 										<th lay-data="{field:'cb',minWidth:'100',totalRow:true,templet:function(d){return tab_input(d,'cb');}}">餐补</th>
 										<th lay-data="{field:'jt',minWidth:'100',totalRow:true,templet:function(d){return tab_input(d,'jt');}}">交通补助</th>
 										<th lay-data="{field:'hf',minWidth:'100',totalRow:true,templet:function(d){return tab_input(d,'hf');}}">话费补助</th>
@@ -116,7 +116,20 @@
 				var table = layui.table;
 				
 				table.on('edit(lst)',function(obj){
-					//console.log(obj);
+					var value = obj.value;
+					var field = obj.field;
+					var inputElem = $(this);
+					var tdElem = inputElem.closest('td');
+					var valueOld = inputElem.prev().find(input).val();
+					console.log(tdElem);
+					console.log(value,'|',valueOld);
+					var data = {};
+					if (isNaN(value)) {
+						data[field] = valueOld;
+						inputElem.blur();
+						obj.update(data);
+						tdElem.click();
+					}
 				});
 				table.on('row(lst)',function(obj){
 					//obj.update(obj.data);

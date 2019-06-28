@@ -1,4 +1,5 @@
 @charset "utf-8";
+.overhide {overflow: hidden;}
 .childrenBody {background-color: #fff;position: absolute;right: 15px;left:15px;top:15px;bottom: 15px;}
 .icon_group1{background: url('../../lib/ztree/css/metroStyle/img/metro.png');background-position: -149px -3px;width: 18px;height: 18px;display: inline-block;vertical-align: middle;}
 .icon_group2{background: url('../../lib/ztree/css/metroStyle/img/metro.png');background-position: -149px -25px;width: 18px;height: 18px;display: inline-block;vertical-align: middle;}
@@ -227,3 +228,37 @@ table .layui-table-edit {height:38px;line-height: 38px;}
 .input-select {}
 .input-select .layui-input{border:0;    border: 0;height: 36px;line-height: 36px;}
 .layui-input .layui-form-mid {height: 19px;}
+
+/* 日报 周报 月报列表 */
+.daily_box {position: relative;margin:10px 20px}
+.daily_box .daily_date{position: absolute;right: 0;top:0;}
+.daily_content { margin-right: 300px;}
+.daily_content li { width: 100%;position: relative;margin-bottom: 20px;}
+.daily_content li .img { width: 80px;height:80px;position:absolute;left: 0;top:0;}
+.daily_content li .img img {width: 80px;height:80px}
+.daily_content li .text { margin-left: 100px;background:#fff;padding:10px;position: relative;}
+.daily_content li .text .title {overflow: hidden;    padding-bottom: 10px;}
+.daily_content li .text .left_arrow {position: absolute;border-width: 8px; border-style:solid; border-color: transparent #fff transparent transparent;top:20px;left:-16px;}
+.daily_content .daily_title { overflow: hidden; margin-bottom: 20px;}
+
+.daily_timeline {}
+.daily_timeline .ul {padding-top: 20px;}
+.daily_timeline .ul li {position: relative;padding-right: 20px;}
+.daily_timeline .ul li .left {position: absolute;top:0;left: 0;width: 100px;text-align: right; line-height: 120%;}
+.daily_timeline .ul li .right {padding-left:30px;padding-right:20px;margin-left: 128px;border-left: 1px solid #c2c2c2;padding-bottom:20px}
+.daily_timeline .ul li .timeline_icon {position: absolute;top:0;left: 120px;background: #fff;}
+.daily_timeline .ul li .text {padding:20px 0 20px 10px;border-bottom: 1px solid #c2c2c2;min-height: 80px;position: relative;}
+.daily_timeline .ul li .text .overlay {max-height: 210px;overflow: hidden;position: relative;}
+.daily_timeline .ul li .text .content { padding-bottom:10px}
+.daily_timeline .ul li .text .content .title {font-weight: bold;padding:5px 0;}
+.daily_timeline .ul li .text .edit_content {overflow: hidden;border-bottom: 1px solid #ddd;padding-bottom: 15px;}
+.daily_timeline .ul li .text .edit_content:last-child {border-bottom: 0;}
+.daily_timeline .ul li .text .edit_content img {max-width: 100% !important;}
+.daily_timeline .ul li .text .more { background: #f2f2f2;width: 100%;padding: 5px 0;text-align: center;border-bottom:1px solid #e2e2e2;display:none;}
+.daily_timeline .ul li .text .more .more_btn {cursor:pointer;}
+.daily_timeline .ul li .btns { }
+.daily_timeline .ul li:hover .btns {display: block;}
+.daily_timeline .ul li .text .reply {background: #f2f2f2;padding:7px 10px;}
+.daily_timeline .ul li .text .reply .edit_content{border-bottom: 0;padding-bottom: 0;}
+.daily_timeline .ul li .text .reply li {padding-bottom:10px}
+.load_more {padding: 10px 0;}

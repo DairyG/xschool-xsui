@@ -34,11 +34,12 @@
 	var has_user = $('#popup_content').data('has_user');
 	var has_department = $('#popup_content').data('has_department');
 	var has_company =$('#popup_content').data('has_company');
+	var has_def =$('#popup_content').data('has_def');
 	var allow_num = $('#popup_content').data('num');
 	var user_company = {id:1,pid:0}//默认当前用户的公司信息 实际另行获取
 	
 	var company_arr = [
-		{id:1,pid:0,name:'四季香江'},
+		{id:1,pid:0,name:'阿里巴巴'},
 		{id:2,pid:1,name:'咨询公司'},
 		{id:3,pid:1,name:'建筑公司'},
 		{id:4,pid:1,name:'设计公司'},
@@ -75,6 +76,7 @@
 	];
 	
 	$(function(){
+		if(has_def){}
 		if(has_company){
 			show_items('company',user_company.id);
 			//$(".loaction_box").html('<span><a href="javascript:;" onclick="location_sel(this,\'company\','+user_company.id+',\''+company_arr[0].name+'\')">'+company_arr[0].name+'</a>&gt;</span>') ;

@@ -63,42 +63,48 @@ function user_popup(obj = null,has_user = false,has_department = false,has_compa
 	$('#popup_content').load("../../pages/public/user_select2.html",null,function(){
 		if(typeof obj == 'object'){
 			var html = '';
-			var arr = $(obj).find('input[type="hidden"]').val();
-			arr = JSON.parse(arr);
-			arr.company.ids = arr.company.ids.RTrim(',').LTrim(',');
-			arr.company.ids = arr.company.ids ? arr.company.ids.split(',') : [];
-			arr.company.names = arr.company.names.RTrim(',').LTrim(',');
-			arr.company.names = arr.company.names ? arr.company.names.split(',') : [];
-			if(arr.company.ids.length > 0){
-				$('#popup_content #company_ids').val(arr.company.ids);
-				$('#popup_content #company_names').val(arr.company.names);
-				for(var i = 0;i < arr.company.ids.length; i++){
-					html += build_selectd_html('company',arr.company.ids[i],arr.company.names[i]);
-				}
+			if($(obj).attr('type') == 'text'){
+				var arr = $(obj).siblings('input[name="sels"]').val();
+			} else {
+				var arr = $(obj).find('input[name="sels"]').val();
 			}
-			arr.department.ids = arr.department.ids.RTrim(',').LTrim(',');
-			arr.department.ids = arr.department.ids ? arr.department.ids.split(',') : [];
-			arr.department.names = arr.department.names.RTrim(',').LTrim(',');
-			arr.department.names = arr.department.names ? arr.department.names.split(',') : [];
-			if(arr.department.ids.length > 0){
-				$('#popup_content #department_ids').val(arr.department.ids);
-				$('#popup_content #department_names').val(arr.department.names);
-				for(var i = 0;i < arr.department.ids.length; i++){
-					html += build_selectd_html('department',arr.department.ids[i],arr.department.names[i]);
+			if(arr){
+				arr = JSON.parse(arr);
+				arr.company.ids = arr.company.ids.RTrim(',').LTrim(',');
+				arr.company.ids = arr.company.ids ? arr.company.ids.split(',') : [];
+				arr.company.names = arr.company.names.RTrim(',').LTrim(',');
+				arr.company.names = arr.company.names ? arr.company.names.split(',') : [];
+				if(arr.company.ids.length > 0){
+					$('#popup_content #company_ids').val(','+arr.company.ids+',');
+					$('#popup_content #company_names').val(','+arr.company.names+',');
+					for(var i = 0;i < arr.company.ids.length; i++){
+						html += build_selectd_html('company',arr.company.ids[i],arr.company.names[i]);
+					}
 				}
-			}
-			arr.user.ids = arr.user.ids.RTrim(',').LTrim(',');
-			arr.user.ids = arr.user.ids ? arr.user.ids.split(',') : [];
-			arr.user.names = arr.user.names.RTrim(',').LTrim(',');
-			arr.user.names = arr.user.names ? arr.user.names.split(',') : [];
-			if(arr.user.ids.length > 0){
-				$('#popup_content #user_ids').val(arr.user.ids);
-				$('#popup_content #user_names').val(arr.user.names);
-				for(var i = 0;i < arr.user.ids.length; i++){
-					html += build_selectd_html('user',arr.user.ids[i],arr.user.names[i]);
+				arr.department.ids = arr.department.ids.RTrim(',').LTrim(',');
+				arr.department.ids = arr.department.ids ? arr.department.ids.split(',') : [];
+				arr.department.names = arr.department.names.RTrim(',').LTrim(',');
+				arr.department.names = arr.department.names ? arr.department.names.split(',') : [];
+				if(arr.department.ids.length > 0){
+					$('#popup_content #department_ids').val(','+arr.department.ids+',');
+					$('#popup_content #department_names').val(','+arr.department.names+',');
+					for(var i = 0;i < arr.department.ids.length; i++){
+						html += build_selectd_html('department',arr.department.ids[i],arr.department.names[i]);
+					}
 				}
+				arr.user.ids = arr.user.ids.RTrim(',').LTrim(',');
+				arr.user.ids = arr.user.ids ? arr.user.ids.split(',') : [];
+				arr.user.names = arr.user.names.RTrim(',').LTrim(',');
+				arr.user.names = arr.user.names ? arr.user.names.split(',') : [];
+				if(arr.user.ids.length > 0){
+					$('#popup_content #user_ids').val(','+arr.user.ids+',');
+					$('#popup_content #user_names').val(','+arr.user.names+',');
+					for(var i = 0;i < arr.user.ids.length; i++){
+						html += build_selectd_html('user',arr.user.ids[i],arr.user.names[i]);
+					}
+				}
+				$("#selected_box").append(html);
 			}
-			$("#selected_box").append(html);
 		}
 	});
 	//获取初始值
@@ -142,16 +148,28 @@ function user_popup(obj = null,has_user = false,has_department = false,has_compa
 				if((L1 + L2 + L3) > 1){
 					html = "等"+(L1 + L2 + L3)+'项&gt;&gt;';
 				}
-				if(L1 > 0){
-					html = user_arr[0] + html;
-				} else if(L2 > 0){
-					html = department_arr[0] + html;
-				} else if(L3 > 0){
-					html = company_arr[0] + html;
-				}
 				
-				$(obj).html(html);
-				$(obj).append('<input type="hidden" name="sels" value=\''+JSON.stringify(arr)+'\'>');
+				if($(obj).attr('type') == 'text'){
+					if(L1 > 0){
+						html = user_arr[0];
+					} else if(L2 > 0){
+						html = department_arr[0];
+					} else if(L3 > 0){
+						html = company_arr[0];
+					}
+					$(obj).val(html);
+					$(obj).after('<input type="hidden" name="sels" value=\''+JSON.stringify(arr)+'\'>');
+				} else {
+					if(L1 > 0){
+						html = user_arr[0] + html;
+					} else if(L2 > 0){
+						html = department_arr[0] + html;
+					} else if(L3 > 0){
+						html = company_arr[0] + html;
+					}
+					$(obj).html(html);
+					$(obj).append('<input type="hidden" name="sels" value=\''+JSON.stringify(arr)+'\'>');
+				}
 			};
 			
 			if(typeof callback === 'function'){

@@ -22,6 +22,7 @@
 					<a href="写总结.html?t=5" class="layui-btn" v-bind:class="[t == 5 ? '' : 'layui-btn-primary']">年报</a>
 				</div>
 			</div>
+			<!-- 导入上一周、月的计划时 当前时间按选择的为准，不按当前时间 -->
 			<div class="layui-card-body bgwhite">
 				<form class="layui-form layui-form2">
 					<div class="layui-row">
@@ -61,6 +62,12 @@
 									<option>上半年</option>
 									<option>下半年</option>
 								</select>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20" >
+							<label class="layui-form-label">导入</label>
+							<div class="layui-input-block">
+								<button class="layui-btn layui-btn-sm layui-btn-normal margin-t-3">{{labels.import_str}}</button>
 							</div>
 						</div>
 						<div class="layui-form-item layui-col-md12 margin-b-20">
@@ -113,12 +120,12 @@
 		</div>
 		<script type="text/javascript">
 			var labels = [
-				{l1:'已完成工作',l2:'未完成工作',l3:'',l4:'需协调和帮助',l5:'备注'},
-				{l1:'本周完成工作',l2:'本周工作总结',l3:'下周工作计划',l4:'需协调和帮助',l5:'备注'},
-				{l1:'本月完成工作',l2:'本月工作总结',l3:'下月工作计划',l4:'需协调和帮助',l5:'备注'},
-				{l1:'本季度完成工作',l2:'本季度工作总结',l3:'下季度工作计划',l4:'需协调和帮助',l5:'备注'},
-				{l1:'半年完成工作',l2:'半年工作总结',l3:'下半年工作计划',l4:'需协调和帮助',l5:'备注'},
-				{l1:'本年完成工作',l2:'年度工作总结',l3:'明年工作计划',l4:'需协调和帮助',l5:'备注'},
+				{l1:'已完成工作',l2:'未完成工作',l3:'',l4:'需协调和帮助',l5:'备注',import_str:'导入日程'},
+				{l1:'本周完成工作',l2:'本周工作总结',l3:'下周工作计划',l4:'需协调和帮助',l5:'备注',import_str:'导入上周计划'},
+				{l1:'本月完成工作',l2:'本月工作总结',l3:'下月工作计划',l4:'需协调和帮助',l5:'备注',import_str:'导入上月计划'},
+				{l1:'本季度完成工作',l2:'本季度工作总结',l3:'下季度工作计划',l4:'需协调和帮助',l5:'备注',import_str:'导入上季度计划'},
+				{l1:'半年完成工作',l2:'半年工作总结',l3:'下半年工作计划',l4:'需协调和帮助',l5:'备注',import_str:'导入上半年计划'},
+				{l1:'本年完成工作',l2:'年度工作总结',l3:'明年工作计划',l4:'需协调和帮助',l5:'备注',import_str:'导入上一年计划'},
 			];
 			var vm = new Vue({
 				el:'#dom',

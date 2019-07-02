@@ -74,13 +74,14 @@
 	
 	$(function(){
 		if(has_def){}
-		if(has_company){
+		show_items('company',user_company.id);
+		/* if(has_company){
 			show_items('company',user_company.id);
 			//$(".loaction_box").html('<span><a href="javascript:;" onclick="location_sel(this,\'company\','+user_company.id+',\''+company_arr[0].name+'\')">'+company_arr[0].name+'</a>&gt;</span>') ;
 		} else {
 			show_items('department',user_company.id);
 			$(".loaction_box").html('<span><a href="javascript:;" onclick="location_sel(this,\'department\','+user_company.id+')">'+company_arr[0].name+'</a>&gt;</span>') ;
-		}
+		} */
 	});
 	
 	//处理导航栏
@@ -104,6 +105,11 @@
 				var input_checked = $(input).prop('checked');
 				if(input_checked != checked){
 					if(checked){
+						if(allow_num > 0 && $("#selected_box li").length >= allow_num){
+							layer.msg('最多选择'+allow_num+'项');
+							$(obj).prop('checked',false);
+							return false;
+						}
 						var html = build_selectd_html(type,value,text);
 						$("#selected_box").append(html);
 						add_remove_value(type,value,text);

@@ -55,7 +55,7 @@ function user_popup(obj = null,has_user = false,has_department = false,has_compa
 		has_company = false;
 	}
 	
-	if(obj == null){
+	if(obj == null && typeof callback !== 'function'){
 		layer.msg('第一个参数不能为空！');
 	}
 	

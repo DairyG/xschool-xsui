@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>日程测试</title>
+		<link href='../../lib/fullcalendar/packages/core/main.css' rel='stylesheet' />
+		<link href='../../lib/fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
+		<link href='../../lib/fullcalendar/packages/timegrid/main.css' rel='stylesheet' />
+		<link rel="stylesheet" href="../../layui/css/layui.css" />
+		<link rel="stylesheet" href="../../layui/css/common.css" />
+		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../layui/layui.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script src='../../lib/fullcalendar/packages/core/main.js'></script>
+		<script src='../../lib/fullcalendar/packages/interaction/main.js'></script>
+		<script src='../../lib/fullcalendar/packages/daygrid/main.js'></script>
+		<script src='../../lib/fullcalendar/packages/timegrid/main.js'></script>
+		<script src='../../lib/fullcalendar/packages/umd/popper.min.js'></script>
+		<script src='../../lib/fullcalendar/packages/umd/tooltip.min.js'></script>
+		<script src='../../lib/fullcalendar/packages/core/locales/zh-cn.js'></script>
+		<style>
+			#calendar {max-width: 100%;margin: 0 auto;}
+		</style>
+	</head>
+	<body>
+		<div class="childrenBody" >
+			<div class="layui-card-body bgwhite">
+				<div id='calendar' class="bgwhite"></div>
+			</div>
+		</div>
+		<script>
+			var layer;
+			layui.use(['layer'],function(){
+				layer = layui.layer;
+			});
+			
+			var color_arr = ['#c5cb63','#5ec9f6','#3bc2b5','#5e97f6','#f65e8d','#5c6bc0','#bb1b27','#f6bf26','#78919d','#f65e8d','#197d24','#195b7d'];
+			var color_index = 0;
+			document.addEventListener('DOMContentLoaded', function() {
+				var calendarEl = document.getElementById('calendar');
+				var calendar = new FullCalendar.Calendar(calendarEl, {
+					plugins: ['interaction', 'dayGrid', 'timeGrid'],
+					header: {
+						left: 'prev,next today',
+						center: 'title',
+						right: 'dayGridMonth,timeGridWeek,timeGridDay'
+					},
+					locale: 'zh-cn',
+					navLinks: true,
+					selectable: true,
+					selectMirror: true,
+					select: function(arg) {//选中回调
+						//var title = prompt('Event Title:');
+						layer.open({
+							type: 2,
+							title: '添加日程',
+							scrollbar: false,
+							skin:'layui-layer-rim',
+							closeBtn: true, //不显示关闭按钮
+							area: ['100%', '100%'],
+							anim: 2,
+							move:false,
+							content: '添加任务.html',
+							end:function(){
+								var title = '测试 添加了一个任务';
+								if (title) {
+									color_index = color_index > color_arr.length ? 0 : color_index;
+									calendar.addEvent({
+										title: title,
+										start: arg.start,
+										end: arg.end,
+										allDay: arg.allDay,
+										backgroundColor:'#fff',
+										borderColor:color_arr[color_index],
+										textColor:color_arr[color_index],
+										underline:true
+									});
+									color_index++;
+								}
+								calendar.unselect()
+							}
+						});
+					},
+					editable: true,
+					eventLimit: true,
+					eventTimeFormat:{
+						hour: 'numeric',
+						minute: '2-digit',
+						meridiem: 'short'
+					},
+					defaultView:'dayGridMonth',
+					eventRender: function(info) {
+					  var tooltip = new Tooltip(info.el, {
+					    title: info.event.extendedProps.description,
+					    placement: 'top',
+					    trigger: 'hover',
+					    container: 'body'
+					  });
+					},
+					events:[
+						{
+							title: '年度任务',
+							start: '2019-07-01'
+							
+						}
+					],
+					
+				});
+				calendar.render();
+			});
+		</script>
+	</body>
+</html>

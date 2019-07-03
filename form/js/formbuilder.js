@@ -1007,7 +1007,7 @@ function propertyInit() {
         });
         return false
     });
-    $('#btnItemsBatch').click(function () {
+    $('#btnItemsBatch,#btnItemsBatch2').click(function () {
         if ($.browser.msie && $.browser.version === '6.0') {
             $('#lightBox').css('margin-top', $(document).scrollTop() - 210)
         }
@@ -1907,322 +1907,7 @@ function propertyInit() {
             CHANGED = true
         }
     });
-    $.ossfileupload({
-        file_selection_button: 'itemselectbtn',
-        file_multi_selection: false,
-        file_duplication_forbidden: false,
-        file_max_size: '1MB',
-        file_extensions: 'jpg,jpeg,png,bmp',
-        signature_url: '/web/oss/getsignaturenocallback',
-        signature_param: {
-            BUCKETNAME: IMGBUCKET
-        },
-        FileUploaded: function (U, W, Y) {
-            if (F[IDX].ITMS[ITEMIDX].IMG) {
-                var V = '/app/form/deleteItemImg';
-                var aa = {
-                    IMG: F[IDX].ITMS[ITEMIDX].IMG
-                };
-                $.postJSON(V, aa, function (ab) {
-                })
-            }
-            F[IDX].ITMS[ITEMIDX].IMG = $.getOssObjectName();
-            var X = $.getHostUrl();
-            var Z = X + F[IDX].ITMS[ITEMIDX].IMG;
-            $($('#itemList').find('div.item-upload') [ITEMIDX]).find('img').removeClass('hide').attr('src', Z);
-            $($('#itemList').find('div.item-upload') [ITEMIDX]).find('span').addClass('hide');
-            $('#f' + IDX).find('div.content').children().each(function (ab, ac) {
-                if ($(ac) [0].tagName == 'SPAN' && !($(ac).hasClass('hide'))) {
-                    var ad = $('<div class=\'goods-item\'><div class=\'image-center\'><img class=\'img\'/></div><div class=\'text-wapper center\'><span>' + $(ac).html() + '</span></div></div>');
-                    $(ac).after(ad);
-                    $(ac).remove()
-                }
-            });
-            $('#f' + IDX).find('div.content').children().eq(ITEMIDX).find('img').attr('src', Z);
-            CHANGED = true
-        }
-    });
-    $('#itemList').find('div.item-upload').live({
-        click: function () {
-            ITEMIDX = $('#itemList').find('li').has(this).index();
-            $('#itemselectbtn').trigger('click')
-        }
-    });
-    var E = function () {
-        var U = $('#goodsList').find('li').has(this),
-        W = U.index(),
-        V = $.trim($(this).val());
-        $('#f' + IDX).find('div.content>div:eq(' + W + ')').find('label.name').text(V);
-        F[IDX].ITMS[W].VAL = V;
-        U.find('a.goods-name-view').text(V);
-        CHANGED = true
-    },
-    K = function () {
-        var U = $('#goodsList').find('li').has(this).index();
-        $('#f' + IDX).find('div.content>div:eq(' + U + ')').find('label.des').html($.enterToBr($(this).val()));
-        F[IDX].ITMS[U].DES = $.trim($(this).val());
-        CHANGED = true
-    },
-    H = function () {
-        var U = $('#goodsList').find('li').has(this).index();
-        F[IDX].ITMS[U].PRC = parseFloat($.trim($(this).val())) || 0;
-        $.formatPrice($('#f' + IDX).find('div.content>div:eq(' + U + ')').find('div.price-number'), F[IDX].ITMS[U].PRC, F[IDX].ITMS[U].CNY, F[IDX].FBUY, F[IDX].ITMS[U].UNT, F[IDX].ITMS[U].DEF);
-        CHANGED = true
-    },
-    g = function () {
-        var U = $('#goodsList').find('li').has(this).index();
-        F[IDX].ITMS[U].CNY = $(this).val();
-        $.formatPrice($('#f' + IDX).find('div.content>div:eq(' + U + ')').find('div.price-number'), F[IDX].ITMS[U].PRC, F[IDX].ITMS[U].CNY, F[IDX].FBUY, F[IDX].ITMS[U].UNT, F[IDX].ITMS[U].DEF);
-        CHANGED = true
-    },
-    n = function () {
-        var U = $('#goodsList').find('li').has(this).index();
-        F[IDX].ITMS[U].UNT = $.trim($(this).val());
-        $.formatPrice($('#f' + IDX).find('div.content>div:eq(' + U + ')').find('div.price-number'), F[IDX].ITMS[U].PRC, F[IDX].ITMS[U].CNY, F[IDX].FBUY, F[IDX].ITMS[U].UNT, F[IDX].ITMS[U].DEF);
-        CHANGED = true
-    },
-    Q = function () {
-        var U = $('#goodsList').find('li').has(this).index();
-        F[IDX].ITMS[U].DEF = $.trim($(this).val());
-        $.formatPrice($('#f' + IDX).find('div.content>div:eq(' + U + ')').find('div.price-number'), F[IDX].ITMS[U].PRC, F[IDX].ITMS[U].CNY, F[IDX].FBUY, F[IDX].ITMS[U].UNT, F[IDX].ITMS[U].DEF);
-        CHANGED = true
-    },
-    C = function () {
-        var U = $('#goodsList').find('li').has(this).index();
-        if ($(this).prop('checked')) {
-            F[IDX].ITMS[U].HD = '1';
-            $('#f' + IDX).find('div.content>div.goods-item:eq(' + U + ')').hide()
-        } else {
-            F[IDX].ITMS[U].HD = '0';
-            $('#f' + IDX).find('div.content>div.goods-item:eq(' + U + ')').show()
-        }
-        CHANGED = true
-    },
-    l = function () {
-        if ($(this).attr('checked')) {
-            F[IDX].FBUY = '1';
-            $('#goodsList').find('.goods-price-label').text('数量：')
-        } else {
-            F[IDX].FBUY = '0';
-            $('#goodsList').find('.goods-price-label').text('单价：')
-        }
-        $('#f' + IDX).find('div.price-number').each(function (U, V) {
-            $.formatPrice($(V), F[IDX].ITMS[U].PRC, F[IDX].ITMS[U].CNY, F[IDX].FBUY, F[IDX].ITMS[U].UNT)
-        })
-    };
-    $('#goodsList').find('input.val').live({
-        keyup: E,
-        change: E
-    });
-    $('#goodsList').find('textarea.des').live({
-        keyup: K,
-        change: K
-    });
-    $('#goodsList').find('input.price').live({
-        keyup: H,
-        change: H
-    });
-    $('#goodsList').find('input.unt').live({
-        keyup: n,
-        change: n
-    });
-    $('#goodsList').find('input.hd').live({
-        click: C
-    });
-    $('#goodsList').find('select.cny').live({
-        change: g
-    });
-    $('#goodsList').find('input.def').live({
-        keyup: Q
-    });
-    $('#goodsForBuy').click(l);
-    $('#goodsList').find('a.goods-name-view').live({
-        click: function () {
-            $('#goodsList').find('div.expand').removeClass('expand');
-            $(this).parent().parent().addClass('expand');
-            return false
-        }
-    });
-    var x = function () {
-        var X = 0,
-        V = $(this).hasClass('edit-img-input'),
-        W = - 1,
-        U = 'fileToUpload';
-        if (!V) {
-            $(F).each(function (Y, Z) {
-                if ('goods' === Z.TYP) {
-                    X += Z.ITMS.length
-                }
-            });
-            if (X >= goodsNumber) {
-                $.alert('最多只能添加' + goodsNumber + '件商品。');
-                return false
-            }
-        } else {
-            W = $('#goodsList').find('li').has(this).index();
-            U = $.format('F{0}ITMS{1}UPLOAD', IDX, W)
-        }
-        $.showStatus('正在上传图片...');
-        $.ajaxFileUpload({
-            url: 'ajaxuploadgoods',
-            secureuri: false,
-            fileElementId: U,
-            dataType: 'json',
-            data: {
-                FRMID: M._id,
-                OLDIMG: V ? F[IDX].ITMS[W].IMG : ''
-            },
-            success: function (ac, Z) {
-                if (ac.status != 'success') {
-                    var ab = {
-                        emptyFile: '上传文件为空，请重新选择。',
-                        sizeMsg: '单张图片不能大于500KB。',
-                        formatMsg: '只能导入jpg,gif,png,bmp类型的图片文件。'
-                    };
-                    $.alert(ab[ac.msgCode])
-                } else {
-                    var Y = V ? $('#goodsList').find('li:eq(' + W + ')')  : $(DEFFLD.item_goods);
-                    Y.find('input[name=\'IMG\']').val(ac.filePath);
-                    Y.find('img.img').attr('src', GOODSIMAGEURL + ac.filePath + GOODSIMAGESTYLE);
-                    if ('1' == F[IDX].FBUY) {
-                        Y.find('label.goods-price-label').text('数量：')
-                    }
-                    if (!V) {
-                        $('#goodsList').append(Y)
-                    }
-                    if (F[IDX].COMMITLMT) {
-                        $('div[name=\'goods-limit\']', Y).find('select>option[value=\'' + F[IDX].COMMITLMT + '\']').prop('selected', true)
-                    }
-                    var aa = V ? $('#f' + IDX).find('div.goods-item:eq(' + W + ')')  : $(DEFFLD.item_goods_f);
-                    aa.find('img.img').attr('src', GOODSIMAGEURL + ac.filePath + GOODSIMAGESTYLE);
-                    if (V) {
-                        F[IDX].ITMS[W].IMG = ac.filePath
-                    } else {
-                        $('#f' + IDX).find('div.content').find('div.nogoods-holder').remove().end().append(aa);
-                        if (!F[IDX].ITMS) {
-                            F[IDX].ITMS = [
-                            ]
-                        }
-                        F[IDX].ITMS.push({
-                            IMG: ac.filePath,
-                            VAL: '商品名称',
-                            DES: '',
-                            PRC: 0,
-                            UNT: ''
-                        })
-                    }
-                }
-                $.hideStatus()
-            },
-            error: function (Z, Y, aa) {
-                $.hideStatus();
-                $.alert('上传图片时发生错误：' + aa)
-            }
-        });
-        CHANGED = true;
-        return false
-    };
-    $('#item-upload').live({
-        click: x
-    });
-    $('#fileToUpload').live({
-        change: x
-    });
-    $('#goodsList input.edit-img-input').live({
-        change: x
-    });
-    $('#btnAddNoImgGoods').click(function () {
-        var W = 0;
-        $(F).each(function (X, Y) {
-            if ('goods' === Y.TYP) {
-                W += Y.ITMS.length
-            }
-        });
-        if (W >= goodsNumber) {
-            $.alert('最多只能添加' + goodsNumber + '件商品。');
-            return false
-        }
-        var U = $(DEFFLD.item_goods).addClass('noimg');
-        if ('1' == F[IDX].FBUY) {
-            U.find('label.goods-price-label').text('数量：')
-        }
-        $('#goodsList').append(U);
-        if (F[IDX].COMMITLMT) {
-            $('div[name=\'goods-limit\']', U).find('select>option[value=\'' + F[IDX].COMMITLMT + '\']').prop('selected', true)
-        }
-        var V = $(DEFFLD.item_goods_f);
-        $('#f' + IDX).find('div.content').find('div.nogoods-holder').remove().end().append(V).find('div.image-center').hide();
-        if (!F[IDX].ITMS) {
-            F[IDX].ITMS = [
-            ]
-        }
-        F[IDX].ITMS.push({
-            VAL: '商品名称',
-            DES: '',
-            PRC: 0,
-            UNT: ''
-        });
-        return false
-    });
-    var o,
-    w;
-    $('#goodsList').sortable({
-        axis: 'y',
-        delay: 100,
-        start: function (V, U) {
-            o = U.item.index()
-        },
-        stop: function (X, W) {
-            w = W.item.index();
-            if (o != w) {
-                var V = F[IDX].ITMS[o];
-                F[IDX].ITMS.splice(o, 1);
-                F[IDX].ITMS.splice(w, 0, V);
-                var U = $('#f' + IDX).find('div.content').find('div.goods-item:eq(' + o + ')');
-                U.remove();
-                if (w == 0) {
-                    $('#f' + IDX).find('div.content').find('div.goods-item:eq(' + w + ')').before(U)
-                } else {
-                    $('#f' + IDX).find('div.content').find('div.goods-item:eq(' + (w - 1) + ')').after(U)
-                }
-                CHANGED = true
-            }
-        }
-    });
-    $('#uploadImage').live({
-        change: function () {
-            $.showStatus('正在上传图片...');
-            $.ajaxFileUpload({
-                url: 'ajaxuploadimage',
-                fileElementId: 'uploadImage',
-                secureuri: false,
-                dataType: 'json',
-                data: {
-                    OLDIMG: F[IDX].IMG,
-                    FRMID: M._id
-                },
-                success: function (W, U) {
-                    if (W.status != 'success') {
-                        var V = {
-                            emptyFile: '上传文件为空，请重新选择。',
-                            sizeMsg: '单张图片不能大于500KB。',
-                            formatMsg: '只能导入jpg,gif,png,bmp类型的图片文件。'
-                        };
-                        $.alert(V[W.msgCode])
-                    } else {
-                        $('#f' + IDX).find('div.content img').attr('src', IMAGESURL + W.filePath);
-                        F[IDX].IMG = W.filePath
-                    }
-                    $.hideStatus()
-                },
-                error: function (V, U, W) {
-                    $.hideStatus();
-                    $.alert('上传图片时发生错误：' + W)
-                }
-            });
-            CHANGED = true
-        }
-    });
+    var o,w;
     var q = function () {
         var U = $.trim($(this).val());
         if (U) {
@@ -2319,11 +2004,11 @@ function propertyInit() {
     $('#pdefval_phone_tel :input').bind({
         keyup: G
     });
-    var t = '<option value=\'\'>省/自治区/直辖市</option>';
+    /* var t = '<option value=\'\'>省/自治区/直辖市</option>';
     $.each(address.provinces, function (V, U) {
         t += $.format('<option value="{0}">{1}</option>', V, V)
     });
-    $('#defval_province').append(t);
+    $('#defval_province').append(t); */
     var p = function () {
         var U = $('#defval_province').val(),
         W = $('#defval_city').val(),
@@ -3154,52 +2839,47 @@ function initWangEditor() {
     descEditor.create();
     secdescEditor.create()
 }
-head.ready(function () {
-    // if (window.CURUSER && CURUSER.USERNAME == testUser) {
-        // $('#menu').find('li.frm,li.rpt,li.usr,li.act,li.app,li.thm').hide();
-        // $('#saveForm').attr('href', '/web/register').html('<b></b>注册即可保存')
-    // }
-    $('a.help', '#right').helpTip();
-    //initWangEditor();
-    createForm();
-    createFields();
-    fieldInit();
-    propertyInit();
-    addFieldsInit();
-    formInit();
-   // $('#helpLink').attr('href', resRoot + '/help/formbuilder.html');
-    var b = function (d) {
-        var c = $(this).val();
-        $(this).val(c.replace(/\D/g, ''))
-    },
-    a = function (d) {
-        var c = $(this).val();
-        $(this).val(c.replace(/[^(\d\.?\-?)]/g, ''))
-    };
-    $('input.yyyy,input.mm,input.dd,input.intnumber', '#left').bind({
-        keyup: b,
-        change: b
-    });
-    $('input.number,input.money,input.price').live({
-        keyup: a,
-        change: a
-    });
-    /* setInterval(function () {
-        saveForm(false)
-    }, 5 * 60 * 1000); */
-    $('#fieldProperties,#formProperties').css({
-        maxHeight: $(window).height() - 40
-    }).mCustomScrollbar();
-	$('#addFields').css({
-	    maxHeight: $(window).height() - 40
-	})
-    $('a.video').live({
-        click: function () {
-            var c = $(this).attr('videosrc');
-            $.lightBox({
-                url: '../../web/video.jsp?URL=' + c,
-                size: 'cus1'
-            })
-        }
-    })
+
+$(function(){
+	//initWangEditor();
+	createForm();
+	createFields();
+	fieldInit();
+	propertyInit();
+	addFieldsInit();
+	formInit();
+	// $('#helpLink').attr('href', resRoot + '/help/formbuilder.html');
+	var b = function (d) {
+		var c = $(this).val();
+		$(this).val(c.replace(/\D/g, ''))
+	},
+	a = function (d) {
+		var c = $(this).val();
+		$(this).val(c.replace(/[^(\d\.?\-?)]/g, ''))
+	};
+	$('input.yyyy,input.mm,input.dd,input.intnumber', '#left').bind({
+		keyup: b,
+		change: b
+	});
+	$('input.number,input.money,input.price').live({
+		keyup: a,
+		change: a
+	});
+	/* setInterval(function () {
+		saveForm(false)
+	}, 5 * 60 * 1000); */
+	
+	$('#left,#right').css({
+		maxHeight: $(window).height() - 90
+	});
+	
+	$('a.video').live({
+		click: function () {
+			var c = $(this).attr('videosrc');
+			$.lightBox({
+				url: '../../web/video.jsp?URL=' + c,
+				size: 'cus1'
+			})
+		}
+	});
 });

@@ -15,6 +15,15 @@
 		<link type="text/css" rel="stylesheet" href="../../form/css/jquery.mCustomScrollbar.min.css" />
 		<link type="text/css" rel="stylesheet" href="../../form/css/formbuild.css" />
 	</head>
+	<script type="text/javascript">
+		var M = {FRMNM: "表单名称",DESC: "",LANG: "cn",LBLAL: "T",CFMTYP: "T",CFMMSG: "提交成功。",SDMAIL: "0",CAPTCHA: "1",IPLMT: "0",SCHACT: "0",INSTR: "0",ISPUB: "1"};
+		var F = [];
+		var fieldsLimit=150;
+		var goodsNumber=60;
+		var imageNumber=10;
+		var LVL=4;
+		var isForTemplate=false;
+	</script>
 	<body class="bgf2f2f2">
 		<div class="childrenBody">
 			<div class="layui-card-body bgwhite">
@@ -262,10 +271,10 @@
 														<ul id="itemList">
 														</ul>
 														<div id="pitems_radio" class="center">
-															<a id="btnItemsBatch" href="#" class="btn gray">批量编辑</a>
+															<a id="btnItemsBatch2" href="javascript:;" class="btn gray">批量编辑</a>
 														</div>
 														<div id="pitems_batchedit" class="center">
-															<a id="btnItemsBatch" href="#" class="btn gray">批量编辑</a>
+															<a id="btnItemsBatch" href="javascript:;" class="btn gray">批量编辑</a>
 														</div>
 													</fieldset>
 												</li>
@@ -685,48 +694,14 @@
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="../../form/js/head.load.min.js"></script>
-		<script type="text/javascript">
-			var M = {
-				FRMNM: "表单名称",
-				DESC: "",
-				LANG: "cn",
-				LBLAL: "T",
-				CFMTYP: "T",
-				CFMMSG: "提交成功。",
-				SDMAIL: "0",
-				CAPTCHA: "1",
-				IPLMT: "0",
-				SCHACT: "0",
-				INSTR: "0",
-				ISPUB: "1"
-			}
-			var F = [];
-			var fieldsLimit = 150;
-			var goodsNumber = 60;
-			var imageNumber = 10;
-			var LVL = 4;
+		<script type="text/javascript" src="../../form/js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../../form/js/jquery-ui-1.8.24.custom.min.js"></script>
+		<script type="text/javascript" src="../../form/js/wangEditor.min.js"></script>
+		<script type="text/javascript" src="../../form/js/utils.js"></script>
+		<script type="text/javascript" src="../../form/js/widgets.js"></script>
+		<script type="text/javascript" src="../../form/js/jquery.mCustomScrollbar.min.js"></script>
+		<script type="text/javascript" src="../../form/js/formbuilder.js"></script>
 		
-			var isForTemplate = false;
-			M.GID = M.GID || '';
-			var resRoot = "#",
-				GOODSIMAGEURL = "http://goodsimages.jsform.com/",
-				IMAGESURL = "#",
-				GOODSIMAGESTYLE = "@1e_200w_200h_1c_0i_1o_90Q_1x";
-			IMGBUCKET = "kmonkey";
-			head.js("../../form/js/jquery-1.7.2.min.js",
-				"../../form/js/jquery-ui-1.8.24.custom.min.js",
-				"../../form/js/wangEditor.min.js",
-				"../../form/js/ajaxfileupload.js",
-				"../../form/js/plupload.full.min.js",
-				"../../form/js/directfileupload.js",
-				"../../form/js/utils.js",
-				"../../form/js/widgets.js",
-				"../../form/js/jquery.mCustomScrollbar.min.js",
-				"../../form/js/jquery.mousewheel.min.js",
-				"../../form/js/formbuilder.js",
-				"../../form/js/address-cn.js");
-		</script>
 		<script type="text/javascript">
 			var layer_linePop;
 			layui.use(['table','element'], function() {

@@ -1,22 +1,12 @@
 @CHARSET "UTF-8";
 *{padding:0px 0px 0px 0px;
 margin:0px 0px 0px 0px;
-font-family:"微软雅黑","Verdana","宋体","Lucida Grande","Lucida Sans Unicode", Tahoma, sans-serif;
 }
 *{
 -moz-transition: background-color 0.1s ease-in,color 0.1s ease-in; 
 -webkit-transition: background-color 0.1s ease-in,color 0.1s ease-in; 
 -o-transition: background-color 0.1s ease-in,color 0.1s ease-in; 
 transition: background-color 0.1s ease-in,color 0.1s ease-in;
-}
-
-body{
-color:#333;
-font-size:0.8em;
-letter-spacing:0.05em;
-font-family:"Verdana","微软雅黑","宋体","Lucida Grande","Lucida Sans Unicode", Tahoma, sans-serif;
-background-color:#fafafa;
-background: url(../images/builderBg.png) repeat;
 }
 ul,ol{list-style-type:none;list-style-image:none;}
 a{text-decoration:none;color:#666;}
@@ -31,7 +21,6 @@ a{text-decoration:none;color:#666;}
 .left{float: left;}
 .right{float: right;}
 textarea,input[type=text],input[type=password],select{
-font-family:"Verdana","微软雅黑","宋体","Lucida Grande";
 padding:7px;
 border:1px solid #ddd;
 outline:none;

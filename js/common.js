@@ -202,9 +202,11 @@ function user_popup(obj = null,has_user = false,has_department = false,has_compa
 				callback(arr);
 			}
 			layer.close(index);
+			$('#popup_content').remove();
 		},
 		btn2:function(index, layero){
 			layer.close(index);
+			$('#popup_content').remove();
 		}
 	});
 }

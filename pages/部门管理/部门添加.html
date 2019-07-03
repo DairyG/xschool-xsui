@@ -52,18 +52,20 @@
 							</div>
 							<div class="layui-form-item layui-col-md12 layui-col-sm12">
 								<label class="layui-form-label">职位一 </label>
-								<div class="layui-input-block">
+								<div class="layui-input-inline">
 									<input type="tel" class="layui-input layui-disabled" value="张三" readonly />
 								</div>
+								<button class="layui-btn layui-btn-danger">删除</button>
 							</div>
 							<div class="layui-form-item layui-col-md12 layui-col-sm12">
 								<label class="layui-form-label">职位二 </label>
-								<div class="layui-input-block">
-									<input type="tel" class="layui-input layui-disabled" value="李四" readonly />
+								<div class="layui-input-inline">
+									<input type="tel" class="layui-input layui-disabled" value="张三" readonly />
 								</div>
+								<button class="layui-btn layui-btn-danger">删除</button>
 							</div>
 							<div class="layui-row text-right">
-								<span class="layui-btn layui-btn-normal" id="set_btn">设置领导职位</span>
+								<span class="layui-btn layui-btn-normal" id="set_btn">添加领导职位</span>
 								<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
 								<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认并继续添加</button>
 								<span class="layui-btn" onclick="history.back(-1)">返回</span>
@@ -79,12 +81,12 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label"><span class="text-red">*</span>职位</label>
 						<div class="layui-input-block">
-							<input type="checkbox" name="pos[]" title="职位一" lay-skin="primary">
-							<input type="checkbox" name="pos[]" title="职位二" lay-skin="primary">
-							<input type="checkbox" name="pos[]" title="职位三" lay-skin="primary">
-							<input type="checkbox" name="pos[]" title="职位一" lay-skin="primary">
-							<input type="checkbox" name="pos[]" title="职位二" lay-skin="primary">
-							<input type="checkbox" name="pos[]" title="职位三" lay-skin="primary">
+							<input type="radio" name="pos[]" title="职位一" lay-skin="primary">
+							<input type="radio" name="pos[]" title="职位二" lay-skin="primary">
+							<input type="radio" name="pos[]" title="职位三" lay-skin="primary">
+							<input type="radio" name="pos[]" title="职位一" lay-skin="primary">
+							<input type="radio" name="pos[]" title="职位二" lay-skin="primary">
+							<input type="radio" name="pos[]" title="职位三" lay-skin="primary">
 						</div>
 					</div>
 					<!-- <div class="layui-row text-right padding-r-50">

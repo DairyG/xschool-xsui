@@ -28,97 +28,72 @@
 					<a class="layui-btn layui-btn-xs " href="javascript:;" lay-event="info">查看</a>
 				</script>
 				<script type="text/html" id="toolbar">
-					<a class="layui-btn layui-btn-sm" href="javascript:;">标为已读</a>
 				</script>
 			</div>
 		</div>
 		<script>
 			var layer_linePop;
 			var cols0 = [[
-				{type:'checkbox'},
 				{type:'numbers',title:'序号'},
-				{field:'mc',title:'姓名'},
-				{field:'bm',title:'部门'},
 				{field:'l1',title:'已完成工作'},
 				{field:'l2',title:'未完成工作'},
 				{field:'l3',title:'需协调和帮助'},
-				{field:'state',title:'已读/未读'},
 				{field:'date1',title:'所属日期'},
 				{field:'date2',title:'上报日期'},
 				{toolbar:'#bar',title:'操作'}
 			]];
 			var cols1 = [[
-				{type:'checkbox'},
 				{type:'numbers',title:'序号'},
-				{field:'mc',title:'姓名'},
-				{field:'bm',title:'部门'},
 				{field:'l1',title:'本周完成工作'},
 				{field:'l2',title:'本周工作总结'},
 				{field:'l4',title:'下周工作计划'},
 				{field:'l3',title:'需协调和帮助'},
-				{field:'state',title:'已读/未读'},
 				{field:'date1',title:'所属周'},
 				{field:'date2',title:'上报日期'},
 				{toolbar:'#bar',title:'操作'}
 			]];
 			var cols2 = [[
-				{type:'checkbox'},
 				{type:'numbers',title:'序号'},
-				{field:'mc',title:'姓名'},
-				{field:'bm',title:'部门'},
 				{field:'l1',title:'本月完成工作'},
 				{field:'l2',title:'本月工作总结'},
 				{field:'l4',title:'下月工作计划'},
 				{field:'l3',title:'需协调和帮助'},
-				{field:'state',title:'已读/未读'},
 				{field:'date1',title:'所属月份'},
 				{field:'date2',title:'上报日期'},
 				{toolbar:'#bar',title:'操作'}
 			]];
 			var cols3 = [[
-				{type:'checkbox'},
 				{type:'numbers',title:'序号'},
-				{field:'mc',title:'姓名'},
-				{field:'bm',title:'部门'},
 				{field:'l1',title:'本季度完成工作'},
 				{field:'l2',title:'本季度工作总结'},
 				{field:'l4',title:'下季度工作计划'},
 				{field:'l3',title:'需协调和帮助'},
-				{field:'state',title:'已读/未读'},
 				{field:'date1',title:'所属月份'},
 				{field:'date2',title:'上报日期'},
 				{toolbar:'#bar',title:'操作'}
 			]];
 			var cols4 = [[
-				{type:'checkbox'},
 				{type:'numbers',title:'序号'},
-				{field:'mc',title:'姓名'},
-				{field:'bm',title:'部门'},
 				{field:'l1',title:'半年完成工作'},
 				{field:'l2',title:'半年工作总结'},
 				{field:'l4',title:'下半年工作计划'},
 				{field:'l3',title:'需协调和帮助'},
-				{field:'state',title:'已读/未读'},
 				{field:'date1',title:'所属半年度'},
 				{field:'date2',title:'上报日期'},
 				{toolbar:'#bar',title:'操作'}
 			]];
 			var cols5 = [[
-				{type:'checkbox'},
 				{type:'numbers',title:'序号'},
-				{field:'mc',title:'姓名'},
-				{field:'bm',title:'部门'},
 				{field:'l1',title:'年度完成工作'},
 				{field:'l2',title:'年度工作总结'},
 				{field:'l4',title:'下一年工作计划'},
 				{field:'l3',title:'需协调和帮助'},
-				{field:'state',title:'已读/未读'},
 				{field:'date1',title:'所属年'},
 				{field:'date2',title:'上报日期'},
 				{toolbar:'#bar',title:'操作'}
 			]];
 			var datas0 = [
-				{mc:'张三',bm:'销售部',l1:'',l2:'',l3:'',l4:'',state:'未读',date1:'2019-05-01',date2:'2019-05-01 10:34:35'},
+				{mc:'张三',bm:'销售部',l1:'在第二阶段的基础上面，在MySQL应用方面，除了之前的基本SQL优化，还能够在完成一些复杂操作，比如大批量数据的导入导出，线上大批量数据的更改表结构或者增删索引字段等等高危操作；除了安装配置，已经能够处理更多复杂的MySQL的问题，比如各种问题的追查，主从同步延迟问题的解决、跨机房同步数据方案、MySQL高可用架构等都有涉及了解；对MySQL应用层面，对MySQL的核心关键技术比较熟悉，比如事务机制（隔离级别、锁等）、对触发器、分区等技术有一定了解和应用；对MySQL性能方面，有包括磁盘优化（SAS迁移到SSD）、服务器优化（内存、服务器本身配置）、除了二阶段的其他核心性能优化选项（innodb_log_buffer_size/back_log/table_open_cache/thread_cache_size/innodb_lock_wait_timeout等）、连接池软件选择应用，对show *（show status/show profile）类的操作语句有深入了解，能够完成大部分的性能问题追查；MySQL备份技术的深入熟悉，包括灾备还原、对Binlog的深入理解，冷热备份，多IDC备份等；在MySQL原理方面，有更多了解，比如对MySQL的工作机制开始阅读部分源码，比如对主从同步（复制）技术的源码学习，或者对某个存储引擎（MyISAM/Innodb/TokuDB）等等的源码学习理解，如果条件允许，可以参考CSV引擎开发自己简单的存储引擎来保存一些数据，增强对MySQL的理解；在这个过程，如果自己有兴趣，也可以考虑往DBA方向发展。MongoDB层面，可以考虑比如说在写少读多的情况开始在线上应用MongoDB，或者是做一些线上的数据分析处理的操作，具体场景可以按照工作来，不过核心是要更好的深入理解RMDBS和NoSQL的不同场景下面的应用，如果条件或者兴趣允许，可以开始深入学习一下MongoDB的工作机制。',l2:'在第二阶段的基础上面，在MySQL应用方面，除了之前的基本SQL优化，还能够在完成一些复杂操作，比如大批量数据的导入导出，线上大批量数据的更改表结构或者增删索引字段等等高危操作；除了安装配置，已经能够处理更多复杂的MySQL的问题，比如各种问题的追查，主从同步延迟问题的解决、跨机房同步数据方案、MySQL高可用架构等都有涉及了解；对MySQL应用层面，对MySQL的核心关键技术比较熟悉，比如事务机制（隔离级别、锁等）、对触发器、分区等技术有一定了解和应用；对MySQL性能方面，有包括磁盘优化（SAS迁移到SSD）、服务器优化（内存、服务器本身配置）、除了二阶段的其他核心性能优化选项（innodb_log_buffer_size/back_log/table_open_cache/thread_cache_size/innodb_lock_wait_timeout等）、连接池软件选择应用，对show *（show status/show profile）类的操作语句有深入了解，能够完成大部分的性能问题追查；MySQL备份技术的深入熟悉，包括灾备还原、对Binlog的深入理解，冷热备份，多IDC备份等；在MySQL原理方面，有更多了解，比如对MySQL的工作机制开始阅读部分源码，比如对主从同步（复制）技术的源码学习，或者对某个存储引擎（MyISAM/Innodb/TokuDB）等等的源码学习理解，如果条件允许，可以参考CSV引擎开发自己简单的存储引擎来保存一些数据，增强对MySQL的理解；在这个过程，如果自己有兴趣，也可以考虑往DBA方向发展。MongoDB层面，可以考虑比如说在写少读多的情况开始在线上应用MongoDB，或者是做一些线上的数据分析处理的操作，具体场景可以按照工作来，不过核心是要更好的深入理解RMDBS和NoSQL的不同场景下面的应用，如果条件或者兴趣允许，可以开始深入学习一下MongoDB的工作机制。',l3:'在第二阶段的基础上面，在MySQL应用方面，除了之前的基本SQL优化，还能够在完成一些复杂操作，比如大批量数据的导入导出，线上大批量数据的更改表结构或者增删索引字段等等高危操作；除了安装配置，已经能够处理更多复杂的MySQL的问题，比如各种问题的追查，主从同步延迟问题的解决、跨机房同步数据方案、MySQL高可用架构等都有涉及了解；对MySQL应用层面，对MySQL的核心关键技术比较熟悉，比如事务机制（隔离级别、锁等）、对触发器、分区等技术有一定了解和应用；对MySQL性能方面，有包括磁盘优化（SAS迁移到SSD）、服务器优化（内存、服务器本身配置）、除了二阶段的其他核心性能优化选项（innodb_log_buffer_size/back_log/table_open_cache/thread_cache_size/innodb_lock_wait_timeout等）、连接池软件选择应用，对show *（show status/show profile）类的操作语句有深入了解，能够完成大部分的性能问题追查；MySQL备份技术的深入熟悉，包括灾备还原、对Binlog的深入理解，冷热备份，多IDC备份等；在MySQL原理方面，有更多了解，比如对MySQL的工作机制开始阅读部分源码，比如对主从同步（复制）技术的源码学习，或者对某个存储引擎（MyISAM/Innodb/TokuDB）等等的源码学习理解，如果条件允许，可以参考CSV引擎开发自己简单的存储引擎来保存一些数据，增强对MySQL的理解；在这个过程，如果自己有兴趣，也可以考虑往DBA方向发展。MongoDB层面，可以考虑比如说在写少读多的情况开始在线上应用MongoDB，或者是做一些线上的数据分析处理的操作，具体场景可以按照工作来，不过核心是要更好的深入理解RMDBS和NoSQL的不同场景下面的应用，如果条件或者兴趣允许，可以开始深入学习一下MongoDB的工作机制。',l4:'',state:'未读',date1:'2019-05-01',date2:'2019-05-01 10:34:35'},
 				{mc:'李四',bm:'销售部',l1:'',l2:'',l3:'',l4:'',state:'已读',date1:'2019-05-02',date2:'2019-05-02 10:34:35'},
 				{mc:'王五',bm:'销售部',l1:'',l2:'',l3:'',l4:'',state:'未读',date1:'2019-05-03',date2:'2019-05-03 10:34:35'}
 			];

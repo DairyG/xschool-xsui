@@ -10,7 +10,7 @@
 		<script type="text/javascript" src="../../js/common.js"></script>
 	</head>
 	<body class="bgf2f2f2 ">
-		<div class="childrenBody ">
+		<div class="childrenBody">
 			<div class="layui-card-header">添加任务</div>
 			<div class="layui-card-body bgwhite" id="add_content">
 				<form class="layui-form layui-form2" >
@@ -54,23 +54,6 @@
 							</div>
 						</div>
 						<div class="layui-form-item layui-col-md6 margin-b-20">
-							<label class="layui-form-label"><span class="text-red"> *</span>任务标题</label>
-							<div class="layui-input-block">
-								<input type="text" class="layui-input" autocomplete="off" placeholder="请输入任务标题" >
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md6 margin-b-20">
-							<label class="layui-form-label"><span class="text-red"> *</span>重复</label>
-							<div class="layui-input-block">
-								<select>
-									<option>不重复</option>
-									<option>按天</option>
-									<option>按周</option>
-									<option>按月</option>
-								</select>
-							</div>
-						</div>
-						<div class="layui-form-item layui-col-md6 margin-b-20">
 							<label class="layui-form-label"><span class="text-red"> *</span>开始时间</label>
 							<div class="layui-input-block">
 								<input type="text" class="layui-input date" readonly autocomplete="off" placeholder="请选择开始时间"/>
@@ -105,6 +88,47 @@
 								</select>
 							</div>
 						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label">紧急程度</label>
+							<div class="layui-input-block">
+								<select>
+									<option>一般</option>
+									<option>紧急</option>
+									<option>重要</option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>重复</label>
+							<div class="layui-input-block">
+								<select lay-filter="repeat">
+									<option value="0">不重复</option>
+									<option value="1">按天</option>
+									<option value="2">按周</option>
+									<option value="3">按月</option>
+								</select>
+							</div>
+						</div>
+						<!-- 任务重复时，下一个任务的开始时间必须在上一个任务结束时间后 -->
+						<!-- 例如:任务时间为 7-1~8-31 的月重复任务 下一轮任务的时间应该是 9-1~10-30 -->
+						<div class="layui-form-item layui-col-md6 margin-b-20" id="repeat_time" style="display: none;">
+							<label class="layui-form-label"><span class="text-red"> *</span>重复结束时间</label>
+							<div class="layui-input-block">
+								<input type="text" class="layui-input date" readonly autocomplete="off" placeholder="请选择截止时间"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>任务标题</label>
+							<div class="layui-input-block">
+								<input type="text" class="layui-input" autocomplete="off" placeholder="请输入任务标题" >
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label">创建人</label>
+							<div class="layui-input-block">
+								<input type="text" class="layui-input" autocomplete="off" placeholder="请输入任务标题" readonly value='管理员' />
+							</div>
+						</div>
 						<div class="layui-form-item layui-col-md12 margin-b-20">
 							<label class="layui-form-label"><span class="text-red"> *</span>任务内容</label>
 							<div class="layui-input-block">
@@ -120,22 +144,45 @@
 					</div>	
 					<div class="layui-row text-right">
 						<button class="layui-btn layui-btn-danger" lay-submit="" lay-filter="formDemo">确认</button>
-						<a class="layui-btn" onclick="history.back(-1)">返回</a>
+						<a class="layui-btn" id="close_btn">返回</a>
 					</div>
 				</form>
 			</div>
 		</div>
 		<script>
-			layui.use(['table','laydate','layedit'], function() {
+			layui.use(['table','laydate','layedit','form'], function() {
 				var table = layui.table
 					laydate = layui.laydate,
-					layedit = layui.layedit;
-				
-				laydate.render({
-					elem:'.date',
-					type:'datetime'
+					layedit = layui.layedit,
+					form = layui.form;
+				lay('.date').each(function(){
+					laydate.render({
+						elem:this,
+						type:'datetime'
+					});
+				});
+				form.on('select(repeat)',function(obj){
+					if(obj.value > 0){
+						$("#repeat_time").show();
+					} else {
+						$("#repeat_time").hide();
+					}
 				});
 				layedit.build('content');
+			});
+			
+			var is_pop = GetPara('is_pop');
+			if(is_pop == 1){
+				$(".childrenBody").removeClass('childrenBody');
+				$(".layui-card-header").remove();
+			}
+			$('#close_btn').click(function(){
+				if(is_pop == 1){
+					var index = parent.layer.getFrameIndex(window.name);
+					parent.layer.close(index);
+				} else {
+					history.back(-1);
+				}
 			});
 		</script>
 	</body>

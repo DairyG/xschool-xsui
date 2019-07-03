@@ -19,10 +19,33 @@
 								<input type="text" name="title" id="date1" autocomplete="off" class="layui-input" readonly>
 							</div>
 						</div>
-						<div class="layui-form-item layui-col-md3 margin-b-20">
+						<div class="layui-form-item layui-col-md4 margin-b-20">
 							<label class="layui-form-label">发布人</label>
 							<div class="layui-input-block">
 								<input type="text" name="title" placeholder="请选择发布人" autocomplete="off" class="layui-input" readonly onclick="showMenu()" id="treeIpt">
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md4 margin-b-20">
+							<label class="layui-form-label">类型</label>
+							<div class="layui-input-block">
+								<select>
+									<option></option>
+									<option>未完成</option>
+									<option>已完成</option>
+									<option>发出的</option>
+									<option>执行的</option>
+									<option>抄送的</option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md4 margin-b-20">
+							<label class="layui-form-label">阅读状态</label>
+							<div class="layui-input-block">
+								<select>
+									<option></option>
+									<option>已读</option>
+									<option>未读</option>
+								</select>
 							</div>
 						</div>
 						<div class="layui-form-item layui-col-md2 margin-b-20">
@@ -73,7 +96,7 @@
 					page: true,
 					toolbar: '#toolbar',
 					even: true,
-					height: 'full-140',
+					height: 'full-190',
 					cols: cols,
 					data: datas,
 				});
@@ -92,7 +115,7 @@
 				});
 				table.on('tool(lst)',function(data){
 					if(data.event == 'info'){
-						window.location.href = '任务详情.html';
+						window.location.href = '../任务管理/任务详情.html';
 					}
 				});
 			});

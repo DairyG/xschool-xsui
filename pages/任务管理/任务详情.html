@@ -57,6 +57,18 @@
 								<div class="layui-form-mid">短信</div>
 							</div>
 						</div>
+						<div class="layui-form-item layui-col-md6 ">
+							<label class="layui-form-label">创建人：</label>
+							<div class="layui-input-block">
+								<div class="layui-form-mid">管理员</div>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 ">
+							<label class="layui-form-label">紧急程度：</label>
+							<div class="layui-input-block">
+								<div class="layui-form-mid">一般</div>
+							</div>
+						</div>
 						<div class="layui-form-item layui-col-md12 ">
 							<label class="layui-form-label">执行人：</label>
 							<div class="layui-input-block">
@@ -105,7 +117,7 @@
 					<div class="layui-row text-right">
 						<button class="layui-btn layui-btn-normal">回复</button>
 						<button class="layui-btn layui-btn-dangers">完成</button>
-						<span class="layui-btn " onclick="history.back(-1)">返回</span>
+						<span class="layui-btn " id="close_btn">返回</span>
 					</div>
 				</form>
 				<hr class="layui-bg-blue hrheight3" >
@@ -126,17 +138,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="linePop">
-			<div class="layui-card-body">
-				<table id="lst" lay-filter="lst"></table>
-			</div>
-		</div>
 		<script>
-			layui.config({
-				base: '../../layuiAdmin/' //静态资源所在路径
-			}).extend({
-				index: 'lib/index' //主入口模块
-			}).use('index');
 			var layer_linePop,table;
 			var cols = [[
 				{type:'numbers',title:'序号'},
@@ -163,15 +165,6 @@
 				var laydate = layui.laydate,
 					layedit = layui.layedit;
 				
-				laydate.render({
-					elem:'.date',
-					type:'datetime'
-				});
-				layedit.build('content');
-				//关闭弹窗
-				$(".closePop").click(function(){
-					layer.closeAll()
-				});
 				table.render({
 					elem: '#lst',
 					title: '用户表',
@@ -191,32 +184,19 @@
 					data: datas2,
 				});
 			});
-			function closePop(){
-				layer.close(layer_linePop);
+			var is_pop = GetPara('is_pop');
+			if(is_pop == 1){
+				$(".childrenBody").removeClass('childrenBody');
+				$(".layui-card-header").remove();
 			}
-			
-			/* function show_ulst(){
-				layer_linePop = layer.open({
-					type: 1,
-					title:'查看人员',
-					String: false,
-					closeBtn: 1,
-					skin: 'layui-layer-rim',
-					area: ['750px','450px'],
-					content: $('.linePop'),
-					success:function(){
-						table.render({
-							elem: '#lst',
-							title: '用户表',
-							page: true,
-							even: true,
-							height: '360',
-							cols: cols,
-							data: datas,
-						});
-					}
-				});
-			} */
+			$('#close_btn').click(function(){
+				if(is_pop == 1){
+					var index = parent.layer.getFrameIndex(window.name);
+					parent.layer.close(index);
+				} else {
+					history.back(-1);
+				}
+			});
 		</script>
 	</body>
 </html>

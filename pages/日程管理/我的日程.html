@@ -15,8 +15,6 @@
 		<script src='../../lib/fullcalendar/packages/interaction/main.js'></script>
 		<script src='../../lib/fullcalendar/packages/daygrid/main.js'></script>
 		<script src='../../lib/fullcalendar/packages/timegrid/main.js'></script>
-		<script src='../../lib/fullcalendar/packages/umd/popper.min.js'></script>
-		<script src='../../lib/fullcalendar/packages/umd/tooltip.min.js'></script>
 		<script src='../../lib/fullcalendar/packages/core/locales/zh-cn.js'></script>
 		<style>
 			#calendar {max-width: 100%;margin: 0 auto;}
@@ -35,6 +33,9 @@
 			});
 			
 			var color_arr = ['#c5cb63','#5ec9f6','#3bc2b5','#5e97f6','#f65e8d','#5c6bc0','#bb1b27','#f6bf26','#78919d','#f65e8d','#197d24','#195b7d'];
+			var state_arr = {0:'未完成',1:'已完成'};
+			var type_arr = {1:'一般',2:'紧急',3:'重要'};
+			
 			var color_index = 0;
 			document.addEventListener('DOMContentLoaded', function() {
 				var calendarEl = document.getElementById('calendar');
@@ -56,11 +57,11 @@
 							title: '添加日程',
 							scrollbar: false,
 							skin:'layui-layer-rim',
-							closeBtn: true, //不显示关闭按钮
+							closeBtn: 1,
 							area: ['100%', '100%'],
 							anim: 2,
 							move:false,
-							content: '添加任务.html',
+							content: '../任务管理/添加任务.html?is_pop=1',
 							end:function(){
 								var title = '测试 添加了一个任务';
 								if (title) {
@@ -72,8 +73,7 @@
 										allDay: arg.allDay,
 										backgroundColor:'#fff',
 										borderColor:color_arr[color_index],
-										textColor:color_arr[color_index],
-										underline:true
+										textColor:color_arr[color_index]
 									});
 									color_index++;
 								}
@@ -88,26 +88,124 @@
 						minute: '2-digit',
 						meridiem: 'short'
 					},
+					eventStartEditable:false,
+					eventResourceEditable:false,
+					eventDurationEditable:false,
+					eventResizableFromStart:false,
 					defaultView:'dayGridMonth',
 					eventRender: function(info) {
-						var tooltip = new Tooltip(info.el, {
-							title: info.event.extendedProps.description,
-							placement: 'top',
-							trigger: 'hover',
-							container: 'body'
+						
+					},
+					eventMouseEnter:function(info){
+						//info.event.extendedProps
+						var state = state_arr[info.event.extendedProps.state];
+						var type = type_arr[info.event.extendedProps.type];
+						var start = info.event.start ? FormatDate(info.event.start) : '';
+						var end = info.event.end ? FormatDate(info.event.end) : '';
+						var html = '<h3>'+info.event.title+'</h3>\
+									<p>开始时间：<span class="padding-l-15 padding-r-30 tips_span">'+start+'</span>状态：<span class="padding-l-15">'+state+'</span></p>\
+									<p>结束时间：<span class="padding-l-15 padding-r-30 tips_span" >'+end+'</span>紧急：<span class="padding-l-15">'+type+'</span></p>';
+						layer.tips(html, info.el, {
+							tips: [3,'#2F4056'],
+							time: 400000,
+							area:'280px'
+						});
+					},
+					eventMouseLeave:function(info){
+						layer.closeAll('tips');
+					},
+					eventClick:function(){
+						layer.open({
+							type: 2,
+							title: '任务详情',
+							scrollbar: false,
+							skin:'layui-layer-rim',
+							closeBtn: 1,
+							area: ['100%', '100%'],
+							anim: 2,
+							move:false,
+							content: '../任务管理/任务详情.html?is_pop=1',
+							btn:['修改','删除'],
+							yes:function(index){
+								layer.close(index);
+								layer.open({
+									type: 2,
+									title: '修改任务',
+									scrollbar: false,
+									skin:'layui-layer-rim',
+									closeBtn: 1,
+									area: ['100%', '100%'],
+									anim: 2,
+									move:false,
+									content: '../任务管理/添加任务.html?is_pop=1'
+								});
+							},
+							btn2:function(){
+								layer.confirm('确认删除该日程？', {
+									btn: ['确认','取消'] //按钮
+								}, function(){
+									//删除操作
+									layer.close(index);
+								}, function(index){
+									layer.close(index);
+								});
+							}
 						});
 					},
 					events:[
 						{
-						  title: 'All Day Event',
-						  description: 'description for All Day Event',
-						  start: '2019-07-01'
+						  title: '一般任务',
+						  start: '2019-07-01',
+						  state:0,
+						  type:'1',
+						  backgroundColor:'#3788d8',
+						  borderColor:'#3788d8',
+						  textColor:'#fff'
 						},
 						{
-						  title: 'All Day Event',
-						  description: 'description for All Day Event',
+						  title: '一般任务-已完成',
 						  start: '2019-07-01',
-						  end:'2020-07-01'
+						  state:1,
+						  type:'1',
+						  backgroundColor:'#fff',
+						  borderColor:'#3788d8',
+						  textColor:'#3788d8'
+						},
+						{
+						  title: '紧急任务',
+						  start: '2019-07-02',
+						  state:0,
+						  type:'2',
+						  backgroundColor:'#FF5722',
+						  borderColor:'#FF5722',
+						  textColor:'#fff'
+						},
+						{
+						  title: '紧急任务-已完成',
+						  start: '2019-07-02',
+						  state:1,
+						  type:'2',
+						  backgroundColor:'#fff',
+						  borderColor:'#FF5722',
+						  textColor:'#FF5722'
+						},
+						{
+						  title: '重要任务',
+						  start: '2019-07-03',
+						  state:0,
+						  type:'3',
+						  backgroundColor:'#FFB800',
+						  borderColor:'#FFB800',
+						  textColor:'#fff'
+						},
+						{
+						  title: '重要任务-已完成',
+						  start: '2019-07-03',
+						  state:1,
+						  type:'3',
+						  backgroundColor:'#fff',
+						  borderColor:'#FFB800',
+						  textColor:'#FFB800'
 						}
 					],
 				});

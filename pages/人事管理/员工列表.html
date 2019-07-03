@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="../../layui/css/common.css" />
 		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="../../layui/layui.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
 	</head>
 	<body class="bgf2f2f2">
 		<div class="childrenBody">
@@ -36,17 +37,51 @@
 									</div>
 								</form>
 								<table id="lst" lay-filter="lst"></table>
-								<script type="text/html" id="toolbar">
+								<script type="text/html" id="bar">
 									<button class="layui-btn  layui-btn-xs ">查看</button>
 									<button class="layui-btn  layui-btn-xs layui-btn-normal">编辑</button>
+									<button class="layui-btn  layui-btn-xs layui-btn-warm" lay-event="position">职位设置</button>
 									<button class="layui-btn  layui-btn-xs layui-btn-danger">删除</button>
 								</script>
-								<script type="text/html" id="bar">
+								<script type="text/html" id="toolbar">
 								</script>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+		<div class="linePop linePop1">
+			<div class="layui-card-body">
+				<form class="layui-form layui-form2" >
+					<table class="layui-table">
+						<thead>
+							<tr>
+								<th></th>
+								<th>部门</th>
+								<th>职位</th>
+							</tr>
+						</thead>
+						<tr>
+							<td><span class="table-btn-jia">+</span><span class="table-btn-jian">-</span></td>
+							<td>
+								<input type="text" class="layui-input" readonly onclick="user_popup(this,false,true,false,1)"/>
+							</td>
+							<td>
+								<select>
+									<option>职位一</option>
+									<option>职位二</option>
+									<option>职位三</option>
+									<option>职位四</option>
+								</select>
+							</td>
+						</tr>
+					</table>
+					<div class="layui-row text-right padding-r-50">
+						<button class="layui-btn" lay-submit="" lay-filter="formDemo">确认</button>
+						<span class="layui-btn layui-btn-primary" onclick="closePop()">返回</span>
+					</div>
+				</form>
 			</div>
 		</div>
 		<script type="text/javascript">
@@ -61,7 +96,7 @@
 				{field: 'sex', title: '性别',width:60},
 				{field: 'mobile', title: '电话',width:120},
 				{field: 'bg_mobile', title: '办公电话',width:120},
-				{title:'操作',toolbar:'#toolbar',width:170}
+				{title:'操作',toolbar:'#bar',minWidth:230}
 			]];
 			var datas = [
 				{bm:'组织部',zw:'主管',name:'<a class="text-add" href="../人事管理/员工信息.html">张三</a>',state:'正式员工',no:'56546323',sex:'男',mobile:'1634544444',bg_mobile:'028-11111111',js:'人事管理员<span class="text-red">|</span>简历管理员'},
@@ -72,16 +107,33 @@
 			layui.use([ 'table'], function() {
 				var table = layui.table;
 					
-					table.render({
-						elem: '#lst',
-						data: datas,
-						cols: data_col,
-						toolbar:'#bar',
-						page:true,
-						even: true,
-						height:'full-140'
-					});
+				table.render({
+					elem: '#lst',
+					data: datas,
+					cols: data_col,
+					toolbar:'#toolbar',
+					page:true,
+					even: true,
+					height:'full-140'
+				});
+				table.on('tool(lst)',function(obj){
+					var event = obj.event;
+					if(event == 'position'){
+						layer_linePop = layer.open({
+							type: 1,
+							title:'职位设置',
+							String: false,
+							closeBtn: 1,
+							skin: 'layui-layer-rim',
+							area: ['750px','450px'],
+							content: $('.linePop1')
+						});
+					}
+				});
 			});
+			function closePop(){
+				layer.closeAll();
+			}
 		</script>
 	</body>
 </html>

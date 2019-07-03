@@ -12,7 +12,33 @@ String.prototype.LTrim = function (c) {
     var reg = new RegExp('(^[' + c + '])', 'gi');
     return this.replace(reg, '');
 }
+String.prototype.FormatDate=function(hasTime){
+    if(!this){return "";}
+    try{
+        var d = new Date( Date.parse(this));        
+        if(!d){return "";}
+        if(hasTime){
+            return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+        }else{
+            return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+        }
+    }catch(ex){
+        return "";
+    }
+}
 
+/**
+ * 格式化日期对象
+ * @param Object date
+ * @param boolean 
+ */
+function FormatDate(date,hasTime){
+	if(hasTime){
+	    return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+	}else{
+	    return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+	}
+}
 /** 
  * 弹出输入层
  */

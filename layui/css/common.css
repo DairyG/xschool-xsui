@@ -261,4 +261,10 @@ table .layui-table-edit {height:38px;line-height: 38px;}
 .daily_timeline .ul li .text .reply {background: #f2f2f2;padding:7px 10px;}
 .daily_timeline .ul li .text .reply .edit_content{border-bottom: 0;padding-bottom: 0;}
 .daily_timeline .ul li .text .reply li {padding-bottom:10px}
+.daily_timeline_info  {padding:0 10%}
+.daily_timeline_info .daily_timeline .ul li .right {padding: 0 20px;margin:0;border-left:0;}
+.daily_timeline_info .daily_timeline .ul li .text {border-bottom: 0;}
+.daily_timeline_info .daily_timeline .ul li .text .overlay {max-height: unset;}
 .load_more {padding: 10px 0;}
+
+.tips_span {min-width:50px;display: inline-block;}

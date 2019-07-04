@@ -268,3 +268,12 @@ table .layui-table-edit {height:38px;line-height: 38px;}
 .load_more {padding: 10px 0;}
 
 .tips_span {min-width:50px;display: inline-block;}
+
+.dpt_pos_ul {}
+.dpt_pos_ul li {float: left; position: relative;border:1px solid #01AAED;border-radius: 3px;height: 75px;min-width:80px}
+.dpt_pos_ul li p {padding: 0 10px;}
+.dpt_pos_ul li .p1 { background: #01AAED;color:#fff;}
+.dpt_pos_ul li.add_li {border: 0;line-height: 75px;padding: 0 11px;background: url(../../img/dpt_pos_jt.png) left center;width:auto;min-width:unset;} 
+.dpt_pos_ul li.no_bg  {background:none; line-height: 38px;}
+.dpt_pos_ul li.add_li span {border:1px solid #01AAED;padding: 5px;border-radius: 50%;color: #01AAED;background: #fff;} 
+.dpt_pos_ul li .del { position: absolute;color: #fff;top: 0;right: 4px;}

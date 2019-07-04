@@ -26,6 +26,7 @@
 			<ul id="selTree1" class="dtree" data-id="0"></ul>
 		</div>
 		<div id="rec_box" class="layui-input">
+			<button class="layui-btn layui-btn-sm layui-btn-normal" id="" ></button>
 			<!-- <input type="hidden" name="sels" value='{"company":{"ids":",","names":","},"department":{"ids":",1,2,3,","names":",销售中心,行政中心,市场部,"},"user":{"ids":",1,2,3,4,","names":",张三,李四,王五,赵六,"}}'> -->
 		</div>
 		<script>
@@ -44,7 +45,8 @@
 				var table = layui.table,
 					pick_pcc = layui.pick_pcc,
 					dtree = layui.dtree;
-				user_popup($("#rec_box"),true,false,false,3,false,tesxt1);
+				user_popup2($("#rec_box"),'user',3,false,tesxt1);
+				
 				//payitem_pop($("#rec_box"),1);
 				//$('.pick-area').pickArea();
 				/* pick_pcc.render({

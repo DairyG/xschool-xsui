@@ -19,7 +19,7 @@
 							<label class="layui-form-label"><span class="text-red"> *</span>考核对象</label>
 							<div class="layui-input-block">
 								<div class="layui-input">
-									<span class="layui-btn layui-btn-sm layui-btn-normal margin-t-3" onclick="user_popup($(this).parent(),true,false,false)">选择考核对象</span>
+									<span class="layui-btn layui-btn-sm layui-btn-normal margin-t-3" onclick="user_popup2($(this).parent(),'user,department')">选择考核对象</span>
 								</div>
 							</div>
 						</div>
@@ -144,18 +144,22 @@
 					var value = obj.value;
 					var elem = obj.elem;
 					if(value == -3){
-						user_popup(null,false,true,false,1,false,(res)=>{
-							var id = res.department.ids.LTrim(',').RTrim(',');
-							var val = res.department.names.LTrim(',').RTrim(',');
-							var sel_last = $(elem).find('option:last');
-							var sel_last_val = parseInt(sel_last.attr('value'));
-							$(sel_last).find('option').removeAttr('selected');
-							if(sel_last_val > 0){
-								$(sel_last).attr('value',id);
-								$(sel_last).prop('selected',true);
-								$(sel_last).html(val);
+						user_popup2(null,'department,position,dpt_position',1,false,(res)=>{
+							if(res){
+								var id = res.department.ids.LTrim(',').RTrim(',');
+								var val = res.department.names.LTrim(',').RTrim(',');
+								var sel_last = $(elem).find('option:last');
+								var sel_last_val = parseInt(sel_last.attr('value'));
+								$(sel_last).find('option').removeAttr('selected');
+								if(sel_last_val > 0){
+									$(sel_last).attr('value',id);
+									$(sel_last).prop('selected',true);
+									$(sel_last).html(val);
+								} else {
+									$(sel_last).after('<option value="'+id+'" selected >'+val+'</option>');
+								}
 							} else {
-								$(sel_last).after('<option value="'+id+'" selected >'+val+'</option>');
+								$(elem).find('option').prop('selected',false);
 							}
 							form.render('select');
 						});

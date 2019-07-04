@@ -51,6 +51,41 @@
 								</div>
 							</div>
 							<div class="layui-form-item layui-col-md12 layui-col-sm12">
+								<label class="layui-form-label">职位</label>
+								<div class="layui-input-block">
+									<ul class="dpt_pos_ul">
+										<li>
+											<p class="p1">经理</p>
+											<p class="p2">张三</p>
+											<p class="p3">15333333333</p>
+											<i class="layui-icon layui-icon-close-fill del"></i>
+										</li>
+										<li class="add_li">
+											<span class="set_btn" title="添加职位"><i class="layui-icon layui-icon-add-1 add"></i></span>
+										</li>
+										<li>
+											<p class="p1">经理</p>
+											<p class="p2"></p>
+											<p class="p3"></p>
+											<i class="layui-icon layui-icon-close-fill del"></i>
+										</li>
+										<li class="add_li">
+											<span class="set_btn" title="添加职位"><i class="layui-icon layui-icon-add-1 add"></i></span>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="layui-form-item layui-col-md12 layui-col-sm12">
+								<label class="layui-form-label">职位</label>
+								<div class="layui-input-block">
+									<ul class="dpt_pos_ul">
+										<li class="add_li no_bg">
+											<span class="set_btn" title="添加职位"><i class="layui-icon layui-icon-add-1 add"></i></span>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- <div class="layui-form-item layui-col-md12 layui-col-sm12">
 								<label class="layui-form-label">第一领导 </label>
 								<div class="layui-input-inline">
 									<input type="tel" class="layui-input layui-disabled" value="经理" readonly />
@@ -63,9 +98,8 @@
 									<input type="tel" class="layui-input layui-disabled" value="主管" readonly />
 								</div>
 								<button class="layui-btn layui-btn-danger">删除</button>
-							</div>
+							</div> -->
 							<div class="layui-row text-right">
-								<span class="layui-btn layui-btn-normal" id="set_btn">添加领导职位</span>
 								<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
 								<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认并继续添加</button>
 								<span class="layui-btn" onclick="history.back(-1)">返回</span>
@@ -160,7 +194,7 @@
 			function closePop(){
 				layer.closeAll();
 			}
-			$('#set_btn').click(function(){
+			$('.set_btn').click(function(){
 				layer_linePop = layer.open({
 					type: 1,
 					title:'设置领导职位',
@@ -171,6 +205,10 @@
 					area: ['500px','220px'],
 					content: $('.linePop')
 				});
+			});
+			$(".dpt_pos_ul .del").click(function(){
+				$(this).parents('li').next('li').remove();
+				$(this).parents('li').remove();
 			});
 		</script>
 	</body>

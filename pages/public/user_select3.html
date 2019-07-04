@@ -333,7 +333,7 @@
 		switch (type){
 			case 'company':
 				icon = '<i class="icon_group1"></i>';
-				if(has_company && sel_type != 'position'){
+				if(has_company && sel_type == 'org'){
 					var ids = $("#company_ids").val();
 					if(ids.indexOf(','+id+',') >= 0){
 						checked = " checked='checked' ";

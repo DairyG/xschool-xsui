@@ -2870,7 +2870,7 @@ $(function(){
 	}, 5 * 60 * 1000); */
 	
 	$('#left,#right').css({
-		maxHeight: $(window).height() - 90
+		maxHeight: $(window).height()
 	});
 	
 	$('a.video').live({
@@ -2882,4 +2882,13 @@ $(function(){
 			})
 		}
 	});
+});
+$(window).scroll(function(event){
+	if($(window).scrollTop() > 90){
+		$('#left').css({'position':'fixed','top':'0','left':'25px'});
+		$('#right').css({'position':'fixed','top':'0','right':'25px'});
+	} else {
+		$('#left').css({'position':'absolute','left':'0','top':'0'});
+		$('#right').css({'position':'absolute','right':'0','top':'0'});
+	}
 });

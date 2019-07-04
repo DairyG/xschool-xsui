@@ -47,7 +47,7 @@
 									<div class="layui-form-item layui-col-md6 margin-b-20">
 										<label class="layui-form-label"><span class="text-red"> *</span>流程类型</label>
 										<div class="layui-input-block">
-											<input type="radio" name="type" title="事物流程" lay-skin="primary" />
+											<input type="radio" name="type" title="事务流程" lay-skin="primary" />
 											<input type="radio" name="type" title="费用流程" lay-skin="primary" />
 
 										</div>
@@ -65,7 +65,7 @@
 									<div class="layui-form-item layui-col-md6 margin-b-20">
 										<label class="layui-form-label"><span class="text-red"> *</span>可见范围</label>
 										<div class="layui-input-block">
-											<input type="text" name="title" required  lay-verify="required" placeholder="请选择可见范围" autocomplete="off" class="layui-input" onclick="user_popup()"/>
+											<input type="text" name="title" required  lay-verify="required" placeholder="请选择可见范围" autocomplete="off" class="layui-input" onclick="user_popup2(this,'user,company,dpt_position,position,department')"/>
 										</div>
 									</div>
 									<div class="layui-form-item layui-col-md6 margin-b-20">
@@ -748,16 +748,7 @@
 				closePop();
 			}
 			function on_select(obj){
-				/* layer_linePop = layer.open({
-					type: 1,
-					title:'选择人员类型',
-					String: false,
-					closeBtn: 1,
-					skin: 'layui-layer-rim',
-					area: ['350px','160px'],
-					content: $('.linePop4')
-				}); */
-				user_popup2(null,true,true,true);
+				user_popup2(this,'user,company,dpt_position,position,department');
 			}
 			function done_select(type){
 				if(type == 'duty'){//部门负责人

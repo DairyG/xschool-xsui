@@ -16,9 +16,6 @@
 		<script src='../../lib/fullcalendar/packages/daygrid/main.js'></script>
 		<script src='../../lib/fullcalendar/packages/timegrid/main.js'></script>
 		<script src='../../lib/fullcalendar/packages/core/locales/zh-cn.js'></script>
-		<style>
-			#calendar {max-width: 100%;margin: 0 auto;}
-		</style>
 	</head>
 	<body>
 		<div class="childrenBody" >
@@ -46,8 +43,9 @@
 						center: 'title',
 						right: 'dayGridMonth,timeGridWeek,timeGridDay'
 					},
+					defaultView:'dayGridMonth',
 					locale: 'zh-cn',
-					navLinks: true, // can click day/week names to navigate views
+					navLinks: true,
 					selectable: true,
 					selectMirror: true,
 					select: function(arg) {//选中回调
@@ -81,27 +79,14 @@
 							}
 						});
 					},
-					slotLabelFormat:{
-						hour: 'numeric',
-						second: 'numeric',
-						omitZeroMinute: true,
-						hour12:false
-					},
+					slotLabelFormat:{ hour: '2-digit', minute:'2-digit', hour12:false, meridiem: 'short' },
 					editable: true,
-					eventLimit: true, // allow "more" link when too many events
-					eventTimeFormat:{
-						hour: 'numeric',
-						minute: '2-digit',
-						meridiem: 'short'
-					},
+					eventLimit: true,
+					fixedWeekCount:false,
 					eventStartEditable:false,
 					eventResourceEditable:false,
 					eventDurationEditable:false,
 					eventResizableFromStart:false,
-					defaultView:'dayGridMonth',
-					eventRender: function(info) {
-						
-					},
 					eventMouseEnter:function(info){
 						//info.event.extendedProps
 						var state = state_arr[info.event.extendedProps.state];

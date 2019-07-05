@@ -8,10 +8,19 @@
 		<link rel="stylesheet" href="../../layui/css/template.css" />
 		<link rel="stylesheet" href="../../lib/ztree/css/metroStyle/metroStyle.css" type="text/css">
 		<link rel="stylesheet" href="../../layui/css/common.css" />
+		<link href='../../lib/fullcalendar/packages/core/main.css' rel='stylesheet' />
+		<link href='../../lib/fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
+		<link href='../../lib/fullcalendar/packages/timegrid/main.css' rel='stylesheet' />
 		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="../../layui/layui.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
 		<script type="text/javascript" src="../../lib/ztree/js/jquery.ztree.core.js"></script>
 		<script type="text/javascript" src="../../lib/ztree/js/jquery.ztree.excheck.js"></script>
+		<script src='../../lib/fullcalendar/packages/core/main.js'></script>
+		<script src='../../lib/fullcalendar/packages/interaction/main.js'></script>
+		<script src='../../lib/fullcalendar/packages/daygrid/main.js'></script>
+		<script src='../../lib/fullcalendar/packages/timegrid/main.js'></script>
+		<script src='../../lib/fullcalendar/packages/core/locales/zh-cn.js'></script>
 	</head>
 	<body>
 		<div class="childrenBody bgf2f2f2">
@@ -631,8 +640,16 @@
 										</div>
 									</div>
 									<div class="layui-tab-item" tab-name="资产信息"></div>
-									<div class="layui-tab-item" tab-name="日程安排"></div>
-									<div class="layui-tab-item" tab-name="代办事宜"></div>
+									<div class="layui-tab-item" tab-name="日程安排">
+										<div id='calendar' class="bgwhite"></div>
+									</div>
+									<div class="layui-tab-item" tab-name="代办事宜">
+										<table class="layui-table" id="db_lst" lay-filter="db_lst"></table>
+										<script type="text/html" id="db_bar">
+											<a class="layui-btn layui-btn-xs" href="javascript:;" lay-event="info">查看</a>
+											<a class="layui-btn layui-btn-xs layui-btn-normal" href="javascript:;">完成</a>
+										</script>
+									</div>
 									<div class="layui-tab-item" tab-name="考勤记录"></div>
 									<div class="layui-tab-item" tab-name="奖惩情况"></div>
 									<div class="layui-tab-item" tab-name="考核情况"></div>
@@ -695,18 +712,151 @@
 		</div>
 		<script type="text/javascript">
 			var gz_datas = [
-				{'ny':'2019-4',amount:'8000',jb:'10000',cb:'100',jt:100,hf:100,gw:100,yn:'<span class="text-red">-100</span>',sy:'<span class="text-red">-100</span>',amount1:8000,amount2:10000,cd:'<span class="text-red">-100</span>',qj:'<span class="text-red">-10</span>',jj:200},
-				{'ny':'2019-3',amount:'8000',jb:'10000',cb:'100',jt:100,hf:100,gw:100,yn:'<span class="text-red">-100</span>',sy:'<span class="text-red">-100</span>',amount1:8000,amount2:10000,cd:'<span class="text-red">-100</span>',qj:'<span class="text-red">-10</span>',jj:200},
-				{'ny':'2019-2',amount:'8000',jb:'10000',cb:'100',jt:100,hf:100,gw:100,yn:'<span class="text-red">-100</span>',sy:'<span class="text-red">-100</span>',amount1:8000,amount2:10000,cd:'<span class="text-red">-100</span>',qj:'<span class="text-red">-10</span>',jj:200},
-				{'ny':'2019-1',amount:'8000',jb:'10000',cb:'100',jt:100,hf:100,gw:100,yn:'<span class="text-red">-100</span>',sy:'<span class="text-red">-100</span>',amount1:8000,amount2:10000,cd:'<span class="text-red">-100</span>',qj:'<span class="text-red">-10</span>',jj:200},
+				{title:'张三',no:'12325345345',bw:'组织部',zw:'经理','ny':'2019-4',amount:'8000',jb:'10000',cb:'100',jt:100,hf:100,gw:100,yn:'-100',sy:'-100',amount1:8000,amount2:10000,cd:'-100',qj:'-10',jj:200,is_edit:false},
+				{title:'张三',no:'12325345345',bw:'组织部',zw:'经理','ny':'2019-3',amount:'8000',jb:'10000',cb:'100',jt:100,hf:100,gw:100,yn:'-100',sy:'-100',amount1:8000,amount2:10000,cd:'-100',qj:'-10',jj:200,is_edit:false},
+				{title:'张三',no:'12325345345',bw:'组织部',zw:'经理','ny':'2019-2',amount:'8000',jb:'10000',cb:'100',jt:100,hf:100,gw:100,yn:'-100',sy:'-100',amount1:8000,amount2:10000,cd:'-100',qj:'-10',jj:200,is_edit:false},
+				{title:'张三',no:'12325345345',bw:'组织部',zw:'经理','ny':'2019-1',amount:'8000',jb:'10000',cb:'100',jt:100,hf:100,gw:100,yn:'-100',sy:'-100',amount1:8000,amount2:10000,cd:'-100',qj:'-10',jj:200,is_edit:false},
+			];
+			var db_cols = [[
+				{type:'numbers',title:'序号'},
+				{field:'date',title:'发布时间',minWidth:'150'},
+				{field:'title',title:'标题'},
+				{field:'type',title:'紧急'},
+				{field:'fb',title:'发布人'},
+				{field:'zx',title:'执行人'},
+				{field:'cs',title:'抄送人'},
+				{field:'info',title:'完成情况',minWidth:'120'},
+				{field:'date2',title:'截止时间',minWidth:'310'},
+				{field:'fa',title:'考核方案',minWidth:'120'},
+				{field:'xm',title:'考核项目',minWidth:'120'},
+				{toolbar:'#db_bar',title:'操作',fixed:'right',minWidth:'120'}
+			]];
+			var db_datas = [
+				{'title':'去打酱油',date:'2019-1-1 19:23:32',info:'我未完成',type:'一般','date2':'2019-07-03 10:00:00 ~ 2019-07-04 10:00:00','fa':'月度考核方案',xm:'销售指标',fb:'管理员',zx:'张三',cs:'王五'},
+				{'title':'打完了吗',date:'2019-1-1 19:23:32',info:'1/2完成',type:'重要','date2':'2019-07-03 10:00:00 ~ 2019-07-04 10:00:00','fa':'月度考核方案',xm:'销售指标',fb:'管理员',zx:'张三',cs:'王五'},
+				{'title':'没有',date:'2019-1-1 19:23:32',info:'2/2完成',type:'紧急','date2':'2019-07-03 10:00:00 ~ 2019-07-04 10:00:00','fa':'月度考核方案',xm:'销售指标',fb:'管理员',zx:'张三',cs:'王五'},
 			];
 			layui.use([ 'table','element','laydate'], function() {
 				var table = layui.table,
 					element = layui.element,
 					laydate = layui.laydate;
-					
+				table.render({
+					elem: '#db_lst',
+					title: '用户表',
+					page: true,
+					even: true,
+					height: 'full-140',
+					cols: db_cols,
+					data: db_datas,
+				});
+				table.on('tool(db_lst)',function(data){
+					if(data.event == 'info'){
+						window.location.href = '../任务管理/任务详情.html';
+					}
+				});
 			});
-			
+			var color_arr = ['#c5cb63','#5ec9f6','#3bc2b5','#5e97f6','#f65e8d','#5c6bc0','#bb1b27','#f6bf26','#78919d','#f65e8d','#197d24','#195b7d'];
+			var state_arr = {0:'未完成',1:'已完成'};
+			var type_arr = {1:'一般',2:'紧急',3:'重要'};
+			document.addEventListener('DOMContentLoaded', function() {
+				var calendarEl = document.getElementById('calendar');
+				var calendar = new FullCalendar.Calendar(calendarEl, {
+					plugins: ['interaction', 'dayGrid', 'timeGrid'],
+					header: {
+						left: 'prev,next today',
+						center: 'title',
+						right: 'dayGridMonth,timeGridWeek,timeGridDay'
+					},
+					defaultView:'dayGridMonth',
+					locale: 'zh-cn',
+					navLinks: true,
+					selectable: true,
+					selectMirror: true,
+					slotLabelFormat:{ hour: '2-digit', minute:'2-digit', hour12:false, meridiem: 'short' },
+					editable: true,
+					eventLimit: true,
+					fixedWeekCount:false,
+					eventStartEditable:false,
+					eventResourceEditable:false,
+					eventDurationEditable:false,
+					eventResizableFromStart:false,
+					eventMouseEnter:function(info){
+						//info.event.extendedProps
+						var state = state_arr[info.event.extendedProps.state];
+						var type = type_arr[info.event.extendedProps.type];
+						var start = info.event.start ? FormatDate(info.event.start) : '';
+						var end = info.event.end ? FormatDate(info.event.end) : '';
+						var html = '<h3>'+info.event.title+'</h3>\
+									<p>开始时间：<span class="padding-l-15 padding-r-30 tips_span">'+start+'</span>状态：<span class="padding-l-15">'+state+'</span></p>\
+									<p>结束时间：<span class="padding-l-15 padding-r-30 tips_span" >'+end+'</span>紧急：<span class="padding-l-15">'+type+'</span></p>';
+						layer.tips(html, info.el, {
+							tips: [3,'#2F4056'],
+							time: 400000,
+							area:'280px'
+						});
+					},
+					eventMouseLeave:function(info){
+						layer.closeAll('tips');
+					},
+					events:[
+						{
+						  title: '一般任务',
+						  start: '2019-07-01',
+						  state:0,
+						  type:'1',
+						  backgroundColor:'#3788d8',
+						  borderColor:'#3788d8',
+						  textColor:'#fff'
+						},
+						{
+						  title: '一般任务-已完成',
+						  start: '2019-07-01',
+						  state:1,
+						  type:'1',
+						  backgroundColor:'#5FB878',
+						  borderColor:'#5FB878',
+						  textColor:'#fff'
+						},
+						{
+						  title: '紧急任务',
+						  start: '2019-07-02',
+						  state:0,
+						  type:'2',
+						  backgroundColor:'#FF5722',
+						  borderColor:'#FF5722',
+						  textColor:'#fff'
+						},
+						{
+						  title: '紧急任务-已完成',
+						  start: '2019-07-02',
+						  state:1,
+						  type:'2',
+						  backgroundColor:'#5FB878',
+						  borderColor:'#5FB878',
+						  textColor:'#fff'
+						},
+						{
+						  title: '重要任务',
+						  start: '2019-07-03',
+						  state:0,
+						  type:'3',
+						  backgroundColor:'#FFB800',
+						  borderColor:'#FFB800',
+						  textColor:'#fff'
+						},
+						{
+						  title: '重要任务-已完成',
+						  start: '2019-07-03',
+						  state:1,
+						  type:'3',
+						  backgroundColor:'#5FB878',
+						  borderColor:'#5FB878',
+						  textColor:'#fff'
+						}
+					],
+				});
+				calendar.render();
+			});
 		</script>
 	</body>
 </html>

@@ -277,3 +277,5 @@ table .layui-table-edit {height:38px;line-height: 38px;}
 .dpt_pos_ul li.no_bg  {background:none; line-height: 38px;}
 .dpt_pos_ul li.add_li span {border:1px solid #01AAED;padding: 5px;border-radius: 50%;color: #01AAED;background: #fff;} 
 .dpt_pos_ul li .del { position: absolute;color: #fff;top: 0;right: 4px;}
+
+#calendar {max-width: 100%;margin: 0 auto;}

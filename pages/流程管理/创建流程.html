@@ -519,9 +519,17 @@
 											</li>
 											<li>
 												<div class="layui-card shenpi_card">
-													<div class="layui-card-header">审批人</div>
+													<div class="layui-card-header">
+														审批人
+														<div class="fr">
+															<input name="type" type="radio" title="或签" checked />
+															<input name="type" type="radio" title="会签" />
+														</div>
+													</div>
 													<div class="layui-card-body">
-														<div class="show_div"><span class="text-85">请选择审批人</span></div>
+														<div class="show_div">
+															<span class="text-85">请选择审批人</span>
+														</div>
 														<label class="add_icon text-85">
 															<i class="layui-icon layui-icon-right fr fontsize-18"></i>
 															<input type="radio" name="add_item_point" lay-ignore  onclick="on_select(this)"/>
@@ -628,7 +636,13 @@
 		</div>
 		<script type="text/html" id="shenpi_html">
 			<div class="layui-card shenpi_card">
-				<div class="layui-card-header">审批人<i class="layui-icon layui-icon-close-fill fr fontsize-18" onclick="close_item(this)"></i></div>
+				<div class="layui-card-header">审批人
+					<div class="fr">
+						<input name="type" type="radio" title="或签" checked />
+						<input name="type" type="radio" title="会签" />
+					</div>
+					<i class="layui-icon layui-icon-close-fill fr fontsize-18" onclick="close_item(this)"></i>
+				</div>
 				<div class="layui-card-body">
 					<div class="show_div"><span class="text-85">请选择审批人</span></div>
 					<label class="add_icon text-85">
@@ -703,10 +717,11 @@
 		<script type="text/javascript" src="../../form/js/formbuilder.js"></script>
 		
 		<script type="text/javascript">
-			var layer_linePop;
-			layui.use(['table','element'], function() {
+			var layer_linePop,form;
+			layui.use(['table','element','form'], function() {
 				var table = layui.table,
 					element = layui.element;
+					form = layui.form;
 			});
 			function add_group(){
 				layer_linePop = layer.open({
@@ -746,6 +761,7 @@
 				var p_li = $("input[name='add_item_point']:checked").parents('li');
 				$(p_li).after('<li>'+html+'</li>');
 				closePop();
+				form.render('radio');
 			}
 			function on_select(obj){
 				user_popup2(this,'user,company,dpt_position,position,department');

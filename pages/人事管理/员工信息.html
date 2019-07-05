@@ -51,7 +51,7 @@
 									<li>工资福利</li>
 									<li>工资记录</li>
 									<li>资产信息</li>
-									<li>日程安排</li>
+									<li id="calendar_btn" state="0">日程安排</li>
 									<li>代办事宜</li>
 									<li>考勤记录</li>
 									<li>奖惩情况</li>
@@ -758,9 +758,10 @@
 			var color_arr = ['#c5cb63','#5ec9f6','#3bc2b5','#5e97f6','#f65e8d','#5c6bc0','#bb1b27','#f6bf26','#78919d','#f65e8d','#197d24','#195b7d'];
 			var state_arr = {0:'未完成',1:'已完成'};
 			var type_arr = {1:'一般',2:'紧急',3:'重要'};
+			var calendar;
 			document.addEventListener('DOMContentLoaded', function() {
 				var calendarEl = document.getElementById('calendar');
-				var calendar = new FullCalendar.Calendar(calendarEl, {
+				calendar = new FullCalendar.Calendar(calendarEl, {
 					plugins: ['interaction', 'dayGrid', 'timeGrid'],
 					header: {
 						left: 'prev,next today',
@@ -856,6 +857,15 @@
 					],
 				});
 				calendar.render();
+			});
+			$("#calendar_btn").click(function(){
+				var state = $(this).attr('state');
+				if(state == '0'){
+					setTimeout(function(){
+						calendar.updateSize();
+					},200);
+					$(this).attr('state',1);
+				}
 			});
 		</script>
 	</body>

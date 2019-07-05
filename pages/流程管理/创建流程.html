@@ -764,7 +764,8 @@
 				form.render('radio');
 			}
 			function on_select(obj){
-				user_popup2(this,'user,company,dpt_position,position,department');
+				var to_obj = $(obj).closest('.layui-card-body').find('.show_div');
+				user_popup2(to_obj,'user,company,dpt_position,position,department');
 			}
 			function done_select(type){
 				if(type == 'duty'){//部门负责人

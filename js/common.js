@@ -227,7 +227,7 @@ function user_popup2(obj = null,allow_sels,num = 0,is_close_other = false,callba
 	var has_company = allow_sels.indexOf('company') > -1 ? true : false;
 	var has_position = allow_sels.indexOf('position') > -1 ? true : false;
 	var has_dpt_position = allow_sels.indexOf('dpt_position') > -1 ? true : false;
-	
+	$("#popup_content").remove();
 	$('body').append('<div id="popup_content" data-has_user="'+has_user+'" data-has_department="'+has_department+'" data-has_company="'+has_company+'" data-has_position="'+has_position+'" data-has_dpt_position="'+has_dpt_position+'" data-num="'+num+'"></div>');
 	$('#popup_content').load("../../pages/public/user_select3.html",null,function(){
 		if(typeof obj == 'object'){
@@ -382,7 +382,6 @@ function user_popup2(obj = null,allow_sels,num = 0,is_close_other = false,callba
 				callback(arr);
 			}
 			layer.close(index);
-			$('#popup_content').remove();
 		},
 		btn2:function(index, layero){
 			if(typeof callback === 'function'){

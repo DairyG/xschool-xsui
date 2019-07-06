@@ -513,3 +513,26 @@ function assess_popup(obj,type = 'checkbox'){
 		content: $('#popup_content')
 	});
 }
+
+$.fn.scrollFixed = function(fixed_w = '') {//页面滚动时tab-title始终在页面上方
+	var offset = this.offset().top;
+	var _this = this;
+	if(fixed_w == ''){
+		fixed_w = _this.parents('.childrenBody').width();
+	}
+	var w = _this.width();
+	var padd = (fixed_w - w)/2;
+	$(window).scroll(function(event){
+		if($(window).scrollTop() > offset){
+			_this.css({'position':'fixed','top':'0','left':'15px','width':w,'zIndex':'9999','background':'#fff','paddingTop':'15px','paddingLeft':padd,'paddingRight':padd});
+		} else {
+			_this.removeAttr('style');
+		}
+	});
+}
+
+$(function(){
+	$('.back_history').click(function(){
+		history.back(-1);
+	});
+});

@@ -13,12 +13,10 @@
 			<div class="layui-card-body">
 				<table class="layui-table" id="lst" lay-filter="lst"></table>
 				<script type="text/html" id="bar">
-					<a class="layui-btn layui-btn-xs layui-btn-warm" href="javascript:;">编辑</a>
-					{{# if(d.state == 1){ }}
-						<a class="layui-btn layui-btn-danger layui-btn-xs">停用</a>
-					{{# } else { }}
-						<a class="layui-btn layui-btn-xs">启用</a>
-					{{# } }}
+					<a class="layui-btn layui-btn-xs" lay-event="info" >查看</a>
+					<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="" >编辑</a>
+					<!-- 有关联数据时 不能删除 -->
+					<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="" >删除</a>
 				</script>
 				<script type="text/html" id="toolbar">
 					<button class="layui-btn  layui-btn-sm" lay-event="add"><i class="layui-icon layui-icon-add-1"></i> 添加</button>
@@ -59,17 +57,19 @@
 			var layer_linePop;
 			var cols = [[
 				{type:'numbers',title:'序号'},
-				{field:'title',title:'保险类别'},
-				{field:'sort',title:'显示顺序'},
-				{field:'state',title:'状态',templet:function(d){ if(d.state == 1){ return "<span class='text-span'>启用</span>";}else { return "<span class='text-del'>停用</span>";} }},
-				{field:'tips',title:'备注'},
-				{toolbar:'#bar',title:'操作'}
+				{field:'type',title:'合同类型'},
+				{field:'no',title:'合同编号'},
+				{field:'title',title:'合同标题'},
+				{field:'date',title:'合同有效期'},
+				{field:'amount',title:'合同总金额'},
+				{field:'p_no',title:'请款单号'},
+				{field:'p_num',title:'付款次数'},
+				{toolbar:'#bar',title:'操作',fixed:'right',minWidth:'160'}
 			]];
 			var datas = [
-				{'title':'养老保险','sort':10,total:'1000',gr:'300',gs:'700',state:'1'},
-				{'title':'医疗保险','sort':10,total:'1000',gr:'300',gs:'700',state:'0'},
-				{'title':'失业保险','sort':10,total:'1000',gr:'300',gs:'700',state:'0'},
-				{'title':'生育保险','sort':10,total:'1000',gr:'300',gs:'700',state:'1'},
+				{type:'付款合同',no:'123142342',title:'建筑公司外包合同',date:'2019-01-01~2019-10-01',amount:'1000000',p_no:'3242342342',p_num:'3'},
+				{type:'付款合同',no:'123142342',title:'建筑公司外包合同',date:'2019-01-01~2019-10-01',amount:'1000000',p_no:'3242342342',p_num:'3'},
+				{type:'付款合同',no:'123142342',title:'建筑公司外包合同',date:'2019-01-01~2019-10-01',amount:'1000000',p_no:'3242342342',p_num:'3'}
 			];
 			layui.use(['table'], function() {
 				var table = layui.table;
@@ -99,6 +99,12 @@
 							area: '750px',
 							content: $('.linePop')
 						});
+					}
+				});
+				
+				table.on('tool(lst)',function(obj){
+					if(obj.event == 'info'){
+						window.location.href = '合同内容.html';
 					}
 				});
 			});

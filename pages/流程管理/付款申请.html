@@ -86,15 +86,97 @@
 							<form class="layui-form layui-form2">
 								<div class="layui-row">
 									<div class="layui-form-item layui-col-md6 margin-b-20">
-										<label class="layui-form-label"><span class="text-red"> *</span>费用项目</label>
+										<label class="layui-form-label"><span class="text-red"> *</span>请款编号</label>
 										<div class="layui-input-block">
-											<input type="text" name="title" required  lay-verify="required" placeholder="请输入费用项目" autocomplete="off" class="layui-input">
+											<input type="text" class="layui-input" readonly onclick="show_search()" />
 										</div>
 									</div>
 									<div class="layui-form-item layui-col-md6 margin-b-20">
-										<label class="layui-form-label">请款编号</label>
+										<label class="layui-form-label">合同编号</label>
 										<div class="layui-input-block">
-											<input type="text" class="layui-input" readonly onclick="show_search()" />
+											<input type="text" name="title" required readonly lay-verify="required" placeholder="合同编号" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<!-- 付款次数 在关联了请款单号后才显示 -->
+									<!-- 有合同时 -->
+									<div class="layui-form-item layui-col-md12" id="pay_table_item" >
+										<label class="layui-form-label">付款次数：</label>
+										<div class="layui-input-block">
+											<table class="layui-table">
+												<thead>
+													<tr>
+														<th>款项名称</th>
+														<th>比例</th>
+														<th>金额</th>
+														<th>付款日期</th>
+														<th>备注</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>首款</td>
+														<td>30%</td>
+														<td>300000</td>
+														<td>2019-05-01</td>
+														<td>首次验收通过付款</td>
+													</tr>
+													<tr>
+														<td>中期款</td>
+														<td>60%</td>
+														<td>600000</td>
+														<td>2019-09-01</td>
+														<td>项目验收通过付款</td>
+													</tr>
+													<tr>
+														<td>中期款</td>
+														<td>10%</td>
+														<td>100000</td>
+														<td>2019-10-01</td>
+														<td>项目正式交付付款</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md12" id="pay_table_item" >
+										<label class="layui-form-label">已付款记录：</label>
+										<div class="layui-input-block">
+											<table class="layui-table">
+												<thead>
+													<tr>
+														<th>款项名称</th>
+														<th>金额</th>
+														<th>付款日期</th>
+														<th>备注</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>首款</td>
+														<td>300000</td>
+														<td>2019-05-01</td>
+														<td>首次验收通过付款</td>
+													</tr>
+													<tr>
+														<td>中期款</td>
+														<td>600000</td>
+														<td>2019-09-01</td>
+														<td>项目验收通过付款</td>
+													</tr>
+													<tr>
+														<td>中期款</td>
+														<td>100000</td>
+														<td>2019-10-01</td>
+														<td>项目正式交付付款</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="layui-form-item layui-col-md6 margin-b-20">
+										<label class="layui-form-label"><span class="text-red"> *</span>费用项目</label>
+										<div class="layui-input-block">
+											<input type="text" name="title" required  lay-verify="required" placeholder="请输入费用项目" autocomplete="off" class="layui-input">
 										</div>
 									</div>
 									<!-- 付款方式为现金时银行账号和银行名称不必填 -->

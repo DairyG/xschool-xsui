@@ -47,6 +47,7 @@
 .margin-t-7 {margin-top:7px;}
 .margin-t-20 {margin-top:20px;}
 .margin-r-10 {margin-right: 10px;}
+.margin-l-10 {margin-left: 10px;}
 /* 字体大小 */
 .fontsize-12 {font-size: 12px !important;}
 .fontsize-14 {font-size: 14px !important;}
@@ -290,3 +291,5 @@ table .layui-table-edit {height:38px;line-height: 38px;}
 .cpr {cursor:pointer}
 .table-info  {}
 .table-info td {padding:5px 10px;}
+.process_state_img {position: absolute;top:80px;right:40px;z-index: 99;}
+.process_state_img img {width: 200px;}

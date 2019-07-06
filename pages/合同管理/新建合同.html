@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../../layui/css/layui.css" />
+		<link rel="stylesheet" href="../../layui/css/common.css" />
+		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../layui/layui.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<style type="text/css">
+			#type2_box .t2 span {display: none;}
+		</style>
+	</head>
+	<body class="bgf2f2f2">
+		<div class="childrenBody">
+			<div class="layui-card-body bgwhite">
+				<form class="layui-form layui-form2">
+					<div class="layui-row">
+						<div class="form-title">合同属性：</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>合同类型</label>
+							<div class="layui-input-block">
+								<select>
+									<option></option>
+									<option>收款合同</option>
+									<option>付款合同</option>
+									<option>事务合同</option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>合同编号</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" lay-verify="required" placeholder="请输入合同编号"  class="layui-input" />
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>合同标题</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" lay-verify="required" placeholder="请输入合同标题"  class="layui-input" />
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>合同有效期</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请选择合同有效期" readonly  class="layui-input" id="date1" />
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>合同总金额</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请输入"  class="layui-input"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>金额大写</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" readonly  class="layui-input"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>付款次数</label>
+							<div class="layui-input-block">
+								<input type="radio" name="pay_num" title="单次付款" value="1" lay-filter="pay_num">
+								<input type="radio" name="pay_num" title="多次付款" value="2" lay-filter="pay_num">
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md12 margin-b-20" id="pay_table_item" style="display:none">
+							<label class="layui-form-label"><span class="text-red"> *</span>付款次数</label>
+							<div class="layui-input-block">
+								<table class="layui-table">
+									<thead>
+										<tr>
+											<th width="60">序号</th>
+											<th>款项名称</th>
+											<th>比例</th>
+											<th>金额</th>
+											<th>付款日期</th>
+											<th>备注</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><span class="table-btn-jia">+</span><span class="table-btn-jian">-</span></td>
+											<td><input type="text" class="layui-input"></td>
+											<td><input type="text" class="layui-input"></td>
+											<td><input type="text" class="layui-input"></td>
+											<td><input type="text" class="layui-input date" readonly></td>
+											<td><input type="text" class="layui-input" readonly onclick="layui_prompt(this)"></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td>合计</td>
+											<td>0</td>
+											<td>0</td>
+											<td></td>
+											<td></td>
+										</tr>
+										<!-- 提交时验证比例和是否为100%，金额总计和是否和总金额相等 不相等时弹出提示-->
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="form-title">甲方乙方：</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>甲方</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请输入甲方名称"  class="layui-input"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>乙方</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请输入乙方名称"  class="layui-input"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>地址</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请输入甲方地址"  class="layui-input"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>地址</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请输入乙方地址"  class="layui-input"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>联系人</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请输入甲方联系人"  class="layui-input"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>联系人</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请输入乙方联系人"  class="layui-input"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>电话</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请输入甲方电话"  class="layui-input"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>电话</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请输入乙方电话"  class="layui-input"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>签字人</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请输入甲方签字人"  class="layui-input"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>签字人</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请输入乙方签字人"  class="layui-input"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>签字日期</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请选择甲方签字日期"  class="layui-input date"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>签字日期</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请选择乙方签字日期"  class="layui-input date"/>
+							</div>
+						</div>
+						<div class="form-title">收款方银行：</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label">开户银行</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请输入开户银行"  class="layui-input"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label">银行名称</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请输入银行名称"  class="layui-input"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label">银行账户</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请输入银行账户"  class="layui-input"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md6 margin-b-20">
+							<label class="layui-form-label">银行预留电话</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" placeholder="请输入银行预留电话"  class="layui-input"/>
+							</div>
+						</div>
+						<div class="form-title">
+							发票信息： 
+							<input type="radio" name="has_invoice" title="开票" value="1" lay-filter="has_invoice" />
+							<input type="radio" name="has_invoice" title="不开票" value="2" lay-filter="has_invoice" checked/>
+						</div>
+						<div class="layui-row" id="invoice_box" style="display:none">
+							<div class="layui-form-item layui-col-md6 margin-b-20">
+								<label class="layui-form-label"><span class="text-red">*</span>开票类型</label>
+								<div class="layui-input-block">
+									<select name="invoice_type" lay-filter='invoice_type'>
+										<option value="1">个人</option>
+										<option value="2">企业</option>
+									</select>
+								</div>
+							</div>
+							<div class="layui-form-item layui-col-md6 margin-b-20">
+								<label class="layui-form-label"><span class="text-red">*</span>发票抬头</label>
+								<div class="layui-input-block">
+									<input type="text" name="title" placeholder="请输入发票抬头"  class="layui-input"/>
+								</div>
+							</div>
+							<div class="layui-row" id="type2_box" style="display: none;">
+								<div class="layui-form-item layui-col-md6 margin-b-20">
+									<label class="layui-form-label"><span class="text-red">*</span>发票类型</label>
+									<div class="layui-input-block">
+										<select lay-filter="invoice_mold">
+											<option value="1">企业增值税普通发票</option>
+											<option value="2">增值税专用发票</option>
+											<option value="3">组织（非企业）增值税普通发票</option>
+										</select>
+									</div>
+								</div>
+								<div class="layui-form-item layui-col-md6 margin-b-20 t1">
+									<label class="layui-form-label"><span class="text-red">*</span>税务登记证号</label>
+									<div class="layui-input-block">
+										<input type="text" name="title" placeholder="请输入税务登记证号"  class="layui-input"/>
+									</div>
+								</div>
+								<div class="layui-form-item layui-col-md6 margin-b-20 t2">
+									<label class="layui-form-label"><span class="text-red">*</span>基本户银行</label>
+									<div class="layui-input-block">
+										<input type="text" name="title" placeholder="请输入基本户银行"  class="layui-input"/>
+									</div>
+								</div>
+								<div class="layui-form-item layui-col-md6 margin-b-20 t2">
+									<label class="layui-form-label"><span class="text-red">*</span>基本户银行账号</label>
+									<div class="layui-input-block">
+										<input type="text" name="title" placeholder="请输入基本银行账号"  class="layui-input"/>
+									</div>
+								</div>
+								<div class="layui-form-item layui-col-md6 margin-b-20 t2">
+									<label class="layui-form-label"><span class="text-red">*</span>注册固定电话</label>
+									<div class="layui-input-block">
+										<input type="text" name="title" placeholder="请输入注册固定电话"  class="layui-input"/>
+									</div>
+								</div>
+								<div class="layui-form-item layui-col-md6 margin-b-20 t2">
+									<label class="layui-form-label"><span class="text-red">*</span>注册场所地址</label>
+									<div class="layui-input-block">
+										<input type="text" name="title" placeholder="请输入注册场所地址"  class="layui-input"/>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md12">
+							<label class="layui-form-label">附件</label>
+							<div class="layui-input-block">
+								<span class="layui-btn layui-btn-sm layui-btn-normal margin-t-3"><i class="layui-icon"></i>上传附件</span>
+							</div>
+						</div>
+						<div class="layui-col-md12 text-right">
+							<button class="layui-btn layui-btn layui-btn-danger">确认</button>
+							<button class="layui-btn layui-btn">返回</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<script>
+			layui.use(['form','laydate'], function() {
+				var form = layui.form,
+					laydate = layui.laydate;
+				
+				lay('.date').each(function(){
+					laydate.render({
+						elem:this
+					});
+				});
+				laydate.render({
+					elem:'#date1',
+					range:true
+				});
+				form.on('radio(has_invoice)',function(obj){
+					if(obj.value == '1'){
+						$("#invoice_box").show();
+					} else {
+						$("#invoice_box").hide();
+					}
+				});
+				form.on('select(invoice_type)',function(obj){
+					if(obj.value == '2'){
+						$("#type2_box").show();
+					} else {
+						$("#type2_box").hide();
+					}
+				});
+				form.on('select(invoice_mold)',function(obj){//发票类型
+					// 发票类型 企业增值税普通发票 
+						//税务登记证号 必填
+					// 发票类型 增值税专用发票
+						//全部必填
+					// 发票类型组织（非企业）增值税普通发票
+						//都非必填
+					switch(obj.value){
+						case '1':
+							$('#type2_box .t2 span').hide();
+							$('#type2_box .t1 span').show();
+							break;
+						case '2':
+							$('#type2_box .t2 span').show();
+							$('#type2_box .t1 span').show();
+							break;
+						case '3':
+							$('#type2_box .t2 span').hide();
+							$('#type2_box .t1 span').hide();
+							break;
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
+

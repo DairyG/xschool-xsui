@@ -239,6 +239,9 @@ function user_popup2(obj = null,allow_sels,num = 0,is_close_other = false,callba
 			}
 			if(arr){
 				arr = JSON.parse(arr);
+				var sel_type = arr.sel_type;
+				$('#sel_type').val(sel_type);
+				
 				arr.company.ids = arr.company.ids.RTrim(',').LTrim(',');
 				arr.company.ids = arr.company.ids ? arr.company.ids.split(',') : [];
 				arr.company.names = arr.company.names.RTrim(',').LTrim(',');
@@ -296,6 +299,20 @@ function user_popup2(obj = null,allow_sels,num = 0,is_close_other = false,callba
 					}
 				}
 				$("#selected_box").append(html);
+				if(has_company){
+					var ids = $("#company_ids").val();
+					$("#select_ul input[data-type='company']").each(function(){
+						var id = $(this).data('id');
+						if(ids.indexOf(','+id+',') >= 0){
+							$(this).prop('checked',true);
+						}
+					});
+				}
+				$('.radio_box input').each(function(){
+					if($(this).val() == sel_type){
+						$(this).click();
+					}
+				});
 			}
 		}
 	});
@@ -311,6 +328,7 @@ function user_popup2(obj = null,allow_sels,num = 0,is_close_other = false,callba
 		content: $('#popup_content'),
 		yes:function(index, layero){
 			//以下方式可获取到选中的 公司 部门 人员
+			var sel_type = $("#selected_box #sel_type").val();
 			var company_ids = $("#selected_box #company_ids").val();//公司ID
 			var company_names = $("#selected_box #company_names").val();//公司名称
 			var department_ids = $("#selected_box #department_ids").val();//部门ID
@@ -322,6 +340,7 @@ function user_popup2(obj = null,allow_sels,num = 0,is_close_other = false,callba
 			var dpt_position_ids = $("#selected_box #dpt_position_ids").val();//人员ID
 			var dpt_position_names = $("#selected_box #dpt_position_names").val();//人员名称
 			var arr = {
+				sel_type:sel_type,
 				company:{ 'ids':company_ids, 'names':company_names },
 				department:{ 'ids':department_ids, 'names':department_names },
 				user:{ 'ids':user_ids, 'names':user_names },
@@ -344,37 +363,37 @@ function user_popup2(obj = null,allow_sels,num = 0,is_close_other = false,callba
 				
 				var L1 = user_arr.length,L2 = department_arr.length,L3 = company_arr.length,L4 = position_arr.length,L5 = dpt_position_arr.length;
 				if((L1 + L2 + L3 + L4 + L5) > 1){
-					html = "等"+(L1 + L2 + L3+ L4 + L5)+'项&gt;&gt;';
+					html = "等"+(L1 + L2 + L3+ L4 + L5)+'项';
+				}
+				if(L1 > 0){
+					html = user_arr[0] + html;
+				} else if(L2 > 0){
+					html = department_arr[0] + html;
+				} else if(L3 > 0){
+					html = company_arr[0] + html;
+				} else if(L4 > 0){
+					html = position_arr[0] + html;
+				} else if(L5 > 0){
+					html = dpt_position_arr[0] + html;
 				}
 				
 				if($(obj).attr('type') == 'text'){
-					if(L1 > 0){
-						html = user_arr[0];
-					} else if(L2 > 0){
-						html = department_arr[0];
-					} else if(L3 > 0){
-						html = company_arr[0];
-					} else if(L4 > 0){
-						html = position_arr[0];
-					} else if(L5 > 0){
-						html = dpt_position_arr[0];
-					}
 					$(obj).val(html);
-					$(obj).after('<input type="hidden" name="sels" value=\''+JSON.stringify(arr)+'\'>');
-				} else {
-					if(L1 > 0){
-						html = user_arr[0] + html;
-					} else if(L2 > 0){
-						html = department_arr[0] + html;
-					} else if(L3 > 0){
-						html = company_arr[0] + html;
-					} else if(L4 > 0){
-						html = position_arr[0] + html;
-					} else if(L5 > 0){
-						html = dpt_position_arr[0] + html;
+					var hide_ipt = $(obj).next('input[type="hidden"]');
+					if(hide_ipt.length > 0){
+						hide_ipt.val(JSON.stringify(arr));
+					} else {
+						$(obj).after('<input type="hidden" name="sels" value=\''+JSON.stringify(arr)+'\'>');
 					}
+				} else {
+					html += '&gt;&gt;';
 					$(obj).html(html);
-					$(obj).append('<input type="hidden" name="sels" value=\''+JSON.stringify(arr)+'\'>');
+					var hide_ipt = $(obj).find('input[type="hidden"]');
+					if(hide_ipt.length > 0){
+						hide_ipt.val(JSON.stringify(arr));
+					} else {
+						$(obj).append('<input type="hidden" name="sels" value=\''+JSON.stringify(arr)+'\'>');
+					}
 				}
 			};
 			

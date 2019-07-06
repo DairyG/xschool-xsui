@@ -36,6 +36,7 @@
 	<div class="layui-col-md6 border-l-1 margin-t-20">
 		<div class="bgwhite padding-10">
 			<ul class="selected_box" id="selected_box">
+				<input type="hidden" id="sel_type" value="org" />
 				<input type="hidden" id="company_ids" value="," />
 				<input type="hidden" id="company_names" value="," />
 				<input type="hidden" id="department_ids" value="," />
@@ -104,10 +105,10 @@
 		{id:8,department_id:10,company_id:2,name:'赵六',position_id:4},
 	];
 	var dpt_position_arr = [
-		{id:1,department_id:1,company_id:1,name:'经理-张三',id:1},
-		{id:2,department_id:2,company_id:1,name:'总监-李四',id:2},
-		{id:3,department_id:1,company_id:1,name:'总监-王五',id:3},
-		{id:4,department_id:2,company_id:1,name:'主管-赵六',id:4},
+		{id:'1_4',department_id:1,company_id:1,name:'经理-张三',position_id:4},
+		{id:'2_2',department_id:2,company_id:1,name:'总监-李四',position_id:2},
+		{id:'1_2',department_id:1,company_id:1,name:'总监-王五',position_id:2},
+		{id:'2_3',department_id:2,company_id:1,name:'主管-赵六',position_id:3},
 	];
 	$(function(){
 		if(!has_position){
@@ -119,7 +120,8 @@
 		if($(".radio_box").find('label').length == 1){
 			$(".radio_box").html('');
 		}
-		show_items('company',user_company.id);
+		
+		//show_items('company',user_company.id);
 	});
 	
 	//处理导航栏
@@ -174,13 +176,13 @@
 				return false;
 			}
 			var html = build_selectd_html(type,value,text);
-			if(type == 'position'){
-				$("#selected_box").html(html);
-				add_remove_value(type,value,text);
-			} else {
+			// if(type == 'position'){
+			// 	$("#selected_box").html(html);
+			// 	add_remove_value(type,value,text);
+			// } else {
 				$("#selected_box").append(html);
 				add_remove_value(type,value,text);
-			}
+			// }
 		} else {
 			user_sel_remove(type,value,text);
 		}
@@ -199,15 +201,15 @@
 	 */
 	function add_remove_value(type,id,name,is_add = true){
 		if(is_add){
-			if(type == 'position'){
-				ids = ','+id+',';
-				names = ','+name+',';
-			} else {
+			// if(type == 'position'){
+			// 	ids = ','+id+',';
+			// 	names = ','+name+',';
+			// } else {
 				var ids = $("#"+type+"_ids").val();
 				var names = $("#"+type+"_names").val();
 				ids += id+',';
 				names += name+',';
-			}
+			// }
 			$("#"+type+"_ids").val(ids);
 			$("#"+type+"_names").val(names);
 		} else {
@@ -392,9 +394,7 @@
 		});
 		$(".loaction_box").html('');
 		sel_type = this_type;
+		$('#sel_type').val(sel_type);
 		show_items('company',user_company.id);
 	}
-	$(".radio_box label").click(function(){
-		
-	})
 </script>

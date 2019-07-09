@@ -12,7 +12,7 @@
 	</head>
 	<body class="bgf2f2f2">
 		<div class="childrenBody" id="dom">
-			<div class="layui-card-header" style="padding: 5px 10px 8px 10px;">
+			<div class="layui-card-header" style="padding: 5px 10px 8px 10px;" v-if="!is_edit">
 				<div class="layui-btn-group">
 					<a href="写总结.html?t=0" class="layui-btn" v-bind:class="[t == 0 ? '' : 'layui-btn-primary']">日报</a>
 					<a href="写总结.html?t=1" class="layui-btn" v-bind:class="[t == 1 ? '' : 'layui-btn-primary']">周报</a>
@@ -111,7 +111,7 @@
 						<div class="layui-form-item">
 							<div class="layui-input-block text-right">
 								<button class="layui-btn layui-btn-danger" lay-submit lay-filter="submit">确认</button>
-								<span class="layui-btn" onclick="history.back(-1)">返回</span>
+								<span class="layui-btn" onclick="history.back(-1)"  v-if="!is_edit">返回</span>
 							</div>
 						</div>
 					</div>
@@ -132,10 +132,13 @@
 				data:{
 					labels:'',
 					t:0,
+					is_edit:false
 				},
 				created() {
 					this.t = GetPara('t');
 					this.t = this.t ? this.t : 0;
+					this.is_edit = GetPara('is_edit');
+					this.is_edit = this.is_edit ? true : false;
 					this.labels = labels[this.t];
 				},
 				mounted() {

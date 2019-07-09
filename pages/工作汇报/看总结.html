@@ -14,18 +14,20 @@
 		<div class="childrenBody" id="dom">
 			<div class="layui-card-header" style="padding: 5px 10px 8px 10px;">
 				<div class="layui-btn-group">
-					<a href="部门总结.html?t=0" class="layui-btn" v-bind:class="[t == 0 ? '' : 'layui-btn-primary']">日报</a>
-					<a href="部门总结.html?t=1" class="layui-btn" v-bind:class="[t == 1 ? '' : 'layui-btn-primary']">周报</a>
-					<a href="部门总结.html?t=2" class="layui-btn" v-bind:class="[t == 2 ? '' : 'layui-btn-primary']">月报</a>
-					<a href="部门总结.html?t=3" class="layui-btn" v-bind:class="[t == 3 ? '' : 'layui-btn-primary']">季度报</a>
-					<a href="部门总结.html?t=4" class="layui-btn" v-bind:class="[t == 4 ? '' : 'layui-btn-primary']">半年报</a>
-					<a href="部门总结.html?t=5" class="layui-btn" v-bind:class="[t == 5 ? '' : 'layui-btn-primary']">年报</a>
+					<a href="看总结.html?t=0" class="layui-btn" v-bind:class="[t == 0 ? '' : 'layui-btn-primary']">日报</a>
+					<a href="看总结.html?t=1" class="layui-btn" v-bind:class="[t == 1 ? '' : 'layui-btn-primary']">周报</a>
+					<a href="看总结.html?t=2" class="layui-btn" v-bind:class="[t == 2 ? '' : 'layui-btn-primary']">月报</a>
+					<a href="看总结.html?t=3" class="layui-btn" v-bind:class="[t == 3 ? '' : 'layui-btn-primary']">季度报</a>
+					<a href="看总结.html?t=4" class="layui-btn" v-bind:class="[t == 4 ? '' : 'layui-btn-primary']">半年报</a>
+					<a href="看总结.html?t=5" class="layui-btn" v-bind:class="[t == 5 ? '' : 'layui-btn-primary']">年报</a>
 				</div>
 			</div>
 			<div class="layui-card-body">
 				<table class="layui-table" id="lst" lay-filter="lst"></table>
 				<script type="text/html" id="bar">
 					<a class="layui-btn layui-btn-xs " href="javascript:;" lay-event="info">查看</a>
+					<a class="layui-btn layui-btn-xs layui-btn-warm " href="javascript:;" lay-event="edit">编辑</a>
+					<a class="layui-btn layui-btn-xs layui-btn-danger" href="javascript:;" lay-event="del">删除</a>
 				</script>
 				<script type="text/html" id="toolbar">
 				</script>
@@ -184,7 +186,7 @@
 						});
 						
 						table.on('tool(lst)',function(obj){
-							if(obj.event = 'info'){
+							if(obj.event == 'info'){
 								layer_linePop = layer.open({
 									type: 2,
 									title:'总结详情',
@@ -195,6 +197,18 @@
 									anim: 2,
 									move:false,
 									content: '总结详情.html'
+								});
+							} else if(obj.event == 'edit'){
+								layer_linePop = layer.open({
+									type: 2,
+									title:'总结修改',
+									scrollbar: false,
+									skin:'layui-layer-rim',
+									closeBtn: 1,
+									area: ['100%', '100%'],
+									anim: 2,
+									move:false,
+									content: '写总结.html?is_edit=1&t='+that.t
 								});
 							}
 						});

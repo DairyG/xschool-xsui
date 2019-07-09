@@ -18,9 +18,7 @@
 						<div class="title text-85">
 							<span class="text-add">张三</span> 创建于2019-5-1 10:40
 							<div class="btns fr">
-								<button class="layui-btn layui-btn-xs layui-btn-primary" onclick="edit_daily()">编辑</button>
 								<button class="layui-btn layui-btn-xs layui-btn-primary" onclick="reply_daily()">评价</button>
-								<button class="layui-btn layui-btn-xs layui-btn-primary">删除</button>
 							</div>
 						</div>
 						<div class="text">
@@ -67,14 +65,6 @@
 				</li>
 			</ul>
 		</div>
-		<div class="linePop linePop1">
-			<div class="layui-row">
-				<textarea id="c_editor2"></textarea>
-			</div>
-			<div class="layui-row padding-l-10 padding-t-10">
-				<button type="button" class="layui-btn layui-btn-sm layui-btn-normal">上传附件</button>
-			</div>
-		</div>
 		<div class="linePop linePop2">
 			<div class="layui-row">
 				<textarea id="c_editor3"></textarea>
@@ -117,17 +107,6 @@
 				layer.close(layer_linePop);
 			}
 			
-			function edit_daily(){
-				layer.open({
-					type: 1,
-					title:'编辑总结-2019-05-01',
-					closeBtn: 1,
-					btn:['确定','取消'],
-					skin: 'layui-layer-rim',
-					area: '750px',
-					content: $('.linePop1')
-				});
-			}
 			function add_daily(){
 				window.location.href = '写总结.html?t=0';
 			}

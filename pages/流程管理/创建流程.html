@@ -522,9 +522,10 @@
 													<div class="layui-card-header">
 														审批人
 														<div class="fr">
-															<input name="type" type="radio" title="或签" checked />
-															<input name="type" type="radio" title="会签" />
+															<input name="type_0" type="radio" title="或签" checked />
+															<input name="type_0" type="radio" title="会签" />
 														</div>
+														<input type="hidden" class="" />
 													</div>
 													<div class="layui-card-body">
 														<div class="show_div">
@@ -638,8 +639,8 @@
 			<div class="layui-card shenpi_card">
 				<div class="layui-card-header">审批人
 					<div class="fr">
-						<input name="type" type="radio" title="或签" checked />
-						<input name="type" type="radio" title="会签" />
+						<input name="type_{{ d.index }}" type="radio" title="或签" checked />
+						<input name="type_{{ d.index }}" type="radio" title="会签" />
 					</div>
 					<i class="layui-icon layui-icon-close-fill fr fontsize-18" onclick="close_item(this)"></i>
 				</div>
@@ -717,11 +718,20 @@
 		<script type="text/javascript" src="../../form/js/formbuilder.js"></script>
 		
 		<script type="text/javascript">
-			var layer_linePop,form;
-			layui.use(['table','element','form'], function() {
+			var layer_linePop,form,laytpl;
+			layui.use(['table','element','form','laytpl'], function() {
 				var table = layui.table,
 					element = layui.element;
-					form = layui.form;
+					form = layui.form,
+					laytpl = layui.laytpl;
+					
+				form.on('submit(submit)',function(obj){
+					$(".process_box li").each(function(){
+						
+						//console.log($(this).val());
+					});
+					return false;
+				});
 			});
 			function add_group(){
 				layer_linePop = layer.open({
@@ -757,9 +767,13 @@
 				});
 			}
 			function add_item(type){
-				var html = $("#"+type+"_html").html();
+				var tpl_html = $("#"+type+"_html").html();
 				var p_li = $("input[name='add_item_point']:checked").parents('li');
-				$(p_li).after('<li>'+html+'</li>');
+				var index = p_li.index();
+					index += 1;
+				laytpl(tpl_html).render({index:index}, function(html){
+				  $(p_li).after('<li>'+html+'</li>');
+				});
 				closePop();
 				form.render('radio');
 			}

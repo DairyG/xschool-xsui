@@ -26,7 +26,10 @@ String.prototype.FormatDate=function(hasTime){
         return "";
     }
 }
-
+var layer;
+layui.use(['layer'],function(){
+	layer = layui.layer;
+});
 /**
  * 格式化日期对象
  * @param Object date
@@ -247,8 +250,8 @@ function user_popup2(obj = null,allow_sels,num = 0,is_close_other = false,callba
 				arr.company.names = arr.company.names.RTrim(',').LTrim(',');
 				arr.company.names = arr.company.names ? arr.company.names.split(',') : [];
 				if(arr.company.ids.length > 0){
-					$('#popup_content #company_ids').val(','+arr.company.ids+',');
-					$('#popup_content #company_names').val(','+arr.company.names+',');
+					$('#popup_content #company_ids').val(','+arr.company.ids.join(',')+',');
+					$('#popup_content #company_names').val(','+arr.company.names.join(',')+',');
 					for(var i = 0;i < arr.company.ids.length; i++){
 						html += build_selectd_html('company',arr.company.ids[i],arr.company.names[i]);
 					}
@@ -258,8 +261,8 @@ function user_popup2(obj = null,allow_sels,num = 0,is_close_other = false,callba
 				arr.department.names = arr.department.names.RTrim(',').LTrim(',');
 				arr.department.names = arr.department.names ? arr.department.names.split(',') : [];
 				if(arr.department.ids.length > 0){
-					$('#popup_content #department_ids').val(','+arr.department.ids+',');
-					$('#popup_content #department_names').val(','+arr.department.names+',');
+					$('#popup_content #department_ids').val(','+arr.department.ids.join(',')+',');
+					$('#popup_content #department_names').val(','+arr.department.names.join(',')+',');
 					for(var i = 0;i < arr.department.ids.length; i++){
 						html += build_selectd_html('department',arr.department.ids[i],arr.department.names[i]);
 					}
@@ -269,8 +272,8 @@ function user_popup2(obj = null,allow_sels,num = 0,is_close_other = false,callba
 				arr.user.names = arr.user.names.RTrim(',').LTrim(',');
 				arr.user.names = arr.user.names ? arr.user.names.split(',') : [];
 				if(arr.user.ids.length > 0){
-					$('#popup_content #user_ids').val(','+arr.user.ids+',');
-					$('#popup_content #user_names').val(','+arr.user.names+',');
+					$('#popup_content #user_ids').val(','+arr.user.ids.join(',')+',');
+					$('#popup_content #user_names').val(','+arr.user.names.join(',')+',');
 					for(var i = 0;i < arr.user.ids.length; i++){
 						html += build_selectd_html('user',arr.user.ids[i],arr.user.names[i]);
 					}
@@ -280,8 +283,8 @@ function user_popup2(obj = null,allow_sels,num = 0,is_close_other = false,callba
 				arr.position.names = arr.position.names.RTrim(',').LTrim(',');
 				arr.position.names = arr.position.names ? arr.position.names.split(',') : [];
 				if(arr.position.ids.length > 0){
-					$('#popup_content #position_ids').val(','+arr.position.ids+',');
-					$('#popup_content #position_names').val(','+arr.position.names+',');
+					$('#popup_content #position_ids').val(','+arr.position.ids.join(',')+',');
+					$('#popup_content #position_names').val(','+arr.position.names.join(',')+',');
 					for(var i = 0;i < arr.position.ids.length; i++){
 						html += build_selectd_html('position',arr.position.ids[i],arr.position.names[i]);
 					}
@@ -292,8 +295,8 @@ function user_popup2(obj = null,allow_sels,num = 0,is_close_other = false,callba
 				arr.dpt_position.names = arr.dpt_position.names.RTrim(',').LTrim(',');
 				arr.dpt_position.names = arr.dpt_position.names ? arr.dpt_position.names.split(',') : [];
 				if(arr.dpt_position.ids.length > 0){
-					$('#popup_content #dpt_position_ids').val(','+arr.dpt_position.ids+',');
-					$('#popup_content #dpt_position_names').val(','+arr.dpt_position.names+',');
+					$('#popup_content #dpt_position_ids').val(','+arr.dpt_position.ids.join(',')+',');
+					$('#popup_content #dpt_position_names').val(','+arr.dpt_position.names.join(',')+',');
 					for(var i = 0;i < arr.dpt_position.ids.length; i++){
 						html += build_selectd_html('dpt_position',arr.dpt_position.ids[i],arr.dpt_position.names[i]);
 					}
@@ -533,6 +536,6 @@ $.fn.scrollFixed = function(fixed_w = '') {//页面滚动时tab-title始终在�
 
 $(function(){
 	$('.back_history').click(function(){
-		history.back(-1);
+		window.history.back(-1);
 	});
 });

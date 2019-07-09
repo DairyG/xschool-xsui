@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="../../layui/css/common.css" />
 		<link rel="stylesheet" href="../../layui/css/liucheng.css" />
 		<script type="text/javascript" src="../../layui/layui.js"></script>
+		<script type="text/javascript" src="../../form/js/jquery-1.7.2.min.js"></script>
 		<script type="text/javascript" src="../../js/common.js"></script>
 		<link type="text/css" rel="stylesheet" href="../../form/css/common.css" />
 		<link type="text/css" rel="stylesheet" href="../../form/css/jquery-ui-1.9.2.custom.css" />
@@ -522,10 +523,9 @@
 													<div class="layui-card-header">
 														审批人
 														<div class="fr">
-															<input name="type_0" type="radio" title="或签" checked />
-															<input name="type_0" type="radio" title="会签" />
+															<input name="type" type="radio" title="或签" checked />
+															<input name="type" type="radio" title="会签" />
 														</div>
-														<input type="hidden" class="" />
 													</div>
 													<div class="layui-card-body">
 														<div class="show_div">
@@ -639,8 +639,8 @@
 			<div class="layui-card shenpi_card">
 				<div class="layui-card-header">审批人
 					<div class="fr">
-						<input name="type_{{ d.index }}" type="radio" title="或签" checked />
-						<input name="type_{{ d.index }}" type="radio" title="会签" />
+						<input name="type" type="radio" title="或签" checked />
+						<input name="type" type="radio" title="会签" />
 					</div>
 					<i class="layui-icon layui-icon-close-fill fr fontsize-18" onclick="close_item(this)"></i>
 				</div>
@@ -709,7 +709,6 @@
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="../../form/js/jquery-1.7.2.min.js"></script>
 		<script type="text/javascript" src="../../form/js/jquery-ui-1.8.24.custom.min.js"></script>
 		<script type="text/javascript" src="../../form/js/wangEditor.min.js"></script>
 		<script type="text/javascript" src="../../form/js/utils.js"></script>
@@ -718,20 +717,11 @@
 		<script type="text/javascript" src="../../form/js/formbuilder.js"></script>
 		
 		<script type="text/javascript">
-			var layer_linePop,form,laytpl;
-			layui.use(['table','element','form','laytpl'], function() {
+			var layer_linePop,form;
+			layui.use(['table','element','form'], function() {
 				var table = layui.table,
 					element = layui.element;
-					form = layui.form,
-					laytpl = layui.laytpl;
-					
-				form.on('submit(submit)',function(obj){
-					$(".process_box li").each(function(){
-						
-						//console.log($(this).val());
-					});
-					return false;
-				});
+					form = layui.form;
 			});
 			function add_group(){
 				layer_linePop = layer.open({
@@ -767,13 +757,9 @@
 				});
 			}
 			function add_item(type){
-				var tpl_html = $("#"+type+"_html").html();
+				var html = $("#"+type+"_html").html();
 				var p_li = $("input[name='add_item_point']:checked").parents('li');
-				var index = p_li.index();
-					index += 1;
-				laytpl(tpl_html).render({index:index}, function(html){
-				  $(p_li).after('<li>'+html+'</li>');
-				});
+				$(p_li).after('<li>'+html+'</li>');
 				closePop();
 				form.render('radio');
 			}

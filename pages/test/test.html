@@ -23,7 +23,9 @@
 		<div style="position: relative;">
 			<ul id="selTree1" class="dtree" data-id="0"></ul>
 		</div>
+		<input type="checkbox" name="asd" id="test" value="1" >
 		<script>
+			alert($('#test').val());
 			layui.config({
 				base: '../../lib/' //假设这是你存放拓展模块的根目录
 			}).extend({

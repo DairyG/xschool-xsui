@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../../layui/css/layui.css" />
+		<link rel="stylesheet" href="../../layui/css/common.css" />
+		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../layui/layui.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=ae395333880c11f71dc511db4a695587&plugin=AMap.Autocomplete,AMap.PlaceSearch,AMap.Geocoder"></script>
+		<script type="text/javascript" src="https://g.alicdn.com/ilw/cdnjs/amap/addToolbar.js"></script>
+	</head>
+	<body class="bgf2f2f2">
+		<div class="childrenBody">
+			<div class="layui-card-header">添加考勤组</div>
+			<div class="layui-card-body bgwhite">
+				<form class="layui-form layui-form2">
+					<div class="layui-row">
+						<div class="layui-form-item layui-col-md12 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>考勤组名称</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" lay-verify="required" placeholder="请输入考勤组名称"  class="layui-input" />
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md12 margin-b-20">
+							<label class="layui-form-label">参与考勤人员</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" lay-verify="required" placeholder="请选择参与考勤人员"  class="layui-input"  onclick="user_popup2(this,'user,department,company')"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md12 margin-b-20">
+							<label class="layui-form-label">无需考勤人员</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" lay-verify="required" placeholder="请选择无需考勤人员"  class="layui-input"  onclick="user_popup2(this,'user')"/>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md12 margin-b-20">
+							<label class="layui-form-label">考勤类型</label>
+							<div class="layui-input-block">
+								<select lay-filter='schedu_type'>
+									<option value="1">固定班次(每天考勤时间一样)</option>
+									<option value="2">排班制(自定义设置考勤时间)</option>
+								</select>
+								<!-- <option value="3">自由工时(不设置班次,随时打卡)</option> -->
+							</div>
+						</div>
+						<div class="layui-row" id="schedu_item_box">
+							<div class="layui-form-item layui-col-md12 type1_item">
+								<label class="layui-form-label">工作日设置</label>
+								<div class="layui-input-block">
+									<div class="layui-form-mid">
+										快捷设置设置班次： 正常班次 9:00-18:00 
+									</div>
+									<a class="layui-btn layui-btn-sm layui-btn-normal margin-t-3" onclick="show_schedu()">更改班次</a>
+									<table id="type1_list" lay-filter="type1_list"></table>
+									<script type="text/html" id="type1_bar">
+										<a class="layui-btn layui-btn-xs layui-btn-normal" onclick="show_schedu()">更改班次</a>
+									</script>
+								</div>
+							</div>
+							<div class="layui-form-item layui-col-md12 type2_item" style="display: none;">
+								<label class="layui-form-label">考勤周期</label>
+								<div class="layui-input-block">
+									<table class="layui-table">
+										<thead>
+											<tr>
+												<th width="60"></th>
+												<th>周期天数</th>
+												<th>班次</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td><span class="table-btn-jia">+</span><span class="table-btn-jian">-</span></td>
+												<td>第一天</td>
+												<td>
+													<select>
+														<option>正常班次 9:00-18:00</option>
+														<option>晚班 19:00-22:00</option>
+														<option>休息</option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td><span class="table-btn-jia">+</span><span class="table-btn-jian">-</span></td>
+												<td>第二天</td>
+												<td>
+													<select>
+														<option>正常班次 9:00-18:00</option>
+														<option>晚班 19:00-22:00</option>
+														<option>休息</option>
+													</select>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="layui-form-item layui-col-md12 type3_item" style="display: none;">
+								<label class="layui-form-label">设置工作日</label>
+								<div class="layui-input-block">
+									<input type="checkbox" title="周一" lay-skin="primary" checked />
+									<input type="checkbox" title="周二" lay-skin="primary" checked />
+									<input type="checkbox" title="周三" lay-skin="primary" checked />
+									<input type="checkbox" title="周四" lay-skin="primary" checked />
+									<input type="checkbox" title="周五" lay-skin="primary" checked />
+									<input type="checkbox" title="周六" lay-skin="primary" />
+									<input type="checkbox" title="周日" lay-skin="primary" />
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md12">
+							<label class="layui-form-label">考勤方式</label>
+							<div class="layui-input-block">
+								<div class="layui-form-mid">地点考勤</div>
+								<a class="layui-btn layui-btn-sm layui-btn-normal margin-t-3" onclick="add_addr()">添加</a>
+								<table class="layui-table" id="addr_lst"></table>
+								<div class="layui-form-mid">WIFI考勤</div>
+								<a class="layui-btn layui-btn-sm layui-btn-normal margin-t-3" onclick="add_wifi()">添加</a>
+								<table class="layui-table" id="wifi_lst"></table>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md12">
+							<label class="layui-form-label">允许外勤打卡</label>
+							<div class="layui-input-block">
+								<input type="checkbox" name="allow_out" lay-skin="switch" lay-text="是|否" value="1" lay-filter="allow_out" />
+								<div class="layui-inline padding-l-15 out_item" style="display: none;">
+									<input type="checkbox" name="" title="外勤打卡需填写备注" lay-skin="primary">
+									<input type="checkbox" name="" title="外勤打卡需拍照" lay-skin="primary"> 
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md12 text-right">
+							<button class="layui-btn layui-btn-danger">确认</button>
+							<a class="layui-btn" href='考勤组管理.html'>返回</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="linePop linePop1" style="padding-left: 10px;padding-right: 10px;">
+			<table lay-filter="schedu_lst" id="schedu_lst"></table>
+		</div>
+		<div class="linePop linePop2">
+			<div class="layui-card-body padding-r-50">
+				<form class="layui-form layui-form2" >
+					<div class="layui-row">
+						<div class="layui-form-item layui-col-md12 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>WIFI名称</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" required  lay-verify="required" placeholder="请输入WIFI名称" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item layui-col-md12 margin-b-20">
+							<label class="layui-form-label"><span class="text-red"> *</span>MAC地址</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" required  lay-verify="required" placeholder="请输入MAC地址" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+					</div>	
+					<div class="layui-row text-right">
+						<button class="layui-btn" lay-submit="" lay-filter="formDemo">确认</button>
+						<span class="layui-btn layui-btn-primary" onclick="closePop()">返回</span>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="linePop linePop3" id="map_content">
+			<div class="layui-input input_box">
+				<input type="text" id="tipinput" placeholder="请输入搜索关键字"/>
+				<i class="layui-icon layui-icon-search"></i>
+			</div>
+			<div id="r-result"></div>
+			<div id="map" style="width: 750px;height:320px;"></div>
+			<div class="btn_content">
+				<ul>
+					<li>
+						<label>地址名称</label>
+						<input type="text" class="layui-input" name="name" />
+					</li>
+					<li>
+						<label>详细地址</label>
+						<input type="text" class="layui-input" readonly name="address" />
+					</li>	
+				</ul>
+				<div class="btn_box text-right padding-r-20">
+					<button class="layui-btn layui-btn-sm layui-btn-normal" onclick="set_addr()">确认</button>
+					<button class="layui-btn layui-btn-sm layui-btn-primary" onclick="closePop()">关闭</button>
+				</div>
+				<input type="hidden" name="lng" />
+				<input type="hidden" name="lat" />
+			</div>
+		</div>
+		<script>
+
+			var table,layer_linePop,init_map = true;
+			var type1_col = [[
+				{type:'checkbox'},
+				{field:'week',title:'工作日'},
+				{field:'bc',title:'班次'},
+				{toolbar:'#type1_bar',title:'操作'}
+			]];
+			var type1_data = [
+				{week:'周一',bc:'正常班 9:00-18:00',LAY_CHECKED:true},
+				{week:'周二',bc:'正常班 9:00-18:00',LAY_CHECKED:true},
+				{week:'周三',bc:'正常班 9:00-18:00',LAY_CHECKED:true},
+				{week:'周四',bc:'正常班 9:00-18:00',LAY_CHECKED:true},
+				{week:'周五',bc:'正常班 9:00-18:00',LAY_CHECKED:true},
+				{week:'周六',bc:'休息'},
+				{week:'周日',bc:'休息'}
+			];
+			var schedu_col = [[
+				{type:'radio'},
+				{field:'title',title:'班次'},
+			]];
+			var schedu_data = [
+				{title:'正常班次 9:00-18:00'},
+				{title:'晚班 19:00-22:00'},
+				{title:'早班 4:00-8:00'}
+			];
+			var addr_data = [
+				{name:'西航港',address:'四川省成都市双流区东升街道西航港大道中二段',lng:'',lat:''}
+			]
+			
+			layui.use(['table','form'], function() {
+				table = layui.table;
+				var form = layui.form;
+				table.render({
+					elem:'#type1_list',
+					cols:type1_col,
+					data:type1_data
+				});
+				table.render({
+					elem:'#addr_lst',
+					cols:[[
+						{field:'name',title:'地址名称'},
+						{field:'address',title:'详细地址'},
+						{toolbar:'<div><button class="layui-btn layui-btn-xs layui-btn-danger">删除</button></div>',title:'操作',width:'100'}
+					]],
+					data:addr_data
+				});
+				
+				table.render({
+					elem:'#wifi_lst',
+					cols:[[
+						{field:'name',title:'WiFi名称'},
+						{field:'mac',title:'MAC地址'},
+						{toolbar:'<div><button class="layui-btn layui-btn-xs layui-btn-danger">删除</button></div>',title:'操作',width:'100'}
+					]],
+					data:[
+						{name:'WIFI-123',mac:'02:10:18:02:40:7b'}
+					]
+				});
+				
+				form.on('select(schedu_type)',function(obj){
+					switch(obj.value){
+						case '1':
+							$("#schedu_item_box .type1_item").show().siblings().hide();
+							break;
+						case '2':
+							$("#schedu_item_box .type2_item").show().siblings().hide();
+							break;
+						case '3':
+							$("#schedu_item_box .type3_item").show().siblings().hide();
+							break;
+					}
+				});
+				
+				form.on('switch(allow_out)',function(obj){
+					if(obj.elem.checked){
+						$('.out_item').show();
+					} else {
+						$('.out_item').hide();
+					}
+				});
+			});
+			function show_schedu(){
+				layer_linePop = layer.open({
+					type: 1,
+					title:'更改班次',
+					String: false,
+					closeBtn: 1,
+					btn:['确定','取消'],
+					skin: 'layui-layer-rim',
+					area: ['450px','350px'],
+					content: $('.linePop1'),
+					success:function(){
+						table.render({
+							elem:'#schedu_lst',
+							cols:schedu_col,
+							data:schedu_data
+						});
+					}
+				});
+			}
+			
+			function add_wifi(){
+				layer_linePop = layer.open({
+					type: 1,
+					title:'添加WIFI',
+					closeBtn: 1,
+					skin: 'layui-layer-rim',
+					area: ['550px','350px'],
+					content: $('.linePop2'),
+				});
+			}
+			function add_addr(){
+				layer_linePop = layer.open({
+					type: 1,
+					title:'添加考勤地点',
+					closeBtn: 1,
+					skin: 'layui-layer-rim',
+					area: ['750px','450px'],
+					content: $('.linePop3'),
+				});
+			}
+			function set_addr(){
+				var data = {
+					address : $("#map_content").find('input[name="address"]').val(),
+					name : $("#map_content").find('input[name="name"]').val(),
+					lng : $("#map_content").find('input[name="lng"]').val(),
+					lat : $("#map_content").find('input[name="lat"]').val()
+				}
+				addr_data.push(data);
+				table.reload('addr_lst', {data:addr_data});
+				closePop();
+			}
+			function addr_search(obj){
+				var keywords = $(obj).siblings('input').val().trim();
+				if(keywords != ''){
+					local.search(keywords);
+				}
+			}
+			
+			function closePop(){
+				layer.close(layer_linePop);
+			}
+		</script>
+		<script type="text/javascript">
+			var geocoder = new AMap.Geocoder({
+				radius: 1000,
+				extensions: "all"
+			});
+			var map = new AMap.Map("map", {
+				zoom:12,
+				resizeEnable: true
+			});
+			var autoOptions = {
+				input: "tipinput"
+			};
+			var auto = new AMap.Autocomplete(autoOptions);
+			var placeSearch = new AMap.PlaceSearch({
+				map: map
+			});
+
+			function postMapMessage(data){
+				$("#map_content").find('input[name="address"]').val(data.address);
+				$("#map_content").find('input[name="name"]').val(data.name);
+				$("#map_content").find('input[name="lng"]').val(data.lng);
+				$("#map_content").find('input[name="lat"]').val(data.lat);
+			}
+			function getAddress(lng, lat) {
+				geocoder.getAddress([lng, lat], function(status, result) {
+					if (status === 'complete' && result.info === 'OK') {
+						postMapMessage({
+							address: result.regeocode.formattedAddress,
+							lng: lng,
+							lat: lat,
+							name: result.regeocode.pois[0].name
+						});
+					}
+				});
+			}
+
+			map.on('click', function(e) {
+				getAddress(e.lnglat.lng, e.lnglat.lat);
+			});
+
+			AMap.event.addListener(placeSearch, "markerClick", function(e) {
+				if(e.data.address){
+					postMapMessage({
+						address: e.data.address,
+						lng: e.data.location.lng,
+						lat: e.data.location.lat,
+						name: e.data.name || e.data.address
+					},'*');
+				} else {
+					getAddress(e.data.location.lng, e.data.location.lat);
+				}
+			});
+			AMap.event.addListener(auto, "select", function(e) {
+				if(e.poi.address){
+					postMapMessage({
+						address: e.poi.address,
+						lng: e.poi.location.lng,
+						lat: e.poi.location.lat,
+						name: e.poi.name || e.poi.address
+					},'*');
+				} else {
+
+					getAddress(e.poi.location.lng, e.poi.location.lat);
+				}
+				placeSearch.setCity(e.poi.adcode);
+				placeSearch.search(e.poi.name);
+			});
+		</script>
+	</body>
+</html>

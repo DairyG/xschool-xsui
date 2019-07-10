@@ -384,14 +384,16 @@
 		return '<li>'+checkbox+icon+text+'</li>';
 	}
 	
-	function change_sel_type(obj,this_type){
+	function change_sel_type(obj,this_type,is_clear = true){
 		var p_label = $(obj).parent('label');
 		$(p_label).find('i').addClass('layui-icon-radio').removeClass('layui-icon-circle');
 		$(p_label).siblings('label').find('i').removeClass('layui-icon-radio').addClass('layui-icon-circle');
 		//每次点击切换时都执行一次清除操作
-		$("#selected_box li").each(function(){
-			$(this).find('i').click();
-		});
+		if(is_clear){
+			$("#selected_box li").each(function(){
+				$(this).find('i').click();
+			});
+		}
 		$(".loaction_box").html('');
 		sel_type = this_type;
 		$('#sel_type').val(sel_type);

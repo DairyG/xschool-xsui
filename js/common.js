@@ -233,6 +233,7 @@ function user_popup2(obj = null,allow_sels,num = 0,is_close_other = false,callba
 	$("#popup_content").remove();
 	$('body').append('<div id="popup_content" data-has_user="'+has_user+'" data-has_department="'+has_department+'" data-has_company="'+has_company+'" data-has_position="'+has_position+'" data-has_dpt_position="'+has_dpt_position+'" data-num="'+num+'"></div>');
 	$('#popup_content').load("../../pages/public/user_select3.html",null,function(){
+		sel_type = 'org';
 		if(typeof obj == 'object'){
 			var html = '';
 			if($(obj).attr('type') == 'text'){
@@ -242,8 +243,7 @@ function user_popup2(obj = null,allow_sels,num = 0,is_close_other = false,callba
 			}
 			if(arr){
 				arr = JSON.parse(arr);
-				var sel_type = arr.sel_type;
-				$('#sel_type').val(sel_type);
+				sel_type = arr.sel_type;
 				
 				arr.company.ids = arr.company.ids.RTrim(',').LTrim(',');
 				arr.company.ids = arr.company.ids ? arr.company.ids.split(',') : [];
@@ -311,12 +311,13 @@ function user_popup2(obj = null,allow_sels,num = 0,is_close_other = false,callba
 						}
 					});
 				}
-				$('.radio_box input').each(function(){
-					if($(this).val() == sel_type){
-						$(this).click();
-					}
-				});
 			}
+			$('#sel_type').val(sel_type);
+			$('.radio_box input').each(function(){
+				if($(this).val() == sel_type){
+					change_sel_type(this,sel_type,false);
+				}
+			});
 		}
 	});
 	

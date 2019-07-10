@@ -87,9 +87,9 @@
 										</div>
 									</div>
 									<div class="layui-form-item layui-col-md6 margin-b-20">
-										<label class="layui-form-label"><span class="text-red"> *</span>累计预算</label>
+										<label class="layui-form-label"><span class="text-red"> *</span>累计发生</label>
 										<div class="layui-input-block">
-											<input type="text" name="title" required readonly lay-verify="required" placeholder="累计预算" autocomplete="off" class="layui-input">
+											<input type="text" name="title" required readonly lay-verify="required" placeholder="累计发生" autocomplete="off" class="layui-input">
 										</div>
 									</div>
 									<div class="layui-form-item layui-col-md6 margin-b-20">
@@ -99,9 +99,13 @@
 										</div>
 									</div>
 									<div class="layui-form-item layui-col-md6 margin-b-20">
-										<label class="layui-form-label">处理时限</label>
+										<label class="layui-form-label">处理时效</label>
 										<div class="layui-input-block">
-											<input type="text" readonly class="layui-input date" />
+											<!-- 普通 48小时内处理 紧急 24小时内处理 -->
+											<select>
+												<option>普通</option>、
+												<option>紧急</option>
+											</select>
 										</div>
 									</div>
 									<div class="layui-form-item layui-col-md6 margin-b-20">

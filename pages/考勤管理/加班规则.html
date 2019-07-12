@@ -79,13 +79,14 @@
 			var layer_linePop;
 			var cols = [[
 				{type:'numbers',title:'序号'},
-				{field:'title',title:'班次名称'},
-				{field:'time',title:'考勤时间'},
-				{toolbar:'#bar',title:'操作'}
+				{field:'title',title:'规则名称'},
+				{field:'content',title:'规则内容'},
+				{field:'range',title:'应用范围'},
+				{toolbar:'#bar',title:'操作',minWidth:'120'}
 			]];
 			var datas = [
-				{title:'早班',time:'6:00-11:00'},
-				{title:'正常班次',time:'9:00-18:00'}
+				{title:'以审批时间计算加班',content:'工作日: 加班必须审批，加班时长以审批单为准 休息日: 加班必须审批，加班时长以审批单为准 节假日: 加班必须审批，加班时长以审批单为准',range:'全公司'},
+				{title:'以打卡时间计算加班',content:'工作日: 加班无须审批，根据打卡时间计算加班时长 休息日: 加班无须审批，根据打卡时间计算加班时长 节假日: 加班无须审批，根据打卡时间计算加班时长',range:'全公司'}
 			];
 			var workNum_data = [
 				{up:'9:00',down:'12:00'}
@@ -119,25 +120,7 @@
 				});
 				table.on('toolbar(lst)',function(data){
 					if(data.event == 'add'){
-						layer_linePop = layer.open({
-							type: 1,
-							title:'添加班次',
-							String: false,
-							closeBtn: 1,
-							skin: 'layui-layer-rim',
-							area: '750px',
-							content: $('.linePop'),
-							success:function(){
-								table.reload('workNum_lst', {data:workNum_data});
-								lay('.date1').each(function(){
-									laydate.render({
-										elem:this,
-										type:'time',
-										format:'HH:mm'
-									});
-								});
-							}
-						});
+						window.location.href = '添加规则.html';
 					}
 				});
 				form.on('select(workNum)',function(obj){

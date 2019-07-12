@@ -23,9 +23,9 @@
 		<div style="position: relative;">
 			<ul id="selTree1" class="dtree" data-id="0"></ul>
 		</div>
-		<input type="checkbox" name="asd" id="test" value="1" >
+		<input type="text" class="layui-input" placeholder="请选择" onclick='user_popup(this,"user,company,dpt_position,position,department",0,false)'/>
 		<script>
-			alert($('#test').val());
+			
 			layui.config({
 				base: '../../lib/' //假设这是你存放拓展模块的根目录
 			}).extend({
@@ -41,7 +41,7 @@
 				var table = layui.table,
 					pick_pcc = layui.pick_pcc,
 					dtree = layui.dtree;
-				user_popup($("#rec_box"),true,false,false,0,false,tesxt1);
+				// user_popup($("#rec_box"),'user,company,dpt_position,position,department',0,false);
 				//payitem_pop($("#rec_box"),1);
 				//$('.pick-area').pickArea();
 				pick_pcc.render({

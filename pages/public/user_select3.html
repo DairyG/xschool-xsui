@@ -36,7 +36,7 @@
 	<div class="layui-col-md6 border-l-1 margin-t-20">
 		<div class="bgwhite padding-10">
 			<ul class="selected_box" id="selected_box">
-				<input type="hidden" id="sel_type" value="org" />
+				<input type="hidden" id="sel_type" value="" />
 				<input type="hidden" id="company_ids" value="," />
 				<input type="hidden" id="company_names" value="," />
 				<input type="hidden" id="department_ids" value="," />
@@ -111,14 +111,14 @@
 		{id:'2_3',department_id:2,company_id:1,name:'主管-赵六',position_id:3},
 	];
 	$(function(){
-		if(!has_position){
+		if (!has_position) {
 			$("#sel_type2").parents('label').remove();
 		}
-		if(!has_dpt_position){
+		if (!has_dpt_position) {
 			$("#sel_type3").parents('label').remove();
 		}
-		if($(".radio_box").find('label').length == 1){
-			$(".radio_box").html('');
+		if ($(".radio_box").find('label').length == 1) {
+			$(".radio_box").css({'height':'0px','overflow':'hidden'});
 		}
 		
 		//show_items('company',user_company.id);
@@ -127,10 +127,10 @@
 	//处理导航栏
 	function location_sel(obj,type,company_id,department_id,company_name){
 		$(obj).parent('span').nextAll().remove();
-		if($(obj).parent('span').index() == 1){
+		if ($(obj).parent('span').index() == 1 || parseInt(department_id) > 0) {
 			$(obj).parent('span').remove();
 		}
-		show_items(type,company_id,department_id,company_name);
+		show_items(type, company_id, department_id, company_name);
 	}
 	
 	//全选处理

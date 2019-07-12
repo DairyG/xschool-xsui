@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../../layui/css/layui.css" />
+		<link rel="stylesheet" href="../../layui/css/common.css" />
+		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../layui/layui.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+	</head>
+	<body class="bgf2f2f2">
+		<div class="childrenBody">
+			<div class="layui-card-header">添加规则</div>
+			<div class="layui-card-body bgwhite">
+				<div class="layui-form layui-form2 layui-row">
+					<div class="layui-form-item layui-col-md12">
+						<label class="layui-form-label"><span class="text-red">*</span>规则名称</label>
+						<div class="layui-input-block">
+							<input type="text" class="layui-input" />
+						</div>
+					</div>
+					<div class="layui-form-item layui-col-md12">
+						<label class="layui-form-label"><span class="text-red">*</span>应用范围</label>
+						<div class="layui-input-block">
+							<input type="checkbox" title="考勤组一" lay-skin="primary" />
+							<input type="checkbox" title="考勤组二" lay-skin="primary" />
+							<input type="checkbox" title="考勤组三" lay-skin="primary" />
+						</div>
+					</div>
+					<div class="layui-col-md12 layui-tab">
+						<ul class="layui-tab-title">
+							<li class="layui-this">工作日</li>
+							<li>休息日</li>
+							<li>节假日</li>
+						</ul>
+						<div class="layui-tab-content">
+							<div class="layui-tab-item layui-show">
+								<div class="layui-form-item">
+									<label class="layui-form-label">允许加班</label>
+									<div class="layui-input-block">
+										<input type="checkbox" name="allow1" lay-skin="switch" checked lay-filter="allow_otime"/>
+									</div>
+								</div>
+								<div class="layui-form-item layui-col-md6">
+									<label class="layui-form-label">计算方式</label>
+									<div class="layui-input-block">
+										<select>
+											<option>按审批时长计算</option>
+											<option>无需审批，按打卡时长计算</option>
+										</select>
+									</div>
+								</div>
+								<div class="layui-form-item layui-col-md12">
+									<label class="layui-form-label">扣除休息时间</label>
+									<div class="layui-input-block">
+										<input type="checkbox" name="rest_time" lay-skin="switch" lay-filter="rest_time"/>
+									</div>
+								</div>
+								<div class="layui-form-item layui-col-md12" style="display: none;">
+									<div class="layui-input-block">
+										<ul>
+											<li class="overhide padding-b-10">
+												<div class="layui-input-inline" style="width:150px">
+													<input type="radio" name="rest_time_type1" title="设置休息时段" lay-skin="primary" checked lay-filter="rest_time_type" />
+												</div>
+												<div class="layui-input-inline">
+													<input type="text" class="layui-input date1" readonly value="12:00" />
+												</div>
+												<div class="layui-form-mid text-85">—</div>
+												<div class="layui-input-inline">
+													<input type="text" class="layui-input date1" readonly value="13:00" />
+												</div>
+											</li>
+											<li class="overhide padding-b-10">
+												<div class="layui-input-inline" style="width:150px">
+													<input type="radio" name="rest_time_type1" title="按加班时长扣除" lay-skin="primary" lay-filter="rest_time_type" />
+												</div>
+												<div class="layui-form-mid text-85">每满</div>
+												<div class="layui-input-inline">
+													<input type="text" class="layui-input date1 layui-disabled" disabled value="8" />
+												</div>
+												<div class="layui-form-mid text-85">小时，扣除</div>
+												<div class="layui-input-inline">
+													<input type="text" class="layui-input date1 layui-disabled" disabled value="1" />
+												</div>
+												<div class="layui-form-mid text-85">小时</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="layui-tab-item">
+								<div class="layui-form-item">
+									<label class="layui-form-label">允许加班</label>
+									<div class="layui-input-block">
+										<input type="checkbox" name="allow1" lay-skin="switch" checked lay-filter="allow_otime"/>
+									</div>
+								</div>
+								<div class="layui-form-item layui-col-md6">
+									<label class="layui-form-label">计算方式</label>
+									<div class="layui-input-block">
+										<select>
+											<option>按审批时长计算</option>
+											<option>无需审批，按打卡时长计算</option>
+										</select>
+									</div>
+								</div>
+								<div class="layui-form-item layui-col-md12">
+									<label class="layui-form-label">扣除休息时间</label>
+									<div class="layui-input-block">
+										<input type="checkbox" name="rest_time" lay-skin="switch" lay-filter="rest_time"/>
+									</div>
+								</div>
+								<div class="layui-form-item layui-col-md12" style="display: none;">
+									<div class="layui-input-block">
+										<ul>
+											<li class="overhide padding-b-10">
+												<div class="layui-input-inline" style="width:150px">
+													<input type="radio" name="rest_time_type1" title="设置休息时段" lay-skin="primary" checked lay-filter="rest_time_type" />
+												</div>
+												<div class="layui-input-inline">
+													<input type="text" class="layui-input date1" readonly value="12:00" />
+												</div>
+												<div class="layui-form-mid text-85">—</div>
+												<div class="layui-input-inline">
+													<input type="text" class="layui-input date1" readonly value="13:00" />
+												</div>
+											</li>
+											<li class="overhide padding-b-10">
+												<div class="layui-input-inline" style="width:150px">
+													<input type="radio" name="rest_time_type1" title="按加班时长扣除" lay-skin="primary" lay-filter="rest_time_type" />
+												</div>
+												<div class="layui-form-mid text-85">每满</div>
+												<div class="layui-input-inline">
+													<input type="text" class="layui-input date1 layui-disabled" disabled value="8" />
+												</div>
+												<div class="layui-form-mid text-85">小时，扣除</div>
+												<div class="layui-input-inline">
+													<input type="text" class="layui-input date1 layui-disabled" disabled value="1" />
+												</div>
+												<div class="layui-form-mid text-85">小时</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="layui-tab-item">
+								<div class="layui-form-item">
+									<label class="layui-form-label">允许加班</label>
+									<div class="layui-input-block">
+										<input type="checkbox" name="allow1" lay-skin="switch" checked lay-filter="allow_otime"/>
+									</div>
+								</div>
+								<div class="layui-form-item layui-col-md6">
+									<label class="layui-form-label">计算方式</label>
+									<div class="layui-input-block">
+										<select>
+											<option>按审批时长计算</option>
+											<option>无需审批，按打卡时长计算</option>
+										</select>
+									</div>
+								</div>
+								<div class="layui-form-item layui-col-md12">
+									<label class="layui-form-label">扣除休息时间</label>
+									<div class="layui-input-block">
+										<input type="checkbox" name="rest_time" lay-skin="switch" lay-filter="rest_time"/>
+									</div>
+								</div>
+								<div class="layui-form-item layui-col-md12" style="display: none;">
+									<div class="layui-input-block">
+										<ul>
+											<li class="overhide padding-b-10">
+												<div class="layui-input-inline" style="width:150px">
+													<input type="radio" name="rest_time_type1" title="设置休息时段" lay-skin="primary" checked lay-filter="rest_time_type" />
+												</div>
+												<div class="layui-input-inline">
+													<input type="text" class="layui-input date1" readonly value="12:00" />
+												</div>
+												<div class="layui-form-mid text-85">—</div>
+												<div class="layui-input-inline">
+													<input type="text" class="layui-input date1" readonly value="13:00" />
+												</div>
+											</li>
+											<li class="overhide padding-b-10">
+												<div class="layui-input-inline" style="width:150px">
+													<input type="radio" name="rest_time_type1" title="按加班时长扣除" lay-skin="primary" lay-filter="rest_time_type" />
+												</div>
+												<div class="layui-form-mid text-85">每满</div>
+												<div class="layui-input-inline">
+													<input type="text" class="layui-input date1 layui-disabled" disabled value="8" />
+												</div>
+												<div class="layui-form-mid text-85">小时，扣除</div>
+												<div class="layui-input-inline">
+													<input type="text" class="layui-input date1 layui-disabled" disabled value="1" />
+												</div>
+												<div class="layui-form-mid text-85">小时</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="layui-item layui-col-md12 text-right">
+						<button class="layui-btn layui-btn-danger">确认</button>
+						<a class="layui-btn back_history">返回</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			layui.use(['table','form','element'], function() {
+				var table = layui.table,
+					element = layui.element,
+					form = layui.form;
+				form.on('switch(allow_otime)',function(data){
+					var obj = data.elem;
+					if(data.elem.checked){
+						$(obj).parents('.layui-form-item').siblings('.layui-form-item').show();
+					} else {
+						$(obj).parents('.layui-form-item').siblings('.layui-form-item').hide();
+					}
+				});
+				form.on('switch(rest_time)',function(data){
+					var obj = data.elem;
+					var set_box = $(obj).parents('.layui-form-item').next('.layui-form-item');
+					if(data.elem.checked){
+						set_box.show();
+					} else {
+						set_box.hide();
+					}
+				});
+				form.on('radio(rest_time_type)',function(data){
+					var obj = data.elem;
+					var p_obj = $(obj).parents('li');
+					p_obj.find('input[type="text"]').removeClass('layui-disabled').prop('disabled',false);
+					p_obj.siblings('li').find('input[type="text"]').addClass('layui-disabled').prop('disabled',true);
+				});
+				
+			});
+		</script>
+	</body>
+</html>

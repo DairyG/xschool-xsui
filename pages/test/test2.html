@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../../layui/css/layui.css" />
+		<link rel="stylesheet" href="../../layui/css/common.css" />
+		<script type="text/javascript" src="../../lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../../layui/layui.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script type="text/javascript" src="../../lib/pick-pcc/city.min.js"></script>
+		<script type="text/javascript">
+			if (!Array.prototype.forEach) {
+				Array.prototype.forEach = function forEach(callback, thisArg) {
+					var T, k;
+					if (this == null) {
+						throw new TypeError("this is null or not defined");
+					}
+					var O = Object(this);
+					var len = O.length >>> 0;
+					if (typeof callback !== "function") {
+						throw new TypeError(callback + " is not a function");
+					}
+					if (arguments.length > 1) {
+						T = thisArg;
+					}
+					k = 0;
+					while (k < len) {
+						var kValue;
+						if (k in O) {
+							kValue = O[k];
+							callback.call(T, kValue, k, O);
+						}
+						k++;
+					}
+				};
+			}
+		</script>
+	</head>
+	<body class="bgf2f2f2">
+		<script>
+			var waybill_data = {"data":{"id":1,"no":"1907130011652","start":1,"trans":0,"end":3,"lineId":1,"isBigCar":false,"outModel":0,"recName":"徐言兮","recPhone":"15984492758","recTel":null,"recAddr":"","sendName":"徐平","sendPhone":"18602827765","sendTel":"028-8876547","sendAddr":null,"sendIdCard":null,"details":[{"id":1,"no":"1907130011652","product":"西瓜","package":"个","unit":"件数","model":1,"num":10,"wieght":0,"volume":0,"price":5.00,"subTotal":50.00,"wayBillId":1}],"logs":[],"fees":[],"rotues":[{"id":1,"no":"1907130011652","wayBillId":0,"shopId":1,"num":10,"createDate":"2019-07-13T12:53:28.457","state":1,"trainNo":null,"memo":"开单入库","opName":"宙斯555"},{"id":3,"no":"1907130011652","wayBillId":1,"shopId":1,"num":10,"createDate":"2019-07-13T12:54:45.333","state":2,"trainNo":"1907132913","memo":"装车出库,车次号[1907132913],车牌号[川A123456],装车件数[10]","opName":"宙斯555"},{"id":5,"no":"1907130011652","wayBillId":1,"shopId":3,"num":10,"createDate":"2019-07-13T12:55:16.193","state":1,"trainNo":"1907132913","memo":"到站入库","opName":"叙永开单员"},{"id":27,"no":"1907130011652","wayBillId":0,"shopId":3,"num":10,"createDate":"2019-07-13T14:11:02.243","state":2,"trainNo":null,"memo":"派送出库","opName":"叙永开单员"},{"id":133,"no":"1907130011652","wayBillId":0,"shopId":3,"num":10,"createDate":"2019-07-13T21:36:55.4","state":5,"trainNo":null,"memo":"派送完成，已签收","opName":"叙永开单员"},{"id":135,"no":"1907130011652","wayBillId":0,"shopId":3,"num":10,"createDate":"2019-07-13T21:37:11.16","state":5,"trainNo":null,"memo":"签收","opName":"叙永开单员"}],"stocks":[],"payModel":1,"deliveryModel":2,"bankName":null,"bankUserName":null,"bankAccount":null,"bankUserPhone":null,"state":6,"createDate":"2019-07-13T12:53:27.87","signDate":"2019-07-13T21:37:11.153","completeDate":null,"printMemo":null,"retNo":null,"retNum":0,"labelNum":10,"memo":null,"isExpedite":false,"isFrozen":false,"isBreakable":false,"isUpdate":false,"procetedNum":0.00,"proctedTaxLv":0,"proctedTaxFee":0.00,"taxFee":0.00,"cashFee":0.00,"withholdFee":0.00,"retFee":0.00,"transportFee":50.00,"transportTotalFee":50.00,"agentTotalFee":0.00,"totalFee":50.00,"arrivedTotalFee":50.00,"totalNum":10,"arrivedNum":0,"isNoArrivedDelivery":false,"isVerify":true,"verifyDate":"2019-07-13T21:37:11.153"},"succeed":true,"code":"00","message":"成功"};
+				waybill = waybill_data.data;
+			for(var key in waybill){
+				var new_key = key.toLowerCase();
+				console.log(new_key);
+			}
+		</script>
+	</body>
+</html>

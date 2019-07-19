@@ -123,6 +123,9 @@
 			];
 			
 			$(function(){
+				if(!has_company && !has_department && !has_user){
+					$("#sel_type1").parents('label').remove();
+				}
 				if(!has_position){
 					$("#sel_type2").parents('label').remove();
 				}
@@ -130,7 +133,7 @@
 					$("#sel_type3").parents('label').remove();
 				}
 				if($(".radio_box").find('label').length == 1){
-					$(".radio_box").html('');
+					$(".radio_box").css({'height':'0px','overflow':'hidden'});
 				}
 				
 				show_items('company',user_company.id);
